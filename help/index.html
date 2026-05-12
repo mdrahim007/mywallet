@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & FAQ — MyWallet</title>
+  <meta name="description" content="MyWallet Help Center and FAQ. Get answers to common questions about accounts, transactions, SMS auto-capture, backups, and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mywallet.mdrahim.com/help/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><span>💰</span><span>MyWallet</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <div class="container">
+      <h1>Help & FAQ</h1>
+      <p class="last-updated">Find answers to common questions about MyWallet</p>
+
+      <!-- Getting Started -->
+      <div class="faq-category">
+        <h2>🚀 Getting Started</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I create my first account?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>From the Dashboard, tap the account card stack area. If you have no accounts, you'll see an "Add Account" card. Tap it and fill in your account details — name, type (bank, credit card, cash, etc.), currency, and opening balance. Your account card will appear on the dashboard immediately.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What account types does MyWallet support?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>MyWallet supports five account types:</p>
+            <ul>
+              <li><strong>Bank Account</strong> — Checking, savings, or any bank deposit account</li>
+              <li><strong>Credit Card</strong> — With credit limit, APR, billing cycle, and payment tracking</li>
+              <li><strong>Cash</strong> — Track physical cash</li>
+              <li><strong>Digital Wallet</strong> — PayPal, Venmo, bKash, or any e-wallet</li>
+              <li><strong>Loan</strong> — With principal, interest rate, tenure, and EMI calculation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I add a transaction?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Tap the floating "+" button on the Dashboard or from an Account Detail page. Choose the transaction type (Expense, Income, or Transfer), enter the amount, select an account and category, optionally add a merchant name and note, and tap Save. You can also change the currency for cross-currency transactions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMS Auto-Capture -->
+      <div class="faq-category">
+        <h2>📱 SMS Auto-Capture</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How does SMS auto-capture work?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>When you grant SMS permission, MyWallet listens for incoming bank SMS alerts. It uses pattern matching to identify transaction details (amount, type, merchant) from bank notification messages. Recognized transactions appear in a "Pending Review" section on your Dashboard, where you can confirm, edit, or delete them.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Is my SMS data sent anywhere?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p><strong>Absolutely not.</strong> All SMS processing happens entirely on your device. Raw SMS messages are never stored, transmitted, or shared. Only the parsed transaction data (amount, merchant, date) is saved locally — and only after you explicitly confirm each transaction. See our <a href="/privacy/">Privacy Policy</a> for full details.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Why isn't MyWallet detecting my bank SMS?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>A few things to check:</p>
+            <ul>
+              <li><strong>SMS permission:</strong> Ensure both READ_SMS and RECEIVE_SMS permissions are granted in your phone's Settings → Apps → MyWallet → Permissions</li>
+              <li><strong>Card digits:</strong> Make sure the "Card Last 4 Digits" field on your account matches the digits your bank includes in SMS alerts. This is how MyWallet links SMS to the correct account.</li>
+              <li><strong>Bank format:</strong> MyWallet supports common bank SMS formats. Some banks use non-standard formats that may not be recognized.</li>
+              <li><strong>Battery optimization:</strong> Disable battery optimization for MyWallet so it can receive SMS in the background</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I use MyWallet without SMS permissions?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Yes! SMS auto-capture is completely optional. You can dismiss the permission request card and manually enter all transactions. The app is fully functional without SMS access.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accounts & Transactions -->
+      <div class="faq-category">
+        <h2>💳 Accounts & Transactions</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I transfer money between accounts?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>When adding or editing a transaction, select the "Transfer" type tab. Toggle on "Internal Transfer" to select a destination account. The amount will be deducted from the source account and added to the destination. Cross-currency transfers are automatically converted at the current exchange rate.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How does credit card tracking work?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Credit card accounts track your credit utilization, billing cycles, outstanding balance, and due dates. You'll see a breakdown of spent vs. available credit, a "Pay Now" button to record payments from your bank account, and historical billing cycles to review past statements. Set your statement date in the account settings for accurate cycle tracking.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I edit or delete a transaction?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Tap any transaction in the list to open the Edit Transaction screen. You can modify any field — amount, category, date, merchant, etc. — or delete the transaction entirely using the "Delete" button at the bottom or the trash icon in the top bar.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I flag transactions for tax purposes?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>When adding or editing a transaction, toggle the "Tax" switch. Flagged transactions appear in the Tax Report screen (accessible from Settings), where you can review all tax-deductible expenses grouped by category and export them.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-Currency -->
+      <div class="faq-category">
+        <h2>💱 Multi-Currency</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I set my primary currency?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Go to Settings → Currency. Select your primary currency (used for dashboard totals and net worth). You can also add secondary currencies for quick access when adding transactions.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How are exchange rates calculated?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>MyWallet fetches exchange rates from public APIs. Rates are cached locally and refreshed periodically. Cross-currency transactions are converted at the rate available at the time of entry. Note: these rates are for informational purposes and may differ from your bank's actual conversion rate.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backup & Data -->
+      <div class="faq-category">
+        <h2>☁️ Backup & Data</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I back up my data?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Go to Settings → scroll to the Backup section. Sign in with your Google account, then tap "Backup to Google Drive." Your data is saved in Google Drive's private App Data folder, accessible only by MyWallet.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I restore from a backup?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>In Settings, sign in with the same Google account used for backup, then tap "Restore from Google Drive." This will replace your current local data with the backup. Make sure to back up your current data first if you want to keep it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What happens if I uninstall the app?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>All locally stored data is permanently deleted when you uninstall. However, if you previously backed up to Google Drive, you can restore your data after reinstalling. We strongly recommend regular backups.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme & Settings -->
+      <div class="faq-category">
+        <h2>🎨 Theme & Settings</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I switch between light and dark mode?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Go to Settings → Theme. You can choose Light, Dark, or System Default (follows your phone's theme setting). The theme change applies instantly across all screens.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I hide my balance for privacy?<span class="icon">+</span></button>
+          <div class="faq-answer">
+            <p>Tap the eye icon (👁) next to "Available Balance" on the Dashboard. This hides all amounts across the balance summary. Tap again to reveal. The setting persists across app restarts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="faq-category">
+        <h2>📧 Still Need Help?</h2>
+        <div class="highlight-box">
+          <p>Can't find what you're looking for? Contact us at <a href="mailto:contact@mdrahim.com">contact@mdrahim.com</a> and we'll get back to you as soon as possible.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 MyWallet by <a href="https://mdrahim.com">MD Rahim</a>. All rights reserved.</span>
+        <span><a href="/">Home</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/help/">Help</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

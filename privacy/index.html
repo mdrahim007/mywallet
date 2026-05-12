@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — MyWallet</title>
+  <meta name="description" content="MyWallet Privacy Policy. Learn how we handle your data — 100% local storage, no tracking, no ads, and optional encrypted Google Drive backups.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mywallet.mdrahim.com/privacy/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo"><span>💰</span><span>MyWallet</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/terms/">Terms</a>
+        <a href="/help/">Help</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: May 12, 2026</p>
+
+      <div class="highlight-box">
+        <p><strong>TL;DR:</strong> MyWallet stores all your data locally on your device. We do not collect, transmit, or sell your personal or financial information. SMS data is processed on-device only. Optional Google Drive backup is controlled entirely by you.</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+      <p>MyWallet ("we," "our," or "the app") is a personal finance management application developed by MD Rahim. This Privacy Policy explains how MyWallet handles your information when you use our Android application (the "Service").</p>
+      <p>By using MyWallet, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use the app.</p>
+
+      <h2>2. Information We Collect</h2>
+
+      <h3>2.1 Financial Data (User-Entered)</h3>
+      <p>MyWallet allows you to manually enter:</p>
+      <ul>
+        <li>Account information (account names, types, balances, card last four digits, currency)</li>
+        <li>Transaction details (amounts, merchants, categories, dates, notes)</li>
+        <li>Savings goals and sinking fund targets</li>
+        <li>Budget preferences and settings</li>
+      </ul>
+      <p><strong>This data is stored exclusively on your device</strong> in a local database (ObjectBox). It is never transmitted to our servers or any third party.</p>
+
+      <h3>2.2 SMS Data</h3>
+      <p>If you grant SMS permissions (<code>READ_SMS</code> and <code>RECEIVE_SMS</code>), MyWallet will:</p>
+      <ul>
+        <li>Listen for incoming SMS messages from known bank sender IDs</li>
+        <li>Parse bank transaction alerts to extract amounts, merchant names, and account references</li>
+        <li>Create pending transaction entries for your review and confirmation</li>
+      </ul>
+      <div class="highlight-box">
+        <p><strong>Important:</strong> SMS data is processed entirely on your device using local pattern matching (regex). Raw SMS content is <strong>never stored, transmitted, or shared</strong> with any external service. Only the parsed transaction data (amount, merchant, date) is saved to your local database after your explicit confirmation.</p>
+      </div>
+
+      <h3>2.3 Google Account Information</h3>
+      <p>If you choose to use the Google Drive backup feature, MyWallet will request access to:</p>
+      <ul>
+        <li>Your Google account name and email (for authentication)</li>
+        <li>Google Drive App Data folder (a private folder only accessible by MyWallet)</li>
+      </ul>
+      <p>This information is used solely to authenticate with Google Drive and save/restore your backup file. We do not access any other Google account data.</p>
+
+      <h3>2.4 Device Permissions</h3>
+      <p>MyWallet may request the following permissions:</p>
+      <ul>
+        <li><strong>SMS (READ_SMS, RECEIVE_SMS)</strong> — For auto-capturing bank transaction alerts. Optional; the app functions fully without it.</li>
+        <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For notifying you about auto-captured transactions and reminders. Optional.</li>
+        <li><strong>Biometric/Fingerprint</strong> — For optional app lock functionality. Biometric data is handled entirely by Android's BiometricPrompt API and never accessed by MyWallet directly.</li>
+        <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, and Google Sign-In. No personal data is transmitted beyond these specific features.</li>
+      </ul>
+
+      <h2>3. How We Use Your Information</h2>
+      <p>All data collected is used exclusively for:</p>
+      <ul>
+        <li>Displaying your financial information within the app</li>
+        <li>Calculating analytics, balances, and budget summaries</li>
+        <li>Providing auto-captured SMS transaction suggestions</li>
+        <li>Backing up and restoring your data via Google Drive (when you choose to)</li>
+        <li>Converting currencies using publicly available exchange rates</li>
+      </ul>
+
+      <h2>4. Data Storage & Security</h2>
+      <ul>
+        <li><strong>Local Storage:</strong> All financial data is stored in a local ObjectBox database on your device's internal storage, protected by Android's app sandbox.</li>
+        <li><strong>Google Drive Backup:</strong> When enabled, backup files are stored in Google Drive's App Data folder, which is private and can only be accessed by MyWallet. Google's security and encryption standards apply.</li>
+        <li><strong>No Cloud Servers:</strong> MyWallet does not operate any cloud servers. We do not have access to your data.</li>
+        <li><strong>Encryption:</strong> Data in transit (Google Drive sync, exchange rates) uses HTTPS/TLS encryption.</li>
+      </ul>
+
+      <h2>5. Data Sharing</h2>
+      <p><strong>We do not sell, trade, rent, or share your personal or financial data with any third parties.</strong></p>
+      <p>The only external data transmission occurs when:</p>
+      <ul>
+        <li>You initiate a Google Drive backup (data sent to your own Google Drive)</li>
+        <li>The app fetches live exchange rates from public APIs (no personal data is included in these requests)</li>
+        <li>You sign in with Google for backup functionality (standard OAuth flow)</li>
+      </ul>
+
+      <h2>6. Data Retention</h2>
+      <ul>
+        <li>Your data persists on your device until you delete individual entries or uninstall the app.</li>
+        <li>Google Drive backups persist in your Drive until you manually delete them or revoke MyWallet's access.</li>
+        <li>We do not retain any data on our end, as we have no servers.</li>
+      </ul>
+
+      <h2>7. Your Rights & Choices</h2>
+      <p>You have complete control over your data:</p>
+      <ul>
+        <li><strong>Access:</strong> All your data is visible within the app at all times.</li>
+        <li><strong>Deletion:</strong> Delete individual transactions, accounts, or all data from within the app. Uninstalling the app removes all local data.</li>
+        <li><strong>SMS Permission:</strong> You can deny or revoke SMS permissions at any time through your device's Settings. The app will continue to function without SMS features.</li>
+        <li><strong>Google Drive:</strong> You can disconnect Google Drive, delete backups, or revoke access from your Google Account settings.</li>
+        <li><strong>Export:</strong> You can back up your data to Google Drive for portability.</li>
+      </ul>
+
+      <h2>8. Children's Privacy</h2>
+      <p>MyWallet is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent and believe your child has used MyWallet, please contact us, and we will provide guidance on deleting the local data.</p>
+
+      <h2>9. Third-Party Services</h2>
+      <p>MyWallet integrates with the following third-party services:</p>
+      <ul>
+        <li><strong>Google Sign-In & Google Drive API</strong> — For authentication and backup. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+        <li><strong>Exchange Rate APIs</strong> — For currency conversion. Only currency codes are sent; no personal data is transmitted.</li>
+      </ul>
+
+      <h2>10. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last updated" date at the top. We encourage you to review this page periodically. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+      <h2>11. Contact Us</h2>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or your data, please contact us:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:contact@mdrahim.com">contact@mdrahim.com</a></li>
+        <li><strong>Website:</strong> <a href="https://mdrahim.com" target="_blank" rel="noopener">mdrahim.com</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 MyWallet by <a href="https://mdrahim.com">MD Rahim</a>. All rights reserved.</span>
+        <span><a href="/">Home</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/help/">Help</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
