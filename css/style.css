@@ -45,6 +45,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 body {
@@ -181,7 +183,7 @@ p {
 }
 
 .nav-logo img {
-  height: 36px;
+  height: 46px;
   width: auto;
 }
 
@@ -597,6 +599,7 @@ p {
   padding: 100px 0;
   background: linear-gradient(180deg, var(--bg-primary) 0%, #1a1040 100%);
   position: relative;
+  overflow: hidden;
 }
 
 .cta-section::before {
