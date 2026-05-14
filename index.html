@@ -75,20 +75,40 @@
     </svg>
   </div>
   <script>
-    const splash = document.getElementById('splash-screen');
-    const navEntries = performance.getEntriesByType("navigation");
-    const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
-    
-    if (sessionStorage.getItem('splashPlayed') && !isReload) {
-      if (splash) splash.remove();
-    } else {
-      document.body.style.overflow = 'hidden';
-      sessionStorage.setItem('splashPlayed', 'true');
-      setTimeout(() => {
-        document.body.style.overflow = '';
+    (function() {
+      const splash = document.getElementById('splash-screen');
+      let isReload = false;
+      try {
+        const navEntries = performance.getEntriesByType("navigation");
+        if (navEntries.length > 0) {
+          isReload = navEntries[0].type === "reload";
+        } else if (window.performance && window.performance.navigation) {
+          isReload = window.performance.navigation.type === 1;
+        }
+      } catch (e) {
+        console.warn('Navigation API not supported', e);
+      }
+      
+      let splashPlayed = false;
+      try {
+        splashPlayed = sessionStorage.getItem('splashPlayed') === 'true';
+      } catch (e) {
+        console.warn('SessionStorage not supported', e);
+      }
+      
+      if (splashPlayed && !isReload) {
         if (splash) splash.remove();
-      }, 2500);
-    }
+      } else {
+        document.body.style.overflow = 'hidden';
+        try {
+          sessionStorage.setItem('splashPlayed', 'true');
+        } catch (e) {}
+        setTimeout(() => {
+          document.body.style.overflow = '';
+          if (splash) splash.remove();
+        }, 2500);
+      }
+    })();
   </script>
 
 
