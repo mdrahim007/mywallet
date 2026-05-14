@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MyWallet — Smart Personal Finance Manager</title>
+  <link rel="icon" href="assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/logos/mywallet_logo(favicon_dark).svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
   <meta name="description" content="MyWallet is a premium personal finance app. Track expenses, manage multiple accounts, auto-log bank SMS transactions, analyze spending, and plan savings goals — all in one beautiful app.">
   <meta name="keywords" content="finance app, expense tracker, budget manager, personal finance, money manager, SMS transaction tracker, savings goals, MyWallet">
   <meta name="author" content="MD Rahim">
@@ -25,13 +27,76 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- ═══ Splash Screen ═══ -->
+  <div id="splash-screen">
+    <svg class="splash-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+      <defs>
+        <linearGradient id="neonBlue" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#1442a8" />
+          <stop offset="100%" stop-color="#2a75ff" />
+        </linearGradient>
+        <linearGradient id="neonGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00b85d" />
+          <stop offset="100%" stop-color="#33ff99" />
+        </linearGradient>
+        <linearGradient id="goldGradDark" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#d4af37" />
+          <stop offset="30%" stop-color="#fff1b8" />
+          <stop offset="65%" stop-color="#e6c245" />
+          <stop offset="100%" stop-color="#ffdf73" />
+        </linearGradient>
+        <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#ffdf73" flood-opacity="0.35" />
+        </filter>
+        <clipPath id="goldLineClip">
+          <rect x="0" y="0" width="455" height="500" />
+          <circle cx="455" cy="207" r="78" />
+        </clipPath>
+        <clipPath id="customCutsClip">
+          <polygon points="0,0 415,0 415,170 460,170 460,0 800,0 800,238 0,238" />
+        </clipPath>
+      </defs>
+      <g transform="translate(0, -5)">
+        <rect class="splash-rect" x="290" y="140" width="165" height="135" rx="30" fill="url(#neonBlue)" />
+        <circle class="splash-circle" cx="455" cy="207" r="78" fill="url(#neonGreen)" />
+        <g clip-path="url(#goldLineClip)">
+          <g filter="url(#neonGlow)">
+            <g clip-path="url(#customCutsClip)">
+              <path class="splash-path" d="M 331.5 250 L 375 170 L 408 235 L 442 170 L 468 220 L 522 125" 
+                    fill="none" stroke="url(#goldGradDark)" stroke-width="15" 
+                    stroke-linejoin="miter" stroke-miterlimit="4" stroke-linecap="butt" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <text class="splash-text" x="400" y="355" font-family="'Inter', sans-serif" font-size="64" fill="#ffffff" text-anchor="middle" letter-spacing="-0.5">
+        <tspan font-weight="400">My</tspan><tspan font-weight="700">Wallet</tspan>
+      </text>
+    </svg>
+  </div>
+  <script>
+    const splash = document.getElementById('splash-screen');
+    const navEntries = performance.getEntriesByType("navigation");
+    const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
+    
+    if (sessionStorage.getItem('splashPlayed') && !isReload) {
+      if (splash) splash.remove();
+    } else {
+      document.body.style.overflow = 'hidden';
+      sessionStorage.setItem('splashPlayed', 'true');
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        if (splash) splash.remove();
+      }, 2500);
+    }
+  </script>
+
 
   <!-- ═══ Navigation ═══ -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container">
       <a href="/" class="nav-logo" aria-label="MyWallet Home">
-        <span>💰</span>
-        <span>MyWallet</span>
+        <img src="assets/logos/mywallet_logo(web_dark).svg" alt="MyWallet Logo">
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
       <div class="nav-links">
@@ -216,7 +281,9 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo"><span>💰</span><span>MyWallet</span></div>
+          <div class="nav-logo">
+            <img src="assets/logos/mywallet_logo(web_dark).svg" alt="MyWallet Logo">
+          </div>
           <p>A premium personal finance manager. Beautifully designed, privacy-first, completely free.</p>
         </div>
         <div class="footer-col">
@@ -234,7 +301,7 @@
         <div class="footer-col">
           <h4>Support</h4>
           <a href="/help/">Help & FAQ</a>
-          <a href="mailto:contact@mdrahim.com">Contact Us</a>
+          <a href="mailto:mywalletapps@gmail.com">Contact Us</a>
         </div>
       </div>
       <div class="footer-bottom">

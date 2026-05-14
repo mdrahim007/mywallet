@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="blueGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#05226c" />
+      <stop offset="100%" stop-color="#1050c6" />
+    </linearGradient>
+
+    <linearGradient id="greenGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00964d" />
+      <stop offset="100%" stop-color="#26de7d" />
+    </linearGradient>
+
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#bc9447" />
+      <stop offset="30%" stop-color="#fceda4" />
+      <stop offset="65%" stop-color="#cba750" />
+      <stop offset="100%" stop-color="#ebd17d" />
+    </linearGradient>
+
+    <!-- Precision Clipping Paths -->
+    <clipPath id="goldLineClip">
+      <rect x="0" y="0" width="455" height="500" />
+      <circle cx="455" cy="207" r="78" />
+    </clipPath>
+
+    <clipPath id="customCutsClip">
+      <polygon points="
+        0,0 
+        415,0 
+        415,170 
+        460,170 
+        460,0 
+        800,0 
+        800,238 
+        0,238
+      " />
+    </clipPath>
+  </defs>
+
+  <!-- Logo centered for Adaptive Icon safe zone (512x512 canvas) -->
+  <g transform="translate(-155.5, 51)">
+    <!-- Flat base shapes -->
+    <rect x="290" y="140" width="165" height="135" rx="30" fill="url(#blueGrad)" />
+    
+    <circle cx="455" cy="207" r="78" fill="url(#greenGrad)" opacity="0.88" />
+
+    <!-- Gold Chart Line -->
+    <g clip-path="url(#goldLineClip)">
+      <g clip-path="url(#customCutsClip)">
+        <path d="M 331.5 250 L 375 170 L 408 235 L 442 170 L 468 220 L 522 125" 
+              fill="none" 
+              stroke="url(#goldGrad)" 
+              stroke-width="15" 
+              stroke-linejoin="miter" 
+              stroke-miterlimit="4"
+              stroke-linecap="butt" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="blueGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#05226c" />
+      <stop offset="100%" stop-color="#1050c6" />
+    </linearGradient>
+
+    <linearGradient id="greenGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00964d" />
+      <stop offset="100%" stop-color="#26de7d" />
+    </linearGradient>
+
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#bc9447" />
+      <stop offset="30%" stop-color="#fceda4" />
+      <stop offset="65%" stop-color="#cba750" />
+      <stop offset="100%" stop-color="#ebd17d" />
+    </linearGradient>
+
+    <!-- Shadow specifically for the gold line only -->
+    <filter id="lineShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.25" />
+    </filter>
+
+    <!-- Precision Clipping Paths -->
+    <clipPath id="goldLineClip">
+      <rect x="-100" y="-100" width="293.5" height="500" />
+      <circle cx="193.5" cy="157" r="78" />
+    </clipPath>
+
+    <clipPath id="customCutsClip">
+      <polygon points="
+        -100,-100 
+        153.5,-100 
+        153.5,120 
+        198.5,120 
+        198.5,-100 
+        400,-100 
+        400,188 
+        -100,188
+      " />
+    </clipPath>
+  </defs>
+
+  <g>
+    <!-- Blue Rectangle (Shadow removed) -->
+    <rect x="28.5" y="90" width="165" height="135" rx="30" fill="url(#blueGrad)" />
+
+    <!-- Green Circle (Shadow removed) -->
+    <circle cx="193.5" cy="157" r="78" fill="url(#greenGrad)" opacity="0.88" />
+
+    <!-- Gold Chart Line -->
+    <g clip-path="url(#goldLineClip)">
+      <g filter="url(#lineShadow)">
+        <g clip-path="url(#customCutsClip)">
+          <path d="M 70 200 L 113.5 120 L 146.5 185 L 180.5 120 L 206.5 170 L 260.5 75" 
+                fill="none" 
+                stroke="url(#goldGrad)" 
+                stroke-width="15" 
+                stroke-linejoin="miter" 
+                stroke-miterlimit="4"
+                stroke-linecap="butt" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <clipPath id="goldLineClip">
+      <rect x="0" y="0" width="455" height="500" />
+      <circle cx="455" cy="207" r="78" />
+    </clipPath>
+
+    <clipPath id="customCutsClip">
+      <polygon points="
+        0,0 
+        415,0 
+        415,170 
+        460,170 
+        460,0 
+        800,0 
+        800,238 
+        0,238
+      " />
+    </clipPath>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <g transform="translate(0, -5)">
+    <!-- Solid dark tone for the base shapes -->
+    <g fill="#1a1c23">
+      <rect x="290" y="140" width="165" height="135" rx="30" />
+      <circle cx="455" cy="207" r="78" />
+    </g>
+
+    <!-- The line becomes a slightly thicker white stroke to create a negative space cutout effect -->
+    <g clip-path="url(#goldLineClip)">
+      <g clip-path="url(#customCutsClip)">
+        <path d="M 331.5 250 L 375 170 L 408 235 L 442 170 L 468 220 L 522 125" 
+              fill="none" 
+              stroke="#ffffff" 
+              stroke-width="18" 
+              stroke-linejoin="miter" 
+              stroke-miterlimit="4"
+              stroke-linecap="butt" />
+      </g>
+    </g>
+  </g>
+
+  <text x="400" y="355" font-family="'Product Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="64" fill="#1a1c23" text-anchor="middle" letter-spacing="-0.5">
+    <tspan font-weight="400">My</tspan><tspan font-weight="700">Wallet</tspan>
+  </text>
+</svg>
