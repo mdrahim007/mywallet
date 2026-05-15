@@ -951,6 +951,9 @@ p {
 }
 
 @media (max-width: 640px) {
+  .nav-logo img {
+    height: 36px;
+  }
   .section {
     padding: 60px 0;
   }
