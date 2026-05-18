@@ -51,4 +51,88 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
+
+  // ── Beta Banner Close ──
+  const betaBanner = document.getElementById('beta-top-banner');
+  const betaBannerClose = document.getElementById('beta-banner-close');
+  if (betaBanner && betaBannerClose) {
+    betaBannerClose.addEventListener('click', () => {
+      betaBanner.classList.add('hidden');
+    });
+  }
+
+  // ── Checkbox → Enable/Disable Submit Button ──
+  const agreeCheckbox = document.getElementById('agreeTerms');
+  const submitBtn = document.getElementById('beta-submit-btn');
+  if (agreeCheckbox && submitBtn) {
+    agreeCheckbox.addEventListener('change', () => {
+      submitBtn.disabled = !agreeCheckbox.checked;
+    });
+  }
+
+  // ── Beta Signup Form Submission ──
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_8rLGSokZdQNEEy-NwDHA_ZkVfvjjpxxd5Aj6c7cby9HBHC1i05mtROTwEEUNnXVO3Q/exec';
+
+  const betaForm = document.getElementById('beta-signup-form');
+  const betaSuccess = document.getElementById('beta-success');
+
+  if (betaForm && betaSuccess && submitBtn) {
+    betaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate
+      if (!betaForm.checkValidity()) {
+        betaForm.reportValidity();
+        return;
+      }
+
+      // Show loading state
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoading = submitBtn.querySelector('.btn-loading');
+      submitBtn.disabled = true;
+      if (btnText) btnText.style.display = 'none';
+      if (btnLoading) btnLoading.style.display = 'inline-flex';
+
+      const formData = {
+        fullName: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        deviceModel: document.getElementById('deviceModel').value.trim(),
+        osVersion: document.getElementById('osVersion').value.trim(),
+        feedback: document.getElementById('feedback').value.trim(),
+        timestamp: new Date().toISOString()
+      };
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        // no-cors always returns opaque response, so we assume success
+        betaForm.style.display = 'none';
+        betaSuccess.style.display = 'block';
+        betaSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('Something went wrong. Please try again or email us at mywalletapps@gmail.com');
+        submitBtn.disabled = false;
+        if (btnText) btnText.style.display = 'inline';
+        if (btnLoading) btnLoading.style.display = 'none';
+      }
+    });
+  }
+
+  // ── Back to Top Button ──
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
