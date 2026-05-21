@@ -52,12 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Beta Banner Close ──
+  // ── Banner Dynamic Spacing ──
   const betaBanner = document.getElementById('beta-top-banner');
   const betaBannerClose = document.getElementById('beta-banner-close');
+
+  function updateBannerHeight() {
+    if (betaBanner && !betaBanner.classList.contains('hidden')) {
+      document.documentElement.style.setProperty('--banner-height', betaBanner.offsetHeight + 'px');
+    } else {
+      document.documentElement.style.setProperty('--banner-height', '0px');
+    }
+  }
+
+  if (betaBanner) {
+    updateBannerHeight();
+    window.addEventListener('resize', updateBannerHeight);
+  }
+
   if (betaBanner && betaBannerClose) {
     betaBannerClose.addEventListener('click', () => {
       betaBanner.classList.add('hidden');
+      document.documentElement.style.setProperty('--banner-height', '0px');
     });
   }
 
@@ -96,8 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = {
         fullName: document.getElementById('fullName').value.trim(),
         email: document.getElementById('email').value.trim(),
-        deviceModel: document.getElementById('deviceModel').value.trim(),
-        osVersion: document.getElementById('osVersion').value.trim(),
         feedback: document.getElementById('feedback').value.trim(),
         timestamp: new Date().toISOString()
       };
