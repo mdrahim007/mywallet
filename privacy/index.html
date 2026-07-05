@@ -36,7 +36,7 @@
       <p class="last-updated">Last updated: May 12, 2026</p>
 
       <div class="highlight-box">
-        <p><strong>TL;DR:</strong> MyWallet stores all your data locally on your device. We do not collect, transmit, or sell your personal or financial information. SMS data is processed on-device only. Optional Google Drive backup is controlled entirely by you.</p>
+        <p><strong>TL;DR:</strong> MyWallet stores all your data locally on your device. We do not collect, transmit, or sell your personal or financial information. AI and natural language processing happen on-device only. Optional Google Drive backup is controlled entirely by you.</p>
       </div>
 
       <h2>1. Introduction</h2>
@@ -55,16 +55,12 @@
       </ul>
       <p><strong>This data is stored exclusively on your device</strong> in a local database (ObjectBox). It is never transmitted to our servers or any third party.</p>
 
-      <h3>2.2 SMS Data</h3>
-      <p>If you grant SMS permissions (<code>READ_SMS</code> and <code>RECEIVE_SMS</code>), MyWallet will:</p>
+      <h3>2.2 Secure Vault & AI Processing</h3>
+      <p>MyWallet features a Secure Vault and an AI Assistant, both designed with absolute data sovereignty:</p>
       <ul>
-        <li>Listen for incoming SMS messages from known bank sender IDs</li>
-        <li>Parse bank transaction alerts to extract amounts, merchant names, and account references</li>
-        <li>Create pending transaction entries for your review and confirmation</li>
+        <li><strong>Secure Vault:</strong> Data stored here (like PINs) is encrypted at rest using AES-256 encryption before insertion into the local database.</li>
+        <li><strong>AI Assistant & NLP:</strong> Natural language processing (e.g., parsing text into transactions) occurs 100% locally on your device. Your free-text queries are <strong>never</strong> sent to cloud AI providers.</li>
       </ul>
-      <div class="highlight-box">
-        <p><strong>Important:</strong> SMS data is processed entirely on your device using local pattern matching (regex). Raw SMS content is <strong>never stored, transmitted, or shared</strong> with any external service. Only the parsed transaction data (amount, merchant, date) is saved to your local database after your explicit confirmation.</p>
-      </div>
 
       <h3>2.3 Google Account Information</h3>
       <p>If you choose to use the Google Drive backup feature, MyWallet will request access to:</p>
@@ -77,8 +73,7 @@
       <h3>2.4 Device Permissions</h3>
       <p>MyWallet may request the following permissions:</p>
       <ul>
-        <li><strong>SMS (READ_SMS, RECEIVE_SMS)</strong> — For auto-capturing bank transaction alerts. Optional; the app functions fully without it.</li>
-        <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For notifying you about auto-captured transactions and reminders. Optional.</li>
+        <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For notifying you about reminders and financial milestones. Optional.</li>
         <li><strong>Biometric/Fingerprint</strong> — For optional app lock functionality. Biometric data is handled entirely by Android's BiometricPrompt API and never accessed by MyWallet directly.</li>
         <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, and Google Sign-In. No personal data is transmitted beyond these specific features.</li>
       </ul>
@@ -88,7 +83,7 @@
       <ul>
         <li>Displaying your financial information within the app</li>
         <li>Calculating analytics, balances, and budget summaries</li>
-        <li>Providing auto-captured SMS transaction suggestions</li>
+        <li>Providing AI-assisted transaction parsing</li>
         <li>Backing up and restoring your data via Google Drive (when you choose to)</li>
         <li>Converting currencies using publicly available exchange rates</li>
       </ul>
@@ -122,7 +117,7 @@
       <ul>
         <li><strong>Access:</strong> All your data is visible within the app at all times.</li>
         <li><strong>Deletion:</strong> Delete individual transactions, accounts, or all data from within the app. Uninstalling the app removes all local data.</li>
-        <li><strong>SMS Permission:</strong> You can deny or revoke SMS permissions at any time through your device's Settings. The app will continue to function without SMS features.</li>
+
         <li><strong>Google Drive:</strong> You can disconnect Google Drive, delete backups, or revoke access from your Google Account settings.</li>
         <li><strong>Export:</strong> You can back up your data to Google Drive for portability.</li>
       </ul>

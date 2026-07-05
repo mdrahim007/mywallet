@@ -6,7 +6,7 @@
   <title>Help & FAQ — MyWallet</title>
   <link rel="icon" href="../assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
   <link rel="icon" href="../assets/logos/mywallet_logo(favicon_dark).svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="MyWallet Help Center and FAQ. Get answers to common questions about accounts, transactions, SMS auto-capture, backups, and more.">
+  <meta name="description" content="MyWallet Help Center and FAQ. Get answers to common questions about accounts, transactions, data privacy, backups, and more.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mywallet.mdrahim.com/help/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,41 +67,28 @@
         </div>
       </div>
 
-      <!-- SMS Auto-Capture -->
+      <!-- Privacy & AI -->
       <div class="faq-category">
-        <h2>📱 SMS Auto-Capture</h2>
+        <h2>🔒 Privacy & AI</h2>
 
         <div class="faq-item">
-          <button class="faq-question">How does SMS auto-capture work?<span class="icon">+</span></button>
+          <button class="faq-question">Is my financial data stored in the cloud?<span class="icon">+</span></button>
           <div class="faq-answer">
-            <p>When you grant SMS permission, MyWallet listens for incoming bank SMS alerts. It uses pattern matching to identify transaction details (amount, type, merchant) from bank notification messages. Recognized transactions appear in a "Pending Review" section on your Dashboard, where you can confirm, edit, or delete them.</p>
+            <p><strong>Absolutely not.</strong> MyWallet is built on an "Offline-First" philosophy. All your financial data is stored securely on your local device using a high-performance NoSQL database. We do not transmit your data to our servers.</p>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">Is my SMS data sent anywhere?<span class="icon">+</span></button>
+          <button class="faq-question">How does the Secure Vault work?<span class="icon">+</span></button>
           <div class="faq-answer">
-            <p><strong>Absolutely not.</strong> All SMS processing happens entirely on your device. Raw SMS messages are never stored, transmitted, or shared. Only the parsed transaction data (amount, merchant, date) is saved locally — and only after you explicitly confirm each transaction. See our <a href="/privacy/">Privacy Policy</a> for full details.</p>
+            <p>The Secure Vault is a dedicated section within MyWallet for storing highly sensitive information, like PINs or SSNs. Data placed in the vault is encrypted at rest using military-grade AES-256 encryption.</p>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">Why isn't MyWallet detecting my bank SMS?<span class="icon">+</span></button>
+          <button class="faq-question">How does the AI Assistant categorize my transactions?<span class="icon">+</span></button>
           <div class="faq-answer">
-            <p>A few things to check:</p>
-            <ul>
-              <li><strong>SMS permission:</strong> Ensure both READ_SMS and RECEIVE_SMS permissions are granted in your phone's Settings → Apps → MyWallet → Permissions</li>
-              <li><strong>Card digits:</strong> Make sure the "Card Last 4 Digits" field on your account matches the digits your bank includes in SMS alerts. This is how MyWallet links SMS to the correct account.</li>
-              <li><strong>Bank format:</strong> MyWallet supports common bank SMS formats. Some banks use non-standard formats that may not be recognized.</li>
-              <li><strong>Battery optimization:</strong> Disable battery optimization for MyWallet so it can receive SMS in the background</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">Can I use MyWallet without SMS permissions?<span class="icon">+</span></button>
-          <div class="faq-answer">
-            <p>Yes! SMS auto-capture is completely optional. You can dismiss the permission request card and manually enter all transactions. The app is fully functional without SMS access.</p>
+            <p>The AI Assistant features a natural language processing (NLP) engine that parses your free-text input (e.g., "Spent $12 on coffee at Starbucks"). This parsing happens 100% locally on your device without sending your queries to external cloud AI providers.</p>
           </div>
         </div>
       </div>
