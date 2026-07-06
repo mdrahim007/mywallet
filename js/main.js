@@ -341,10 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // We simulate different images via hue-rotation since we only have a few assets
     const tabConfigs = [
       { src: 'assets/images/Screenshots/Accounts.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Chat AI Assistant.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Chat-AI-Assistant.jpeg', filter: 'none' },
       { src: 'assets/images/Screenshots/Analytics.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Budget Module.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Net Worth.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Budget-Module.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Net-Worth.jpeg', filter: 'none' },
       { src: 'assets/images/Screenshots/Settings.jpeg', filter: 'none' }
     ];
 
