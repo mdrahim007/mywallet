@@ -1,5 +1,33 @@
 /* MyWallet Website — Interactions */
 document.addEventListener('DOMContentLoaded', () => {
+  // ── Theme Toggle ──
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+
+  if (themeToggleBtn) {
+    const savedTheme = localStorage.getItem('mywallet-theme');
+    if (savedTheme === 'light') {
+      document.body.setAttribute('data-theme', 'light');
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (moonIcon) moonIcon.style.display = 'block';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.body.getAttribute('data-theme') === 'light') {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('mywallet-theme', 'dark');
+        if (sunIcon) sunIcon.style.display = 'block';
+        if (moonIcon) moonIcon.style.display = 'none';
+      } else {
+        document.body.setAttribute('data-theme', 'light');
+        localStorage.setItem('mywallet-theme', 'light');
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (moonIcon) moonIcon.style.display = 'block';
+      }
+    });
+  }
+
   // ── Navbar scroll effect ──
   const navbar = document.querySelector('.navbar');
   if (navbar) {
@@ -293,4 +321,134 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // ── Mouse Spotlight ──
+  const spotlight = document.querySelector('.mouse-spotlight');
+  if (spotlight) {
+    document.addEventListener('mousemove', (e) => {
+      spotlight.style.opacity = '1';
+      spotlight.style.transform = `translate(${e.clientX - 400}px, ${e.clientY - 400}px)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      spotlight.style.opacity = '0';
+    });
+  }
+
+  // ── Interactive Feature Carousel ──
+  const carouselTabs = document.querySelectorAll('.carousel-tab');
+  const carouselImage = document.getElementById('carousel-image');
+  if (carouselTabs.length && carouselImage) {
+    // We simulate different images via hue-rotation since we only have a few assets
+    const tabConfigs = [
+      { src: 'assets/images/Screenshots/Accounts.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Chat AI Assistant.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Analytics.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Budget Module.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Net Worth.jpeg', filter: 'none' },
+      { src: 'assets/images/Screenshots/Settings.jpeg', filter: 'none' }
+    ];
+
+    carouselTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all
+        carouselTabs.forEach(t => t.classList.remove('active'));
+        // Add to clicked
+        tab.classList.add('active');
+        
+        const index = parseInt(tab.getAttribute('data-index'));
+        const config = tabConfigs[index];
+        
+        // Fade out
+        carouselImage.style.opacity = '0';
+        
+        setTimeout(() => {
+          carouselImage.src = config.src;
+          carouselImage.style.filter = config.filter;
+          // Fade in
+          carouselImage.style.opacity = '1';
+        }, 300);
+      });
+    });
+  }
+
+  // ── Chart.js Live Analytics ──
+  const ctx = document.getElementById('analyticsChart');
+  if (ctx && window.Chart) {
+    const data = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [{
+        label: 'Net Worth',
+        data: [12000, 15000, 14000, 18000, 22000, 24000, 29000],
+        borderColor: '#818cf8',
+        backgroundColor: 'rgba(129, 140, 248, 0.2)',
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#4f46e5',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+            titleColor: '#fff',
+            bodyColor: '#cbd5e1',
+            padding: 12,
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 1,
+            displayColors: false,
+            callbacks: {
+              label: function(context) {
+                return '$' + context.parsed.y.toLocaleString();
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+            ticks: { color: '#94a3b8' }
+          },
+          y: {
+            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+            ticks: {
+              color: '#94a3b8',
+              callback: function(value) { return '$' + (value/1000) + 'k'; }
+            }
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeOutQuart'
+        }
+      }
+    };
+
+    let chartRendered = false;
+    let myChart = null;
+
+    const chartObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !chartRendered) {
+          chartRendered = true;
+          myChart = new Chart(ctx, config);
+          chartObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    chartObserver.observe(ctx);
+  }
+
 });
