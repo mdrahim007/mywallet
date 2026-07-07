@@ -281,35 +281,59 @@ p {
 /* ── Navigation ───────────────────────────────────────────── */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1200px;
   z-index: 1000;
-  padding: 16px 0;
-  background: var(--bg-nav);
+  padding: 12px 24px;
+  background: 
+    linear-gradient(var(--bg-nav), var(--bg-nav)) padding-box,
+    linear-gradient(90deg, rgba(255,255,255,0.05) 0%, var(--accent-primary) 50%, rgba(255,255,255,0.05) 100%) border-box;
+  background-size: 200% 100%;
+  border: 1px solid transparent;
+  border-radius: 100px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-glass);
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all var(--transition);
+  animation: navbarEdgeGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes navbarEdgeGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .navbar.scrolled {
-  padding: 10px 0;
-  background: var(--bg-nav-scrolled);
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.12);
+  top: 16px;
+  padding: 10px 24px;
+  background: 
+    linear-gradient(var(--bg-nav-scrolled), var(--bg-nav-scrolled)) padding-box,
+    linear-gradient(90deg, rgba(255,255,255,0.05) 0%, var(--accent-secondary) 50%, rgba(255,255,255,0.05) 100%) border-box;
+  background-size: 200% 100%;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .navbar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0;
+  width: 100%;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
   color: var(--text-primary);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
 }
 
 .nav-logo img {
@@ -319,35 +343,25 @@ p {
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 8px; /* Reduced gap since links now have horizontal padding */
   align-items: center;
 }
 
-.nav-links a {
+.nav-links a:not(.nav-cta) {
   color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
   position: relative;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-links a:hover {
+.nav-links a:not(.nav-cta):hover {
   color: var(--text-primary);
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-accent);
-  border-radius: 2px;
-  transition: width var(--transition);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+  background: rgba(99, 102, 241, 0.1); /* Frosted pill background */
+  transform: translateY(-1px);
 }
 
 .nav-cta {
@@ -1609,11 +1623,24 @@ p {
 
 /* Shift navbar and body down when banner is visible */
 body:has(.beta-top-banner:not(.hidden)) .navbar {
-  top: var(--banner-height, 0px);
+  top: calc(var(--banner-height, 0px) + 24px);
+}
+
+body:has(.beta-top-banner:not(.hidden)) .navbar.scrolled {
+  top: calc(var(--banner-height, 0px) + 16px);
 }
 
 body:has(.beta-top-banner:not(.hidden)) {
   padding-top: var(--banner-height, 0px);
+}
+
+@media (max-width: 768px) {
+  body:has(.beta-top-banner:not(.hidden)) .navbar {
+    top: calc(var(--banner-height, 0px) + 12px);
+  }
+  body:has(.beta-top-banner:not(.hidden)) .navbar.scrolled {
+    top: calc(var(--banner-height, 0px) + 8px);
+  }
 }
 
 /* ── Beta Badge in Hero ──────────────────────────────────── */
@@ -2487,10 +2514,13 @@ body:has(.beta-top-banner:not(.hidden)) {
 
   /* — Navigation — */
   .navbar {
-    padding: 12px 0;
+    top: 12px;
+    width: calc(100% - 24px);
+    padding: 10px 16px;
   }
   .navbar.scrolled {
-    padding: 8px 0;
+    top: 8px;
+    padding: 8px 16px;
   }
   .nav-logo img {
     height: 34px;
