@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (savedTheme === 'light') {
     document.body.setAttribute('data-theme', 'light');
-    document.querySelectorAll('.sun-icon').forEach(icon => icon.style.display = 'none');
-    document.querySelectorAll('.moon-icon').forEach(icon => icon.style.display = 'block');
   }
 
   themeToggleBtns.forEach(btn => {
@@ -17,13 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isLight) {
         document.body.removeAttribute('data-theme');
         localStorage.setItem('mywallet-theme', 'dark');
-        document.querySelectorAll('.sun-icon').forEach(icon => icon.style.display = 'block');
-        document.querySelectorAll('.moon-icon').forEach(icon => icon.style.display = 'none');
       } else {
         document.body.setAttribute('data-theme', 'light');
         localStorage.setItem('mywallet-theme', 'light');
-        document.querySelectorAll('.sun-icon').forEach(icon => icon.style.display = 'none');
-        document.querySelectorAll('.moon-icon').forEach(icon => icon.style.display = 'block');
       }
     });
   });
@@ -105,29 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 
-  // ── Banner Dynamic Spacing ──
-  const betaBanner = document.getElementById('beta-top-banner');
-  const betaBannerClose = document.getElementById('beta-banner-close');
 
-  function updateBannerHeight() {
-    if (betaBanner && !betaBanner.classList.contains('hidden')) {
-      document.documentElement.style.setProperty('--banner-height', betaBanner.offsetHeight + 'px');
-    } else {
-      document.documentElement.style.setProperty('--banner-height', '0px');
-    }
-  }
-
-  if (betaBanner) {
-    updateBannerHeight();
-    window.addEventListener('resize', updateBannerHeight);
-  }
-
-  if (betaBanner && betaBannerClose) {
-    betaBannerClose.addEventListener('click', () => {
-      betaBanner.classList.add('hidden');
-      document.documentElement.style.setProperty('--banner-height', '0px');
-    });
-  }
 
   // ── Checkbox → Enable/Disable Submit Button ──
   const agreeCheckbox = document.getElementById('agreeTerms');

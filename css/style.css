@@ -572,47 +572,75 @@ body {
 }
 
 
+/* ── Premium Circular Theme Toggle ── */
 .theme-toggle-btn {
-  background: var(--bg-toggle-track);
+  background: var(--bg-card);
   border: 1px solid var(--border-glass);
   cursor: pointer;
   display: flex;
   align-items: center;
-  width: 54px;
-  height: 28px;
-  border-radius: 100px;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   margin-left: 8px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-  padding: 2px;
   position: relative;
+  overflow: hidden;
 }
 
+/* Remove the pill slider aesthetics */
 .theme-toggle-btn .toggle-thumb {
-  width: 22px;
-  height: 22px;
-  background: var(--toggle-thumb);
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.4s cubic-bezier(0.4, 0.2, 0.2, 1.2); /* Bouncy spring */
-  transform: translateX(0);
+  background: transparent;
+  box-shadow: none;
+  transform: translateX(0) !important;
+  position: relative;
 }
 
 .theme-toggle-btn svg {
-  color: var(--toggle-icon);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-secondary);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, color 0.3s ease, filter 0.3s ease;
+  position: absolute;
 }
 
-[data-theme="light"] .theme-toggle-btn .toggle-thumb {
-  transform: translateX(26px);
-}
+/* Sun starts visible (Dark Mode active, prompts switch to Light) */
+.sun-icon { opacity: 1; transform: rotate(0deg); }
+.moon-icon { opacity: 0; transform: rotate(-90deg); display: block !important; }
 
+/* Light Theme: Sun rotates out, Moon rotates in (prompts switch to Dark) */
+[data-theme="light"] .sun-icon { opacity: 0; transform: rotate(90deg); }
+[data-theme="light"] .moon-icon { opacity: 1; transform: rotate(0deg); }
+
+/* Base Hover */
 .theme-toggle-btn:hover {
-  border-color: var(--glass-015);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 0 10px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ── Dark Mode Hover (Sun Glow) ── */
+.theme-toggle-btn:hover {
+  background: var(--glass-010);
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15), inset 0 0 10px rgba(251, 191, 36, 0.05);
+}
+.theme-toggle-btn:hover .sun-icon {
+  color: #FBBF24; /* Warm Gold */
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+}
+
+/* ── Light Mode Hover (Moon Glow) ── */
+[data-theme="light"] .theme-toggle-btn:hover {
+  background: #ffffff;
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15), inset 0 0 10px rgba(99, 102, 241, 0.05);
+}
+[data-theme="light"] .theme-toggle-btn:hover .moon-icon {
+  color: #6366f1; /* Cool Indigo */
+  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.4));
 }
 
 
