@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }).filter(Boolean);
 
   if (navbar) {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const scrollY = window.scrollY;
       navbar.classList.toggle('scrolled', scrollY > 40);
 
@@ -48,7 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
           a.classList.add('active');
         }
       });
-    }, { passive: true });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger immediately on load to catch mid-page reloads
+    handleScroll();
   }
 
   // ── Mobile nav toggle ──
@@ -485,6 +489,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
 
     chartObserver.observe(ctx);
+  }
+
+  // ── Testimonial Carousel ──
+  const testimonialPages = document.querySelectorAll('.testimonial-page');
+  const testimonialIndicators = document.querySelectorAll('#testimonial-indicators .indicator');
+  const testimonialCarousel = document.getElementById('testimonial-carousel');
+  
+  if (testimonialPages.length > 0) {
+    let currentTestimonialPage = 0;
+    let testimonialTimer;
+    let isTestimonialHovered = false;
+
+    const showTestimonialPage = (index) => {
+      testimonialPages.forEach(p => p.classList.remove('active'));
+      testimonialIndicators.forEach(i => i.classList.remove('active'));
+      
+      testimonialPages[index].classList.add('active');
+      if(testimonialIndicators[index]) {
+        testimonialIndicators[index].classList.add('active');
+      }
+      currentTestimonialPage = index;
+    };
+
+    const nextTestimonialPage = () => {
+      if (isTestimonialHovered) return;
+      const nextIndex = (currentTestimonialPage + 1) % testimonialPages.length;
+      showTestimonialPage(nextIndex);
+    };
+
+    const startTestimonialTimer = () => {
+      testimonialTimer = setInterval(nextTestimonialPage, 6000);
+    };
+
+    if (testimonialCarousel) {
+      testimonialCarousel.addEventListener('mouseenter', () => isTestimonialHovered = true);
+      testimonialCarousel.addEventListener('mouseleave', () => isTestimonialHovered = false);
+    }
+
+    testimonialIndicators.forEach(indicator => {
+      indicator.addEventListener('click', () => {
+        const index = parseInt(indicator.getAttribute('data-index'));
+        showTestimonialPage(index);
+        clearInterval(testimonialTimer);
+        startTestimonialTimer(); // Reset timer on manual click
+      });
+    });
+
+    startTestimonialTimer();
   }
 
 
