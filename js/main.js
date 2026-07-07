@@ -1,39 +1,60 @@
 /* MyWallet Website — Interactions */
 document.addEventListener('DOMContentLoaded', () => {
   // ── Theme Toggle ──
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const sunIcon = document.querySelector('.sun-icon');
-  const moonIcon = document.querySelector('.moon-icon');
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  const savedTheme = localStorage.getItem('mywallet-theme');
+  
+  if (savedTheme === 'light') {
+    document.body.setAttribute('data-theme', 'light');
+    document.querySelectorAll('.sun-icon').forEach(icon => icon.style.display = 'none');
+    document.querySelectorAll('.moon-icon').forEach(icon => icon.style.display = 'block');
+  }
 
-  if (themeToggleBtn) {
-    const savedTheme = localStorage.getItem('mywallet-theme');
-    if (savedTheme === 'light') {
-      document.body.setAttribute('data-theme', 'light');
-      if (sunIcon) sunIcon.style.display = 'none';
-      if (moonIcon) moonIcon.style.display = 'block';
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-      if (document.body.getAttribute('data-theme') === 'light') {
+  themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isLight = document.body.getAttribute('data-theme') === 'light';
+      
+      if (isLight) {
         document.body.removeAttribute('data-theme');
         localStorage.setItem('mywallet-theme', 'dark');
-        if (sunIcon) sunIcon.style.display = 'block';
-        if (moonIcon) moonIcon.style.display = 'none';
+        document.querySelectorAll('.sun-icon').forEach(icon => icon.style.display = 'block');
+        document.querySelectorAll('.moon-icon').forEach(icon => icon.style.display = 'none');
       } else {
         document.body.setAttribute('data-theme', 'light');
         localStorage.setItem('mywallet-theme', 'light');
-        if (sunIcon) sunIcon.style.display = 'none';
-        if (moonIcon) moonIcon.style.display = 'block';
+        document.querySelectorAll('.sun-icon').forEach(icon => icon.style.display = 'none');
+        document.querySelectorAll('.moon-icon').forEach(icon => icon.style.display = 'block');
       }
     });
-  }
+  });
 
-  // ── Navbar scroll effect ──
+  // ── Navbar scroll effect & Scroll Spy ──
   const navbar = document.querySelector('.navbar');
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  const sections = Array.from(navLinks).map(a => {
+    try { return document.querySelector(a.getAttribute('href')); }
+    catch { return null; }
+  }).filter(Boolean);
+
   if (navbar) {
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
+      const scrollY = window.scrollY;
+      navbar.classList.toggle('scrolled', scrollY > 40);
+
+      let currentSection = '';
+      sections.forEach(sec => {
+        if ((sec.offsetTop - 150) <= scrollY) {
+          currentSection = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (currentSection && a.getAttribute('href') === `#${currentSection}`) {
+          a.classList.add('active');
+        }
+      });
+    }, { passive: true });
   }
 
   // ── Mobile nav toggle ──
@@ -326,16 +347,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Mouse Spotlight ──
+  // ── Magnetic Mouse Spotlight (LERP) ──
   const spotlight = document.querySelector('.mouse-spotlight');
   if (spotlight) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+    let isMouseMoving = false;
+
     document.addEventListener('mousemove', (e) => {
-      spotlight.style.opacity = '1';
-      spotlight.style.transform = `translate(${e.clientX - 400}px, ${e.clientY - 400}px)`;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isMouseMoving) {
+        isMouseMoving = true;
+        spotlight.style.opacity = '1';
+      }
     });
+
     document.addEventListener('mouseleave', () => {
+      isMouseMoving = false;
       spotlight.style.opacity = '0';
     });
+
+    // LERP Animation Loop
+    function animateSpotlight() {
+      // Lerp factor (lower is smoother/more delayed)
+      currentX += (mouseX - currentX) * 0.1;
+      currentY += (mouseY - currentY) * 0.1;
+      
+      spotlight.style.transform = `translate(${currentX - 400}px, ${currentY - 400}px)`;
+      requestAnimationFrame(animateSpotlight);
+    }
+    animateSpotlight();
+  }
+
+  // ── Parallax Background Glows ──
+  const glow1 = document.querySelector('.glow-1');
+  const glow2 = document.querySelector('.glow-2');
+  
+  if (glow1 || glow2) {
+    window.addEventListener('scroll', () => {
+      // requestAnimationFrame could be used here too, but simple transform on scroll is usually okay for simple elements.
+      // Using rAF for performance:
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        if (glow1) glow1.style.transform = `translateY(${scrolled * -0.15}px)`;
+        if (glow2) glow2.style.transform = `translateY(${scrolled * -0.08}px)`;
+      });
+    }, { passive: true });
   }
 
   // ── Interactive Feature Carousel ──
@@ -344,12 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (carouselTabs.length && carouselImage) {
     // We simulate different images via hue-rotation since we only have a few assets
     const tabConfigs = [
-      { src: 'assets/images/Screenshots/Accounts.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Chat-AI-Assistant.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Analytics.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Budget-Module.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Net-Worth.jpeg', filter: 'none' },
-      { src: 'assets/images/Screenshots/Settings.jpeg', filter: 'none' }
+      { src: 'assets/images/Screenshots/Accounts.webp', filter: 'none' },
+      { src: 'assets/images/Screenshots/Chat-AI-Assistant.webp', filter: 'none' },
+      { src: 'assets/images/Screenshots/Analytics.webp', filter: 'none' },
+      { src: 'assets/images/Screenshots/Budget-Module.webp', filter: 'none' },
+      { src: 'assets/images/Screenshots/Net-Worth.webp', filter: 'none' },
+      { src: 'assets/images/Screenshots/Settings.webp', filter: 'none' }
     ];
 
     carouselTabs.forEach(tab => {

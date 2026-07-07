@@ -174,6 +174,13 @@
   </script>
 
 
+  <!-- ═══ Ultra-Soft Premium Ambient Glow ═══ -->
+  <div class="vignette-overlay"></div>
+  <div class="global-ambient-bg">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+  </div>
+
   <!-- ═══ Beta Announcement Banner ═══ -->
   <div class="beta-top-banner" id="beta-top-banner">
     <div class="container">
@@ -199,9 +206,26 @@
         <a href="#analytics">Analytics</a>
         <a href="#security">Security</a>
         <a href="#faq">FAQ</a>
+        
+        <!-- Mobile Actions (Hidden on Desktop) -->
+        <div class="mobile-actions">
+          <button class="theme-toggle-btn mobile-theme-toggle" aria-label="Toggle light/dark mode">
+            <div class="toggle-thumb">
+              <svg class="sun-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              <svg class="moon-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </div>
+          </button>
+          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="nav-cta" target="_blank">Download App</a>
+        </div>
+      </div>
+      
+      <!-- Desktop Actions (Hidden on Mobile) -->
+      <div class="nav-actions desktop-actions">
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark mode">
-          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <div class="toggle-thumb">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </div>
         </button>
         <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="nav-cta" target="_blank">Download App</a>
       </div>
@@ -347,7 +371,7 @@
         
         <div class="carousel-display" data-tilt data-tilt-max="3" data-tilt-speed="400">
           <div class="phone-frame">
-            <img src="assets/images/Screenshots/Dashboard.jpeg" alt="Feature showcase" id="carousel-image">
+            <img src="assets/images/Screenshots/Dashboard.webp" alt="Feature showcase" id="carousel-image">
           </div>
         </div>
       </div>
@@ -423,7 +447,7 @@
         <div class="showcase-image premium-isometric-wrapper" data-tilt data-tilt-max="10" data-tilt-speed="400">
           <div class="glow" style="background:rgba(139,92,246,0.3); bottom:20%; right:20%;"></div>
           <div class="premium-isometric">
-            <img src="assets/images/Screenshots/Accounts-Cards.jpeg" alt="Premium account cards UI">
+            <img src="assets/images/Screenshots/Accounts-Cards.webp" alt="Premium account cards UI">
           </div>
         </div>
         <div class="showcase-content">
