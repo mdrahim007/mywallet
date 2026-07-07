@@ -265,6 +265,7 @@ body {
 .section {
   padding: 100px 0;
   position: relative;
+  background: var(--bg-primary);
 }
 
 /* Glassmorphism top border to naturally separate sections */
@@ -1043,7 +1044,7 @@ body {
 
 /* ── Content Sections (How It Works & Personas) ────────────── */
 .bg-alt {
-  /* Removed flat background stripe. Sections are now transparent to let the global ambient glow bleed through. */
+  background: var(--bg-secondary);
 }
 
 .steps-grid, .personas-grid {
