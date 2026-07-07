@@ -61,24 +61,28 @@ document.addEventListener('DOMContentLoaded', () => {
     faders.forEach(el => el.classList.add('visible'));
   }
 
-  // ── FAQ accordion ──
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const wasOpen = item.classList.contains('open');
-      // Close siblings
-      item.parentElement.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!wasOpen) item.classList.add('open');
-    });
-  });
 
   // ── Smooth scroll for anchor links ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      const href = a.getAttribute('href');
+      const target = document.querySelector(href);
+      if (target) { 
+        e.preventDefault(); 
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+        // We purposely DO NOT update the address bar here to keep it clean.
+      }
     });
   });
+
+  // ── Clean URL on Load ──
+  // If the user arrived from another page via a link like /#features, 
+  // we wait for the browser to jump to that section, then silently wipe the hash from the address bar.
+  if (window.location.hash) {
+    setTimeout(() => {
+      history.replaceState(null, null, window.location.pathname);
+    }, 100);
+  }
 
   // ── Banner Dynamic Spacing ──
   const betaBanner = document.getElementById('beta-top-banner');
@@ -450,5 +454,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chartObserver.observe(ctx);
   }
+
+
+  // ── Preloader ──
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+      setTimeout(() => preloader.remove(), 500);
+    }
+  });
+
+  // ── FAQ Accordion ──
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      
+      // Close all others
+      faqItems.forEach(other => {
+        other.classList.remove('open');
+      });
+      
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+
+
+  // ── Magnetic Buttons ──
+  const magneticElements = document.querySelectorAll('.btn-primary, .store-badge');
+  magneticElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // Use a very fast transition to smooth out mouse polling
+      el.style.transition = 'transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.05)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      // Smooth snap back
+      el.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      el.style.transform = 'translate(0px, 0px) scale(1)';
+      
+      // Clear inline styles so CSS takes over again
+      setTimeout(() => {
+        el.style.transform = '';
+        el.style.transition = '';
+      }, 500);
+    });
+  });
 
 });

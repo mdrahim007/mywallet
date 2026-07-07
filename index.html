@@ -79,6 +79,11 @@
   </script>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="assets/logos/mywallet_logo(web_dark).svg" alt="Loading MyWallet" class="preloader-logo">
+  </div>
+
 
   <!-- Custom Cursor -->
   <div class="custom-cursor"></div>
@@ -241,8 +246,20 @@
       <div class="hero-visual" data-tilt data-tilt-max="5" data-tilt-speed="400">
         <div class="hero-glow parallax-bg"></div>
         <img src="assets/images/hero-phone.webp" alt="MyWallet app dashboard showing account cards and balance summary" class="hero-phone parallax-fg">
+        
+        <!-- Micro-Geometrics -->
+        <svg class="micro-shape shape-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        <svg class="micro-shape shape-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+        <svg class="micro-shape shape-dot" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
       </div>
     </div>
+
+    <!-- Magnetic Scroll Indicator -->
+    <a href="#how-it-works" class="scroll-indicator" aria-label="Scroll down">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+    </a>
   </section>
 
 
@@ -659,7 +676,6 @@
           <a href="#analytics">Analytics</a>
           <a href="#security">Security</a>
           <a href="#faq">FAQ</a>
-          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" target="_blank">Download App</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
@@ -670,6 +686,19 @@
           <h4>Support</h4>
           <a href="/help/">Help & FAQ</a>
           <a href="mailto:mywalletapps@gmail.com">Contact Us</a>
+          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" target="_blank" class="store-badge" style="margin-top: 15px;">
+            <svg viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg" width="135" height="40" style="background:#000;border-radius:6px;border:1px solid #a6a6a6;">
+              <g transform="translate(10, 8)">
+                <!-- simplified play store icon -->
+                <path fill="#00E676" d="M1.3 1.1l11.5 11.5-11.5 11.5z"/>
+                <path fill="#29B6F6" d="M1.3 1.1l15.3 8.7-3.8 2.8z"/>
+                <path fill="#FF1744" d="M1.3 24.1l15.3-8.7-3.8-2.8z"/>
+                <path fill="#FFC107" d="M12.8 12.6l3.8-2.8 4.2 2.4-4.2 2.4z"/>
+              </g>
+              <text x="35" y="15" fill="#fff" font-size="8" font-family="sans-serif">GET IT ON</text>
+              <text x="35" y="28" fill="#fff" font-size="14" font-weight="bold" font-family="sans-serif">Google Play</text>
+            </svg>
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
