@@ -628,4 +628,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Premium Mailto Fallback Handler ──
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      // We do not prevent default, so if they HAVE a mail client, it opens normally.
+      // But we copy the email to the clipboard as a fallback, providing visual feedback!
+      const email = link.getAttribute('href').replace('mailto:', '');
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = link.innerHTML;
+        link.innerHTML = 'Copied to clipboard!';
+        link.style.color = 'var(--income-green)';
+        setTimeout(() => {
+          link.innerHTML = originalText;
+          link.style.color = '';
+        }, 2500);
+      }).catch(err => console.error('Failed to copy email: ', err));
+    });
+  });
+
 });
