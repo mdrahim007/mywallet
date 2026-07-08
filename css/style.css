@@ -144,6 +144,7 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  position: relative;
   transition: padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -265,7 +266,7 @@ body {
 .section {
   padding: 100px 0;
   position: relative;
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 /* Glassmorphism top border to naturally separate sections */
@@ -317,48 +318,87 @@ body {
   box-shadow: none; /* No heavy vignette in light mode */
 }
 
-.global-ambient-bg {
+/* ── Continuous Premium Canvas ────────────────────────────── */
+
+.noise-texture {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -999;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  z-index: 9998;
   pointer-events: none;
-  overflow: hidden;
-  background: transparent; /* Must be transparent so body bg shows and it doesn't block hero glows */
 }
 
+[data-theme="light"] .noise-texture {
+  opacity: 0.03;
+}
 
+.continuous-background {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+  overflow: hidden;
+  pointer-events: none;
+}
 
-.ambient-glow {
+.flow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(160px);
-  /* Tailored Opacity: richer in dark mode */
-  opacity: 0.20; 
+  filter: blur(140px);
+  opacity: 0.15;
+  animation: floatOrb 20s ease-in-out infinite alternate;
 }
 
-/* Placed at the top right */
-.glow-1 {
-  top: -20%;
-  right: -10%;
-  width: 80vw;
-  height: 80vw;
+/* Strategic placement down the document */
+.orb-hero-right {
+  top: 0; right: -10%;
+  width: 70vw; height: 70vw;
   background: var(--accent-tertiary);
+  animation-delay: 0s;
 }
 
-/* Placed at the bottom left */
-.glow-2 {
-  bottom: -20%;
-  left: -10%;
-  width: 70vw;
-  height: 70vw;
+.orb-hero-left {
+  top: 500px; left: -10%;
+  width: 60vw; height: 60vw;
   background: var(--accent-secondary);
+  animation-delay: -5s;
+}
+
+.orb-mid-cyan {
+  top: 25%; right: 10%;
+  width: 80vw; height: 80vw;
+  background: var(--accent-tertiary);
+  animation-delay: -10s;
+  opacity: 0.10;
+}
+
+.orb-lower-purple {
+  top: 55%; left: -20%;
+  width: 90vw; height: 90vw;
+  background: var(--accent-primary);
+  animation-delay: -7s;
+  opacity: 0.12;
+}
+
+.orb-bottom-cyan {
+  top: 80%; right: -5%;
+  width: 70vw; height: 70vw;
+  background: var(--accent-tertiary);
+  animation-delay: -2s;
+  opacity: 0.12;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 50px) scale(1.05); }
+  100% { transform: translate(30px, -20px) scale(0.95); }
 }
 
 /* ── Light Mode Specific Background Overrides ── */
 
-[data-theme="light"] .ambient-glow {
+[data-theme="light"] .flow-orb {
   opacity: 0.05; /* Barely visible in light mode to keep it crisp */
 }
 
@@ -496,7 +536,7 @@ body {
 }
 
 .nav-logo img {
-  height: 46px;
+  height: 38px;
   width: auto;
 }
 
@@ -633,9 +673,18 @@ body {
   filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
 }
 
+/* ── Light Mode Base ── */
+[data-theme="light"] .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
 /* ── Light Mode Hover (Moon Glow) ── */
 [data-theme="light"] .theme-toggle-btn:hover {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
   border-color: rgba(99, 102, 241, 0.3);
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15), inset 0 0 10px rgba(99, 102, 241, 0.05);
 }
@@ -1044,7 +1093,7 @@ body {
 
 /* ── Content Sections (How It Works & Personas) ────────────── */
 .bg-alt {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 .steps-grid, .personas-grid {

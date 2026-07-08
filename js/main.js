@@ -122,24 +122,41 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           const el = entry.target;
           const target = +el.getAttribute('data-target');
-          const suffix = el.getAttribute('data-suffix');
-          let current = 0;
-          const inc = target / 30; // 30 frames
+          const suffix = el.getAttribute('data-suffix') || '';
           
-          const update = () => {
-            current += inc;
-            if (current < target) {
-              el.innerText = Math.ceil(current) + suffix;
-              requestAnimationFrame(update);
-            } else {
-              el.innerText = target + suffix;
-            }
-          };
-          update();
+          if (target === 0) {
+            el.innerText = "0" + suffix;
+            counterObs.unobserve(el);
+            return;
+          }
+
+          const splash = document.getElementById('splash-screen');
+          const delay = splash ? 1700 : 400;
+
+          setTimeout(() => {
+            let step = 0;
+            const totalSteps = 60; // 60 animation frames over 2 seconds
+            const stepDuration = 2000 / totalSteps;
+            
+            const timer = setInterval(() => {
+              step++;
+              const progress = step / totalSteps;
+              const easeOut = 1 - Math.pow(1 - progress, 3);
+              const current = Math.ceil(easeOut * target);
+              
+              if (step >= totalSteps) {
+                el.innerText = target + suffix;
+                clearInterval(timer);
+              } else {
+                el.innerText = current + suffix;
+              }
+            }, stepDuration);
+          }, delay);
+          
           counterObs.unobserve(el);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0 });
     
     counters.forEach(c => counterObs.observe(c));
   }
