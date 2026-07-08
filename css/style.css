@@ -613,39 +613,42 @@ body {
 }
 
 
-/* ── Premium Circular Theme Toggle ── */
-.theme-toggle-btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border-glass);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
+/* ── Futuristic Single Theme Toggle Button ── */
+.theme-floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-left: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Remove the pill slider aesthetics */
-.theme-toggle-btn .toggle-thumb {
-  width: 100%;
-  height: 100%;
+  background: rgba(10, 14, 26, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-012);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  box-shadow: none;
-  transform: translateX(0) !important;
-  position: relative;
+  transition: transform 0.35s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.4s ease;
+  color: var(--text-secondary);
 }
 
-.theme-toggle-btn svg {
-  color: var(--text-secondary);
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, color 0.3s ease, filter 0.3s ease;
+.theme-floating-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(251, 191, 36, 0.15); /* Yellow tint */
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 4px 24px rgba(251, 191, 36, 0.25), 0 0 40px rgba(251, 191, 36, 0.08);
+  color: #FBBF24;
+}
+
+.theme-floating-btn:active {
+  transform: translateY(0);
+}
+
+.theme-floating-btn svg {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
   position: absolute;
 }
 
@@ -653,45 +656,24 @@ body {
 .sun-icon { opacity: 1; transform: rotate(0deg); }
 .moon-icon { opacity: 0; transform: rotate(-90deg); display: block !important; }
 
-/* Light Theme: Sun rotates out, Moon rotates in (prompts switch to Dark) */
+/* Light Theme overrides */
+[data-theme="light"] .theme-floating-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--glass-012);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .theme-floating-btn:hover {
+  background: rgba(99, 102, 241, 0.15); /* Indigo tint */
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.25), 0 0 40px rgba(99, 102, 241, 0.08);
+  color: #6366f1;
+}
+
+/* Light Theme active states */
 [data-theme="light"] .sun-icon { opacity: 0; transform: rotate(90deg); }
 [data-theme="light"] .moon-icon { opacity: 1; transform: rotate(0deg); }
-
-/* Base Hover */
-.theme-toggle-btn:hover {
-  transform: translateY(-2px);
-}
-
-/* ── Dark Mode Hover (Sun Glow) ── */
-.theme-toggle-btn:hover {
-  background: var(--glass-010);
-  border-color: rgba(251, 191, 36, 0.3);
-  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15), inset 0 0 10px rgba(251, 191, 36, 0.05);
-}
-.theme-toggle-btn:hover .sun-icon {
-  color: #FBBF24; /* Warm Gold */
-  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
-}
-
-/* ── Light Mode Base ── */
-[data-theme="light"] .theme-toggle-btn {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
-
-/* ── Light Mode Hover (Moon Glow) ── */
-[data-theme="light"] .theme-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15), inset 0 0 10px rgba(99, 102, 241, 0.05);
-}
-[data-theme="light"] .theme-toggle-btn:hover .moon-icon {
-  color: #6366f1; /* Cool Indigo */
-  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.4));
-}
 
 
 .nav-toggle {
@@ -936,45 +918,6 @@ body {
   z-index: 1;
 }
 
-/* ── Micro Motion Geometrics ── */
-.micro-shape {
-  position: absolute;
-  color: var(--accent-primary);
-  opacity: 0.6;
-  width: 24px;
-  height: 24px;
-  animation: floatOrbit 8s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 2;
-}
-.shape-cross {
-  top: 10%;
-  left: 10%;
-  color: var(--accent-secondary);
-  animation-duration: 12s;
-  animation-delay: -2s;
-}
-.shape-circle {
-  top: 20%;
-  right: 5%;
-  width: 32px;
-  height: 32px;
-  animation-duration: 15s;
-  animation-delay: -5s;
-}
-.shape-dot {
-  bottom: 20%;
-  left: -5%;
-  width: 16px;
-  height: 16px;
-  animation-duration: 10s;
-  color: var(--income-green);
-}
-
-@keyframes floatOrbit {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-30px) rotate(45deg); }
-}
 
 /* ── Magnetic Scroll Indicator ── */
 .scroll-indicator {
@@ -1051,45 +994,6 @@ body {
   }
 }
 
-/* ── Thematic Section Spotlights ───────────────────────────── */
-#analytics::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  height: 80vw;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-#security::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  height: 80vw;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-#features::before {
-  content: '';
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  width: 100vw;
-  height: 100vw;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: -1;
-}
 
 /* ── Content Sections (How It Works & Personas) ────────────── */
 .bg-alt {
@@ -1383,7 +1287,7 @@ body {
   overflow: hidden;
 }
 
-.cta-section::before {
+.cta-section .cta-glow {
   content: '';
   position: absolute;
   top: 0;
@@ -1413,8 +1317,8 @@ body {
 /* ── Back to Top ─────────────────────────────────────────── */
 .back-to-top {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
+  bottom: 90px;
+  right: 30px;
   z-index: 999;
   width: 48px;
   height: 48px;
@@ -1433,7 +1337,11 @@ body {
   transform: translateY(16px);
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease,
               background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .back-to-top {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .back-to-top.visible {
@@ -3084,7 +2992,7 @@ body:has(.beta-top-banner:not(.hidden)) {
     padding: 14px 24px;
     font-size: 0.95rem;
   }
-  .cta-section::before {
+  .cta-section .cta-glow {
     width: 300px;
     height: 200px;
   }

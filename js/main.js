@@ -1,17 +1,16 @@
 /* MyWallet Website — Interactions */
 document.addEventListener('DOMContentLoaded', () => {
-  // ── Theme Toggle ──
-  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  // ── Futuristic Floating Theme Toggle ──
+  const themeBtn = document.getElementById('theme-button');
   const savedTheme = localStorage.getItem('mywallet-theme');
   
   if (savedTheme === 'light') {
     document.body.setAttribute('data-theme', 'light');
   }
 
-  themeToggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+  if (themeBtn) {
+    const toggleTheme = () => {
       const isLight = document.body.getAttribute('data-theme') === 'light';
-      
       if (isLight) {
         document.body.removeAttribute('data-theme');
         localStorage.setItem('mywallet-theme', 'dark');
@@ -19,8 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', 'light');
         localStorage.setItem('mywallet-theme', 'light');
       }
+    };
+
+    themeBtn.addEventListener('click', () => {
+      // Use View Transitions API if supported for an ultra-smooth crossfade
+      if (document.startViewTransition) {
+        document.startViewTransition(toggleTheme);
+      } else {
+        toggleTheme();
+      }
     });
-  });
+  }
 
   // ── Navbar scroll effect & Scroll Spy ──
   const navbar = document.querySelector('.navbar');
@@ -332,9 +340,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Back to Top Button ──
   const backToTop = document.getElementById('back-to-top');
   if (backToTop) {
-    window.addEventListener('scroll', () => {
+    const toggleBackToTop = () => {
       backToTop.classList.toggle('visible', window.scrollY > 500);
-    });
+    };
+    
+    // Initialize state on page load
+    toggleBackToTop();
+    
+    // Update state on scroll
+    window.addEventListener('scroll', toggleBackToTop);
+    
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
