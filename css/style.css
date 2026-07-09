@@ -3748,9 +3748,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   border-color: #6e6e73; /* Titanium Gray */
   box-shadow: -20px 30px 60px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255,255,255,0.8);
 }
-[data-theme="light"] .phone-frame::before {
-  background: #1c1c1e; /* Keep dark notch */
-}
+
 
 /* ── Premium Isometric Mockup ── */
 .premium-isometric-wrapper {
@@ -4104,9 +4102,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   background: #f5f5f7;
   box-shadow: -20px 30px 60px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.8);
 }
-[data-theme="light"] .css-phone .notch {
-  background: #1c1c1e;
-}
+
 
 /* Theme-specific images */
 .img-light-mode {
