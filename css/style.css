@@ -1289,24 +1289,64 @@ body {
 
 .trust-card {
   text-align: center;
-  padding: 32px 24px;
+  padding: 40px 32px;
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Glowing background inside card */
+.trust-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.trust-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(139, 92, 246, 0.4);
+  background: var(--glass-005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+.trust-card:hover::before {
+  opacity: 1;
 }
 
 .trust-card .icon {
-  font-size: 2.2rem;
-  margin-bottom: 16px;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trust-card:hover .icon {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
 }
 
 .trust-card h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
 }
 
 .trust-card p {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 /* ── CTA Section ──────────────────────────────────────────── */
