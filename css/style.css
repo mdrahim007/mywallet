@@ -4029,3 +4029,28 @@ body:has(.beta-top-banner:not(.hidden)) {
   animation: none !important;
   display: none !important;
 }
+
+/* Phone Mockup Frame */
+.css-phone {
+  background: #000;
+  border: 10px solid #1c1c1e;
+  border-radius: 36px;
+  box-shadow: -20px 30px 60px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.1);
+}
+.css-phone .notch {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35%;
+  height: 22px;
+  background: #1c1c1e;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 10;
+}
+.css-phone img {
+  border-radius: 24px !important;
+  box-shadow: none !important;
+  display: block;
+}
