@@ -3963,3 +3963,64 @@ body:has(.beta-top-banner:not(.hidden)) {
 .faq-question .icon {
   transition: transform var(--transition);
 }
+
+
+/* Export Center UI */
+.export-center-card {
+  background: rgba(20,20,25,0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.export-center-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 70px rgba(0,0,0,0.8), 0 0 40px rgba(99,102,241,0.2);
+  border-color: rgba(99,102,241,0.4);
+}
+.export-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+.export-item:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateX(5px);
+}
+.export-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.export-icon-csv {
+  background: rgba(34,197,94,0.15);
+  color: #22c55e;
+  box-shadow: inset 0 0 10px rgba(34,197,94,0.2);
+}
+.export-icon-pdf {
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
+  box-shadow: inset 0 0 10px rgba(239,68,68,0.2);
+}
+.export-icon-json {
+  background: rgba(99,102,241,0.15);
+  color: #818cf8;
+  box-shadow: inset 0 0 10px rgba(99,102,241,0.2);
+}
