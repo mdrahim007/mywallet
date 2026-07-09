@@ -4056,6 +4056,17 @@ body:has(.beta-top-banner:not(.hidden)) {
   box-shadow: none !important;
   display: block;
 }
+/* Curved Glass Edge Reflection */
+.css-phone::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 4%, rgba(255,255,255,0) 96%, rgba(255,255,255,0.15) 100%);
+  box-shadow: inset 3px 0 6px rgba(255,255,255,0.15), inset -3px 0 6px rgba(255,255,255,0.08);
+  z-index: 5;
+}
 
 [data-theme="light"] .css-phone {
   border-color: #6e6e73;
