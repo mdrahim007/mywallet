@@ -4065,3 +4065,14 @@ body:has(.beta-top-banner:not(.hidden)) {
 [data-theme="light"] .css-phone .notch {
   background: #1c1c1e;
 }
+
+/* Theme-specific images */
+.img-light-mode {
+  display: none !important;
+}
+[data-theme="light"] .img-light-mode {
+  display: block !important;
+}
+[data-theme="light"] .img-dark-mode {
+  display: none !important;
+}
