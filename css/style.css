@@ -3718,14 +3718,13 @@ body:has(.beta-top-banner:not(.hidden)) {
 .phone-frame::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 35%;
-  height: 20px;
+  width: 30%;
+  height: 22px;
   background: #000;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 20px;
   z-index: 10;
   transition: background 0.4s;
 }
@@ -4069,14 +4068,13 @@ body:has(.beta-top-banner:not(.hidden)) {
 }
 .css-phone .notch {
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 35%;
-  height: 20px;
+  width: 30%;
+  height: 22px;
   background: #000;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 20px;
   z-index: 10;
   transition: background 0.4s;
 }
