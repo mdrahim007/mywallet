@@ -1292,7 +1292,7 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
@@ -1309,7 +1309,7 @@ body {
   height: 200%;
   background: radial-gradient(circle at center, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.3s ease;
   z-index: -1;
   pointer-events: none;
 }
