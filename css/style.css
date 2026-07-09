@@ -3770,36 +3770,49 @@ body:has(.beta-top-banner:not(.hidden)) {
 /* Feature Carousel (Tablet/Mobile) */
 @media (max-width: 900px) {
   .feature-carousel {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 32px;
+  }
+  .carousel-display {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   .carousel-tabs {
     flex-direction: row;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
   }
   .carousel-tabs::-webkit-scrollbar {
-    height: 4px;
-  }
-  .carousel-tabs::-webkit-scrollbar-thumb {
-    background: rgba(139, 92, 246, 0.5);
-    border-radius: 4px;
+    display: none; /* Chrome/Safari */
   }
   .carousel-tab {
-    flex: 0 0 85%;
+    flex: 0 0 75%;
     scroll-snap-align: center;
-    padding: 16px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
   }
   .carousel-tab.active {
-    transform: translateY(-5px); /* override translateX */
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.15);
   }
 }
 
 @media (max-width: 640px) {
   .carousel-tab {
-    flex: 0 0 90%;
+    flex: 0 0 85%;
   }
   
   /* Analytics Chart Constraint */
