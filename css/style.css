@@ -1054,7 +1054,7 @@ body {
 }
 
 .step-card:hover .step-number {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transform: translateX(4px) scale(1.05);
@@ -3851,7 +3851,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
   .carousel-tab.active {
     transform: translateY(-4px);
-    border-color: var(--primary-color);
+    border-color: var(--accent-primary);
     box-shadow: 0 8px 16px rgba(139, 92, 246, 0.15);
   }
 }
