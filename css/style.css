@@ -3723,7 +3723,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   transform: translateX(-50%);
   width: 35%;
   height: 20px;
-  background: #1c1c1e;
+  background: #000;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   z-index: 10;
@@ -4074,7 +4074,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   transform: translateX(-50%);
   width: 35%;
   height: 20px;
-  background: #1c1c1e;
+  background: #000;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   z-index: 10;
