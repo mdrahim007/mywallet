@@ -4040,7 +4040,7 @@ body:has(.beta-top-banner:not(.hidden)) {
 }
 .css-phone .notch {
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 35%;
