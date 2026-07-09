@@ -1007,26 +1007,57 @@ body {
 }
 
 .step-card, .persona-card {
-  background: var(--bg-main);
+  background: var(--bg-card);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 32px;
   position: relative;
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-card);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Glowing background inside card */
+.step-card::before, .persona-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .step-card:hover, .persona-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--glass-012);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+.step-card:hover::before, .persona-card:hover::before {
+  opacity: 1;
 }
 
 .step-number {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 900;
   color: var(--border-glass);
   margin-bottom: 16px;
   line-height: 1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.step-card:hover .step-number {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateX(4px) scale(1.05);
 }
 
 .step-card h3, .persona-card h3 {
