@@ -4033,8 +4033,8 @@ body:has(.beta-top-banner:not(.hidden)) {
 /* Phone Mockup Frame */
 .css-phone {
   background: #000;
-  border: 10px solid #1c1c1e;
-  border-radius: 36px;
+  border: 6px solid #1c1c1e;
+  border-radius: 28px;
   box-shadow: -20px 30px 60px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.1);
 }
 .css-phone .notch {
@@ -4043,14 +4043,14 @@ body:has(.beta-top-banner:not(.hidden)) {
   left: 50%;
   transform: translateX(-50%);
   width: 35%;
-  height: 22px;
+  height: 20px;
   background: #1c1c1e;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   z-index: 10;
 }
 .css-phone img {
-  border-radius: 24px !important;
+  border-radius: 22px !important;
   box-shadow: none !important;
   display: block;
 }
