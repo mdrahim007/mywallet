@@ -2580,7 +2580,7 @@ body:has(.beta-top-banner:not(.hidden)) {
     top: calc(100% + 8px);
     left: 12px;
     right: 12px;
-    background: var(--bg-card);
+    background: var(--bg-primary);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
