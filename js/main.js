@@ -1,5 +1,8 @@
 /* MyWallet Website — Interactions */
 document.addEventListener('DOMContentLoaded', () => {
+  // ── Touch Device Detection ──
+  const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+
   // ── Futuristic Floating Theme Toggle ──
   const themeBtn = document.getElementById('theme-button');
   const savedTheme = localStorage.getItem('mywallet-theme');
@@ -67,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
   if (toggle && links) {
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       links.classList.toggle('open');
       toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
     });
@@ -75,6 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
       links.classList.remove('open');
       toggle.textContent = '☰';
     }));
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (links.classList.contains('open') && !toggle.contains(e.target) && !links.contains(e.target)) {
+        links.classList.remove('open');
+        toggle.textContent = '☰';
+      }
+    });
   }
 
   // ── Scroll reveal (fade-up) ──
@@ -169,19 +181,21 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => counterObs.observe(c));
   }
 
-  // ── Liquid Depth Parallax ──
-  const parallaxBgs = document.querySelectorAll('.parallax-bg');
-  const parallaxFgs = document.querySelectorAll('.parallax-fg');
-  if (parallaxBgs.length || parallaxFgs.length) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      parallaxBgs.forEach(el => {
-        el.style.transform = `translate(-50%, -50%) translateY(${scrollY * 0.15}px)`;
+  // ── Liquid Depth Parallax (desktop only) ──
+  if (!isTouchDevice) {
+    const parallaxBgs = document.querySelectorAll('.parallax-bg');
+    const parallaxFgs = document.querySelectorAll('.parallax-fg');
+    if (parallaxBgs.length || parallaxFgs.length) {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        parallaxBgs.forEach(el => {
+          el.style.transform = `translate(-50%, -50%) translateY(${scrollY * 0.15}px)`;
+        });
+        parallaxFgs.forEach(el => {
+          el.style.transform = `translateY(${scrollY * -0.05}px)`;
+        });
       });
-      parallaxFgs.forEach(el => {
-        el.style.transform = `translateY(${scrollY * -0.05}px)`;
-      });
-    });
+    }
   }
 
   // ── Interactive Chat Demo ──
@@ -602,31 +616,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ── Magnetic Buttons ──
-  const magneticElements = document.querySelectorAll('.btn-primary, .store-badge');
-  magneticElements.forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+  // ── Magnetic Buttons (desktop only) ──
+  if (!isTouchDevice) {
+    const magneticElements = document.querySelectorAll('.btn-primary, .store-badge');
+    magneticElements.forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        // Use a very fast transition to smooth out mouse polling
+        el.style.transition = 'transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.05)`;
+      });
       
-      // Use a very fast transition to smooth out mouse polling
-      el.style.transition = 'transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1)';
-      el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.05)`;
+      el.addEventListener('mouseleave', () => {
+        // Smooth snap back
+        el.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        el.style.transform = 'translate(0px, 0px) scale(1)';
+        
+        // Clear inline styles so CSS takes over again
+        setTimeout(() => {
+          el.style.transform = '';
+          el.style.transition = '';
+        }, 500);
+      });
     });
-    
-    el.addEventListener('mouseleave', () => {
-      // Smooth snap back
-      el.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
-      el.style.transform = 'translate(0px, 0px) scale(1)';
-      
-      // Clear inline styles so CSS takes over again
-      setTimeout(() => {
-        el.style.transform = '';
-        el.style.transition = '';
-      }, 500);
-    });
-  });
+  }
 
   // ── Premium Mailto Fallback Handler ──
   document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
@@ -645,4 +661,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }).catch(err => console.error('Failed to copy email: ', err));
     });
   });
+
+  // ── Disable VanillaTilt on touch devices ──
+  if (isTouchDevice && typeof VanillaTilt !== 'undefined') {
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      if (el.vanillaTilt) {
+        el.vanillaTilt.destroy();
+      }
+    });
+  }
 });

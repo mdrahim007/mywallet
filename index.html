@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=4.7">
+  <link rel="stylesheet" href="css/style.css?v=6.0">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -414,7 +414,7 @@
       <div class="showcase fade-up">
         <div class="showcase-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
           <div class="glow"></div>
-          <div class="analytics-chart-container" style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 30px; box-shadow: var(--shadow-card);">
+          <div class="analytics-chart-container">
             <canvas id="analyticsChart" height="400"></canvas>
           </div>
         </div>
@@ -588,55 +588,55 @@
           
           <div class="export-center-card">
             <!-- Inner Glow -->
-            <div style="position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle at top right, rgba(99,102,241,0.15) 0%, transparent 50%); pointer-events: none;"></div>
+            <div class="export-inner-glow"></div>
             
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; position: relative; z-index: 2;">
-              <h4 style="margin: 0; font-size: 1.2rem; color: #fff; font-weight: 600;">Export Center</h4>
-              <div style="display: flex; gap: 8px;">
-                <div style="width:12px; height:12px; border-radius:50%; background:#ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.5);"></div>
-                <div style="width:12px; height:12px; border-radius:50%; background:#eab308; box-shadow: 0 0 8px rgba(234,179,8,0.5);"></div>
-                <div style="width:12px; height:12px; border-radius:50%; background:#22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.5);"></div>
+            <div class="export-header">
+              <h4 class="export-title">Export Center</h4>
+              <div class="export-dots">
+                <div class="export-dot export-dot-red"></div>
+                <div class="export-dot export-dot-yellow"></div>
+                <div class="export-dot export-dot-green"></div>
               </div>
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 2; text-align: left;">
+            <div class="export-body">
               <!-- CSV -->
               <div class="export-item">
-                 <div style="display:flex; align-items: center; gap: 16px;">
+                 <div class="export-item-info">
                    <div class="export-icon-box export-icon-csv">CSV</div>
                    <div>
-                     <div style="font-weight: 600; color: #fff;">Transactions.csv</div>
-                     <div style="font-size: 0.8rem; color: var(--text-secondary);">12.4 KB • Full History</div>
+                     <div class="export-file-name">Transactions.csv</div>
+                     <div class="export-file-size">12.4 KB • Full History</div>
                    </div>
                  </div>
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-secondary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="export-download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               </div>
 
               <!-- PDF -->
               <div class="export-item">
-                 <div style="display:flex; align-items: center; gap: 16px;">
+                 <div class="export-item-info">
                    <div class="export-icon-box export-icon-pdf">PDF</div>
                    <div>
-                     <div style="font-weight: 600; color: #fff;">Tax_Report_2026.pdf</div>
-                     <div style="font-size: 0.8rem; color: var(--text-secondary);">1.2 MB • Summary</div>
+                     <div class="export-file-name">Tax_Report_2026.pdf</div>
+                     <div class="export-file-size">1.2 MB • Summary</div>
                    </div>
                  </div>
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-secondary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="export-download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               </div>
 
               <!-- JSON -->
               <div class="export-item">
-                 <div style="display:flex; align-items: center; gap: 16px;">
+                 <div class="export-item-info">
                    <div class="export-icon-box export-icon-json">JSON</div>
                    <div>
-                     <div style="font-weight: 600; color: #fff;">Wallet_Backup.json</div>
-                     <div style="font-size: 0.8rem; color: var(--text-secondary);">256 KB • Encrypted</div>
+                     <div class="export-file-name">Wallet_Backup.json</div>
+                     <div class="export-file-size">256 KB • Encrypted</div>
                    </div>
                  </div>
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-secondary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="export-download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               </div>
             </div>
-            <button class="btn-primary" style="margin-top: 24px; width: 100%; pointer-events: none; justify-content: center;">Export Data Now</button>
+            <button class="btn-primary export-btn">Export Data Now</button>
           </div>
         </div>
       </div>
@@ -825,6 +825,6 @@
     <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" /></svg>
   </button>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=1.4"></script>
 </body>
 </html>
