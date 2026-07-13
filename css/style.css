@@ -597,12 +597,13 @@ body {
   .navbar .container {
     width: 100%;
     justify-content: space-between;
-    padding: 6px 14px;
+    padding: 6px 16px;
   }
 
   .navbar.scrolled .container {
-    padding: 6px 14px;
+    padding: 6px 16px;
     margin: 0 16px;
+    width: calc(100% - 32px);
   }
 
   .nav-logo img {
@@ -3280,7 +3281,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   /* — Navigation — */
   .navbar {
     top: 12px;
-    width: calc(100% - 24px);
+    width: 100%;
   }
 
   .navbar.scrolled {
@@ -3293,14 +3294,15 @@ body:has(.beta-top-banner:not(.hidden)) {
 
   .navbar .container {
     width: 100%;
-    padding: 6px 14px;
+    padding: 6px 16px;
     gap: 12px;
   }
 
   .navbar.scrolled .container {
-    padding: 6px 14px;
+    padding: 6px 16px;
     gap: 12px;
-    margin: 0;
+    margin: 0 12px;
+    width: calc(100% - 24px);
   }
 
   .nav-toggle {
