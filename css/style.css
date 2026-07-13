@@ -5250,7 +5250,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   .carousel-tab {
-    flex: 0 0 72%;
+    flex: 0 0 calc(100vw - 32px);
     padding: 12px 14px;
   }
 
