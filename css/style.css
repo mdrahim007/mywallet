@@ -3290,11 +3290,6 @@ body:has(.beta-top-banner:not(.hidden)) {
 
   .nav-logo img {
     height: 28px;
-    transition: height 0.3s ease;
-  }
-
-  .navbar.scrolled .nav-logo img {
-    height: 22px;
   }
 
   .navbar .container {
@@ -3304,7 +3299,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   .navbar.scrolled .container {
-    padding: 4px 16px;
+    padding: 2px 16px;
     gap: 12px;
     margin: 0 12px;
     width: calc(100% - 24px);
@@ -3314,13 +3309,6 @@ body:has(.beta-top-banner:not(.hidden)) {
     width: 28px;
     height: 28px;
     font-size: 1.2rem;
-    transition: all 0.3s ease;
-  }
-
-  .navbar.scrolled .nav-toggle {
-    width: 24px;
-    height: 24px;
-    font-size: 1rem;
   }
 
 
