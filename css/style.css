@@ -4233,7 +4233,7 @@ body:has(.beta-top-banner:not(.hidden)) {
     box-shadow: 0 8px 16px rgba(139, 92, 246, 0.15);
   }
 
-  .carousel-tab p {
+  .carousel-tab p, .carousel-tab h3 {
     white-space: normal;
     overflow: visible;
   }
