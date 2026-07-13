@@ -4232,6 +4232,11 @@ body:has(.beta-top-banner:not(.hidden)) {
     border-color: var(--accent-primary);
     box-shadow: 0 8px 16px rgba(139, 92, 246, 0.15);
   }
+
+  .carousel-tab p {
+    white-space: normal;
+    overflow: visible;
+  }
 }
 
 @media (max-width: 640px) {
