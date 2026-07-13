@@ -3280,7 +3280,7 @@ body:has(.beta-top-banner:not(.hidden)) {
 
   /* — Navigation — */
   .navbar {
-    top: 12px;
+    top: 4px;
     width: 100%;
   }
 
@@ -3294,7 +3294,7 @@ body:has(.beta-top-banner:not(.hidden)) {
 
   .navbar .container {
     width: 100%;
-    padding: 6px 16px;
+    padding: 2px 16px;
     gap: 12px;
   }
 
