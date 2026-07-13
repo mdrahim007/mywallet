@@ -5242,7 +5242,7 @@ body:has(.beta-top-banner:not(.hidden)) {
 
   .carousel-tabs {
     margin: 0;
-    padding: 0;
+    padding: 10px 0 20px 0;
   }
 
   .carousel-tab {
