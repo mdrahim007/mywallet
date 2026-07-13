@@ -594,16 +594,21 @@ body {
     align-items: center;
   }
 
+  .navbar.scrolled {
+    padding: 0 16px;
+  }
+
   .navbar .container {
     width: 100%;
     justify-content: space-between;
     padding: 6px 16px;
+    margin: 0;
   }
 
   .navbar.scrolled .container {
     padding: 6px 16px;
-    margin: 0 16px;
-    width: calc(100% - 32px);
+    margin: 0;
+    width: 100%;
   }
 
   .nav-logo img {
@@ -3282,10 +3287,12 @@ body:has(.beta-top-banner:not(.hidden)) {
   .navbar {
     top: 4px;
     width: 100%;
+    padding: 0;
   }
 
   .navbar.scrolled {
     top: 4px;
+    padding: 0 12px;
   }
 
   .nav-logo img {
@@ -3296,13 +3303,14 @@ body:has(.beta-top-banner:not(.hidden)) {
     width: 100%;
     padding: 2px 16px;
     gap: 12px;
+    margin: 0;
   }
 
   .navbar.scrolled .container {
     padding: 2px 16px;
     gap: 12px;
-    margin: 0 12px;
-    width: calc(100% - 24px);
+    margin: 0;
+    width: 100%;
   }
 
   .nav-toggle {
