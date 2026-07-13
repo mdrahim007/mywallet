@@ -4076,10 +4076,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   font-size: 0.85rem;
   margin: 0;
   color: var(--text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  white-space: normal;
 }
 
 .carousel-display {
@@ -5244,13 +5241,12 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   .carousel-tabs {
-    margin: 0 -16px;
-    padding-left: 16px;
-    padding-right: 16px;
+    margin: 0;
+    padding: 0;
   }
 
   .carousel-tab {
-    flex: 0 0 calc(100vw - 32px);
+    flex: 0 0 100%;
     padding: 12px 14px;
   }
 
