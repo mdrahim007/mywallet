@@ -5234,6 +5234,16 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   /* — Feature Carousel — */
+  .feature-carousel {
+    gap: 24px;
+  }
+
+  .carousel-tabs {
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .carousel-tab {
     flex: 0 0 88%;
     padding: 14px 16px;
