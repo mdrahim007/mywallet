@@ -3281,12 +3281,10 @@ body:has(.beta-top-banner:not(.hidden)) {
   .navbar {
     top: 12px;
     width: calc(100% - 24px);
-    padding: 10px 16px;
   }
 
   .navbar.scrolled {
     top: 4px;
-    padding: 4px 12px;
   }
 
   .nav-logo img {
@@ -3294,6 +3292,7 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   .navbar .container {
+    width: 100%;
     padding: 6px 14px;
     gap: 12px;
   }
@@ -3310,9 +3309,7 @@ body:has(.beta-top-banner:not(.hidden)) {
     font-size: 1.2rem;
   }
 
-  .navbar {
-    top: 8px;
-  }
+
 
   .nav-links {
     padding: 16px 16px 24px;
@@ -5602,6 +5599,7 @@ body:has(.beta-top-banner:not(.hidden)) {
     opacity: 0;
     transform: translateY(-12px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
