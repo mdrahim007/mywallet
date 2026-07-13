@@ -3322,7 +3322,13 @@ body:has(.beta-top-banner:not(.hidden)) {
 
 
   .nav-links {
-    padding: 16px 16px 24px;
+    padding: 12px 12px 20px;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 10px 14px;
   }
 
   /* — Hero — */
