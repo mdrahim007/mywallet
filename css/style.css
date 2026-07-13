@@ -4196,33 +4196,21 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   .carousel-tabs {
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 24px;
-    padding-top: 12px;
-    margin: 0 -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    /* Firefox */
-  }
-
-  .carousel-tabs::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
   }
 
   .carousel-tab {
-    flex: 0 0 75%;
-    scroll-snap-align: center;
-    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-xl);
+    width: 100%;
   }
 
   .carousel-tab.active {
@@ -4238,9 +4226,6 @@ body:has(.beta-top-banner:not(.hidden)) {
 }
 
 @media (max-width: 640px) {
-  .carousel-tab {
-    flex: 0 0 85%;
-  }
 
   /* Analytics Chart Constraint */
   .analytics-chart-container {
@@ -5242,14 +5227,12 @@ body:has(.beta-top-banner:not(.hidden)) {
   }
 
   .carousel-tabs {
-    margin: 0;
-    padding: 12px 0 24px 0;
-    overflow-y: hidden;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .carousel-tab {
-    flex: 0 0 100%;
-    padding: 12px 14px;
+    padding: 12px;
   }
 
   .carousel-tab .feature-icon {
