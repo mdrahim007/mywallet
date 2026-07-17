@@ -2038,14 +2038,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
   color: var(--text-muted);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
 }
 
 .premium-social-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 100%;
+  height: 100%;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
