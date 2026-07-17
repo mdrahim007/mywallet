@@ -2034,6 +2034,41 @@ body {
   color: var(--text-muted);
 }
 
+.premium-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+}
+
+.premium-social-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-social-btn:hover {
+  background: var(--gradient-accent);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.25);
+}
+
+.premium-social-btn:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+
 /* ── Legal Pages ──────────────────────────────────────────── */
 .legal-page {
   padding-top: 120px;
