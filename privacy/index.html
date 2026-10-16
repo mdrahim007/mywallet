@@ -60,7 +60,7 @@
   <main id="swup" class="transition-fade legal-page">
     <div class="container">
       <h1 class="gradient-text">Privacy Policy</h1>
-      <p class="last-updated">Last updated: May 12, 2026</p>
+      <p class="last-updated">Last updated: October 16, 2026</p>
 
       <div class="highlight-box">
         <p><strong>TL;DR:</strong> MyWallet stores all your data locally on your device. We do not collect, transmit, or sell your personal or financial information. AI and natural language processing happen on-device only. Optional Google Drive backup is controlled entirely by you.</p>
@@ -89,7 +89,16 @@
         <li><strong>AI Assistant & NLP:</strong> Natural language processing (e.g., parsing text into transactions) occurs 100% locally on your device. Your free-text queries are <strong>never</strong> sent to cloud AI providers.</li>
       </ul>
 
-      <h3>2.3 Google Account Information</h3>
+      <h3>2.3 SMS Messages (Optional Feature)</h3>
+      <p>If you turn on <strong>Read bank SMS</strong> in MyWallet's settings, MyWallet reads SMS messages on your phone to record your financial transactions automatically.</p>
+      <ul>
+        <li><strong>What is read:</strong> SMS from banks and mobile financial services (such as bKash, Nagad, Rocket and banks). SMS from personal phone numbers are skipped based on the sender, without their content being read. Of the remaining messages, only transaction alerts are used; one-time passwords, offers and other messages are ignored.</li>
+        <li><strong>What is kept:</strong> From each transaction alert, MyWallet saves the amount, whether money came in or went out, the merchant or sender, the date, the matched account and the bank's transaction reference. The message text itself is not stored.</li>
+        <li><strong>Where it goes:</strong> Nowhere. Messages are processed entirely on your device. MyWallet does not upload, share, sell or use SMS content for advertising or analytics. If you use Google Drive backup, your transactions (not your messages) are saved to your own Google Drive.</li>
+        <li><strong>Your control:</strong> The feature is off by default. You can turn it off at any time in <em>Settings &rarr; Bank auto-capture</em>, which also returns the SMS permission to Android. You can also remove the permission in Android's app settings.</li>
+      </ul>
+
+      <h3>2.4 Google Account Information</h3>
       <p>If you choose to use the Google Drive backup feature, MyWallet will request access to:</p>
       <ul>
         <li>Your Google account name and email (for authentication)</li>
@@ -97,9 +106,10 @@
       </ul>
       <p>This information is used solely to authenticate with Google Drive and save/restore your backup file. We do not access any other Google account data.</p>
 
-      <h3>2.4 Device Permissions</h3>
+      <h3>2.5 Device Permissions</h3>
       <p>MyWallet may request the following permissions:</p>
       <ul>
+        <li><strong>SMS (RECEIVE_SMS, READ_SMS)</strong> — Optional. Used exclusively for bank auto-capture to record transactions from incoming alerts on-device.</li>
         <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For notifying you about reminders and financial milestones. Optional.</li>
         <li><strong>Biometric/Fingerprint</strong> — For optional app lock functionality. Biometric data is handled entirely by Android's BiometricPrompt API and never accessed by MyWallet directly.</li>
         <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, and Google Sign-In. No personal data is transmitted beyond these specific features.</li>
@@ -111,6 +121,7 @@
         <li>Displaying your financial information within the app</li>
         <li>Calculating analytics, balances, and budget summaries</li>
         <li>Providing AI-assisted transaction parsing</li>
+        <li>Automatically recording bank transactions from SMS alerts (when enabled)</li>
         <li>Backing up and restoring your data via Google Drive (when you choose to)</li>
         <li>Converting currencies using publicly available exchange rates</li>
       </ul>
