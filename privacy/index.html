@@ -60,10 +60,10 @@
   <main id="swup" class="transition-fade legal-page">
     <div class="container">
       <h1 class="gradient-text">Privacy Policy</h1>
-      <p class="last-updated">Last updated: October 16, 2026</p>
+      <p class="last-updated">Last updated: October 25, 2026</p>
 
       <div class="highlight-box">
-        <p><strong>TL;DR:</strong> MyWallet stores all your data locally on your device. We do not collect, transmit, or sell your personal or financial information. AI and natural language processing happen on-device only. Optional Google Drive backup is controlled entirely by you.</p>
+        <p><strong>TL;DR:</strong> MyWallet stores your financial data on your device. An optional MyWallet account keeps only your name, your email and the phones you use. An account you choose to share with family is stored in the cloud so the people you invite can see it; nothing else of yours is. We never sell your information. AI and natural language processing happen on-device only. Optional Google Drive backup is controlled entirely by you.</p>
       </div>
 
       <h2>1. Introduction</h2>
@@ -80,7 +80,7 @@
         <li>Savings goals and sinking fund targets</li>
         <li>Budget preferences and settings</li>
       </ul>
-      <p><strong>This data is stored exclusively on your device</strong> in a local database (ObjectBox). It is never transmitted to our servers or any third party.</p>
+      <p><strong>This data is stored on your device</strong> in a local database (ObjectBox). It is not sent to us or any third party, except for an account you choose to share (see 2.7).</p>
 
       <h3>2.2 Secure Vault & AI Processing</h3>
       <p>MyWallet features a Secure Vault and an AI Assistant, both designed with absolute data sovereignty:</p>
@@ -112,8 +112,32 @@
         <li><strong>SMS (RECEIVE_SMS, READ_SMS)</strong> — Optional. Used exclusively for bank auto-capture to record transactions from incoming alerts on-device.</li>
         <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For notifying you about reminders and financial milestones. Optional.</li>
         <li><strong>Biometric/Fingerprint</strong> — For optional app lock functionality. Biometric data is handled entirely by Android's BiometricPrompt API and never accessed by MyWallet directly.</li>
-        <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, and Google Sign-In. No personal data is transmitted beyond these specific features.</li>
+        <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, signing in to your MyWallet account, shared accounts and subscriptions. No personal data is transmitted beyond these specific features.</li>
       </ul>
+
+      <h3>2.6 MyWallet Account (Optional)</h3>
+      <p>MyWallet works without an account. When you finish setting up the app, it creates an anonymous account: a random ID with no name, email or other details, used only so you can sign in later without losing anything.</p>
+      <p>If you sign in (with Google or with a code sent to your email), we keep:</p>
+      <ul>
+        <li>Your name, your email address and the sign-in methods you use</li>
+        <li>Your language, currency and country settings</li>
+        <li>The phones signed in to your account (model, Android version, app version, when last used)</li>
+        <li>Your plan (Free or Plus) and when it renews or ends, and when you first signed in (launch offers run from it)</li>
+      </ul>
+      <p>Sign-in codes are sent from <a href="mailto:mywalletapps@gmail.com">mywalletapps@gmail.com</a> through Gmail. Only a salted hash of each code is stored, for 10 minutes. Signing in does not upload your transactions, balances, budgets, goals or messages.</p>
+
+      <h3>2.7 Shared Accounts (Optional)</h3>
+      <p>You can choose to share one of your accounts with people you invite. When you do:</p>
+      <ul>
+        <li>That account's name, type, currency, opening balance, icon and colour, and its confirmed transactions (amount, date, type, category, merchant and note), are stored in the cloud and shown to the people you invited.</li>
+        <li>Each person's name and role in that account is shown to the others, and each transaction shows who added it.</li>
+        <li>Nothing else is shared: not your other accounts, budgets, goals or messages. Transactions captured from SMS are not shared until you confirm them.</li>
+        <li>Invites are codes that work once, for 7 days. An invite holds the account's name, your name and the role it gives.</li>
+      </ul>
+      <p>You can change roles, remove people or stop sharing at any time. When you stop sharing, the account and its transactions are deleted from the cloud and from the other people's phones; your own copy stays on your phone. When someone leaves or is removed, the account is removed from their phone.</p>
+
+      <h3>2.8 Subscriptions (MyWallet Plus)</h3>
+      <p>MyWallet Plus is an optional subscription bought through Google Play. Google handles the payment; we never see your card or payment details. We receive the purchase details Google provides (which plan, its status and when it ends) to check the purchase and turn Plus on for your account. The purchase is linked to your account by a one-way code, not by your email.</p>
 
       <h2>3. How We Use Your Information</h2>
       <p>All data collected is used exclusively for:</p>
@@ -124,14 +148,15 @@
         <li>Automatically recording bank transactions from SMS alerts (when enabled)</li>
         <li>Backing up and restoring your data via Google Drive (when you choose to)</li>
         <li>Converting currencies using publicly available exchange rates</li>
+        <li>Signing you in, keeping your plan, and showing shared accounts to the people you invited (when you use these features)</li>
       </ul>
 
       <h2>4. Data Storage & Security</h2>
       <ul>
         <li><strong>Local Storage:</strong> All financial data is stored in a local ObjectBox database on your device's internal storage, protected by Android's app sandbox.</li>
         <li><strong>Google Drive Backup:</strong> When enabled, backup files are stored in Google Drive's App Data folder, which is private and can only be accessed by MyWallet. Google's security and encryption standards apply.</li>
-        <li><strong>No Cloud Servers:</strong> MyWallet does not operate any cloud servers. We do not have access to your data.</li>
-        <li><strong>Encryption:</strong> Data in transit (Google Drive sync, exchange rates) uses HTTPS/TLS encryption.</li>
+        <li><strong>Cloud (only for optional features):</strong> MyWallet accounts, shared accounts and plans are stored in Google Firebase (Authentication and Cloud Firestore) in Google's Mumbai region, protected by access rules so each person reads only their own account and the shared accounts they belong to. Your other data is not stored there.</li>
+        <li><strong>Encryption:</strong> Data in transit (Google Drive sync, exchange rates, Firebase) uses HTTPS/TLS encryption. Google encrypts data stored in Firebase.</li>
       </ul>
 
       <h2>5. Data Sharing</h2>
@@ -141,13 +166,20 @@
         <li>You initiate a Google Drive backup (data sent to your own Google Drive)</li>
         <li>The app fetches live exchange rates from public APIs (no personal data is included in these requests)</li>
         <li>You sign in with Google for backup functionality (standard OAuth flow)</li>
+        <li>You sign in to a MyWallet account (see 2.6)</li>
+        <li>You share an account: its details and transactions are visible to the people you invite (see 2.7)</li>
+        <li>You subscribe to MyWallet Plus through Google Play (see 2.8)</li>
       </ul>
 
       <h2>6. Data Retention</h2>
       <ul>
         <li>Your data persists on your device until you delete individual entries or uninstall the app.</li>
         <li>Google Drive backups persist in your Drive until you manually delete them or revoke MyWallet's access.</li>
-        <li>We do not retain any data on our end, as we have no servers.</li>
+        <li>Your MyWallet account's data is kept until you delete the account.</li>
+        <li>A shared account is kept until its owner stops sharing it. Transactions someone deletes are kept as deleted marks until then, so everyone's copy stays the same.</li>
+        <li>Sign-in codes are kept (as a hash) for 10 minutes.</li>
+        <li>Purchase records (plan, status and end date, linked to your account's random ID) may be kept as needed for accounting and Google Play's records.</li>
+        <li>After deletion, copies may remain in Google's backup systems for a limited period before they are erased.</li>
       </ul>
 
       <h2>7. Your Rights & Choices</h2>
@@ -155,6 +187,8 @@
       <ul>
         <li><strong>Access:</strong> All your data is visible within the app at all times.</li>
         <li><strong>Deletion:</strong> Delete individual transactions, accounts, or all data from within the app. Uninstalling the app removes all local data.</li>
+        <li><strong>MyWallet account:</strong> Delete it in the app (<em>Settings &rarr; MyWallet account &rarr; Delete MyWallet account</em>) or at <a href="https://mywallet.mdrahim.com/delete-account/">mywallet.mdrahim.com/delete-account</a>. This removes your profile, your list of phones and your sign-in; the app then asks whether to also erase the data on your phone. If you share an account with other people, stop sharing it first.</li>
+        <li><strong>Shared accounts:</strong> Leave an account someone shared with you, or stop sharing one of yours, at any time.</li>
 
         <li><strong>Google Drive:</strong> You can disconnect Google Drive, delete backups, or revoke access from your Google Account settings.</li>
         <li><strong>Export:</strong> You can back up your data to Google Drive for portability.</li>
@@ -168,6 +202,9 @@
       <ul>
         <li><strong>Google Sign-In & Google Drive API</strong> — For authentication and backup. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
         <li><strong>Exchange Rate APIs</strong> — For currency conversion. Only currency codes are sent; no personal data is transmitted.</li>
+        <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Functions) — For MyWallet accounts, shared accounts and plans. Subject to <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's privacy information</a>.</li>
+        <li><strong>Google Play Billing</strong> — For MyWallet Plus subscriptions.</li>
+        <li><strong>Gmail</strong> — Sends the sign-in codes to your email address.</li>
       </ul>
 
       <h2>10. Changes to This Policy</h2>

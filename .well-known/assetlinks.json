@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mdrahim.mywallet",
+      "sha256_cert_fingerprints": [
+        "75:36:5A:23:5E:F1:76:84:06:52:72:87:77:F5:2C:2E:2D:4B:2B:1B:62:0F:77:AD:63:FB:99:AF:FC:89:A3:37",
+        "85:BB:00:4A:24:A4:14:2D:C0:7D:40:4B:39:8E:07:AC:F7:19:1F:D4:40:66:B9:58:1D:32:A2:C1:74:46:FA:D0"
+      ]
+    }
+  }
+]
