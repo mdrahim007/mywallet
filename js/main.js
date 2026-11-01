@@ -164,24 +164,71 @@
   const motion = root.classList.contains('motion');
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
+  /* ── Motion engine ─────────────────────────────────────────
+     One rAF loop. Scroll and pointer only set targets; every frame each
+     value eases toward its target and is written straight to transform /
+     opacity on the few elements that move (no layout, no subtree restyle).
+     The loop sleeps as soon as everything has settled. */
+  const engine = (() => {
+    const tracks = [];
+    let running = false;
+    let last = 0;
+    const frame = (t) => {
+      const dt = last ? Math.min(64, t - last) : 16.7;
+      last = t;
+      let busy = false;
+      tracks.forEach((tr) => {
+        if (tr.measure) tr.measure();
+        const k = 1 - Math.pow(1 - tr.ease, dt / 16.7);
+        Object.keys(tr.target).forEach((key) => {
+          const goal = tr.target[key];
+          let v = tr.value[key];
+          v = v === undefined ? goal : v + (goal - v) * k;
+          if (Math.abs(goal - v) < tr.eps) v = goal; else busy = true;
+          tr.value[key] = v;
+        });
+        tr.apply(tr.value);
+      });
+      if (busy) requestAnimationFrame(frame); else { running = false; last = 0; }
+    };
+    const kick = () => { if (!running) { running = true; requestAnimationFrame(frame); } };
+    return {
+      add(tr) { tr.value = {}; tr.target = tr.target || {}; tr.eps = tr.eps || 0.0005; tracks.push(tr); kick(); return tr; },
+      kick,
+    };
+  })();
+  if (motion) {
+    window.addEventListener('scroll', engine.kick, { passive: true });
+    window.addEventListener('resize', engine.kick, { passive: true });
+    window.addEventListener('load', engine.kick);
+  }
+
+  const inView = (r, vh, pad = 0) => r.bottom > -pad && r.top < vh + pad;
+
   /* ── Hero → story: one pinned sequence driven by scroll ──── */
   const scrolly = $('[data-scrolly]');
-  let updateScrolly = () => {};
   if (scrolly) {
+    const pin = $('.s-pin', scrolly);
     const chapters = $$('.chapter', scrolly);
     const screens = $$('.s-device .screen img', scrolly);
     const nums = $$('.s-num span', scrolly);
     const dots = $$('.s-dots i', scrolly);
     const device = $('.s-device', scrolly);
+    const el = {
+      hero: $('.s-hero', scrolly), device, tilt: $('.s-tilt', scrolly), halo: $('.s-halo', scrolly),
+      pulse: $('.s-pulse', scrolly), cue: $('.s-cue', scrolly), num: $('.s-num', scrolly),
+      chapters: $('.s-chapters', scrolly), dots: $('.s-dots', scrolly),
+    };
     const HERO = 0.14;        // share of the sequence spent leaving the hero
+    const narrow = window.matchMedia('(max-width: 960px)');
     let current = -1;
+    let isStory = false;
     const show = (i) => {
       if (i === current) return;
       current = i;
       device.dataset.chapter = String(i);
-      [chapters, screens, nums, dots].forEach((list) => list.forEach((el, n) => el.classList.toggle('is-active', n === i)));
+      [chapters, screens, nums, dots].forEach((list) => list.forEach((node, n) => node.classList.toggle('is-active', n === i)));
     };
-    // where to scroll to show chapter i
     const stepY = (i) => {
       const top = scrolly.getBoundingClientRect().top + window.scrollY;
       const travel = scrolly.offsetHeight - window.innerHeight;
@@ -195,63 +242,110 @@
     }, true));
 
     if (motion) {
-      updateScrolly = (vh) => {
-        const r = scrolly.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > vh) return;
-        const travel = r.height - vh;
-        const p = clamp(-r.top / travel);
-        const h = clamp(p / HERO);
-        scrolly.style.setProperty('--h', h.toFixed(4));
-        scrolly.classList.toggle('is-story', h > 0.62);
-        show(Math.min(3, Math.floor(clamp((p - HERO - 0.02) / (1 - HERO - 0.02)) * 4)));
+      // Path of the device between the hero pose (0) and the story pose (1)
+      const pose = () => {
+        const vw = window.innerWidth / 100;
+        const vh = pin.offsetHeight / 100;
+        return narrow.matches
+          ? { x0: 0, x1: 0, y0: 41 * vh, y1: -15 * vh, rx0: 24, rx1: 0, ry0: -16, ry1: 0, rz0: 6, rz1: 0, lift: 9 * vh }
+          : { x0: Math.min(23 * vw, 380), x1: Math.max(-21 * vw, -370), y0: 5 * vh, y1: vh, rx0: 12, rx1: 2, ry0: -26, ry1: 10, rz0: 5, rz1: 0, lift: 9 * vh };
       };
-      // Mouse-reactive tilt while the hero is in view
+      let P = pose();
+      window.addEventListener('resize', () => { P = pose(); });
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const pointer = { x: 0, y: 0 };
+
+      engine.add({
+        ease: 0.13,
+        measure() {
+          const vh = window.innerHeight;
+          const r = scrolly.getBoundingClientRect();
+          if (!inView(r, vh, 50)) return;
+          const p = clamp(-r.top / (r.height - vh));
+          const h = clamp(p / HERO);
+          this.target.h = h;
+          this.target.mx = pointer.x;
+          this.target.my = pointer.y;
+          if ((h > 0.62) !== isStory) { isStory = h > 0.62; scrolly.classList.toggle('is-story', isStory); }
+          show(Math.min(3, Math.floor(clamp((p - HERO - 0.02) / (1 - HERO - 0.02)) * 4)));
+        },
+        apply({ h = 0, mx = 0, my = 0 }) {
+          const x = lerp(P.x0, P.x1, h);
+          const y = lerp(P.y0, P.y1, h);
+          const calm = 1 - h;
+          el.device.style.transform = `translate3d(calc(-50% + ${x.toFixed(2)}px), calc(-50% + ${y.toFixed(2)}px), 0)`;
+          el.halo.style.transform = `translate3d(calc(-50% + ${x.toFixed(2)}px), calc(-50% + ${y.toFixed(2)}px), 0) scale(${(0.84 + h * 0.2).toFixed(4)})`;
+          el.tilt.style.transform = `rotateX(${(lerp(P.rx0, P.rx1, h) - my * 6 * calm).toFixed(3)}deg) rotateY(${(lerp(P.ry0, P.ry1, h) + mx * 9 * calm).toFixed(3)}deg) rotateZ(${lerp(P.rz0, P.rz1, h).toFixed(3)}deg)`;
+          el.hero.style.opacity = clamp(1 - h * 1.8).toFixed(4);
+          el.hero.style.transform = `translate3d(0, ${(-h * P.lift).toFixed(2)}px, 0)`;
+          el.pulse.style.opacity = clamp(1 - h * 2.2).toFixed(4);
+          el.cue.style.opacity = clamp(1 - h * 5).toFixed(4);
+          el.num.style.opacity = clamp((h - 0.55) * 3).toFixed(4);
+          const late = clamp((h - 0.72) * 4).toFixed(4);
+          el.chapters.style.opacity = late;
+          el.dots.style.opacity = late;
+        },
+      });
+
       if (window.matchMedia('(pointer: fine)').matches) {
-        let raf = 0;
-        let mx = 0;
-        let my = 0;
         window.addEventListener('pointermove', (e) => {
-          mx = (e.clientX / window.innerWidth - 0.5) * 2;
-          my = (e.clientY / window.innerHeight - 0.5) * 2;
-          if (!raf) raf = requestAnimationFrame(() => {
-            raf = 0;
-            scrolly.style.setProperty('--mx', mx.toFixed(3));
-            scrolly.style.setProperty('--my', my.toFixed(3));
-          });
+          pointer.x = (e.clientX / window.innerWidth - 0.5) * 2;
+          pointer.y = (e.clientY / window.innerHeight - 0.5) * 2;
+          engine.kick();
         }, { passive: true });
       }
+
+      // Decode every screen up front so chapter swaps never hitch
+      const warm = () => screens.forEach((img) => img.decode?.().catch(() => {}));
+      if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 2000 }); else setTimeout(warm, 1200);
     } else {
       show(0);
     }
-    // Let the pulse line draw once fonts and layout settle
     requestAnimationFrame(() => requestAnimationFrame(() => scrolly.classList.add('is-ready')));
   }
 
   /* ── Feature gallery: vertical scroll moves it sideways ──── */
   const hs = $('[data-hs]');
-  let updateGallery = () => {};
   if (hs) {
     const track = $('.hs-track', hs);
+    const bar = $('.hs-bar i', hs);
     const counter = $('[data-hs-current]', hs);
     const cards = $$('.hs-card', hs);
     const wide = window.matchMedia('(min-width: 961px)');
     let dist = 0;
+    let shown = -1;
+    const setCount = (i) => { if (i !== shown && counter) { shown = i; counter.textContent = String(i + 1).padStart(2, '0'); } };
     const measure = () => {
-      if (!(motion && wide.matches)) { hs.style.removeProperty('--hs-h'); dist = 0; return; }
+      if (!(motion && wide.matches)) {
+        hs.style.removeProperty('--hs-h');
+        track.style.removeProperty('transform');
+        dist = 0;
+        return;
+      }
       dist = Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
       hs.style.setProperty('--hs-h', `${window.innerHeight + dist}px`);
+      engine.kick();
     };
-    const setCount = (i) => { if (counter) counter.textContent = String(i + 1).padStart(2, '0'); };
-    updateGallery = (vh) => {
-      if (!dist) return;
-      const r = hs.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > vh) return;
-      const p = clamp(-r.top / (r.height - vh));
-      hs.style.setProperty('--hx', (p * dist).toFixed(1));
-      hs.style.setProperty('--hp', p.toFixed(4));
-      setCount(Math.min(cards.length - 1, Math.round(p * (cards.length - 1))));
-    };
-    // Native swipe on phones: keep the counter in sync
+    if (motion) {
+      engine.add({
+        ease: 0.12,
+        eps: 0.05,
+        measure() {
+          if (!dist) return;
+          const vh = window.innerHeight;
+          const r = hs.getBoundingClientRect();
+          if (!inView(r, vh, 50)) return;
+          const p = clamp(-r.top / (r.height - vh));
+          this.target.x = p * dist;
+          setCount(Math.min(cards.length - 1, Math.round(p * (cards.length - 1))));
+        },
+        apply({ x = 0 }) {
+          if (!dist) return;
+          track.style.transform = `translate3d(${(-x).toFixed(2)}px, 0, 0)`;
+          if (bar) bar.style.transform = `scaleX(${(x / dist).toFixed(4)})`;
+        },
+      });
+    }
     track.addEventListener('scroll', () => {
       if (dist) return;
       const w = cards[0].offsetWidth + 20;
@@ -263,30 +357,47 @@
     wide.addEventListener?.('change', measure);
   }
 
-  /* ── Scroll-linked progress (--p per element, --scroll for the page) ── */
-  const scrollers = $$('[data-scroll]');
+  /* ── Smaller scroll-linked pieces ──────────────────────────
+     Nav progress line, manifesto word scrub, vault dial, closing phone. */
   if (motion) {
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const vh = window.innerHeight;
-      const max = root.scrollHeight - vh;
-      root.style.setProperty('--scroll', max > 0 ? (window.scrollY / max).toFixed(4) : 0);
-      scrollers.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.bottom < -100 || r.top > vh + 100) return;
-        el.style.setProperty('--p', clamp((vh - r.top) / (vh + r.height)).toFixed(4));
-      });
-      updateScrolly(vh);
-      updateGallery(vh);
+    const progressOf = (node, vh) => {
+      const r = node.getBoundingClientRect();
+      return inView(r, vh, 100) ? clamp((vh - r.top) / (vh + r.height)) : null;
     };
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    window.addEventListener('load', onScroll);
-    update();
+    const navBar = nav;
+    const scrub = $('.scrub');
+    const dial = $('.dial');
+    const privacy = $('.privacy');
+    const closing = $('.closing-stage');
+    const closingPhone = closing && $('.closing-device .phone', closing);
+    engine.add({
+      ease: 0.16,
+      measure() {
+        const vh = window.innerHeight;
+        const max = root.scrollHeight - vh;
+        this.target.page = max > 0 ? window.scrollY / max : 0;
+        const s = scrub && progressOf(scrub, vh); if (s !== null && s !== undefined) this.target.scrub = s;
+        const d = privacy && progressOf(privacy, vh); if (d !== null && d !== undefined) this.target.dial = d;
+        const c = closing && progressOf(closing, vh); if (c !== null && c !== undefined) this.target.close = c;
+      },
+      apply(v) {
+        if (navBar && v.page !== undefined) navBar.style.setProperty('--scroll', v.page.toFixed(4));
+        if (scrub && v.scrub !== undefined) scrub.style.setProperty('--p', v.scrub.toFixed(4));
+        if (dial && v.dial !== undefined) dial.style.transform = `translate3d(0, -50%, 0) rotate(${(v.dial * 150).toFixed(2)}deg)`;
+        if (closingPhone && v.close !== undefined) closingPhone.style.transform = `translate3d(-50%, ${((0.55 - v.close) * 160).toFixed(2)}px, 0) rotate(${(-2 + v.close * 14).toFixed(2)}deg)`;
+      },
+    });
   } else {
-    $$('.scrub').forEach((el) => el.style.setProperty('--p', 1));
+    $$('.scrub').forEach((node) => node.style.setProperty('--p', 1));
+  }
+
+  /* ── Pause looping animations while they are off-screen ─── */
+  if (hasIO) {
+    const loops = $$('.marquee, .s-halo, .s-cue');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => en.target.classList.toggle('is-paused', !en.isIntersecting));
+    });
+    loops.forEach((n) => io.observe(n));
   }
 
   /* ── Ask MyWallet demo ─────────────────────────────────── */
