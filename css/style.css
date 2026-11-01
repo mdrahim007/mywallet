@@ -131,7 +131,7 @@ h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; t
   font-optical-sizing: auto;
   font-variant-numeric: lining-nums;
 }
-.t-display { font-size: clamp(3.2rem, 1.1rem + 7.6vw, 7.75rem); line-height: 0.95; letter-spacing: -0.04em; }
+.t-display { font-size: clamp(3.2rem, 1.1rem + 7vw, 7.1rem); line-height: 0.95; letter-spacing: -0.04em; }
 .t-h1 { font-size: clamp(2.75rem, 1.5rem + 4.4vw, 5.25rem); line-height: 0.98; letter-spacing: -0.035em; }
 .t-h2 { font-size: clamp(2.5rem, 1.5rem + 3.6vw, 4.6rem); line-height: 1; letter-spacing: -0.032em; }
 .t-display em, .t-h1 em, .t-h2 em { font-style: italic; letter-spacing: -0.03em; }
@@ -276,11 +276,11 @@ p.label { display: flex; width: fit-content; margin-bottom: 22px; }
 .mobile-menu { display: none; }
 
 /* ── 7. Hero ───────────────────────────────────────────────── */
-.hero { padding-top: calc(var(--nav-h) + clamp(40px, 6vw, 88px)); }
+.hero { padding-top: calc(var(--nav-h) + clamp(32px, 4.2vw, 60px)); }
 
 .hero-note {
   display: inline-flex; align-items: center; gap: 12px;
-  margin-bottom: clamp(28px, 4vw, 48px);
+  margin-bottom: clamp(22px, 2.6vw, 34px);
   font-size: 0.9375rem; color: var(--ink-2);
 }
 .hero-note b { font-weight: 600; color: var(--brand-ink); }
@@ -309,7 +309,7 @@ p.label { display: flex; width: fit-content; margin-bottom: 22px; }
 .stage {
   position: relative;
   height: clamp(440px, 52vw, 700px);
-  margin-top: clamp(48px, 6vw, 88px);
+  margin-top: clamp(36px, 4.2vw, 60px);
   border-radius: var(--r-xl);
   overflow: hidden;
   background: var(--mesh);
