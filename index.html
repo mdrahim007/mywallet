@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>MyWallet — #1 Finance App & Offline Fintech Budget Tracker</title>
-  <link rel="icon" href="assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
-  <link rel="icon" href="assets/logos/mywallet_logo(favicon_dark).svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <script>(function(){var d=document.documentElement;d.classList.remove('no-js');d.classList.add('js');try{var t=localStorage.getItem('mywallet-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/assets/logos/mywallet_logo(favicon_dark).svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070a12" media="(prefers-color-scheme: dark)">
   <meta name="description" content="Looking for the best fintech app? MyWallet (my wallet) is the ultimate offline Finance App. Track expenses, monitor net worth, and keep data private.">
   <meta name="keywords" content="MyWallet, mywallet, my wallet, My Wallet, MYWALLET, Finance App, fintech, fintech app, offline finance app, private budget tracker, AI expense tracker without bank sync, private net worth tracker, secure wallet app, money manager, Android finance app">
   <meta name="author" content="MD Rahim">
@@ -20,7 +23,7 @@
   <meta property="og:image" content="https://mywallet.mdrahim.com/assets/images/og-preview.webp">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="576">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:type" content="image/webp">
   <meta property="og:site_name" content="MyWallet">
   <meta property="og:locale" content="en_US">
 
@@ -33,9 +36,10 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=6.2">
+  <link rel="preload" as="image" href="/assets/images/hero-phone.webp" fetchpriority="high">
+  <link rel="stylesheet" href="/css/style.css?v=7.0">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -45,12 +49,15 @@
     "name": "MyWallet",
     "operatingSystem": "Android 8.0+",
     "applicationCategory": "FinanceApplication",
+    "url": "https://mywallet.mdrahim.com/",
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "A 100% private, offline-first personal finance manager with an AI assistant, net worth tracker, and secure vault."
+    "author": { "@type": "Person", "name": "MD Rahim", "url": "https://mdrahim.com" },
+    "description": "A private, offline-first personal finance manager with an on-device AI assistant, net worth tracker, budgets and an encrypted Secure Vault."
   }
   </script>
   <script type="application/ld+json">
@@ -61,777 +68,812 @@
       {
         "@type": "Question",
         "name": "Is my financial data stored in the cloud?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely not. MyWallet is built on an 'Offline-First' philosophy. All your financial data is stored securely on your local device."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. MyWallet is built offline-first: your financial data is stored on your device in a local database. The only exception is an account you choose to share with people you invite, which is stored in the cloud so they can see it." }
       },
       {
         "@type": "Question",
         "name": "Can I use MyWallet without linking my bank account?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! MyWallet requires absolutely no bank synchronization. You can manually enter transactions or use our local AI parser to log them using natural language."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. MyWallet never asks for your bank login. Add transactions manually, type them in plain language with Ask MyWallet, or turn on optional bank SMS auto-capture, which runs entirely on your phone." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the AI Assistant work offline?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ask MyWallet uses a natural language processing engine that runs 100% on your device. Your questions and entries are never sent to a cloud AI provider." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is MyWallet free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. MyWallet is free to download and use, with no ads. MyWallet Plus is an optional subscription, bought through Google Play, that you can cancel at any time." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share an account with my family?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Invite people you trust to one of your accounts with a one-time code. They see that account and its confirmed transactions, and nothing else of yours. You can change roles, remove people or stop sharing at any time." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I back up my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You're in control. Export your data at any time, or turn on Google Drive backup, which saves to a private App Data folder that only MyWallet can access." }
       }
     ]
   }
   </script>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <img src="assets/logos/mywallet_logo(web_dark).svg" alt="Loading MyWallet" class="preloader-logo">
-  </div>
-
-
-  <!-- Custom Cursor -->
-  <div class="custom-cursor"></div>
-  <div class="cursor-follower"></div>
-
-  <!-- ═══ Splash Screen ═══ -->
-  <div id="splash-screen">
-    <svg class="splash-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
-      <defs>
-        <linearGradient id="neonBlue" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#1442a8" />
-          <stop offset="100%" stop-color="#2a75ff" />
-        </linearGradient>
-        <linearGradient id="neonGreen" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#00b85d" />
-          <stop offset="100%" stop-color="#33ff99" />
-        </linearGradient>
-        <linearGradient id="goldGradDark" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#d4af37" />
-          <stop offset="30%" stop-color="#fff1b8" />
-          <stop offset="65%" stop-color="#e6c245" />
-          <stop offset="100%" stop-color="#ffdf73" />
-        </linearGradient>
-        <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#ffdf73" flood-opacity="0.35" />
-        </filter>
-        <clipPath id="goldLineClip">
-          <rect x="0" y="0" width="455" height="500" />
-          <circle cx="455" cy="207" r="78" />
-        </clipPath>
-        <clipPath id="customCutsClip">
-          <polygon points="0,0 415,0 415,170 460,170 460,0 800,0 800,238 0,238" />
-        </clipPath>
-      </defs>
-      <g transform="translate(0, -5)">
-        <rect class="splash-rect" x="290" y="140" width="165" height="135" rx="30" fill="url(#neonBlue)" />
-        <circle class="splash-circle" cx="455" cy="207" r="78" fill="url(#neonGreen)" />
-        <g clip-path="url(#goldLineClip)">
-          <g filter="url(#neonGlow)">
-            <g clip-path="url(#customCutsClip)">
-              <path class="splash-path" d="M 331.5 250 L 375 170 L 408 235 L 442 170 L 468 220 L 522 125" 
-                    fill="none" stroke="url(#goldGradDark)" stroke-width="15" 
-                    stroke-linejoin="miter" stroke-miterlimit="4" stroke-linecap="butt" />
-            </g>
-          </g>
-        </g>
-      </g>
-      <text class="splash-text" x="400" y="355" font-family="'Inter', sans-serif" font-size="64" text-anchor="middle" letter-spacing="-0.5">
-        <tspan font-weight="400">My</tspan><tspan font-weight="700">Wallet</tspan>
-      </text>
-    </svg>
-  </div>
-  <script>
-    (function() {
-      const splash = document.getElementById('splash-screen');
-      let isReload = false;
-      try {
-        const navEntries = performance.getEntriesByType("navigation");
-        if (navEntries.length > 0) {
-          isReload = navEntries[0].type === "reload";
-        } else if (window.performance && window.performance.navigation) {
-          isReload = window.performance.navigation.type === 1;
-        }
-      } catch (e) {
-        console.warn('Navigation API not supported', e);
-      }
-      
-      let splashPlayed = false;
-      try {
-        splashPlayed = sessionStorage.getItem('splashPlayed') === 'true';
-      } catch (e) {
-        console.warn('SessionStorage not supported', e);
-      }
-      
-      if (splashPlayed && !isReload) {
-        if (splash) splash.remove();
-      } else {
-        document.body.style.overflow = 'hidden';
-        try {
-          sessionStorage.setItem('splashPlayed', 'true');
-        } catch (e) {}
-        setTimeout(() => {
-          document.body.style.overflow = '';
-          if (splash) splash.remove();
-        }, 1500);
-      }
-    })();
-  </script>
-
-
-  <!-- ═══ Continuous Premium Design Canvas ═══ -->
-  <div class="vignette-overlay"></div>
-  <div class="noise-texture"></div>
-  <div class="continuous-background">
-    <!-- Hero / Top section glows -->
-    <div class="flow-orb orb-hero-right"></div>
-    <div class="flow-orb orb-hero-left"></div>
-    
-    <!-- How it works / Features transition -->
-    <div class="flow-orb orb-mid-cyan"></div>
-    
-    <!-- Analytics / Cards section -->
-    <div class="flow-orb orb-lower-purple"></div>
-    
-    <!-- Security / Testimonials section -->
-    <div class="flow-orb orb-bottom-cyan"></div>
-  </div>
-
-
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ═══ Navigation ═══ -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <div class="container">
-      <a href="/" class="nav-logo" aria-label="MyWallet Home">
-        <img src="assets/logos/mywallet_logo(web_dark).svg" alt="MyWallet Logo" class="logo-dark">
-        <img src="assets/logos/mywallet_logo(web).svg" alt="MyWallet Logo" class="logo-light">
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="brand" aria-label="MyWallet home">
+        <img src="/assets/logos/mywallet_logo(web).svg" alt="MyWallet" class="only-light" width="128" height="34">
+        <img src="/assets/logos/mywallet_logo(web_dark).svg" alt="MyWallet" class="only-dark" width="128" height="34">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
-            <div class="nav-links">
-        <a href="#how-it-works">How It Works</a>
+      <nav class="nav-links" aria-label="Main">
         <a href="#features">Features</a>
-        <a href="#personas">Use Cases</a>
-        <a href="#comparison">Why Choose Us</a>
-        <a href="#security">Security</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#security">Privacy</a>
+        <a href="#comparison">Compare</a>
         <a href="#faq">FAQ</a>
-        
-        <!-- Mobile Actions (Hidden on Desktop) -->
-        <div class="mobile-actions">
-
-          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="nav-cta" target="_blank">Download App</a>
-        </div>
-      </div>
-      
-      <!-- Desktop Actions (Hidden on Mobile) -->
-      <div class="nav-actions desktop-actions">
-
-        <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="nav-cta" target="_blank">Download App</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="only-light" aria-hidden="true"><use href="/assets/icons.svg#i-moon"/></svg>
+          <svg class="only-dark" aria-hidden="true"><use href="/assets/icons.svg#i-sun"/></svg>
+        </button>
+        <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Get the app</a>
+        <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="bars" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+        </button>
       </div>
     </div>
-  </nav>
-  
-
-  <!-- ═══ Hero Section ═══ -->
-  <section class="hero" id="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge beta-badge">
-          <span class="dot beta-dot"></span>
-          Now Available on Google Play
-        </div>
-        <h1>Your Money, <span class="gradient-text">Beautifully Managed</span></h1>
-        <p>MyWallet is the ultimate offline Finance App and fintech solution that helps you track expenses, manage multiple accounts, monitor your net worth, and plan savings goals without risking your privacy.</p>
-        <div class="hero-actions">
-          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn-primary btn-beta-glow" target="_blank">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-            Get it on Google Play
-          </a>
-          <a href="#features" class="btn-secondary">Explore Features</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="number counter" data-target="5" data-suffix="+">0</div>
-            <div class="label">Account Types</div>
-          </div>
-          <div class="hero-stat">
-            <div class="number counter" data-target="100" data-suffix="%">0</div>
-            <div class="label">Privacy Focused</div>
-          </div>
-          <div class="hero-stat">
-            <div class="number counter" data-target="0" data-suffix="">0</div>
-            <div class="label">Ads. Ever.</div>
-          </div>
-        </div>
-      </div>
-      
-
-      <div class="hero-visual" data-tilt data-tilt-max="5" data-tilt-speed="400">
-        <div class="hero-glow parallax-bg"></div>
-        <img src="assets/images/hero-phone.webp" alt="MyWallet app dashboard showing account cards and balance summary" class="hero-phone parallax-fg">
-        
-
-      </div>
-    </div>
-
-    <!-- Magnetic Scroll Indicator -->
-    <a href="#how-it-works" class="scroll-indicator" aria-label="Scroll down">
-      <div class="mouse">
-        <div class="wheel"></div>
-      </div>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#features">Features <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#how-it-works">How it works <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#security">Privacy <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#comparison">Compare <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#faq">FAQ <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-primary" target="_blank" rel="noopener">
+      <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+      Get it on Google Play
     </a>
-  </section>
+  </div>
 
-<!-- ═══ Interactive Chat Demo ═══ -->
-  <section class="section bg-alt" id="interactive-demo">
-    <div class="container">
-      <div class="showcase fade-up">
-        <div class="showcase-content">
-          <span class="section-label">Interactive AI Demo</span>
-          <h2>Experience <span class="gradient-text">Ask MyWallet</span></h2>
-          <p>Try it out yourself! Click a prompt below to see how our offline NLP engine instantly categorizes transactions and answers questions about your data.</p>
-          <div class="demo-prompts">
-            <button class="demo-prompt-btn" data-text="Spent $12 on coffee at Starbucks">"Spent $12 on coffee at Starbucks"</button>
-            <button class="demo-prompt-btn" data-text="Got paid $2500 for salary">"Got paid $2500 for salary"</button>
-            <button class="demo-prompt-btn" data-text="How much did I spend on food this month?">"How much did I spend on food this month?"</button>
+  <main id="main">
+
+    <!-- ═══ Hero ═══ -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <a class="announce reveal" href="#more-features">
+            <span class="tag accent">New</span>
+            Share an account with your family
+            <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+          </a>
+          <h1 class="display reveal" style="--d:1">Your money, <span class="text-gradient">beautifully managed.</span></h1>
+          <p class="lead reveal" style="--d:2">MyWallet tracks your spending, accounts, budgets and net worth in one beautiful finance app — and keeps your financial data on your phone. No bank logins. No ads.</p>
+          <div class="hero-actions reveal" style="--d:3">
+            <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
+              <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+              <span><small>Get it on</small><strong>Google Play</strong></span>
+            </a>
+            <a href="#features" class="btn btn-secondary">
+              Explore features
+              <svg class="icon-sm nudge" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+            </a>
+          </div>
+          <ul class="hero-points reveal" style="--d:4">
+            <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Free to use</li>
+            <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Zero ads, ever</li>
+            <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Works offline</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal" style="--d:2">
+          <img src="/assets/images/hero-phone.webp" width="1536" height="1920" alt="MyWallet dashboard showing available balance, income, expenses and account cards" class="hero-phone" fetchpriority="high" decoding="async">
+
+          <div class="float-card fc-1" aria-hidden="true">
+            <span class="tile sm green"><svg class="icon"><use href="/assets/icons.svg#i-trending"/></svg></span>
+            <span>
+              <span class="fc-label">Net worth this quarter</span>
+              <span class="fc-value up">+12.4%</span>
+            </span>
+            <svg class="spark" viewBox="0 0 64 26"><path d="M2 22 L13 18 L22 20 L33 12 L44 14 L60 5"/><circle cx="60" cy="5" r="3.5"/></svg>
+          </div>
+
+          <div class="float-card fc-2" aria-hidden="true">
+            <span class="tile sm"><svg class="icon"><use href="/assets/icons.svg#i-sparkles"/></svg></span>
+            <span>
+              <span class="fc-label">Ask MyWallet</span>
+              <span class="fc-value">Coffee logged · Dining</span>
+            </span>
+          </div>
+
+          <div class="float-card fc-3" aria-hidden="true">
+            <span class="tile sm gold"><svg class="icon"><use href="/assets/icons.svg#i-lock"/></svg></span>
+            <span>
+              <span class="fc-label">Stored on this phone</span>
+              <span class="fc-value">Private by default</span>
+            </span>
           </div>
         </div>
-        <div class="showcase-image chat-demo-container">
-          <div class="glow" style="background:rgba(59,130,246,0.3); top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-          <div class="chat-demo-box">
-            <div class="chat-demo-header">
-              <div class="bot-avatar pulse-anim">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: white; filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));">
-                  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
-                </svg>
+      </div>
+    </section>
+
+    <!-- ═══ Proof strip ═══ -->
+    <section class="proof" aria-label="MyWallet principles">
+      <div class="container">
+        <ul>
+          <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-phone"/></svg>Data stays on your device</li>
+          <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-wifi-off"/></svg>Works fully offline</li>
+          <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-landmark"/></svg>No bank login required</li>
+          <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-key"/></svg>AES-256 Secure Vault</li>
+          <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-ban"/></svg>No ads or trackers</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ Feature tour ═══ -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Features</span>
+          <h2 class="h2">Everything you need to master your money</h2>
+          <p class="lead">From on-device AI to beautiful analytics, MyWallet brings your whole financial life into one calm, focused app.</p>
+        </div>
+
+        <div class="tour" data-tour>
+          <div class="tour-tabs reveal" role="tablist" aria-label="MyWallet features">
+            <button class="tour-tab" role="tab" type="button" aria-selected="true" aria-controls="tour-panel" data-src="/assets/images/Screenshots/Dashboard.webp" data-alt="MyWallet dashboard with available balance and account cards">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-wallet"/></svg></span>
+              <span class="tour-title">All your accounts, one dashboard</span>
+              <span class="tour-desc">Bank accounts, credit cards, cash and digital wallets — beautifully organized.</span>
+              <span class="tour-progress" aria-hidden="true"></span>
+            </button>
+            <button class="tour-tab" role="tab" type="button" aria-selected="false" aria-controls="tour-panel" tabindex="-1" data-src="/assets/images/Screenshots/Chat-AI-Assistant.webp" data-alt="Ask MyWallet chat assistant with suggested questions">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkles"/></svg></span>
+              <span class="tour-title">Ask MyWallet</span>
+              <span class="tour-desc">Log transactions or ask questions in plain language — answered on your phone.</span>
+              <span class="tour-progress" aria-hidden="true"></span>
+            </button>
+            <button class="tour-tab" role="tab" type="button" aria-selected="false" aria-controls="tour-panel" tabindex="-1" data-src="/assets/images/Screenshots/Analytics.webp" data-alt="Analytics screen with income, expenses, savings rate and spending trend">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-pie"/></svg></span>
+              <span class="tour-title">Smart analytics</span>
+              <span class="tour-desc">Spending by category, trends and income sources, week by week.</span>
+              <span class="tour-progress" aria-hidden="true"></span>
+            </button>
+            <button class="tour-tab" role="tab" type="button" aria-selected="false" aria-controls="tour-panel" tabindex="-1" data-src="/assets/images/Screenshots/Budget-Module.webp" data-alt="Monthly budget screen with progress ring and category budgets">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-target"/></svg></span>
+              <span class="tour-title">Budgets that keep you on track</span>
+              <span class="tour-desc">Monthly limits by category, with a daily allowance and visual progress.</span>
+              <span class="tour-progress" aria-hidden="true"></span>
+            </button>
+            <button class="tour-tab" role="tab" type="button" aria-selected="false" aria-controls="tour-panel" tabindex="-1" data-src="/assets/images/Screenshots/Net-Worth.webp" data-alt="Net worth screen with total, trend chart, assets and liabilities">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trending"/></svg></span>
+              <span class="tour-title">Net worth, always current</span>
+              <span class="tour-desc">Assets minus liabilities, calculated automatically and charted over time.</span>
+              <span class="tour-progress" aria-hidden="true"></span>
+            </button>
+            <button class="tour-tab" role="tab" type="button" aria-selected="false" aria-controls="tour-panel" tabindex="-1" data-src="/assets/images/Screenshots/Other-Features.webp" data-alt="Explore screen listing subscriptions, budgets, savings, loans, insurance and reports">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-search"/></svg></span>
+              <span class="tour-title">A complete toolkit</span>
+              <span class="tour-desc">Subscriptions, loans, insurance, tax reports and more in Explore.</span>
+              <span class="tour-progress" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="tour-stage reveal" style="--d:2">
+            <div class="device" id="tour-panel" role="tabpanel" aria-live="polite">
+              <span class="device-island" aria-hidden="true"></span>
+              <div class="device-screen">
+                <img src="/assets/images/Screenshots/Dashboard.webp" width="1264" height="2780" alt="MyWallet dashboard with available balance and account cards" loading="lazy" decoding="async" id="tour-image">
               </div>
+            </div>
+            <p class="tour-caption" id="tour-caption">Bank accounts, credit cards, cash and digital wallets — beautifully organized.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Ask MyWallet demo ═══ -->
+    <section class="section section-soft" id="interactive-demo">
+      <div class="container split copy-first">
+        <div class="split-copy reveal">
+          <span class="eyebrow">Try it live</span>
+          <h2 class="h2">Just type it. Ask MyWallet handles the rest.</h2>
+          <p class="lead">Write the way you talk. Ask MyWallet turns plain sentences into categorized transactions and answers questions about your spending — processed entirely on your phone.</p>
+          <div class="prompt-list" role="group" aria-label="Try a prompt">
+            <button class="prompt" type="button" data-text="Spent $12 on coffee at Starbucks">
+              <svg aria-hidden="true"><use href="/assets/icons.svg#i-message"/></svg>
+              “Spent $12 on coffee at Starbucks”
+              <svg class="arrow" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+            </button>
+            <button class="prompt" type="button" data-text="Got paid $2500 for salary">
+              <svg aria-hidden="true"><use href="/assets/icons.svg#i-message"/></svg>
+              “Got paid $2500 for salary”
+              <svg class="arrow" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+            </button>
+            <button class="prompt" type="button" data-text="How much did I spend on food this month?">
+              <svg aria-hidden="true"><use href="/assets/icons.svg#i-message"/></svg>
+              “How much did I spend on food this month?”
+              <svg class="arrow" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="showcase-visual reveal" style="--d:2">
+          <div class="chat" role="region" aria-label="Ask MyWallet demo conversation">
+            <div class="chat-head">
+              <span class="chat-avatar"><svg aria-hidden="true"><use href="/assets/icons.svg#i-sparkles"/></svg></span>
               <div>
-                <strong class="gradient-text" style="font-weight: 800; font-size: 1.1rem;">Ask MyWallet</strong>
-                <div class="status">Local & Private</div>
+                <div class="chat-title">Ask MyWallet</div>
+                <div class="chat-status">On-device · Private</div>
               </div>
+              <button class="icon-btn chat-reset" type="button" aria-label="Restart demo" id="chat-reset">
+                <svg aria-hidden="true"><use href="/assets/icons.svg#i-repeat"/></svg>
+              </button>
             </div>
-            <div class="chat-demo-body" id="chat-demo-body">
-              <div class="chat-bubble bot">Hello! I'm your local AI. Tell me what you just spent or earned.</div>
+            <div class="chat-body" id="chat-body" aria-live="polite">
+              <div class="bubble bot">Hi! I'm your on-device assistant. Tell me what you spent or earned, or ask about your money.</div>
             </div>
-            <div class="chat-demo-input">
-              <input type="text" id="chat-demo-input-field" placeholder="Select a prompt..." disabled>
-              <button class="send-btn" disabled aria-label="Send message"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></button>
+            <div class="chat-input">
+              <input type="text" id="chat-input" placeholder="Pick a prompt to try…" disabled aria-label="Message">
+              <button class="chat-send" type="button" disabled aria-label="Send"><svg aria-hidden="true"><use href="/assets/icons.svg#i-send"/></svg></button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<!-- ═══ How It Works ═══ -->
-  <section class="section" id="how-it-works">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">How It Works</span>
-        <h2>Track Expenses in <span class="gradient-text">3 Simple Steps</span></h2>
-        <p>No complicated bank syncing. No tedious data entry. Just absolute control over your money.</p>
+    <!-- ═══ How it works ═══ -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 class="h2">Track expenses in three simple steps</h2>
+          <p class="lead">No bank syncing. No spreadsheets. Just clear, calm control over your money.</p>
+        </div>
+        <ol class="steps">
+          <li class="card step reveal">
+            <div class="step-top">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-wallet"/></svg></span>
+              <span class="step-num">STEP 01</span>
+            </div>
+            <h3 class="h3">Add your accounts</h3>
+            <p>Set up checking, savings, credit cards, cash and digital wallets with their opening balances — stored privately on your phone.</p>
+          </li>
+          <li class="card step reveal" style="--d:1">
+            <div class="step-top">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-message"/></svg></span>
+              <span class="step-num">STEP 02</span>
+            </div>
+            <h3 class="h3">Log in seconds</h3>
+            <p>Type “Spent $15 on lunch” and Ask MyWallet categorizes and records it instantly. Or let bank SMS alerts log themselves.</p>
+          </li>
+          <li class="card step reveal" style="--d:2">
+            <div class="step-top">
+              <span class="tile green"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trending"/></svg></span>
+              <span class="step-num">STEP 03</span>
+            </div>
+            <h3 class="h3">Grow your net worth</h3>
+            <p>Stay under your category budgets and watch your assets climb, month after month.</p>
+          </li>
+        </ol>
       </div>
-      <div class="steps-grid">
-        <div class="step-card fade-up">
-          <div class="step-number">01</div>
-          <h3>Create Offline Accounts</h3>
-          <p>Add your checking, savings, credit cards, or cash wallets. Set your starting balances securely.</p>
-        </div>
-        <div class="step-card fade-up">
-          <div class="step-number">02</div>
-          <h3>Log with Chat AI</h3>
-          <p>Type "Spent $15 on lunch" and our local NLP parser categorizes and logs it instantly.</p>
-        </div>
-        <div class="step-card fade-up">
-          <div class="step-number">03</div>
-          <h3>Grow Your Net Worth</h3>
-          <p>Watch your assets climb as you stay under your monthly category budgets.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-<!-- ═══ Features ═══ -->
-  <section class="section bg-alt" id="features">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">Features</span>
-        <h2>Everything You Need to <span class="gradient-text">Master Your Money</span></h2>
-        <p>From AI-driven insights to visualizing spending patterns — MyWallet has you covered.</p>
-      </div>
-                        <div class="feature-carousel" id="feature-carousel">
-        <div class="carousel-tabs">
-          <div class="carousel-tab" data-index="0">
-            <div class="feature-icon purple">🏦</div>
-            <div class="tab-content">
-              <h3>Multi-Account Management</h3>
-              <p>Bank accounts, credit cards, digital wallets — beautifully organized.</p>
+    <!-- ═══ Analytics ═══ -->
+    <section class="section section-soft" id="analytics">
+      <div class="container split">
+        <div class="showcase-visual reveal">
+          <figure class="card chart-card" style="width:100%;max-width:520px">
+            <div class="chart-head">
+              <div>
+                <div class="chart-title">Net worth</div>
+                <div class="chart-value">$29,000</div>
+              </div>
+              <span class="tag green">
+                <svg class="icon-sm" aria-hidden="true"><use href="/assets/icons.svg#i-trending"/></svg>
+                +142% since Jan
+              </span>
             </div>
-          </div>
-          <div class="carousel-tab" data-index="1">
-            <div class="feature-icon blue">🤖</div>
-            <div class="tab-content">
-              <h3>Chat AI Assistant</h3>
-              <p>Log transactions or ask questions in natural language instantly.</p>
+            <div class="chart-wrap" id="nw-chart">
+              <svg class="chart-svg" viewBox="0 0 560 240" role="img" aria-labelledby="nw-desc">
+                <desc id="nw-desc">Line chart of net worth from January to July, rising from $12,000 to $29,000.</desc>
+                <defs>
+                  <linearGradient id="nwFill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="currentColor" stop-opacity="0.16"/>
+                    <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <g class="grid">
+                  <line x1="48" x2="492" y1="16" y2="16"/>
+                  <line x1="48" x2="492" y1="81.3" y2="81.3"/>
+                  <line x1="48" x2="492" y1="146.7" y2="146.7"/>
+                  <line x1="48" x2="492" y1="212" y2="212"/>
+                </g>
+                <g class="axis" aria-hidden="true">
+                  <text x="38" y="20" text-anchor="end">$30K</text>
+                  <text x="38" y="85.3" text-anchor="end">$20K</text>
+                  <text x="38" y="150.7" text-anchor="end">$10K</text>
+                  <text x="38" y="216" text-anchor="end">$0</text>
+                  <text x="48" y="234" text-anchor="middle">Jan</text>
+                  <text x="122" y="234" text-anchor="middle">Feb</text>
+                  <text x="196" y="234" text-anchor="middle">Mar</text>
+                  <text x="270" y="234" text-anchor="middle">Apr</text>
+                  <text x="344" y="234" text-anchor="middle">May</text>
+                  <text x="418" y="234" text-anchor="middle">Jun</text>
+                  <text x="492" y="234" text-anchor="middle">Jul</text>
+                </g>
+                <path class="area" d="M48.0 133.6 C72.7 127.1 97.3 114.0 122.0 114.0 C146.7 114.0 171.3 120.5 196.0 120.5 C220.7 120.5 245.3 103.1 270.0 94.4 C294.7 85.7 319.3 74.8 344.0 68.3 C368.7 61.7 393.3 62.8 418.0 55.2 C442.7 47.6 467.3 33.4 492.0 22.5 L492.0 212 L48.0 212 Z"/>
+                <path class="line" d="M48.0 133.6 C72.7 127.1 97.3 114.0 122.0 114.0 C146.7 114.0 171.3 120.5 196.0 120.5 C220.7 120.5 245.3 103.1 270.0 94.4 C294.7 85.7 319.3 74.8 344.0 68.3 C368.7 61.7 393.3 62.8 418.0 55.2 C442.7 47.6 467.3 33.4 492.0 22.5"/>
+                <line class="cross" x1="0" x2="0" y1="16" y2="212"/>
+                <circle class="end-dot" cx="492" cy="22.5" r="5"/>
+                <text class="end-label" x="502" y="27" aria-hidden="true">$29K</text>
+                <circle class="hover-dot" cx="0" cy="0" r="5"/>
+                <rect class="hit" x="40" y="0" width="460" height="220"/>
+              </svg>
+              <div class="chart-tip" role="presentation"><b></b><span></span></div>
             </div>
-          </div>
-          <div class="carousel-tab" data-index="2">
-            <div class="feature-icon cyan">📊</div>
-            <div class="tab-content">
-              <h3>Smart Analytics</h3>
-              <p>Interactive charts showing spending by category and trends.</p>
+            <table class="sr-only">
+              <caption>Net worth by month</caption>
+              <thead><tr><th scope="col">Month</th><th scope="col">Net worth</th></tr></thead>
+              <tbody>
+                <tr><td>January</td><td>$12,000</td></tr>
+                <tr><td>February</td><td>$15,000</td></tr>
+                <tr><td>March</td><td>$14,000</td></tr>
+                <tr><td>April</td><td>$18,000</td></tr>
+                <tr><td>May</td><td>$22,000</td></tr>
+                <tr><td>June</td><td>$24,000</td></tr>
+                <tr><td>July</td><td>$29,000</td></tr>
+              </tbody>
+            </table>
+            <div class="chart-foot">
+              <div class="chart-stat"><span>This month</span><b class="up">+$5,000</b></div>
+              <div class="chart-stat"><span>Avg. per month</span><b>+$2,833</b></div>
+              <div class="chart-stat"><span>Best month</span><b>July</b></div>
             </div>
-          </div>
-          <div class="carousel-tab" data-index="3">
-            <div class="feature-icon amber">📅</div>
-            <div class="tab-content">
-              <h3>Budgeting System</h3>
-              <p>Set up monthly budgets by category with visual progress bars.</p>
-            </div>
-          </div>
-          <div class="carousel-tab" data-index="4">
-            <div class="feature-icon green">📈</div>
-            <div class="tab-content">
-              <h3>Net Worth Tracker</h3>
-              <p>Automatically calculate and track your true net worth.</p>
-            </div>
-          </div>
-          <div class="carousel-tab" data-index="5">
-            <div class="feature-icon red">🛡️</div>
-            <div class="tab-content">
-              <h3>Secure Vault</h3>
-              <p>AES-256 encrypted partition for highly sensitive data.</p>
-            </div>
-          </div>
+          </figure>
         </div>
-        
-        <div class="carousel-display" data-tilt data-tilt-max="3" data-tilt-speed="400">
-          <div class="phone-frame">
-            <img src="assets/images/Screenshots/Dashboard.webp" alt="Feature showcase" id="carousel-image">
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-<section class="section" id="analytics">
-    <div class="container">
-      <div class="showcase fade-up">
-        <div class="showcase-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
-          <div class="glow"></div>
-          <div class="analytics-chart-container">
-            <canvas id="analyticsChart" height="400"></canvas>
-          </div>
-        </div>
-        <div class="showcase-content">
-          <span class="section-label">Analytics</span>
-          <h2>Understand Where Your <span class="gradient-text">Money Goes</span></h2>
-          <p>Powerful visual analytics help you identify spending patterns and make smarter financial decisions.</p>
-          <ul class="showcase-list">
-            <li><span class="check">✓</span>Spending breakdown by category with interactive donut charts</li>
-            <li><span class="check">✓</span>Monthly income vs. expense trend analysis</li>
-            <li><span class="check">✓</span>Credit card utilization tracking with billing cycles</li>
-            <li><span class="check">✓</span>Loan amortization schedules with EMI details</li>
+        <div class="split-copy reveal" style="--d:1">
+          <span class="eyebrow">Analytics</span>
+          <h2 class="h2">Understand where your money goes</h2>
+          <p class="lead">Clear, interactive charts help you spot spending patterns and make smarter financial decisions — without exporting a single spreadsheet.</p>
+          <ul class="checklist">
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>Spending breakdown by category with interactive donut charts</li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>Monthly income vs. expense trend analysis</li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>Credit card utilization tracking with billing cycles</li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>Loan amortization schedules with EMI details</li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<!-- ═══ Showcase — Cards ═══ -->
-  <section class="section bg-alt">
-    <div class="container">
-      <div class="showcase reverse fade-up">
-        <div class="showcase-image premium-isometric-wrapper" data-tilt data-tilt-max="10" data-tilt-speed="400">
-          <div class="glow" style="background:rgba(139,92,246,0.3); bottom:20%; right:20%;"></div>
-          <div class="premium-isometric css-phone">
-            <div class="notch"></div>
-            <img src="assets/images/Screenshots/Accounts-Cards.webp" alt="Premium account cards UI" class="img-dark-mode">
-            <img src="assets/images/Screenshots/Accounts-Cards-Light.webp" alt="Premium account cards UI Light" class="img-light-mode">
+    <!-- ═══ Design ═══ -->
+    <section class="section" id="design">
+      <div class="container split copy-first">
+        <div class="split-copy reveal">
+          <span class="eyebrow">Premium design</span>
+          <h2 class="h2">A finance app you’ll actually enjoy opening</h2>
+          <p class="lead">Every screen is crafted with liquid depth, smooth gestures and satisfying feedback, so checking on your money feels calm — not like a chore.</p>
+          <ul class="checklist">
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>Liquid glass panels.</strong> Frosted surfaces with soft, dynamic ambient depth.</span></li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>Jewel-tone cards.</strong> Rich gradients and stacked card interactions for every account.</span></li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>Kinetic motion.</strong> Fluid micro-animations and haptic feedback on every tap.</span></li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>Adaptive themes.</strong> A flawless switch between deep dark and brilliant light.</span></li>
+          </ul>
+        </div>
+        <div class="showcase-visual reveal" style="--d:2">
+          <div class="device tilt">
+            <span class="device-island" aria-hidden="true"></span>
+            <div class="device-screen">
+              <img src="/assets/images/Screenshots/Accounts-Cards.webp" width="1264" height="2780" alt="Stacked account cards in MyWallet's dark theme" class="only-dark" loading="lazy" decoding="async">
+              <img src="/assets/images/Screenshots/Accounts-Cards-Light.webp" width="1264" height="2780" alt="Stacked account cards in MyWallet's light theme" class="only-light" loading="lazy" decoding="async">
+            </div>
           </div>
         </div>
-        <div class="showcase-content">
-          <span class="section-label">Premium Design</span>
-          <h2>A Masterclass in <span class="gradient-text">UI/UX</span></h2>
-          <p>MyWallet isn't just functional; it's a joy to use. Every pixel is crafted with liquid depth, smooth gestures, and satisfying feedback to make managing money feel effortless.</p>
-          <ul class="showcase-list">
-            <li><span class="check">✓</span> <span><strong>Glassmorphism UI:</strong> Stunning frosted glass panels with dynamic ambient glows.</span></li>
-            <li><span class="check">✓</span> <span><strong>Apple-Inspired Cards:</strong> Jewel-tone gradients and stacked card interactions.</span></li>
-            <li><span class="check">✓</span> <span><strong>Kinetic Motion:</strong> Fluid micro-animations and satisfying haptic feedback on every tap.</span></li>
-            <li><span class="check">✓</span> <span><strong>Adaptive Themes:</strong> A flawless transition between ultra-dark and brilliant light modes.</span></li>
+      </div>
+    </section>
+
+    <!-- ═══ Feature grid ═══ -->
+    <section class="section" id="more-features">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">And so much more</span>
+          <h2 class="h2">A deep toolkit, without the clutter</h2>
+          <p class="lead">From shared family accounts to tax season, MyWallet covers the details so you don’t have to.</p>
+        </div>
+        <div class="fgrid reveal">
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-users"/></svg></span>
+            <h3>Shared accounts <span class="tag accent">New</span></h3>
+            <p>Invite family to one account. Everyone sees the same balance and who added what.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sms"/></svg></span>
+            <h3>Bank SMS auto-capture</h3>
+            <p>Optionally record bank and mobile-wallet alerts automatically — processed on-device.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-repeat"/></svg></span>
+            <h3>Subscriptions & bills</h3>
+            <p>Spot recurring charges and see what’s due before it’s due.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-target"/></svg></span>
+            <h3>Savings goals</h3>
+            <p>Sinking funds and virtual envelopes for everything you’re saving toward.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-landmark"/></svg></span>
+            <h3>Loans & EMI</h3>
+            <p>Principal, interest, tenure and amortization schedules at a glance.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-card"/></svg></span>
+            <h3>Credit cards</h3>
+            <p>Billing cycles, utilization and due dates — with one-tap payments.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-coins"/></svg></span>
+            <h3>Multi-currency</h3>
+            <p>Accounts in any currency, converted at current exchange rates.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-file"/></svg></span>
+            <h3>Tax reports</h3>
+            <p>Flag deductible expenses and review them grouped by category.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-chart"/></svg></span>
+            <h3>Spending insights</h3>
+            <p>Monthly recaps, merchant analysis and spending forecasts.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-fingerprint"/></svg></span>
+            <h3>Biometric lock</h3>
+            <p>Lock the app with your fingerprint or PIN.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cloud"/></svg></span>
+            <h3>Google Drive backup</h3>
+            <p>Private backups in your own Drive, restored in a tap.</p>
+          </div>
+          <div class="fcell">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-palette"/></svg></span>
+            <h3>Light & dark themes</h3>
+            <p>Beautiful in both — or follow your phone’s setting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Privacy ═══ -->
+    <section class="section" id="security">
+      <div class="container">
+        <div class="vault reveal">
+          <div>
+            <span class="eyebrow">Privacy by design</span>
+            <h2 class="h2">Your financial data stays with you</h2>
+            <p class="lead">MyWallet is built offline-first on a local ObjectBox database, with AES-256 encryption for your most sensitive data. No servers to breach, no tracking, no compromises.</p>
+            <a href="/privacy/" class="link-arrow">Read the privacy policy <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+          </div>
+          <div class="vault-grid">
+            <div class="vault-item">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-phone"/></svg></span>
+              <h3>On your phone by default</h3>
+              <p>Transactions, budgets and goals live on your device. Nothing leaves it unless you choose to back up or share.</p>
+            </div>
+            <div class="vault-item">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkles"/></svg></span>
+              <h3>On-device AI</h3>
+              <p>Ask MyWallet runs on your phone. Your questions are never sent to a cloud AI provider.</p>
+            </div>
+            <div class="vault-item">
+              <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-key"/></svg></span>
+              <h3>AES-256 Secure Vault</h3>
+              <p>Keep PINs and other sensitive notes encrypted at rest with AES-256, separate from everything else.</p>
+            </div>
+            <div class="vault-item">
+              <span class="tile green"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-ban"/></svg></span>
+              <h3>Zero ads & trackers</h3>
+              <p>No advertising, no analytics trackers, no third-party data sharing. Your finances are nobody’s business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Data independence ═══ -->
+    <section class="section" id="data-independence">
+      <div class="container split">
+        <div class="showcase-visual reveal">
+          <div class="card export" role="img" aria-label="Export center listing a CSV transaction history, a PDF tax report and an encrypted JSON backup">
+            <div class="export-head" aria-hidden="true">
+              <b>Export center</b>
+              <span class="export-dots"><i></i><i></i><i></i></span>
+            </div>
+            <div class="export-list" aria-hidden="true">
+              <div class="export-row">
+                <span class="ext csv">CSV</span>
+                <span class="meta"><b>Transactions.csv</b><span>12.4 KB · Full history</span></span>
+                <svg><use href="/assets/icons.svg#i-download"/></svg>
+              </div>
+              <div class="export-row">
+                <span class="ext pdf">PDF</span>
+                <span class="meta"><b>Tax_Report_2026.pdf</b><span>1.2 MB · Summary</span></span>
+                <svg><use href="/assets/icons.svg#i-download"/></svg>
+              </div>
+              <div class="export-row">
+                <span class="ext json">JSON</span>
+                <span class="meta"><b>Wallet_Backup.json</b><span>256 KB · Encrypted</span></span>
+                <svg><use href="/assets/icons.svg#i-download"/></svg>
+              </div>
+            </div>
+            <div class="export-btn" aria-hidden="true">Export data</div>
+          </div>
+        </div>
+        <div class="split-copy reveal" style="--d:1">
+          <span class="eyebrow">Data independence</span>
+          <h2 class="h2">Your data, your rules</h2>
+          <p class="lead">No vendor lock-in. Your financial history is yours to keep, export and analyze however you like.</p>
+          <ul class="checklist">
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>Universal CSV export.</strong> Your entire transaction history in Excel or Google Sheets, in one tap.</span></li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>PDF reports.</strong> Clean summaries for tax season or your accountant.</span></li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>JSON backups.</strong> Full encrypted snapshots to move devices or keep cold-storage copies.</span></li>
+            <li><span class="check"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span><span><strong>Private Drive backup.</strong> Optional backups to a folder only MyWallet can read.</span></li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<!-- ═══ Personas ═══ -->
-  <section class="section" id="personas">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">Use Cases</span>
-        <h2>Who is MyWallet <span class="gradient-text">Built For?</span></h2>
-      </div>
-      <div class="personas-grid">
-        <div class="persona-card fade-up">
-          <div class="persona-icon">🧑‍💻</div>
-          <h3>The Casual Tracker</h3>
-          <p>You want to know where your money goes each month without complicated spreadsheets. Use the AI Assistant to log expenses in seconds and visually track your progress against monthly budgets.</p>
+    <!-- ═══ Personas ═══ -->
+    <section class="section section-soft" id="personas">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Use cases</span>
+          <h2 class="h2">Built for the way you manage money</h2>
         </div>
-        <div class="persona-card fade-up">
-          <div class="persona-icon">📈</div>
-          <h3>The Wealth Builder</h3>
-          <p>You are actively managing a mortgage, investments, and sinking funds. Use our Net Worth Tracker, Loan Amortization tools, and Multi-Currency support to get a complete picture of your financial empire.</p>
-        </div>
-        <div class="persona-card fade-up">
-          <div class="persona-icon">🕵️</div>
-          <h3>The Privacy Advocate</h3>
-          <p>You refuse to link your bank credentials to third-party cloud apps. Enjoy 100% local storage, biometric app locks, an encrypted Secure Vault, and zero advertising trackers.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- ═══ Comparison Table ═══ -->
-  <section class="section bg-alt" id="comparison">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">Why Choose Us</span>
-        <h2>MyWallet vs. <span class="gradient-text">The Other Guys</span></h2>
-      </div>
-      <div class="comparison-table-wrapper fade-up">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th class="highlight-col">MyWallet</th>
-              <th>Typical Budget Apps</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Data Privacy</td>
-              <td class="highlight-col"><span class="check">✓</span> 100% Local Storage</td>
-              <td><span class="cross">✕</span> Sold to 3rd Parties</td>
-            </tr>
-            <tr>
-              <td>Cost</td>
-              <td class="highlight-col"><span class="check">✓</span> Free Forever</td>
-              <td><span class="cross">✕</span> $8-$15 / Month</td>
-            </tr>
-            <tr>
-              <td>Ads & Tracking</td>
-              <td class="highlight-col"><span class="check">✓</span> Zero Ads</td>
-              <td><span class="cross">✕</span> Targeted Ads</td>
-            </tr>
-            <tr>
-              <td>Bank Sync</td>
-              <td class="highlight-col"><span class="check">✓</span> Manual & AI Parsed</td>
-              <td><span class="cross">✕</span> Plaid Required</td>
-            </tr>
-            <tr>
-              <td>AI Capabilities</td>
-              <td class="highlight-col"><span class="check">✓</span> Offline Natural Language NLP</td>
-              <td><span class="cross">✕</span> Cloud-based processing</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-<!-- ═══ Security & Privacy ═══ -->
-  
-  
-
-  
-  
-
-  <section class="section" id="security">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">Absolute Data Sovereignty</span>
-        <h2>Your Financial Data Stays <span class="gradient-text">With You</span></h2>
-        <p>MyWallet is built on an offline-first architecture using ObjectBox NoSQL and AES-256 encryption. No servers, no tracking, no compromises.</p>
-      </div>
-      <div class="trust-grid fade-up">
-        <div class="trust-card">
-          <div class="icon">🔒</div>
-          <h3>100% Local Storage</h3>
-          <p>All financial data is stored on your device only. Nothing ever leaves your phone without your explicit action.</p>
-        </div>
-        <div class="trust-card">
-          <div class="icon">☁️</div>
-          <h3>Encrypted Backups</h3>
-          <p>Optional Google Drive backup keeps your data safe. You control when and where your data is stored.</p>
-        </div>
-        <div class="trust-card">
-          <div class="icon">🚫</div>
-          <h3>Zero Ads & Tracking</h3>
-          <p>No advertisements. No analytics trackers. No third-party data sharing. Your finances are nobody's business.</p>
+        <div class="personas">
+          <article class="card persona reveal">
+            <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"/></svg></span>
+            <h3 class="h3">The Casual Tracker</h3>
+            <p>You want to know where your money goes each month without complicated spreadsheets. Log expenses in seconds with Ask MyWallet and watch your progress against monthly budgets.</p>
+            <div class="uses"><span class="tag">Ask MyWallet</span><span class="tag">Budgets</span><span class="tag">Analytics</span></div>
+          </article>
+          <article class="card persona reveal" style="--d:1">
+            <span class="tile green"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trending"/></svg></span>
+            <h3 class="h3">The Wealth Builder</h3>
+            <p>You’re managing a mortgage, investments and sinking funds. Get the complete picture with the Net Worth Tracker, loan amortization tools and multi-currency support.</p>
+            <div class="uses"><span class="tag">Net worth</span><span class="tag">Loans</span><span class="tag">Multi-currency</span></div>
+          </article>
+          <article class="card persona reveal" style="--d:2">
+            <span class="tile gold"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-shield"/></svg></span>
+            <h3 class="h3">The Privacy Advocate</h3>
+            <p>You refuse to hand your bank credentials to third-party cloud apps. Enjoy local storage, biometric app lock, an encrypted Secure Vault and zero advertising trackers.</p>
+            <div class="uses"><span class="tag">Secure Vault</span><span class="tag">App lock</span><span class="tag">Offline</span></div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<!-- ═══ Data Independence ═══ -->
-  <section class="section bg-alt" id="data-independence">
-    <div class="container">
-      <div class="showcase fade-up">
-        <div class="showcase-content" style="order: 2;">
-          <span class="section-label">Data Independence</span>
-          <h2>Your Data, <span class="gradient-text">Your Rules</span></h2>
-          <p>We believe in absolute freedom from vendor lock-in. Your financial history is yours to keep, export, and analyze however you see fit.</p>
-          <ul class="showcase-list">
-            <li><span class="check">✓</span> <span><strong>Universal CSV Export:</strong> Export your entire transaction history to Excel or Google Sheets in one tap.</span></li>
-            <li><span class="check">✓</span> <span><strong>PDF Reports:</strong> Generate beautiful PDF summaries for tax seasons or accountants.</span></li>
-            <li><span class="check">✓</span> <span><strong>JSON Backups:</strong> Create full encrypted snapshots to easily migrate devices or keep cold storage backups.</span></li>
-          </ul>
+    <!-- ═══ Comparison ═══ -->
+    <section class="section" id="comparison">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Why MyWallet</span>
+          <h2 class="h2">MyWallet vs. typical budget apps</h2>
         </div>
-        <div class="showcase-image" style="order: 1;">
-          <div class="glow" style="background:rgba(99,102,241,0.3); top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-          
-          <div class="export-center-card">
-            <!-- Inner Glow -->
-            <div class="export-inner-glow"></div>
-            
-            <div class="export-header">
-              <h4 class="export-title">Export Center</h4>
-              <div class="export-dots">
-                <div class="export-dot export-dot-red"></div>
-                <div class="export-dot export-dot-yellow"></div>
-                <div class="export-dot export-dot-green"></div>
+        <div class="card compare reveal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col" class="us"><span class="us-head"><img src="/assets/logos/mywallet_logo(favicon).svg" alt="" width="22" height="22">MyWallet</span></th>
+                <th scope="col">Typical budget apps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Where your data lives</th>
+                <td class="us" data-label="MyWallet"><span class="cell"><span class="yes"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>On your phone</span></td>
+                <td class="them" data-label="Typical budget apps"><span class="cell"><span class="no"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg></span>On their servers</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Price</th>
+                <td class="us" data-label="MyWallet"><span class="cell"><span class="yes"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>Free, with optional Plus</span></td>
+                <td class="them" data-label="Typical budget apps"><span class="cell"><span class="no"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg></span>$8–$15 / month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Ads & tracking</th>
+                <td class="us" data-label="MyWallet"><span class="cell"><span class="yes"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>None, ever</span></td>
+                <td class="them" data-label="Typical budget apps"><span class="cell"><span class="no"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg></span>Targeted ads & trackers</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Bank connection</th>
+                <td class="us" data-label="MyWallet"><span class="cell"><span class="yes"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>Not needed — manual, AI or SMS</span></td>
+                <td class="them" data-label="Typical budget apps"><span class="cell"><span class="no"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg></span>Bank login via Plaid</span></td>
+              </tr>
+              <tr>
+                <th scope="row">AI processing</th>
+                <td class="us" data-label="MyWallet"><span class="cell"><span class="yes"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg></span>On-device, offline</span></td>
+                <td class="them" data-label="Typical budget apps"><span class="cell"><span class="no"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg></span>Sent to the cloud</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Testimonials ═══ -->
+    <section class="section section-soft" id="testimonials">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Early feedback</span>
+          <h2 class="h2">What early users are saying</h2>
+          <p class="lead">Notes from our early-access community.</p>
+        </div>
+        <div class="reviews">
+          <figure class="card review reveal">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></div>
+            <blockquote>“Finally an app that doesn’t ask for my bank credentials. The local AI parsing is shockingly fast.”</blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">ST</span><span><b>Sarah T.</b><span>Privacy advocate</span></span></figcaption>
+          </figure>
+          <figure class="card review reveal" style="--d:1">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></div>
+            <blockquote>“The Net Worth tracker is beautiful. Love being able to track my crypto and physical assets offline.”</blockquote>
+            <figcaption><span class="avatar g" aria-hidden="true">MD</span><span><b>Mark D.</b><span>Wealth builder</span></span></figcaption>
+          </figure>
+          <figure class="card review reveal" style="--d:2">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></div>
+            <blockquote>“No subscription fee! I’ve been looking for a free, premium alternative to YNAB for years.”</blockquote>
+            <figcaption><span class="avatar y" aria-hidden="true">JM</span><span><b>Jessica M.</b><span>Student</span></span></figcaption>
+          </figure>
+          <figure class="card review reveal">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></div>
+            <blockquote>“The liquid depth design on the cards is stunning. Easily the best-looking finance app on Android.”</blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">AR</span><span><b>Alex R.</b><span>UI designer</span></span></figcaption>
+          </figure>
+          <figure class="card review reveal" style="--d:1">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></div>
+            <blockquote>“I love how the categories auto-sort based on my SMS receipts. It saves me hours of manual logging.”</blockquote>
+            <figcaption><span class="avatar g" aria-hidden="true">MC</span><span><b>Michael C.</b><span>Freelancer</span></span></figcaption>
+          </figure>
+          <figure class="card review reveal" style="--d:2">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></div>
+            <blockquote>“The dark mode is perfect. A truly premium experience that makes managing money feel effortless.”</blockquote>
+            <figcaption><span class="avatar y" aria-hidden="true">EK</span><span><b>Emily K.</b><span>Entrepreneur</span></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-aside reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="h2">Questions, answered</h2>
+          <p class="lead">Everything you need to know about privacy, AI and backups.</p>
+          <a href="/help/" class="btn btn-secondary">
+            Visit the Help Center
+            <svg class="icon-sm nudge" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+          </a>
+        </div>
+        <div class="accordion reveal" style="--d:1">
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Is my financial data stored in the cloud?<span class="acc-icon" aria-hidden="true"><svg><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>No. MyWallet is built offline-first: your financial data is stored on your device in a high-performance local database, and we don’t transmit it to our servers. The only exception is an account you choose to share with people you invite — that account is stored in the cloud so they can see it.</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Can I use MyWallet without linking my bank account?<span class="acc-icon" aria-hidden="true"><svg><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>Yes. MyWallet never asks for your bank login. Add transactions manually, type them in plain language with Ask MyWallet, or turn on optional bank SMS auto-capture, which runs entirely on your phone.</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">How does the AI Assistant work offline?<span class="acc-icon" aria-hidden="true"><svg><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>Ask MyWallet uses a natural language processing (NLP) engine that parses your free-text input 100% on your device. Your questions and entries are never sent to a cloud AI provider.</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Is MyWallet free?<span class="acc-icon" aria-hidden="true"><svg><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>Yes. MyWallet is free to download and use, with no ads. MyWallet Plus is an optional subscription, bought through Google Play, that you can cancel at any time.</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Can I share an account with my family?<span class="acc-icon" aria-hidden="true"><svg><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>Yes. Invite people you trust to one of your accounts with a one-time code. They see that account and its confirmed transactions — nothing else of yours. You can change roles, remove people or stop sharing at any time.</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">How do I back up my data?<span class="acc-icon" aria-hidden="true"><svg><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>You’re in control. Export your data at any time, or turn on Google Drive backup, which saves to a private App Data folder that only MyWallet can access.</p></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="section section-tight" id="download">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 class="h2">Take control of your money today.</h2>
+            <p class="lead">MyWallet is free on Google Play. No ads, no bank logins, no strings attached.</p>
+            <div class="cta-actions">
+              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Download MyWallet on Google Play">
+                <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+                <span><small>Get it on</small><strong>Google Play</strong></span>
+              </a>
+              <span class="cta-note">Requires Android 8.0 or later</span>
+            </div>
+          </div>
+          <div class="cta-device" aria-hidden="true">
+            <div class="device">
+              <span class="device-island"></span>
+              <div class="device-screen">
+                <img src="/assets/images/Screenshots/Net-Worth.webp" width="1264" height="2780" alt="" loading="lazy" decoding="async">
               </div>
             </div>
-
-            <div class="export-body">
-              <!-- CSV -->
-              <div class="export-item">
-                 <div class="export-item-info">
-                   <div class="export-icon-box export-icon-csv">CSV</div>
-                   <div>
-                     <div class="export-file-name">Transactions.csv</div>
-                     <div class="export-file-size">12.4 KB • Full History</div>
-                   </div>
-                 </div>
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="export-download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              </div>
-
-              <!-- PDF -->
-              <div class="export-item">
-                 <div class="export-item-info">
-                   <div class="export-icon-box export-icon-pdf">PDF</div>
-                   <div>
-                     <div class="export-file-name">Tax_Report_2026.pdf</div>
-                     <div class="export-file-size">1.2 MB • Summary</div>
-                   </div>
-                 </div>
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="export-download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              </div>
-
-              <!-- JSON -->
-              <div class="export-item">
-                 <div class="export-item-info">
-                   <div class="export-icon-box export-icon-json">JSON</div>
-                   <div>
-                     <div class="export-file-name">Wallet_Backup.json</div>
-                     <div class="export-file-size">256 KB • Encrypted</div>
-                   </div>
-                 </div>
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="export-download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              </div>
-            </div>
-            <button class="btn-primary export-btn">Export Data Now</button>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-<!-- ═══ Testimonial Carousel ═══ -->
-  <section class="section testimonial-section" id="testimonials">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">Feedback</span>
-        <h2>Loved by <span class="gradient-text">Thousands</span></h2>
-        <p>See what our early access users have to say about the MyWallet experience.</p>
-      </div>
-      
-      <div class="testimonial-carousel" id="testimonial-carousel">
-        <!-- Page 1 -->
-        <div class="testimonial-page active">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>"Finally an app that doesn't ask for my bank credentials. The local AI parsing is shockingly fast."</p>
-            <div class="review-author">Sarah T., Privacy Advocate</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>"The Net Worth tracker is beautiful. Love being able to track my crypto and physical assets offline."</p>
-            <div class="review-author">Mark D., Wealth Builder</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>"No subscription fee! I've been looking for a free, premium alternative to YNAB for years."</p>
-            <div class="review-author">Jessica M., Student</div>
-          </div>
-        </div>
-        
-        <!-- Page 2 -->
-        <div class="testimonial-page">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>"The liquid depth design on the cards is stunning. Easily the best looking finance app on Android."</p>
-            <div class="review-author">Alex R., UI Designer</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>"I love how the categories auto-sort based on my SMS receipts. It saves me hours of manual logging."</p>
-            <div class="review-author">Michael C., Freelancer</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>"The dark mode is perfect. A truly premium experience that makes managing money feel effortless."</p>
-            <div class="review-author">Emily K., Entrepeneur</div>
-          </div>
-        </div>
-        
-      </div>
-      
-      <!-- Carousel Indicators -->
-      <div class="carousel-indicators" id="testimonial-indicators">
-        <div class="indicator active" data-index="0"></div>
-        <div class="indicator" data-index="1"></div>
-      </div>
-    </div>
-  </section>
-
-<!-- ═══ FAQ ═══ -->
-  <section class="section bg-alt" id="faq">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label">FAQ</span>
-        <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
-      </div>
-      <div class="faq-list fade-up">
-        <div class="faq-item">
-          <button class="faq-question">Is my financial data stored in the cloud?<span class="icon">+</span></button>
-          <div class="faq-answer">
-            <p>Absolutely not. MyWallet is built on an "Offline-First" philosophy. All your financial data is stored securely on your local device using a high-performance NoSQL database. We do not transmit your data to our servers.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Can I use MyWallet without linking my bank account?<span class="icon">+</span></button>
-          <div class="faq-answer">
-            <p>Yes! MyWallet requires absolutely no bank synchronization. You can manually enter transactions or use our local AI parser to log them using natural language.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How does the AI Assistant work offline?<span class="icon">+</span></button>
-          <div class="faq-answer">
-            <p>The AI Assistant features a natural language processing (NLP) engine that parses your free-text input. This processing happens 100% locally on your device without sending your queries to external cloud AI providers.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How do I back up my data?<span class="icon">+</span></button>
-          <div class="faq-answer">
-            <p>You have full control. You can manually export your database, or opt-in to encrypted Google Drive backups which save your data in a private App Data folder accessible only by you.</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-4 fade-up">
-        <br>
-        <a href="/help/" class="btn-secondary">View All FAQs</a>
-      </div>
-    </div>
-  </section>
-
-<!-- ═══ CTA ═══ -->
-  <section class="section cta-section" id="download">
-    <div class="cta-glow"></div>
-    <div class="container fade-up">
-      <h2>Ready to Take Control of Your <span class="gradient-text">Finances</span>?</h2>
-      <p>MyWallet is free on Google Play — no ads, no subscriptions, no hidden costs. Download today.</p>
-      <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" target="_blank" class="btn-primary btn-beta-glow" aria-label="Download MyWallet on Google Play">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-        Get it on Google Play
-      </a>
-    </div>
-  </section>
-
-    
-
-  <!-- ═══ Back to Top ═══ -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
+    </section>
+  </main>
 
   <!-- ═══ Footer ═══ -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo">
-            <img src="assets/logos/mywallet_logo(web_dark).svg" alt="MyWallet Logo" class="logo-dark">
-            <img src="assets/logos/mywallet_logo(web).svg" alt="MyWallet Logo" class="logo-light">
-          </div>
-          <p>MyWallet is a premium Finance App available on Google Play. Whether you search for mywallet, MYWALLET, or a top fintech app, our offline-first approach ensures your money stays beautifully managed and 100% private.</p>
-        </div>
-                <div class="footer-col">
-          <h4>Product</h4>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#features">Features</a>
-          <a href="#analytics">Analytics</a>
-          <a href="#security">Security</a>
-          <a href="#faq">FAQ</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="/privacy/">Privacy Policy</a>
-          <a href="/terms/">Terms of Service</a>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <a href="/help/">Help & FAQ</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=ATM" target="_blank" rel="noopener">Find ATM</a>
-          <a href="mailto:mywalletapps@gmail.com">Contact Us</a>
-          <a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener">Facebook Page</a>
-          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" target="_blank" class="store-badge" style="margin-top: 15px;">
-            <svg viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg" width="135" height="40" style="background:#000;border-radius:6px;border:1px solid #a6a6a6;">
-              <g transform="translate(10, 8)">
-                <!-- simplified play store icon -->
-                <path fill="#00E676" d="M1.3 1.1l11.5 11.5-11.5 11.5z"/>
-                <path fill="#29B6F6" d="M1.3 1.1l15.3 8.7-3.8 2.8z"/>
-                <path fill="#FF1744" d="M1.3 24.1l15.3-8.7-3.8-2.8z"/>
-                <path fill="#FFC107" d="M12.8 12.6l3.8-2.8 4.2 2.4-4.2 2.4z"/>
-              </g>
-              <text x="35" y="15" fill="#fff" font-size="8" font-family="sans-serif">GET IT ON</text>
-              <text x="35" y="28" fill="#fff" font-size="14" font-weight="bold" font-family="sans-serif">Google Play</text>
-            </svg>
+          <a href="/" aria-label="MyWallet home">
+            <img src="/assets/logos/mywallet_logo(web).svg" alt="MyWallet" class="logo only-light" width="128" height="34">
+            <img src="/assets/logos/mywallet_logo(web_dark).svg" alt="MyWallet" class="logo only-dark" width="128" height="34">
+          </a>
+          <p>A private, offline-first finance app for Android. Track spending, budgets and net worth — beautifully.</p>
+          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge sm" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
+            <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
           </a>
         </div>
+        <nav class="footer-col" aria-label="Product">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#security">Privacy & security</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Support">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="/help/">Help Center</a></li>
+            <li><a href="mailto:mywalletapps@gmail.com">Contact us</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&query=ATM" target="_blank" rel="noopener">Find an ATM</a></li>
+            <li><a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/delete-account/">Delete account</a></li>
+          </ul>
+        </nav>
       </div>
       <div class="footer-bottom">
         <span>© 2026 MyWallet by <a href="https://mdrahim.com">MD Rahim</a>. All rights reserved.</span>
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener" aria-label="Facebook Page" class="premium-social-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/>
-            </svg>
-          </a>
+        <div class="socials">
+          <a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener" aria-label="MyWallet on Facebook"><svg aria-hidden="true"><use href="/assets/icons.svg#i-facebook"/></svg></a>
         </div>
       </div>
     </div>
   </footer>
 
-  
-  <div class="mouse-spotlight"></div>
-
-  <!-- Third Party Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-
-  <!-- ═══ Futuristic Theme Toggle Button ═══ -->
-  <button class="theme-floating-btn" id="theme-button" aria-label="Toggle light/dark mode">
-    <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" /></svg>
-    <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" /></svg>
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top">
+    <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up"/></svg>
   </button>
 
-  <script src="js/main.js?v=1.4"></script>
+  <script src="/js/main.js?v=2.0" defer></script>
 </body>
 </html>

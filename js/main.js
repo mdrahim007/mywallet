@@ -1,673 +1,465 @@
-/* MyWallet Website — Interactions */
-document.addEventListener('DOMContentLoaded', () => {
-  // ── Touch Device Detection ──
-  const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+/* MyWallet website — interactions (no dependencies) */
+(() => {
+  'use strict';
 
-  // ── Futuristic Floating Theme Toggle ──
-  const themeBtn = document.getElementById('theme-button');
-  const savedTheme = localStorage.getItem('mywallet-theme');
-  
-  if (savedTheme === 'light') {
-    document.body.setAttribute('data-theme', 'light');
-  }
+  const root = document.documentElement;
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const ICONS = '/assets/icons.svg';
+  const icon = (id, cls = 'icon') => `<svg class="${cls}" aria-hidden="true"><use href="${ICONS}#${id}"/></svg>`;
 
-  if (themeBtn) {
-    const toggleTheme = () => {
-      const isLight = document.body.getAttribute('data-theme') === 'light';
-      if (isLight) {
-        document.body.removeAttribute('data-theme');
-        localStorage.setItem('mywallet-theme', 'dark');
+  const store = {
+    get(key) { try { return localStorage.getItem(key); } catch (e) { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (e) { /* storage unavailable */ } }
+  };
+
+  /* ── Theme ─────────────────────────────────────────────── */
+  const isDark = () => {
+    const t = root.getAttribute('data-theme');
+    return t ? t === 'dark' : systemDark.matches;
+  };
+  const applyTheme = (theme) => {
+    root.setAttribute('data-theme', theme);
+    store.set('mywallet-theme', theme);
+  };
+  $$('.theme-toggle').forEach((btn) => {
+    const label = () => btn.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme');
+    label();
+    btn.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      if (document.startViewTransition && !reducedMotion.matches) {
+        document.startViewTransition(() => applyTheme(next));
       } else {
-        document.body.setAttribute('data-theme', 'light');
-        localStorage.setItem('mywallet-theme', 'light');
+        applyTheme(next);
       }
-    };
-
-    themeBtn.addEventListener('click', () => {
-      // Use View Transitions API if supported for an ultra-smooth crossfade
-      if (document.startViewTransition) {
-        document.startViewTransition(toggleTheme);
-      } else {
-        toggleTheme();
-      }
+      label();
     });
+    systemDark.addEventListener?.('change', label);
+  });
+
+  /* ── Navigation ────────────────────────────────────────── */
+  const nav = $('#nav');
+  const navToggle = $('.nav-toggle');
+  const mobileMenu = $('#mobile-menu');
+
+  const setMenu = (open) => {
+    if (!nav || !navToggle) return;
+    nav.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // ── Navbar scroll effect & Scroll Spy ──
-  const navbar = document.querySelector('.navbar');
-  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
-  const sections = Array.from(navLinks).map(a => {
-    try { return document.querySelector(a.getAttribute('href')); }
-    catch { return null; }
-  }).filter(Boolean);
-
-  if (navbar) {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      navbar.classList.toggle('scrolled', scrollY > 40);
-
-      let currentSection = '';
-      sections.forEach(sec => {
-        if ((sec.offsetTop - 150) <= scrollY) {
-          currentSection = sec.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (currentSection && a.getAttribute('href') === `#${currentSection}`) {
-          a.classList.add('active');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Trigger immediately on load to catch mid-page reloads
-    handleScroll();
-  }
-
-  // ── Mobile nav toggle ──
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', (e) => {
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      links.classList.toggle('open');
-      toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
+      setMenu(!nav.classList.contains('is-open'));
     });
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.textContent = '☰';
-    }));
-    
-    // Close dropdown when clicking outside
+    $$('a', mobileMenu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', (e) => {
-      if (links.classList.contains('open') && !toggle.contains(e.target) && !links.contains(e.target)) {
-        links.classList.remove('open');
-        toggle.textContent = '☰';
-      }
+      if (nav.classList.contains('is-open') && !mobileMenu.contains(e.target) && !nav.contains(e.target)) setMenu(false);
     });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); navToggle.focus(); }
+    });
+    window.matchMedia('(min-width: 961px)').addEventListener?.('change', (mq) => { if (mq.matches) setMenu(false); });
   }
 
-  // ── Scroll reveal (fade-up) ──
-  const faders = document.querySelectorAll('.fade-up');
-  if (faders.length && 'IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    faders.forEach(el => obs.observe(el));
-  } else {
-    faders.forEach(el => el.classList.add('visible'));
+  /* Scroll spy for in-page nav links */
+  const spyLinks = $$('.nav-links a[href^="#"]');
+  const spyTargets = spyLinks.map((a) => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  if (spyTargets.length && 'IntersectionObserver' in window) {
+    const visible = new Map();
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((en) => visible.set(en.target.id, en.isIntersecting));
+      const current = spyTargets.find((t) => visible.get(t.id));
+      spyLinks.forEach((a) => {
+        const on = current && a.getAttribute('href') === `#${current.id}`;
+        a.classList.toggle('is-active', !!on);
+        if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    spyTargets.forEach((t) => spy.observe(t));
   }
 
-
-  // ── Smooth scroll for anchor links ──
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const href = a.getAttribute('href');
-      const target = document.querySelector(href);
-      if (target) { 
-        e.preventDefault(); 
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
-        // We purposely DO NOT update the address bar here to keep it clean.
-      }
-    });
+  /* In-page anchors: smooth scroll, keep the address bar clean, move focus */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
   });
 
-  // ── Clean URL on Load ──
-  // If the user arrived from another page via a link like /#features, 
-  // we wait for the browser to jump to that section, then silently wipe the hash from the address bar.
   if (window.location.hash) {
-    setTimeout(() => {
-      history.replaceState(null, null, window.location.pathname);
-    }, 100);
+    // Arrived via /#section from another page: let the browser jump, then tidy the URL.
+    setTimeout(() => history.replaceState(null, '', window.location.pathname + window.location.search), 120);
   }
 
-
-
-  // ── Checkbox → Enable/Disable Submit Button ──
-  const agreeCheckbox = document.getElementById('agreeTerms');
-  const submitBtn = document.getElementById('beta-submit-btn');
-  if (agreeCheckbox && submitBtn) {
-    agreeCheckbox.addEventListener('change', () => {
-      submitBtn.disabled = !agreeCheckbox.checked;
-    });
-  }
-
-  // ── Animated Number Counters ──
-  const counters = document.querySelectorAll('.counter');
-  if (counters.length && 'IntersectionObserver' in window) {
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = +el.getAttribute('data-target');
-          const suffix = el.getAttribute('data-suffix') || '';
-          
-          if (target === 0) {
-            el.innerText = "0" + suffix;
-            counterObs.unobserve(el);
-            return;
-          }
-
-          const splash = document.getElementById('splash-screen');
-          const delay = splash ? 1700 : 400;
-
-          setTimeout(() => {
-            let step = 0;
-            const totalSteps = 60; // 60 animation frames over 2 seconds
-            const stepDuration = 2000 / totalSteps;
-            
-            const timer = setInterval(() => {
-              step++;
-              const progress = step / totalSteps;
-              const easeOut = 1 - Math.pow(1 - progress, 3);
-              const current = Math.ceil(easeOut * target);
-              
-              if (step >= totalSteps) {
-                el.innerText = target + suffix;
-                clearInterval(timer);
-              } else {
-                el.innerText = current + suffix;
-              }
-            }, stepDuration);
-          }, delay);
-          
-          counterObs.unobserve(el);
-        }
-      });
-    }, { threshold: 0 });
-    
-    counters.forEach(c => counterObs.observe(c));
-  }
-
-  // ── Liquid Depth Parallax (desktop only) ──
-  if (!isTouchDevice) {
-    const parallaxBgs = document.querySelectorAll('.parallax-bg');
-    const parallaxFgs = document.querySelectorAll('.parallax-fg');
-    if (parallaxBgs.length || parallaxFgs.length) {
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        parallaxBgs.forEach(el => {
-          el.style.transform = `translate(-50%, -50%) translateY(${scrollY * 0.15}px)`;
+  /* ── Reveal on scroll ──────────────────────────────────── */
+  const reveals = $$('.reveal');
+  if (reveals.length) {
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
         });
-        parallaxFgs.forEach(el => {
-          el.style.transform = `translateY(${scrollY * -0.05}px)`;
-        });
-      });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+      reveals.forEach((el) => io.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add('is-visible'));
     }
   }
 
-  // ── Interactive Chat Demo ──
-  const demoPrompts = document.querySelectorAll('.demo-prompt-btn');
-  const chatBody = document.getElementById('chat-demo-body');
-  const chatInput = document.getElementById('chat-demo-input-field');
+  /* ── Feature tour (ARIA tabs with autoplay) ────────────── */
+  const tour = $('[data-tour]');
+  if (tour) {
+    const tabs = $$('.tour-tab', tour);
+    const img = $('#tour-image', tour);
+    const caption = $('#tour-caption', tour);
+    const DURATION = 6000;
+    let index = 0;
+    let autoplay = !reducedMotion.matches;
+    let paused = false;
+    let inView = false;
+    let elapsed = 0;
+    let last = 0;
+    let swapTimer;
 
-  if (demoPrompts.length && chatBody) {
-    demoPrompts.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const text = btn.getAttribute('data-text');
-        
-        // Hide prompts
-        document.querySelector('.demo-prompts').style.display = 'none';
-        
-        // Type effect in input
-        chatInput.value = '';
-        let i = 0;
-        const typeWriter = setInterval(() => {
-          chatInput.value += text.charAt(i);
-          i++;
-          if (i >= text.length) {
-            clearInterval(typeWriter);
-            
-            // Add user bubble
-            setTimeout(() => {
-              chatInput.value = '';
-              const userBubble = document.createElement('div');
-              userBubble.className = 'chat-bubble user';
-              userBubble.innerText = text;
-              chatBody.appendChild(userBubble);
-              chatBody.scrollTop = chatBody.scrollHeight;
-              
-              // Bot typing logic...
-              setTimeout(() => {
-                const botBubble = document.createElement('div');
-                botBubble.className = 'chat-bubble bot card-bubble';
-                
-                // Extremely simple parsing logic for demo
-                if (text.toLowerCase().includes("how much did i spend")) {
-                  botBubble.className = 'chat-bubble bot'; // remove card-bubble
-                  botBubble.innerHTML = `You've spent <strong>$342.50</strong> on Food & Dining so far this month. That's 15% lower than last month! 📉`;
-                } else {
-                  let amt = "$0";
-                  let cat = "Misc";
-                  let icon = "🏷️";
-                  if (text.toLowerCase().includes("coffee")) { amt = "$12.00"; cat = "Dining"; icon = "🍕"; }
-                  else if (text.toLowerCase().includes("salary")) { amt = "$2,500.00"; cat = "Income"; icon = "🏦"; }
-                  else if (text.toLowerCase().includes("internet")) { amt = "$50.00"; cat = "Bills"; icon = "🔁"; }
+    const select = (i, { focus = false, user = false } = {}) => {
+      index = (i + tabs.length) % tabs.length;
+      tabs.forEach((t, n) => {
+        const on = n === index;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        t.style.setProperty('--p', on && !user ? 0 : (on ? 1 : 0));
+      });
+      const tab = tabs[index];
+      if (focus) tab.focus();
+      if (tab.scrollIntoView && window.matchMedia('(max-width: 960px)').matches && user) {
+        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+      if (caption) caption.textContent = $('.tour-desc', tab).textContent;
+      if (img && img.getAttribute('src') !== tab.dataset.src) {
+        clearTimeout(swapTimer);
+        img.classList.add('is-swapping');
+        swapTimer = setTimeout(() => {
+          img.src = tab.dataset.src;
+          img.alt = tab.dataset.alt || '';
+          const done = () => img.classList.remove('is-swapping');
+          if (img.complete) requestAnimationFrame(done); else img.addEventListener('load', done, { once: true });
+        }, reducedMotion.matches ? 0 : 220);
+      }
+      elapsed = 0;
+      if (user) autoplay = false;
+    };
 
-                  botBubble.innerHTML = `
-                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px;">Parsed successfully:</div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                      <div style="display: flex; align-items: center; gap: 10px;">
-                        <div style="background: rgba(255,255,255,0.1); padding: 8px; border-radius: 8px;">${icon}</div>
-                        <div>
-                          <div style="font-weight: bold;">${cat}</div>
-                          <div style="font-size: 0.8rem; color: var(--text-secondary);">Today</div>
-                        </div>
-                      </div>
-                      <strong style="color: ${cat==='Income' ? 'var(--income-green)' : 'var(--expense-red)'}">${cat==='Income'?'+':'-'}${amt}</strong>
-                    </div>
-                  `;
-                }
-                chatBody.appendChild(botBubble);
-                chatBody.scrollTop = chatBody.scrollHeight;
-                
-                // Bring back prompts after a delay
-                setTimeout(() => {
-                  document.querySelector('.demo-prompts').style.display = 'flex';
-                }, 2000);
-              }, 600);
-            }, 300);
-          }
-        }, 30);
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(i, { user: true }));
+      tab.addEventListener('keydown', (e) => {
+        const horizontal = window.matchMedia('(max-width: 960px)').matches;
+        const prev = horizontal ? 'ArrowLeft' : 'ArrowUp';
+        const next = horizontal ? 'ArrowRight' : 'ArrowDown';
+        if (e.key === next) { e.preventDefault(); select(i + 1, { focus: true, user: true }); }
+        else if (e.key === prev) { e.preventDefault(); select(i - 1, { focus: true, user: true }); }
+        else if (e.key === 'Home') { e.preventDefault(); select(0, { focus: true, user: true }); }
+        else if (e.key === 'End') { e.preventDefault(); select(tabs.length - 1, { focus: true, user: true }); }
       });
     });
+
+    tour.addEventListener('pointerenter', () => { paused = true; });
+    tour.addEventListener('pointerleave', () => { paused = false; });
+    tour.addEventListener('focusin', () => { paused = true; });
+    tour.addEventListener('focusout', () => { paused = false; });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { inView = en.isIntersecting; }, { threshold: 0.35 }).observe(tour);
+    }
+
+    const tick = (now) => {
+      const dt = last ? now - last : 0;
+      last = now;
+      if (autoplay && inView && !paused && !document.hidden) {
+        elapsed += dt;
+        tabs[index].style.setProperty('--p', Math.min(elapsed / DURATION, 1));
+        if (elapsed >= DURATION) select(index + 1);
+      }
+      if (autoplay) requestAnimationFrame(tick);
+      else tabs.forEach((t) => t.style.setProperty('--p', t.getAttribute('aria-selected') === 'true' ? 1 : 0));
+    };
+    requestAnimationFrame(tick);
+
+    // Warm the cache for the other screenshots once the page is idle
+    const warm = () => tabs.forEach((t) => { const i = new Image(); i.src = t.dataset.src; });
+    if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 }); else setTimeout(warm, 2000);
   }
 
-  // ── Beta Signup Form Submission ──
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_8rLGSokZdQNEEy-NwDHA_ZkVfvjjpxxd5Aj6c7cby9HBHC1i05mtROTwEEUNnXVO3Q/exec';
+  /* ── Ask MyWallet demo ─────────────────────────────────── */
+  const chatBody = $('#chat-body');
+  const chatInput = $('#chat-input');
+  const prompts = $$('.prompt');
+  const chatReset = $('#chat-reset');
+  if (chatBody && chatInput && prompts.length) {
+    const greeting = chatBody.innerHTML;
+    let busy = false;
+    let timers = [];
+    const later = (fn, ms) => { const t = setTimeout(fn, reducedMotion.matches ? 0 : ms); timers.push(t); return t; };
+    const scrollDown = () => { chatBody.scrollTop = chatBody.scrollHeight; };
+    const setBusy = (on) => { busy = on; prompts.forEach((p) => { p.disabled = on; }); };
 
-  const betaForm = document.getElementById('beta-signup-form');
-  const betaSuccess = document.getElementById('beta-success');
-
-  if (betaForm && betaSuccess && submitBtn) {
-    betaForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Validate
-      if (!betaForm.checkValidity()) {
-        betaForm.reportValidity();
-        return;
+    const reply = (text) => {
+      const t = text.toLowerCase();
+      if (t.includes('how much')) {
+        return { cls: 'bubble bot', html: 'You’ve spent <strong>$342.50</strong> on Food &amp; Dining so far this month — 15% less than last month. Nice work.' };
       }
-
-      // Show loading state
-      const btnText = submitBtn.querySelector('.btn-text');
-      const btnLoading = submitBtn.querySelector('.btn-loading');
-      submitBtn.disabled = true;
-      if (btnText) btnText.style.display = 'none';
-      if (btnLoading) btnLoading.style.display = 'inline-flex';
-
-      const formData = {
-        fullName: document.getElementById('fullName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        feedback: document.getElementById('feedback').value.trim(),
-        timestamp: new Date().toISOString()
+      let entry = { cat: 'Misc', sub: 'Uncategorized', amt: '$0.00', ic: 'i-receipt', dir: 'out' };
+      if (t.includes('coffee')) entry = { cat: 'Dining', sub: 'Starbucks · Today', amt: '$12.00', ic: 'i-receipt', dir: 'out' };
+      else if (t.includes('salary')) entry = { cat: 'Income', sub: 'Salary · Today', amt: '$2,500.00', ic: 'i-landmark', dir: 'in' };
+      const green = entry.dir === 'in' ? ' green' : '';
+      return {
+        cls: 'bubble bot result',
+        html: `<div class="result-label">${icon('i-check', '')} Logged automatically</div>
+          <div class="result-row">
+            <span class="tile sm${green}">${icon(entry.ic)}</span>
+            <span class="meta"><b>${entry.cat}</b><span>${entry.sub}</span></span>
+            <span class="amt ${entry.dir}">${entry.dir === 'in' ? '+' : '−'}${entry.amt}</span>
+          </div>`
       };
+    };
 
-      try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+    prompts.forEach((btn) => btn.addEventListener('click', () => {
+      if (busy) return;
+      setBusy(true);
+      const text = btn.dataset.text;
+      chatInput.value = '';
+      let i = 0;
+      const type = () => {
+        chatInput.value = text.slice(0, ++i);
+        if (i < text.length) later(type, 22);
+        else later(send, 260);
+      };
+      const send = () => {
+        chatInput.value = '';
+        const user = document.createElement('div');
+        user.className = 'bubble user';
+        user.textContent = text;
+        chatBody.appendChild(user);
+        const typing = document.createElement('div');
+        typing.className = 'bubble bot typing';
+        typing.setAttribute('aria-label', 'Assistant is typing');
+        typing.innerHTML = '<i></i><i></i><i></i>';
+        later(() => { chatBody.appendChild(typing); scrollDown(); }, 250);
+        scrollDown();
+        later(() => {
+          typing.remove();
+          const r = reply(text);
+          const bot = document.createElement('div');
+          bot.className = r.cls;
+          bot.innerHTML = r.html;
+          chatBody.appendChild(bot);
+          scrollDown();
+          setBusy(false);
+        }, 1100);
+      };
+      reducedMotion.matches ? (chatInput.value = text, send()) : type();
+    }));
+
+    chatReset?.addEventListener('click', () => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      chatBody.innerHTML = greeting;
+      chatInput.value = '';
+      setBusy(false);
+    });
+  }
+
+  /* ── Net worth chart: draw-in + crosshair tooltip ──────── */
+  const chartWrap = $('#nw-chart');
+  if (chartWrap) {
+    const svg = $('svg', chartWrap);
+    const line = $('.line', svg);
+    const cross = $('.cross', svg);
+    const dot = $('.hover-dot', svg);
+    const hit = $('.hit', svg);
+    const tip = $('.chart-tip', chartWrap);
+    const VB = { w: 560, h: 240 };
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    const values = [12000, 15000, 14000, 18000, 22000, 24000, 29000];
+    const xs = [48, 122, 196, 270, 344, 418, 492];
+    const yOf = (v) => 212 - (v / 30000) * 196;
+    const fmt = (v) => '$' + v.toLocaleString('en-US');
+    let active = -1;
+
+    try { svg.style.setProperty('--len', Math.ceil(line.getTotalLength())); } catch (e) { /* not rendered */ }
+
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+      const io = new IntersectionObserver(([en]) => {
+        if (en.isIntersecting) { svg.classList.add('is-drawn'); io.disconnect(); }
+      }, { threshold: 0.4 });
+      io.observe(svg);
+    } else {
+      svg.classList.add('is-drawn');
+    }
+
+    const show = (i) => {
+      active = i;
+      const x = xs[i];
+      const y = yOf(values[i]);
+      cross.setAttribute('x1', x); cross.setAttribute('x2', x);
+      dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+      svg.classList.add('is-hover');
+      const delta = i > 0 ? values[i] - values[i - 1] : null;
+      $('b', tip).textContent = fmt(values[i]);
+      $('span', tip).textContent = months[i] + (delta === null ? '' : ` · ${delta >= 0 ? '+' : '−'}${fmt(Math.abs(delta))}`);
+      tip.style.left = (x / VB.w) * 100 + '%';
+      tip.style.top = (y / VB.h) * 100 + '%';
+      tip.classList.add('is-on');
+    };
+    const hide = () => { active = -1; svg.classList.remove('is-hover'); tip.classList.remove('is-on'); };
+
+    hit.addEventListener('pointermove', (e) => {
+      const r = svg.getBoundingClientRect();
+      const vx = ((e.clientX - r.left) / r.width) * VB.w;
+      let best = 0;
+      xs.forEach((x, i) => { if (Math.abs(x - vx) < Math.abs(xs[best] - vx)) best = i; });
+      if (best !== active) show(best);
+    });
+    hit.addEventListener('pointerleave', hide);
+
+    // Keyboard: focus the chart and step through months
+    svg.setAttribute('tabindex', '0');
+    svg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const step = e.key === 'ArrowRight' ? 1 : -1;
+        show(Math.max(0, Math.min(values.length - 1, (active < 0 ? values.length : active) + step)));
+      } else if (e.key === 'Escape') hide();
+    });
+    svg.addEventListener('blur', hide);
+  }
+
+  /* ── Accordions ────────────────────────────────────────── */
+  $$('.acc-item').forEach((item, n) => {
+    const q = $('.acc-q', item);
+    const a = $('.acc-a', item);
+    if (!q || !a) return;
+    const id = a.id || `acc-${n}`;
+    a.id = id;
+    a.setAttribute('role', 'region');
+    q.setAttribute('aria-controls', id);
+    q.addEventListener('click', () => {
+      const open = !item.classList.contains('is-open');
+      const group = item.closest('.accordion');
+      if (open && group) {
+        $$('.acc-item.is-open', group).forEach((o) => {
+          o.classList.remove('is-open');
+          $('.acc-q', o).setAttribute('aria-expanded', 'false');
         });
-
-        // no-cors always returns opaque response, so we assume success
-        betaForm.style.display = 'none';
-        betaSuccess.style.display = 'block';
-        betaSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      } catch (error) {
-        console.error('Form submission error:', error);
-        alert('Something went wrong. Please try again or email us at mywalletapps@gmail.com');
-        submitBtn.disabled = false;
-        if (btnText) btnText.style.display = 'inline';
-        if (btnLoading) btnLoading.style.display = 'none';
       }
-    });
-  }
-
-  // ── Show More Features Toggle ──
-  const showMoreBtn = document.getElementById('show-more-features-btn');
-  const featuresGrid = document.getElementById('features-grid');
-  
-  if (showMoreBtn && featuresGrid) {
-    showMoreBtn.addEventListener('click', () => {
-      const isExpanded = featuresGrid.classList.contains('expanded');
-      if (isExpanded) {
-        featuresGrid.classList.remove('expanded');
-        showMoreBtn.classList.remove('expanded');
-        showMoreBtn.querySelector('span').textContent = 'Show More Features';
-        const featuresSection = document.getElementById('features');
-        if (featuresSection) {
-          featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      } else {
-        featuresGrid.classList.add('expanded');
-        showMoreBtn.classList.add('expanded');
-        showMoreBtn.querySelector('span').textContent = 'Show Less Features';
-      }
-    });
-  }
-
-  // ── Back to Top Button ──
-  const backToTop = document.getElementById('back-to-top');
-  if (backToTop) {
-    const toggleBackToTop = () => {
-      backToTop.classList.toggle('visible', window.scrollY > 500);
-    };
-    
-    // Initialize state on page load
-    toggleBackToTop();
-    
-    // Update state on scroll
-    window.addEventListener('scroll', toggleBackToTop);
-    
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // ── Magnetic Mouse Spotlight (LERP) ──
-  const spotlight = document.querySelector('.mouse-spotlight');
-  if (spotlight) {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-    let isMouseMoving = false;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!isMouseMoving) {
-        isMouseMoving = true;
-        spotlight.style.opacity = '1';
-      }
-    });
-
-    document.addEventListener('mouseleave', () => {
-      isMouseMoving = false;
-      spotlight.style.opacity = '0';
-    });
-
-    // LERP Animation Loop
-    function animateSpotlight() {
-      // Lerp factor (lower is smoother/more delayed)
-      currentX += (mouseX - currentX) * 0.1;
-      currentY += (mouseY - currentY) * 0.1;
-      
-      spotlight.style.transform = `translate(${currentX - 400}px, ${currentY - 400}px)`;
-      requestAnimationFrame(animateSpotlight);
-    }
-    animateSpotlight();
-  }
-
-  // ── Parallax Background Glows ──
-  const glow1 = document.querySelector('.glow-1');
-  const glow2 = document.querySelector('.glow-2');
-  
-  if (glow1 || glow2) {
-    window.addEventListener('scroll', () => {
-      // requestAnimationFrame could be used here too, but simple transform on scroll is usually okay for simple elements.
-      // Using rAF for performance:
-      requestAnimationFrame(() => {
-        const scrolled = window.scrollY;
-        if (glow1) glow1.style.transform = `translateY(${scrolled * -0.15}px)`;
-        if (glow2) glow2.style.transform = `translateY(${scrolled * -0.08}px)`;
-      });
-    }, { passive: true });
-  }
-
-  // ── Interactive Feature Carousel ──
-  const carouselTabs = document.querySelectorAll('.carousel-tab');
-  const carouselImage = document.getElementById('carousel-image');
-  if (carouselTabs.length && carouselImage) {
-    // We simulate different images via hue-rotation since we only have a few assets
-    const tabConfigs = [
-      { src: 'assets/images/Screenshots/Accounts.webp', filter: 'none' },
-      { src: 'assets/images/Screenshots/Chat-AI-Assistant.webp', filter: 'none' },
-      { src: 'assets/images/Screenshots/Analytics.webp', filter: 'none' },
-      { src: 'assets/images/Screenshots/Budget-Module.webp', filter: 'none' },
-      { src: 'assets/images/Screenshots/Net-Worth.webp', filter: 'none' },
-      { src: 'assets/images/Screenshots/Settings.webp', filter: 'none' }
-    ];
-
-    carouselTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active class from all
-        carouselTabs.forEach(t => t.classList.remove('active'));
-        // Add to clicked
-        tab.classList.add('active');
-        
-        const index = parseInt(tab.getAttribute('data-index'));
-        const config = tabConfigs[index];
-        
-        // Fade out
-        carouselImage.style.opacity = '0';
-        
-        setTimeout(() => {
-          carouselImage.src = config.src;
-          carouselImage.style.filter = config.filter;
-          // Fade in
-          carouselImage.style.opacity = '1';
-        }, 300);
-      });
-    });
-  }
-
-  // ── Chart.js Live Analytics ──
-  const ctx = document.getElementById('analyticsChart');
-  if (ctx && window.Chart) {
-    const data = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-      datasets: [{
-        label: 'Net Worth',
-        data: [12000, 15000, 14000, 18000, 22000, 24000, 29000],
-        borderColor: '#818cf8',
-        backgroundColor: 'rgba(129, 140, 248, 0.2)',
-        borderWidth: 3,
-        fill: true,
-        tension: 0.4,
-        pointBackgroundColor: '#4f46e5',
-        pointBorderColor: '#fff',
-        pointBorderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7
-      }]
-    };
-
-    const config = {
-      type: 'line',
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.9)',
-            titleColor: '#fff',
-            bodyColor: '#cbd5e1',
-            padding: 12,
-            borderColor: 'rgba(255,255,255,0.1)',
-            borderWidth: 1,
-            displayColors: false,
-            callbacks: {
-              label: function(context) {
-                return '$' + context.parsed.y.toLocaleString();
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-            ticks: { color: '#94a3b8' }
-          },
-          y: {
-            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-            ticks: {
-              color: '#94a3b8',
-              callback: function(value) { return '$' + (value/1000) + 'k'; }
-            }
-          }
-        },
-        animation: {
-          duration: 2000,
-          easing: 'easeOutQuart'
-        }
-      }
-    };
-
-    let chartRendered = false;
-    let myChart = null;
-
-    const chartObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !chartRendered) {
-          chartRendered = true;
-          myChart = new Chart(ctx, config);
-          chartObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.2 });
-
-    chartObserver.observe(ctx);
-  }
-
-  // ── Testimonial Carousel ──
-  const testimonialPages = document.querySelectorAll('.testimonial-page');
-  const testimonialIndicators = document.querySelectorAll('#testimonial-indicators .indicator');
-  const testimonialCarousel = document.getElementById('testimonial-carousel');
-  
-  if (testimonialPages.length > 0) {
-    let currentTestimonialPage = 0;
-    let testimonialTimer;
-    let isTestimonialHovered = false;
-
-    const showTestimonialPage = (index) => {
-      testimonialPages.forEach(p => p.classList.remove('active'));
-      testimonialIndicators.forEach(i => i.classList.remove('active'));
-      
-      testimonialPages[index].classList.add('active');
-      if(testimonialIndicators[index]) {
-        testimonialIndicators[index].classList.add('active');
-      }
-      currentTestimonialPage = index;
-    };
-
-    const nextTestimonialPage = () => {
-      if (isTestimonialHovered) return;
-      const nextIndex = (currentTestimonialPage + 1) % testimonialPages.length;
-      showTestimonialPage(nextIndex);
-    };
-
-    const startTestimonialTimer = () => {
-      testimonialTimer = setInterval(nextTestimonialPage, 6000);
-    };
-
-    if (testimonialCarousel) {
-      testimonialCarousel.addEventListener('mouseenter', () => isTestimonialHovered = true);
-      testimonialCarousel.addEventListener('mouseleave', () => isTestimonialHovered = false);
-    }
-
-    testimonialIndicators.forEach(indicator => {
-      indicator.addEventListener('click', () => {
-        const index = parseInt(indicator.getAttribute('data-index'));
-        showTestimonialPage(index);
-        clearInterval(testimonialTimer);
-        startTestimonialTimer(); // Reset timer on manual click
-      });
-    });
-
-    startTestimonialTimer();
-  }
-
-
-  // ── Preloader ──
-  window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      preloader.style.opacity = '0';
-      preloader.style.visibility = 'hidden';
-      setTimeout(() => preloader.remove(), 500);
-    }
-  });
-
-  // ── FAQ Accordion ──
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    
-    question.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      
-      // Close all others
-      faqItems.forEach(other => {
-        other.classList.remove('open');
-      });
-      
-      if (!isOpen) {
-        item.classList.add('open');
-      }
+      item.classList.toggle('is-open', open);
+      q.setAttribute('aria-expanded', String(open));
     });
   });
 
-
-  // ── Magnetic Buttons (desktop only) ──
-  if (!isTouchDevice) {
-    const magneticElements = document.querySelectorAll('.btn-primary, .store-badge');
-    magneticElements.forEach(el => {
-      el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        
-        // Use a very fast transition to smooth out mouse polling
-        el.style.transition = 'transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1)';
-        el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.05)`;
+  /* ── Help center: live search + section spy ────────────── */
+  const helpSearch = $('#help-search');
+  if (helpSearch) {
+    const groups = $$('.help-group');
+    const empty = $('#help-empty');
+    const norm = (s) => s.toLowerCase().normalize('NFKD');
+    helpSearch.addEventListener('input', () => {
+      const q = norm(helpSearch.value.trim());
+      let any = false;
+      groups.forEach((g) => {
+        let groupHit = false;
+        $$('.acc-item', g).forEach((item) => {
+          const hit = !q || norm(item.textContent).includes(q);
+          item.hidden = !hit;
+          groupHit = groupHit || hit;
+        });
+        g.hidden = !groupHit;
+        any = any || groupHit;
       });
-      
-      el.addEventListener('mouseleave', () => {
-        // Smooth snap back
-        el.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
-        el.style.transform = 'translate(0px, 0px) scale(1)';
-        
-        // Clear inline styles so CSS takes over again
-        setTimeout(() => {
-          el.style.transform = '';
-          el.style.transition = '';
-        }, 500);
-      });
+      if (empty) empty.hidden = any;
     });
   }
 
-  // ── Premium Mailto Fallback Handler ──
-  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+  const sectionSpy = (linkSel, targetSel) => {
+    const links = $$(linkSel);
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const targets = links.map((a) => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+    const state = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => state.set(en.target.id, en.isIntersecting));
+      const current = targets.find((t) => state.get(t.id) && !t.hidden);
+      if (!current) return;
+      links.forEach((a) => {
+        const on = a.getAttribute('href') === `#${current.id}`;
+        a.classList.toggle('is-active', on);
+        if (on) {
+          a.setAttribute('aria-current', 'location');
+          const bar = a.parentElement.closest('.help-nav');
+          if (bar && bar.scrollWidth > bar.clientWidth) {
+            bar.scrollTo({ left: a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
+          }
+        } else a.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    targets.forEach((t) => io.observe(t));
+  };
+  sectionSpy('.help-nav a', '.help-group');
+  sectionSpy('.toc a', '.prose h2');
+
+  /* ── Back to top ───────────────────────────────────────── */
+  const toTop = $('#to-top');
+  if (toTop) {
+    const onScroll = () => toTop.classList.toggle('is-visible', window.scrollY > 800);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      const skip = $('.skip-link');
+      if (skip) skip.focus({ preventScroll: true });
+    });
+  }
+
+  /* ── Toast + copy-email fallback for mailto links ──────── */
+  let toastEl;
+  let toastTimer;
+  const toast = (msg) => {
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'toast';
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toastEl);
+    }
+    toastEl.innerHTML = `${icon('i-check', '')}<span></span>`;
+    $('span', toastEl).textContent = msg;
+    requestAnimationFrame(() => toastEl.classList.add('is-visible'));
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 2800);
+  };
+
+  $$('a[href^="mailto:"]').forEach((link) => {
     link.addEventListener('click', () => {
-      // We do not prevent default, so if they HAVE a mail client, it opens normally.
-      // But we copy the email to the clipboard as a fallback, providing visual feedback!
-      const email = link.getAttribute('href').replace('mailto:', '');
-      navigator.clipboard.writeText(email).then(() => {
-        const originalText = link.innerHTML;
-        link.innerHTML = 'Copied to clipboard!';
-        link.style.color = 'var(--income-green)';
-        setTimeout(() => {
-          link.innerHTML = originalText;
-          link.style.color = '';
-        }, 2500);
-      }).catch(err => console.error('Failed to copy email: ', err));
-    });
-  });
-
-  // ── Disable VanillaTilt on touch devices ──
-  if (isTouchDevice && typeof VanillaTilt !== 'undefined') {
-    document.querySelectorAll('[data-tilt]').forEach(el => {
-      if (el.vanillaTilt) {
-        el.vanillaTilt.destroy();
+      // The mail app still opens; copying helps people without one configured.
+      const email = link.getAttribute('href').replace('mailto:', '').split('?')[0];
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(email).then(() => toast(`Copied ${email}`)).catch(() => {});
       }
     });
-  }
-});
+  });
+})();
