@@ -78,7 +78,7 @@
   }
 
   /* ── Kinetic headings: split into words that rise in ─────── */
-  const splitTargets = $$('.split, main .t-h1, main .t-h2, .chapter h3, .panel-copy h3, .page-hero h1');
+  const splitTargets = $$('.split, main .t-h1, main .t-h2, .chapter h2, .panel-copy h3, .page-hero h1');
   if (!reducedMotion.matches) {
     splitTargets.forEach((el) => {
       let i = 0;
@@ -131,33 +131,141 @@
     }
   }
 
-  /* ── Story: the sticky phone follows the chapter in view ── */
-  const story = $('[data-story]');
-  if (story && hasIO) {
-    const chapters = $$('.chapter', story);
-    const screens = $$('.story-device .screen img', story);
-    const dots = $$('.story-progress i', story);
-    let current = 0;
-    const device = $('.story-device', story);
+  /* ── Manifesto: words light up as the paragraph scrolls past ── */
+  $$('.scrub').forEach((el) => {
+    const words = [];
+    const walk = (source, target) => {
+      Array.from(source.childNodes).forEach((n) => {
+        if (n.nodeType === Node.TEXT_NODE) {
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { target.appendChild(document.createTextNode(part)); return; }
+            const w = document.createElement('span');
+            w.className = 'sw';
+            w.textContent = part;
+            words.push(w);
+            target.appendChild(w);
+          });
+        } else if (n.nodeType === Node.ELEMENT_NODE) {
+          const clone = n.cloneNode(false);
+          walk(n, clone);
+          target.appendChild(clone);
+        }
+      });
+    };
+    const frag = document.createDocumentFragment();
+    walk(el, frag);
+    el.textContent = '';
+    el.appendChild(frag);
+    words.forEach((w, i) => w.style.setProperty('--t', (i / words.length).toFixed(3)));
+  });
+
+  const root = document.documentElement;
+  const motion = root.classList.contains('motion');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  /* ── Hero → story: one pinned sequence driven by scroll ──── */
+  const scrolly = $('[data-scrolly]');
+  let updateScrolly = () => {};
+  if (scrolly) {
+    const chapters = $$('.chapter', scrolly);
+    const screens = $$('.s-device .screen img', scrolly);
+    const nums = $$('.s-num span', scrolly);
+    const dots = $$('.s-dots i', scrolly);
+    const device = $('.s-device', scrolly);
+    const HERO = 0.14;        // share of the sequence spent leaving the hero
+    let current = -1;
     const show = (i) => {
       if (i === current) return;
       current = i;
-      if (device) device.dataset.chapter = String(i);
-      chapters.forEach((c, n) => c.classList.toggle('is-active', n === i));
-      screens.forEach((s, n) => s.classList.toggle('is-active', n === i));
-      dots.forEach((d, n) => d.classList.toggle('is-active', n === i));
+      device.dataset.chapter = String(i);
+      [chapters, screens, nums, dots].forEach((list) => list.forEach((el, n) => el.classList.toggle('is-active', n === i)));
     };
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) show(chapters.indexOf(en.target)); });
-    }, { rootMargin: '-45% 0px -45% 0px' });
-    chapters.forEach((c) => io.observe(c));
-    story.classList.add('is-live');
+    // where to scroll to show chapter i
+    const stepY = (i) => {
+      const top = scrolly.getBoundingClientRect().top + window.scrollY;
+      const travel = scrolly.offsetHeight - window.innerHeight;
+      return top + travel * (HERO + 0.04 + (1 - HERO) * (i / 4));
+    };
+    $$('[data-story-step]').forEach((a) => a.addEventListener('click', (e) => {
+      if (!motion) return;
+      e.preventDefault();
+      e.stopPropagation();
+      window.scrollTo({ top: stepY(+a.dataset.storyStep), behavior: 'smooth' });
+    }, true));
+
+    if (motion) {
+      updateScrolly = (vh) => {
+        const r = scrolly.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        const travel = r.height - vh;
+        const p = clamp(-r.top / travel);
+        const h = clamp(p / HERO);
+        scrolly.style.setProperty('--h', h.toFixed(4));
+        scrolly.classList.toggle('is-story', h > 0.62);
+        show(Math.min(3, Math.floor(clamp((p - HERO - 0.02) / (1 - HERO - 0.02)) * 4)));
+      };
+      // Mouse-reactive tilt while the hero is in view
+      if (window.matchMedia('(pointer: fine)').matches) {
+        let raf = 0;
+        let mx = 0;
+        let my = 0;
+        window.addEventListener('pointermove', (e) => {
+          mx = (e.clientX / window.innerWidth - 0.5) * 2;
+          my = (e.clientY / window.innerHeight - 0.5) * 2;
+          if (!raf) raf = requestAnimationFrame(() => {
+            raf = 0;
+            scrolly.style.setProperty('--mx', mx.toFixed(3));
+            scrolly.style.setProperty('--my', my.toFixed(3));
+          });
+        }, { passive: true });
+      }
+    } else {
+      show(0);
+    }
+    // Let the pulse line draw once fonts and layout settle
+    requestAnimationFrame(() => requestAnimationFrame(() => scrolly.classList.add('is-ready')));
+  }
+
+  /* ── Feature gallery: vertical scroll moves it sideways ──── */
+  const hs = $('[data-hs]');
+  let updateGallery = () => {};
+  if (hs) {
+    const track = $('.hs-track', hs);
+    const counter = $('[data-hs-current]', hs);
+    const cards = $$('.hs-card', hs);
+    const wide = window.matchMedia('(min-width: 961px)');
+    let dist = 0;
+    const measure = () => {
+      if (!(motion && wide.matches)) { hs.style.removeProperty('--hs-h'); dist = 0; return; }
+      dist = Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
+      hs.style.setProperty('--hs-h', `${window.innerHeight + dist}px`);
+    };
+    const setCount = (i) => { if (counter) counter.textContent = String(i + 1).padStart(2, '0'); };
+    updateGallery = (vh) => {
+      if (!dist) return;
+      const r = hs.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const p = clamp(-r.top / (r.height - vh));
+      hs.style.setProperty('--hx', (p * dist).toFixed(1));
+      hs.style.setProperty('--hp', p.toFixed(4));
+      setCount(Math.min(cards.length - 1, Math.round(p * (cards.length - 1))));
+    };
+    // Native swipe on phones: keep the counter in sync
+    track.addEventListener('scroll', () => {
+      if (dist) return;
+      const w = cards[0].offsetWidth + 20;
+      setCount(Math.min(cards.length - 1, Math.round(track.scrollLeft / w)));
+    }, { passive: true });
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    wide.addEventListener?.('change', measure);
   }
 
   /* ── Scroll-linked progress (--p per element, --scroll for the page) ── */
   const scrollers = $$('[data-scroll]');
-  if (!reducedMotion.matches) {
-    const root = document.documentElement;
+  if (motion) {
     let ticking = false;
     const update = () => {
       ticking = false;
@@ -167,14 +275,18 @@
       scrollers.forEach((el) => {
         const r = el.getBoundingClientRect();
         if (r.bottom < -100 || r.top > vh + 100) return;
-        const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-        el.style.setProperty('--p', p.toFixed(4));
+        el.style.setProperty('--p', clamp((vh - r.top) / (vh + r.height)).toFixed(4));
       });
+      updateScrolly(vh);
+      updateGallery(vh);
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('load', onScroll);
     update();
+  } else {
+    $$('.scrub').forEach((el) => el.style.setProperty('--p', 1));
   }
 
   /* ── Ask MyWallet demo ─────────────────────────────────── */
@@ -327,7 +439,9 @@
   /* ── Back to top ───────────────────────────────────────── */
   const toTop = $('#to-top');
   if (toTop) {
-    const onScroll = () => toTop.classList.toggle('is-visible', window.scrollY > 900);
+    const seq = $('[data-scrolly]');
+    // Stay out of the way during the pinned hero → story sequence
+    const onScroll = () => toTop.classList.toggle('is-visible', window.scrollY > (seq ? seq.offsetTop + seq.offsetHeight : 900));
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     toTop.addEventListener('click', () => {

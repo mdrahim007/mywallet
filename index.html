@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>MyWallet — #1 Finance App & Offline Fintech Budget Tracker</title>
-  <script>document.documentElement.className='js';</script>
+  <script>(function(){var d=document.documentElement,c='js',m=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(m){c+=' motion';try{if(!sessionStorage.getItem('mw-intro')){c+=' has-intro';sessionStorage.setItem('mw-intro','1');}}catch(e){}}d.className=c;})();</script>
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <meta name="theme-color" content="#f8f7f4">
   <meta name="description" content="Looking for the best fintech app? MyWallet (my wallet) is the ultimate offline Finance App. Track expenses, monitor net worth, and keep data private.">
@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500..700&text=%E0%A7%B3&display=swap" rel="stylesheet">
 
   <link rel="preload" as="image" href="/assets/images/app/home.webp" fetchpriority="high">
-  <link rel="stylesheet" href="/css/style.css?v=8.0">
+  <link rel="stylesheet" href="/css/style.css?v=9.0">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -81,6 +81,28 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Brand intro: the logo assembles (once per visit, skipped for reduced motion) -->
+  <div class="intro-screen" aria-hidden="true">
+    <svg viewBox="270 110 290 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="iBlue" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1442a8"/><stop offset="100%" stop-color="#2a75ff"/></linearGradient>
+        <linearGradient id="iGreen" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00b85d"/><stop offset="100%" stop-color="#33ff99"/></linearGradient>
+        <linearGradient id="iGold" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d4af37"/><stop offset="30%" stop-color="#fff1b8"/><stop offset="65%" stop-color="#e6c245"/><stop offset="100%" stop-color="#ffdf73"/></linearGradient>
+        <clipPath id="iLineClip"><rect x="0" y="0" width="455" height="500"/><circle cx="455" cy="207" r="78"/></clipPath>
+        <clipPath id="iCuts"><polygon points="0,0 415,0 415,170 460,170 460,0 800,0 800,238 0,238"/></clipPath>
+      </defs>
+      <g transform="translate(0,-5)">
+        <rect class="i-rect" x="290" y="140" width="165" height="135" rx="30" fill="url(#iBlue)"/>
+        <circle class="i-circle" cx="455" cy="207" r="78" fill="url(#iGreen)"/>
+        <g clip-path="url(#iLineClip)"><g clip-path="url(#iCuts)">
+          <path class="i-path" pathLength="1" d="M 331.5 250 L 375 170 L 408 235 L 442 170 L 468 220 L 522 125" fill="none" stroke="url(#iGold)" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="4"/>
+        </g></g>
+      </g>
+    </svg>
+    <div class="i-word">My<em>Wallet</em></div>
+  </div>
+
+
   <!-- ═══ Navigation ═══ -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
@@ -113,55 +135,105 @@
 
   <main id="main">
 
-    <!-- ═══ Hero ═══ -->
-    <section class="hero" id="hero">
-      <div class="wrap">
-        <a class="hero-note reveal" href="#family">
-          <b>New</b><span class="sep" aria-hidden="true"></span>Share an account with your family
-          <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
-        </a>
-        <div class="hero-head">
-          <h1 class="t-display split">Your money, <em>beautifully</em> managed.</h1>
-          <div class="hero-side reveal" style="--d:2">
+    <!-- ═══ Hero → story: one continuous, pinned sequence ═══ -->
+    <section class="scrolly" id="features" data-scrolly>
+      <div class="s-pin">
+        <div class="s-halo" aria-hidden="true"><i></i></div>
+        <svg class="pulse s-pulse" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="goldLine" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#b8901f"/><stop offset="0.32" stop-color="#f3dc94"/><stop offset="0.64" stop-color="#d4af37"/><stop offset="1" stop-color="#f0cf6a"/>
+            </linearGradient>
+          </defs>
+          <path pathLength="1" d="M-40 905 L360 792 L560 852 L905 640 L1000 700 L1190 300 L1310 380 L1420 210"/>
+          <circle cx="1420" cy="210" r="7"/>
+        </svg>
+        <div class="s-num" aria-hidden="true"><span class="is-active">01</span><span>02</span><span>03</span><span>04</span></div>
+
+        <div class="wrap s-hero">
+          <a class="hero-note reveal" href="#family">
+            <b>New</b><span class="sep" aria-hidden="true"></span>Share an account with your family
+            <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+          </a>
+          <h1 class="s-title split">Your money, <em>beautifully</em> managed.</h1>
+          <div class="s-intro reveal" style="--d:3">
             <p class="lede">Every account, budget and goal in one calm app — with your financial data kept on your phone. No bank logins. No ads.</p>
             <div class="hero-cta">
               <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
                 <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
                 <span><small>Get it on</small><strong>Google Play</strong></span>
               </a>
-              <a href="#features" class="arrow-link">See how it works <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+              <a href="#overview" class="arrow-link" data-story-step="0">See how it works <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
             </div>
-            <p class="hero-meta">
-              <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Free to use</span>
-              <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Works offline</span>
-              <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Android 8.0+</span>
-            </p>
           </div>
+          <p class="hero-meta reveal" style="--d:4">
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Free to use</span>
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Works offline</span>
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Android 8.0+</span>
+          </p>
+        </div>
+        <div class="s-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+
+        <div class="s-device">
+          <div class="s-tilt"><div class="s-chap">
+            <div class="phone">
+              <span class="island" aria-hidden="true"></span>
+              <div class="screen">
+                <img src="/assets/images/app/home.webp" width="909" height="2000" alt="MyWallet home screen showing total balance, money saved this month, income and spending" class="is-active" fetchpriority="high" decoding="async">
+                <img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/plan.webp" width="909" height="2000" alt="" decoding="async">
+              </div>
+            </div>
+          </div></div>
         </div>
 
-        <div class="stage reveal" style="--d:3" data-scroll>
-          <svg class="pulse" viewBox="0 0 1240 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <linearGradient id="goldLine" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="0" stop-color="#b8901f"/><stop offset="0.32" stop-color="#f3dc94"/><stop offset="0.64" stop-color="#d4af37"/><stop offset="1" stop-color="#f0cf6a"/>
-              </linearGradient>
-            </defs>
-            <path pathLength="1" d="M-30 590 L200 455 L330 525 L540 320 L680 400 L900 190 L1030 262 L1180 96"/>
-            <circle cx="1180" cy="96" r="7"/>
-          </svg>
-          <figure class="phone p-left">
-            <span class="island" aria-hidden="true"></span>
-            <div class="screen"><img src="/assets/images/app/plan.webp" width="909" height="2000" alt="MyWallet Plan screen with monthly commitments, savings goals and bills" decoding="async"></div>
-          </figure>
-          <figure class="phone p-main">
-            <span class="island" aria-hidden="true"></span>
-            <div class="screen"><img src="/assets/images/app/home.webp" width="909" height="2000" alt="MyWallet home screen showing total balance, money saved this month, income and spending" fetchpriority="high" decoding="async"></div>
-          </figure>
-          <figure class="phone p-right">
-            <span class="island" aria-hidden="true"></span>
-            <div class="screen"><img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="MyWallet Budgets screen for November with category budgets and a daily allowance" decoding="async"></div>
-          </figure>
+        <div class="s-chapters">
+          <article class="chapter is-active" id="overview">
+            <span class="chapter-no">01 — Overview</span>
+            <h2>See everything at a glance.</h2>
+            <p>Your total balance across every account, what came in, what went out and how much you saved this month — on one calm screen.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Total balance across all your accounts</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Income and spending for the last 30 days</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Quick actions: transfer, scan a receipt, pay a bill</li>
+            </ul>
+          </article>
+          <article class="chapter" id="accounts">
+            <span class="chapter-no">02 — Accounts</span>
+            <h2>Every account, beautifully stacked.</h2>
+            <p>Banks, cards, cash and mobile wallets like bKash sit together as a stack of cards — each with its own balance, colour and history.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Bank accounts, credit cards, cash, wallets and loans</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Accounts in any currency, converted for you</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Only the last four digits of a card, never more</li>
+            </ul>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="Stacked bKash, EBL and BRAC account cards in MyWallet" loading="lazy" decoding="async"></div></div></figure>
+          </article>
+          <article class="chapter" id="analytics">
+            <span class="chapter-no">03 — Budgets</span>
+            <h2>Budgets that keep you honest.</h2>
+            <p>Set a monthly limit for each category. MyWallet shows what’s left, and how much you can spend each day to stay on track.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Category limits with live progress</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>A daily allowance that keeps the month on track</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Your last three months, side by side</li>
+            </ul>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="Budgets screen with Furniture, Gas and Food category budgets" loading="lazy" decoding="async"></div></div></figure>
+          </article>
+          <article class="chapter" id="plan">
+            <span class="chapter-no">04 — Plan</span>
+            <h2>Plan for what’s next.</h2>
+            <p>Save toward the things you care about, see every bill before it’s due, and know exactly what this month already has committed.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Savings goals with progress and target dates</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Bills and subscriptions, with a calendar</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Monthly commitments in a single number</li>
+            </ul>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/plan.webp" width="909" height="2000" alt="Plan screen with savings goals for a tour and a bike" loading="lazy" decoding="async"></div></div></figure>
+          </article>
         </div>
+        <div class="s-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
       </div>
     </section>
 
@@ -185,82 +257,11 @@
       </div>
     </div>
 
-    <!-- ═══ Story ═══ -->
-    <section class="section story" id="features" data-story>
+    <!-- ═══ Manifesto ═══ -->
+    <section class="manifesto" aria-label="Why we built MyWallet">
       <div class="wrap">
-        <div class="head-split" id="how-it-works">
-          <div class="reveal">
-            <p class="label">The app</p>
-            <h2 class="t-h2">One calm place for <em>all</em> your money.</h2>
-          </div>
-          <p class="lede reveal" style="--d:1">Every account, every budget, every goal — designed to be understood at a glance and kept entirely on your phone.</p>
-        </div>
-
-        <div class="story-grid">
-          <div class="story-device" aria-hidden="true">
-            <div class="backdrop"></div>
-            <div class="phone">
-              <span class="island"></span>
-              <div class="screen">
-                <img src="/assets/images/app/home.webp" width="909" height="2000" alt="" class="is-active" loading="lazy" decoding="async">
-                <img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="" loading="lazy" decoding="async">
-                <img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="" loading="lazy" decoding="async">
-                <img src="/assets/images/app/plan.webp" width="909" height="2000" alt="" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="story-progress"><i class="is-active"></i><i></i><i></i><i></i></div>
-          </div>
-
-          <div class="story-chapters">
-            <article class="chapter is-active" id="overview">
-              <span class="chapter-no">01</span>
-              <h3>See everything at a glance.</h3>
-              <p>Your total balance across every account, what came in, what went out and how much you saved this month — on one calm screen.</p>
-              <ul>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Total balance across all your accounts</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Income and spending for the last 30 days</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Quick actions: transfer, scan a receipt, pay a bill</li>
-              </ul>
-              <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home.webp" width="909" height="2000" alt="MyWallet home screen with total balance, income and spending" loading="lazy" decoding="async"></div></div></figure>
-            </article>
-
-            <article class="chapter" id="accounts">
-              <span class="chapter-no">02</span>
-              <h3>Every account, beautifully stacked.</h3>
-              <p>Banks, cards, cash and mobile wallets like bKash sit together as a stack of cards — each with its own balance, colour and history.</p>
-              <ul>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Bank accounts, credit cards, cash, wallets and loans</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Accounts in any currency, converted for you</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Only the last four digits of a card, never more</li>
-              </ul>
-              <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="Stacked bKash, EBL and BRAC account cards in MyWallet" loading="lazy" decoding="async"></div></div></figure>
-            </article>
-
-            <article class="chapter" id="analytics">
-              <span class="chapter-no">03</span>
-              <h3>Budgets that keep you honest.</h3>
-              <p>Set a monthly limit for each category. MyWallet shows what’s left, and how much you can spend each day to stay on track.</p>
-              <ul>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Category limits with live progress</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>A daily allowance that keeps the month on track</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Your last three months, side by side</li>
-              </ul>
-              <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="Budgets screen with Furniture, Gas and Food category budgets" loading="lazy" decoding="async"></div></div></figure>
-            </article>
-
-            <article class="chapter" id="plan">
-              <span class="chapter-no">04</span>
-              <h3>Plan for what’s next.</h3>
-              <p>Save toward the things you care about, see every bill before it’s due, and know exactly what this month already has committed.</p>
-              <ul>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Savings goals with progress and target dates</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Bills and subscriptions, with a calendar</li>
-                <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Monthly commitments in a single number</li>
-              </ul>
-              <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/plan.webp" width="909" height="2000" alt="Plan screen with savings goals for a tour and a bike" loading="lazy" decoding="async"></div></div></figure>
-            </article>
-          </div>
-        </div>
+        <p class="scrub" data-scroll><span class="mark" aria-hidden="true"></span>Your money is personal. It shouldn’t be sold, synced to strangers or buried under ads. So we built MyWallet to keep it on your phone — <em>calm</em>, private and beautifully clear.</p>
+        <div class="manifesto-sign"><img src="/assets/logos/mywallet_logo(favicon).svg" alt="" width="34" height="34"><span>The MyWallet principle</span></div>
       </div>
     </section>
 
@@ -371,26 +372,105 @@
       </div>
     </section>
 
-    <!-- ═══ Index of details ═══ -->
-    <section class="section" id="more-features">
-      <div class="wrap index-grid">
-        <div class="index-head reveal">
-          <p class="label">And so much more</p>
-          <h2 class="t-h2">Every detail, <em>considered</em>.</h2>
-          <p class="lede">From subscriptions to tax season, the small things that make money feel organized.</p>
+    <!-- ═══ Feature gallery ═══ -->
+    <section class="hs" id="more-features" data-hs>
+      <div class="hs-pin">
+        <div class="wrap hs-head">
+          <div>
+            <p class="label">And so much more</p>
+            <h2 class="t-h2">Every detail, <em>considered</em>.</h2>
+            <p class="lede">From subscriptions to tax season, the small things that make money feel organized.</p>
+          </div>
+          <p class="hs-count" aria-hidden="true"><b data-hs-current>01</b> / 10</p>
         </div>
-        <ol class="index-list reveal" style="--d:1">
-          <li><b>Subscriptions &amp; bills</b><span>Spot recurring charges and see what’s due before it’s due.</span></li>
-          <li><b>Savings goals</b><span>Sinking funds and targets for everything you’re saving toward.</span></li>
-          <li><b>Scan receipts</b><span>Keep a photo of the receipt with its transaction.</span></li>
-          <li><b>Loans &amp; EMI</b><span>Principal, interest, tenure and amortization at a glance.</span></li>
-          <li><b>Credit cards</b><span>Billing cycles, utilization and due dates, with one-tap payments.</span></li>
-          <li><b>Multi-currency</b><span>Accounts in any currency, converted at current rates.</span></li>
-          <li><b>Tax reports</b><span>Flag deductible expenses and review them by category.</span></li>
-          <li><b>Insights</b><span>Monthly recaps, merchant breakdowns and spending trends.</span></li>
-          <li><b>Biometric lock</b><span>Open the app with your fingerprint or PIN.</span></li>
-          <li><b>Backup &amp; export</b><span>Private Google Drive backups, plus CSV and PDF exports.</span></li>
-        </ol>
+        <div class="hs-track" tabindex="0" aria-label="MyWallet features">
+          <article class="hs-card">
+            <span class="n">01</span><h3>Subscriptions &amp; bills</h3>
+            <div class="hs-art" aria-hidden="true">
+              <div class="v-list">
+                <div class="v-row"><span class="ico violet">TV</span><b>Streaming</b><span class="amt out">৳800</span><em>in 4 days</em></div>
+                <div class="v-row"><span class="ico brac">IN</span><b>Internet</b><span class="amt out">৳1,500</span><em>10 Nov</em></div>
+                <div class="v-row"><span class="ico ebl">MB</span><b>Mobile plan</b><span class="amt out">৳499</span><em>18 Nov</em></div>
+              </div>
+            </div>
+            <p>Spot recurring charges and see what’s due before it’s due.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">02</span><h3>Savings goals</h3>
+            <div class="hs-art sand" aria-hidden="true">
+              <div class="v-goal"><div class="v-ring"></div><div class="v-label"><b>64%</b><span>Tour · ৳32,000</span></div></div>
+            </div>
+            <p>Sinking funds and targets for everything you’re saving toward.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">03</span><h3>Scan receipts</h3>
+            <div class="hs-art" aria-hidden="true">
+              <div class="v-receipt"><b>Receipt</b><i></i><i></i><i></i><div class="tot"><span>Total</span><b>৳2,345.50</b></div></div>
+            </div>
+            <p>Keep a photo of the receipt with its transaction.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">04</span><h3>Loans &amp; EMI</h3>
+            <div class="hs-art sand" aria-hidden="true">
+              <div>
+                <div class="v-loan"><i style="--a:.62"></i><i style="--a:.58"></i><i style="--a:.53"></i><i style="--a:.48"></i><i style="--a:.43"></i><i style="--a:.38"></i><i style="--a:.33"></i><i style="--a:.27"></i><i style="--a:.21"></i><i style="--a:.15"></i><i style="--a:.09"></i><i style="--a:.04"></i></div>
+                <div class="v-key"><span>Principal</span><span>Interest</span></div>
+              </div>
+            </div>
+            <p>Principal, interest, tenure and amortization at a glance.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">05</span><h3>Credit cards</h3>
+            <div class="hs-art night" aria-hidden="true">
+              <div class="v-cc">
+                <div class="cc"><span>Credit card</span><i></i><b>•••• 4821</b></div>
+                <div class="v-util"><span>Utilization</span><b>32%</b></div>
+                <div class="v-meter"><i></i></div>
+              </div>
+            </div>
+            <p>Billing cycles, utilization and due dates, with one-tap payments.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">06</span><h3>Multi-currency</h3>
+            <div class="hs-art tint" aria-hidden="true">
+              <div class="v-fx"><span>৳</span><span>$</span><span>€</span><span>£</span><span>₹</span><span>¥</span></div>
+            </div>
+            <p>Accounts in any currency, converted at current rates.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">07</span><h3>Tax reports</h3>
+            <div class="hs-art sand" aria-hidden="true">
+              <div class="v-doc"><i></i><i></i><div class="hl"><div><span>Medical</span><span>৳12,400</span></div><em>Deductible</em></div><i></i><i></i></div>
+            </div>
+            <p>Flag deductible expenses and review them by category.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">08</span><h3>Insights</h3>
+            <div class="hs-art" aria-hidden="true">
+              <div class="v-chart"><i style="--h:52"><span>Jun</span></i><i style="--h:70"><span>Jul</span></i><i style="--h:61"><span>Aug</span></i><i style="--h:84"><span>Sep</span></i><i style="--h:76"><span>Oct</span></i><i class="on" style="--h:66"><span>Nov</span></i></div>
+            </div>
+            <p>Monthly recaps, merchant breakdowns and spending trends.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">09</span><h3>Biometric lock</h3>
+            <div class="hs-art night" aria-hidden="true">
+              <div class="v-print"><svg><use href="/assets/icons.svg#i-fingerprint"/></svg></div>
+            </div>
+            <p>Open the app with your fingerprint or PIN.</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">10</span><h3>Backup &amp; export</h3>
+            <div class="hs-art tint" aria-hidden="true">
+              <div class="v-files">
+                <div class="v-file"><span class="ext csv">CSV</span><span>Transactions<small>Full history</small></span></div>
+                <div class="v-file"><span class="ext pdf">PDF</span><span>Monthly report<small>Summary</small></span></div>
+                <div class="v-file"><span class="ext json">JSON</span><span>Backup<small>Google Drive</small></span></div>
+              </div>
+            </div>
+            <p>Private Google Drive backups, plus CSV and PDF exports.</p>
+          </article>
+        </div>
+        <div class="wrap"><div class="hs-bar" aria-hidden="true"><i></i></div></div>
       </div>
     </section>
 
@@ -590,6 +670,6 @@
     <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up"/></svg>
   </button>
 
-  <script src="/js/main.js?v=3.0" defer></script>
+  <script src="/js/main.js?v=4.0" defer></script>
 </body>
 </html>
