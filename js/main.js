@@ -248,7 +248,7 @@
         const vh = pin.offsetHeight / 100;
         return narrow.matches
           ? { x0: 0, x1: 0, y0: 41 * vh, y1: -15 * vh, rx0: 24, rx1: 0, ry0: -16, ry1: 0, rz0: 6, rz1: 0, lift: 9 * vh }
-          : { x0: Math.min(23 * vw, 380), x1: Math.max(-21 * vw, -370), y0: 5 * vh, y1: vh, rx0: 12, rx1: 2, ry0: -26, ry1: 10, rz0: 5, rz1: 0, lift: 9 * vh };
+          : { x0: Math.min(25 * vw, 420), x1: Math.max(-21 * vw, -370), y0: 5 * vh, y1: vh, rx0: 12, rx1: 2, ry0: -26, ry1: 10, rz0: 5, rz1: 0, lift: 9 * vh };
       };
       let P = pose();
       window.addEventListener('resize', () => { P = pose(); });
