@@ -205,6 +205,19 @@
 
   const inView = (r, vh, pad = 0) => r.bottom > -pad && r.top < vh + pad;
 
+  // The pinned sequence and sideways gallery need room: at least 600px of
+  // height (so landscape phones and very small phones get the static layout).
+  const roomy = window.matchMedia('(min-height: 600px) and (min-width: 340px)');
+  const isSeq = () => root.classList.contains('seq');
+  const seqListeners = [];
+  if (motion) {
+    roomy.addEventListener?.('change', () => {
+      root.classList.toggle('seq', roomy.matches);
+      seqListeners.forEach((fn) => fn(roomy.matches));
+      engine.kick();
+    });
+  }
+
   /* ── Hero → story: one pinned sequence driven by scroll ──── */
   const scrolly = $('[data-scrolly]');
   if (scrolly) {
@@ -235,7 +248,7 @@
       return top + travel * (HERO + 0.04 + (1 - HERO) * (i / 4));
     };
     $$('[data-story-step]').forEach((a) => a.addEventListener('click', (e) => {
-      if (!motion) return;
+      if (!isSeq()) return;
       e.preventDefault();
       e.stopPropagation();
       window.scrollTo({ top: stepY(+a.dataset.storyStep), behavior: 'smooth' });
@@ -243,21 +256,40 @@
 
     if (motion) {
       // Path of the device between the hero pose (0) and the story pose (1)
+      const intro = $('.s-intro', scrolly);
       const pose = () => {
         const vw = window.innerWidth / 100;
-        const vh = pin.offsetHeight / 100;
-        return narrow.matches
-          ? { x0: 0, x1: 0, y0: 41 * vh, y1: -15 * vh, rx0: 24, rx1: 0, ry0: -16, ry1: 0, rz0: 6, rz1: 0, lift: 9 * vh }
-          : { x0: Math.min(25 * vw, 420), x1: Math.max(-21 * vw, -370), y0: 5 * vh, y1: vh, rx0: 12, rx1: 2, ry0: -26, ry1: 10, rz0: 5, rz1: 0, lift: 9 * vh };
+        const pinH = pin.offsetHeight;
+        const vh = pinH / 100;
+        if (narrow.matches) {
+          // Park the phone 24px below the end of the hero text so they never touch
+          const phoneH = $('.phone', device).offsetHeight;
+          const textBottom = el.hero.offsetTop + intro.offsetTop + intro.offsetHeight;
+          const y0 = textBottom + 28 + phoneH / 2 - pinH / 2;
+          return { x0: 0, x1: 0, y0, y1: -15 * vh, rx0: 24, rx1: 0, ry0: -16, ry1: 0, rz0: 6, rz1: 0, lift: 9 * vh };
+        }
+        return { x0: Math.min(25 * vw, 420), x1: Math.max(-21 * vw, -370), y0: 5 * vh, y1: vh, rx0: 12, rx1: 2, ry0: -26, ry1: 10, rz0: 5, rz1: 0, lift: 9 * vh };
       };
-      let P = pose();
-      window.addEventListener('resize', () => { P = pose(); });
+      let P = isSeq() ? pose() : null;
+      const repose = () => { if (isSeq()) { P = pose(); engine.kick(); } };
+      window.addEventListener('resize', repose);
+      window.addEventListener('load', repose);
+      document.fonts?.ready.then(repose);
+      const moving = [el.hero, el.device, el.tilt, el.halo, el.pulse, el.cue, el.num, el.chapters, el.dots];
+      seqListeners.push((on) => {
+        if (on) { repose(); return; }
+        moving.forEach((n) => { n.style.removeProperty('transform'); n.style.removeProperty('opacity'); });
+        scrolly.classList.remove('is-story');
+        isStory = false;
+        show(0);
+      });
       const lerp = (a, b, t) => a + (b - a) * t;
       const pointer = { x: 0, y: 0 };
 
       engine.add({
         ease: 0.13,
         measure() {
+          if (!isSeq()) return;
           const vh = window.innerHeight;
           const r = scrolly.getBoundingClientRect();
           if (!inView(r, vh, 50)) return;
@@ -270,6 +302,7 @@
           show(Math.min(3, Math.floor(clamp((p - HERO - 0.02) / (1 - HERO - 0.02)) * 4)));
         },
         apply({ h = 0, mx = 0, my = 0 }) {
+          if (!isSeq() || !P) return;
           const x = lerp(P.x0, P.x1, h);
           const y = lerp(P.y0, P.y1, h);
           const calm = 1 - h;
@@ -316,7 +349,7 @@
     let shown = -1;
     const setCount = (i) => { if (i !== shown && counter) { shown = i; counter.textContent = String(i + 1).padStart(2, '0'); } };
     const measure = () => {
-      if (!(motion && wide.matches)) {
+      if (!(isSeq() && wide.matches)) {
         hs.style.removeProperty('--hs-h');
         track.style.removeProperty('transform');
         dist = 0;
@@ -355,6 +388,7 @@
     window.addEventListener('resize', measure);
     window.addEventListener('load', measure);
     wide.addEventListener?.('change', measure);
+    seqListeners.push(measure);
   }
 
   /* ── Smaller scroll-linked pieces ──────────────────────────
