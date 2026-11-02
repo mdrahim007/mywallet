@@ -12,7 +12,7 @@
   /* ── Language: the Bengali pages reuse this script ─────── */
   const bn = document.documentElement.lang === 'bn';
   const T = bn
-    ? { open: 'মেনু খুলুন', close: 'মেনু বন্ধ করুন', typing: 'সহকারী লিখছে', copied: (e) => `${e} কপি করা হয়েছে` }
+    ? { open: 'মেনু খুলুন', close: 'মেনু বন্ধ করুন', typing: 'অ্যাসিস্ট্যান্ট লিখছে', copied: (e) => `${e} কপি করা হয়েছে` }
     : { open: 'Open menu', close: 'Close menu', typing: 'Assistant is typing', copied: (e) => `Copied ${e}` };
   const digits = (s) => (bn ? String(s).replace(/\d/g, (d) => '০১২৩৪৫৬৭৮৯'[d]) : String(s));
 

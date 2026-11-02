@@ -1416,6 +1416,8 @@ h1:lang(bn), h2:lang(bn), h3:lang(bn), h4:lang(bn) { line-height: 1.38; }
 .t-h2:lang(bn) { font-size: clamp(2.15rem, 1.35rem + 3vw, 3.9rem); }
 .page-hero h1:lang(bn) { font-size: clamp(2.6rem, 1.5rem + 4vw, 4.9rem); }
 .s-title:lang(bn) { font-size: min(clamp(2.6rem, 0.3rem + 5.5vw, 5.5rem), 11.5vh); line-height: 1.22; }
+/* Phones/tablets: size the headline so "তথ্য থাকুক নিজের কাছে।" stays on one line (≈9.2em wide) */
+@media (max-width: 960px) { .s-title:lang(bn) { font-size: min(calc((100vw - var(--gutter) * 2) / 9.4), 3.6rem); } }
 .chapter h2:lang(bn) { line-height: 1.26; }
 .panel-copy h3:lang(bn), .hs-card h3:lang(bn), .help-group-head h2:lang(bn), .contact-card h2:lang(bn), .prose h2:lang(bn) { line-height: 1.32; }
 .hs-card h3:lang(bn) { font-size: 1.85rem; }
