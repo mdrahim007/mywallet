@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://mywallet.mdrahim.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/home-en.jpg</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/home.webp</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/home-accounts.webp</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/budgets.webp</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/plan.webp</image:loc></image:image>
     <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,51 +19,21 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/home-bn.jpg</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/home.webp</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/home-accounts.webp</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/budgets.webp</image:loc></image:image>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/app/plan.webp</image:loc></image:image>
     <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mywallet.mdrahim.com/privacy/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/privacy/"/>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mywallet.mdrahim.com/bn/privacy/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/privacy/"/>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://mywallet.mdrahim.com/terms/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/terms/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/terms/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/terms/"/>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://mywallet.mdrahim.com/bn/terms/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/terms/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/terms/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/terms/"/>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://mywallet.mdrahim.com/help/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/help/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/help/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/help/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/help-en.jpg</image:loc></image:image>
     <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -68,9 +43,50 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/help/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/help/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/help/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/help-bn.jpg</image:loc></image:image>
     <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mywallet.mdrahim.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/privacy/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/privacy-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://mywallet.mdrahim.com/bn/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/privacy/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/privacy-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://mywallet.mdrahim.com/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/terms/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/terms/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/terms-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://mywallet.mdrahim.com/bn/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/terms/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/terms/"/>
+    <image:image><image:loc>https://mywallet.mdrahim.com/assets/images/og/terms-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://mywallet.mdrahim.com/delete-account/</loc>

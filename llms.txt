@@ -1,0 +1,24 @@
+# MyWallet
+
+> MyWallet is a free, private personal finance app for Android (8.0 and later) by MD Rahim. It keeps financial data on the phone: no bank logins and no ads. It works offline, and the website is in English and Bengali (বাংলা).
+
+Key facts:
+- Track bank accounts, credit cards, cash, mobile wallets such as bKash, and loans in one app, in any currency.
+- Category budgets with a daily spending allowance, savings goals, bills and subscriptions, receipt scanning, tax reports and insights.
+- Ask MyWallet: an AI assistant that runs on the phone and turns plain sentences into transactions. Questions are never sent to a cloud AI provider.
+- Optional bank SMS auto-capture, processed on the phone.
+- Shared accounts: invite family members to one account with a code that works once, for 7 days. Apart from optional Google Drive backups, which go to the user's own Drive, a shared account is the only financial data stored in the cloud.
+- Secure Vault encrypted with AES-256, biometric lock, Google Drive backup, CSV and PDF export.
+- Free to download and use. MyWallet Plus is an optional subscription sold through Google Play.
+
+## Pages
+- [Home](https://mywallet.mdrahim.com/): what MyWallet does, privacy, comparison with typical budget apps, FAQ
+- [Help Center](https://mywallet.mdrahim.com/help/): 22 answers about accounts, sharing, privacy, multi-currency, backups and settings
+- [Privacy Policy](https://mywallet.mdrahim.com/privacy/): how data is handled
+- [Terms of Service](https://mywallet.mdrahim.com/terms/)
+- [বাংলা (Bengali) site](https://mywallet.mdrahim.com/bn/)
+
+## Links
+- [Get it on Google Play](https://play.google.com/store/apps/details?id=com.mdrahim.mywallet)
+- [Facebook](https://www.facebook.com/MyWalletOfficial)
+- Contact: mywalletapps@gmail.com

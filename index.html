@@ -9,34 +9,38 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
+  <!-- seo -->
   <meta name="description" content="Track spending, budgets, savings goals and every account in one beautiful app. Your data stays on your phone — no bank logins, no ads.">
-  <meta name="keywords" content="MyWallet, mywallet, my wallet, My Wallet, MYWALLET, Finance App, fintech, fintech app, offline finance app, private budget tracker, AI expense tracker without bank sync, private net worth tracker, secure wallet app, money manager, Android finance app">
+  <meta name="keywords" content="MyWallet, personal finance app, expense tracker, budget app, money manager, offline finance app, private budget tracker, Android finance app, bKash expense tracker, savings goals, shared family account">
   <meta name="author" content="MD Rahim">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywallet.mdrahim.com/">
   <link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/">
   <link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/">
   <link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="MyWallet — Private, Offline Finance App &amp; Budget Tracker">
-  <meta property="og:description" content="Track spending, budgets, savings goals and every account in one beautiful app. Your data stays on your phone — no bank logins, no ads.">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="application-name" content="MyWallet">
+  
+  <!-- Link previews: WhatsApp, Messenger/Facebook, LinkedIn, X, Telegram, Slack… -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyWallet">
+  <meta property="og:title" content="MyWallet — Know your money. Keep it yours.">
+  <meta property="og:description" content="Every account, budget and savings goal in one beautiful Android app. Your data stays on your phone — no bank logins, no ads. Free on Google Play.">
   <meta property="og:url" content="https://mywallet.mdrahim.com/">
-  <meta property="og:image" content="https://mywallet.mdrahim.com/assets/images/og-image.jpg">
+  <meta property="og:image" content="https://mywallet.mdrahim.com/assets/images/og/home-en.jpg">
+  <meta property="og:image:secure_url" content="https://mywallet.mdrahim.com/assets/images/og/home-en.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="MyWallet — Know your money. Keep it yours. Three screens of the MyWallet app.">
-  <meta property="og:site_name" content="MyWallet">
+  <meta property="og:image:alt" content="MyWallet: Know your money. Keep it yours. Three screens of the MyWallet app.">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="bn_BD">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MyWallet — Private, Offline Finance App &amp; Budget Tracker">
-  <meta name="twitter:description" content="Track spending, budgets, savings goals and every account in one beautiful app. Your data stays on your phone — no bank logins, no ads.">
-  <meta name="twitter:image" content="https://mywallet.mdrahim.com/assets/images/og-image.jpg">
+  <meta name="twitter:title" content="MyWallet — Know your money. Keep it yours.">
+  <meta name="twitter:description" content="Every account, budget and savings goal in one beautiful Android app. Your data stays on your phone — no bank logins, no ads. Free on Google Play.">
+  <meta name="twitter:image" content="https://mywallet.mdrahim.com/assets/images/og/home-en.jpg">
+  <meta name="twitter:image:alt" content="MyWallet: Know your money. Keep it yours. Three screens of the MyWallet app.">
+  <!-- /seo -->
 
   <!-- Fonts -->
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -45,22 +49,124 @@
   <link rel="preload" as="image" href="/assets/images/app/home.webp" imagesrcset="/assets/images/app/home-480.webp 480w, /assets/images/app/home.webp 909w" imagesizes="(max-width: 960px) 240px, 300px" fetchpriority="high">
   <link rel="stylesheet" href="/css/style.css?v=9.5">
 
-  <!-- JSON-LD Structured Data -->
+  <!-- ld:app -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "MyWallet",
-    "operatingSystem": "Android 8.0+",
-    "applicationCategory": "FinanceApplication",
-    "url": "https://mywallet.mdrahim.com/",
-    "downloadUrl": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
-    "screenshot": "https://mywallet.mdrahim.com/assets/images/app/home.webp",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "author": { "@type": "Person", "name": "MD Rahim", "url": "https://mdrahim.com" },
-    "description": "A private, offline-first personal finance manager with an on-device AI assistant, budgets, savings goals, shared accounts and an encrypted Secure Vault."
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mywallet.mdrahim.com/#website",
+      "url": "https://mywallet.mdrahim.com/",
+      "name": "MyWallet",
+      "inLanguage": [
+        "en",
+        "bn"
+      ],
+      "publisher": {
+        "@id": "https://mywallet.mdrahim.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mywallet.mdrahim.com/#organization",
+      "name": "MyWallet",
+      "url": "https://mywallet.mdrahim.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mywallet.mdrahim.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "mywalletapps@gmail.com",
+      "sameAs": [
+        "https://www.facebook.com/MyWalletOfficial",
+        "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet"
+      ],
+      "founder": {
+        "@id": "https://mdrahim.com/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mdrahim.com/#person",
+      "name": "MD Rahim",
+      "url": "https://mdrahim.com"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://mywallet.mdrahim.com/#app",
+      "name": "MyWallet",
+      "description": "A private personal finance app for Android that works offline: budgets, savings goals, shared family accounts, an on-device AI assistant and an encrypted Secure Vault. Your financial data stays on your phone.",
+      "url": "https://mywallet.mdrahim.com/",
+      "image": "https://mywallet.mdrahim.com/assets/icons/icon-512.png",
+      "screenshot": [
+        "https://mywallet.mdrahim.com/assets/images/app/home.webp",
+        "https://mywallet.mdrahim.com/assets/images/app/home-accounts.webp",
+        "https://mywallet.mdrahim.com/assets/images/app/budgets.webp",
+        "https://mywallet.mdrahim.com/assets/images/app/plan.webp"
+      ],
+      "operatingSystem": "Android 8.0+",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Personal finance",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": [
+        "en",
+        "bn"
+      ],
+      "featureList": [
+        "Every account in one place: banks, credit cards, cash, mobile wallets like bKash, and loans",
+        "Category budgets with a daily spending allowance",
+        "Savings goals with target dates",
+        "Bills and subscriptions with a calendar",
+        "Ask MyWallet: on-device AI that turns plain sentences into transactions",
+        "Optional bank SMS auto-capture, processed on the phone",
+        "Shared accounts for families, by invite code",
+        "Receipt scanning",
+        "Multi-currency accounts",
+        "Tax reports",
+        "AES-256 encrypted Secure Vault",
+        "Biometric lock",
+        "Google Drive backup and CSV/PDF export"
+      ],
+      "author": {
+        "@id": "https://mdrahim.com/#person"
+      },
+      "publisher": {
+        "@id": "https://mywallet.mdrahim.com/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mywallet.mdrahim.com/#webpage",
+      "url": "https://mywallet.mdrahim.com/",
+      "name": "MyWallet — Private, Offline Finance App & Budget Tracker",
+      "description": "Track spending, budgets, savings goals and every account in one beautiful app. Your data stays on your phone — no bank logins, no ads.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mywallet.mdrahim.com/#website"
+      },
+      "about": {
+        "@id": "https://mywallet.mdrahim.com/#app"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://mywallet.mdrahim.com/assets/images/og/home-en.jpg",
+        "width": 1200,
+        "height": 630
+      }
+    }
+  ]
+}
   </script>
+  <!-- /ld:app -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -122,7 +228,7 @@
       </nav>
       <div class="nav-end">
         <a class="lang-link" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
-        <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-brand btn-sm nav-cta" target="_blank" rel="noopener">Download</a>
+        <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dnav%26utm_campaign%3Dsite-en" class="btn btn-brand btn-sm nav-cta" target="_blank" rel="noopener">Download</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
           <span class="bars" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
         </button>
@@ -135,7 +241,7 @@
     <a href="#comparison">Compare <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
     <a href="#faq">FAQ <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
     <a href="/help/">Help <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
-    <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-brand" target="_blank" rel="noopener">Download on Google Play</a>
+    <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dmenu%26utm_campaign%3Dsite-en" class="btn btn-brand" target="_blank" rel="noopener">Download on Google Play</a>
   </div>
 
   <main id="main">
@@ -164,7 +270,7 @@
           <div class="s-intro reveal" style="--d:3">
             <p class="lede">MyWallet brings every account, budget and goal into one beautiful app — and keeps your financial data on your phone. No bank logins. No ads.</p>
             <div class="hero-cta">
-              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
+              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhero%26utm_campaign%3Dsite-en" class="play-badge" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
                 <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
                 <span><small>Get it on</small><strong>Google Play</strong></span>
               </a>
@@ -602,7 +708,7 @@
             <h2 class="t-h1">Ready when <em>you</em> are.</h2>
             <p class="lede">MyWallet is free on Google Play. No ads, no bank logins, no strings attached.</p>
             <div class="hero-cta">
-              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Download MyWallet on Google Play">
+              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dclosing%26utm_campaign%3Dsite-en" class="play-badge" target="_blank" rel="noopener" aria-label="Download MyWallet on Google Play">
                 <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
                 <span><small>Get it on</small><strong>Google Play</strong></span>
               </a>
@@ -627,7 +733,7 @@
         <div class="footer-brand">
           <a href="/" aria-label="MyWallet home"><img src="/assets/logos/mywallet_logo(web).svg" alt="MyWallet" class="logo" width="128" height="34"></a>
           <p>A private, offline-first finance app. Every account, budget and goal — beautifully managed.</p>
-          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge sm" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
+          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter%26utm_campaign%3Dsite-en" class="play-badge sm" target="_blank" rel="noopener" aria-label="Get MyWallet on Google Play">
             <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
             <span><small>Get it on</small><strong>Google Play</strong></span>
           </a>

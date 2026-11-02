@@ -1,0 +1,33 @@
+{
+  "name": "MyWallet",
+  "short_name": "MyWallet",
+  "description": "A private, offline-first finance app for Android: every account, budget and savings goal in one place.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#f8f7f4",
+  "theme_color": "#f8f7f4",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
+      "id": "com.mdrahim.mywallet"
+    }
+  ],
+  "prefer_related_applications": true
+}
