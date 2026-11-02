@@ -9,6 +9,13 @@
   const icon = (id, cls = '') => `<svg${cls ? ` class="${cls}"` : ''} aria-hidden="true"><use href="${ICONS}#${id}"/></svg>`;
   const hasIO = 'IntersectionObserver' in window;
 
+  /* ── Language: the Bengali pages reuse this script ─────── */
+  const bn = document.documentElement.lang === 'bn';
+  const T = bn
+    ? { open: 'মেনু খুলুন', close: 'মেনু বন্ধ করুন', typing: 'সহকারী লিখছে', copied: (e) => `${e} কপি করা হয়েছে` }
+    : { open: 'Open menu', close: 'Close menu', typing: 'Assistant is typing', copied: (e) => `Copied ${e}` };
+  const digits = (s) => (bn ? String(s).replace(/\d/g, (d) => '০১২৩৪৫৬৭৮৯'[d]) : String(s));
+
   /* ── Navigation ────────────────────────────────────────── */
   const nav = $('#nav');
   const navToggle = $('.nav-toggle');
@@ -18,7 +25,7 @@
     if (!nav || !navToggle) return;
     nav.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    navToggle.setAttribute('aria-label', open ? T.close : T.open);
   };
 
   if (nav) {
@@ -347,7 +354,7 @@
     const wide = window.matchMedia('(min-width: 961px)');
     let dist = 0;
     let shown = -1;
-    const setCount = (i) => { if (i !== shown && counter) { shown = i; counter.textContent = String(i + 1).padStart(2, '0'); } };
+    const setCount = (i) => { if (i !== shown && counter) { shown = i; counter.textContent = digits(String(i + 1).padStart(2, '0')); } };
     const measure = () => {
       if (!(isSeq() && wide.matches)) {
         hs.style.removeProperty('--hs-h');
@@ -479,7 +486,8 @@
         scrollDown();
         const typing = document.createElement('div');
         typing.className = 'bubble bot typing';
-        typing.setAttribute('aria-label', 'Assistant is typing');
+        typing.setAttribute('aria-label', T.typing);
+        if (bn) typing.lang = 'bn';
         typing.innerHTML = '<i></i><i></i><i></i>';
         later(() => { chatBody.appendChild(typing); scrollDown(); }, 250);
         later(() => {
@@ -515,7 +523,9 @@
     const a = $('.acc-a', item);
     if (!q || !a) return;
     a.id = a.id || `acc-${n}`;
+    q.id = q.id || `${a.id}-q`;
     a.setAttribute('role', 'region');
+    a.setAttribute('aria-labelledby', q.id);
     q.setAttribute('aria-controls', a.id);
     q.addEventListener('click', () => {
       const open = !item.classList.contains('is-open');
@@ -616,7 +626,7 @@
     link.addEventListener('click', () => {
       // The mail app still opens; copying helps people without one configured.
       const email = link.getAttribute('href').replace('mailto:', '').split('?')[0];
-      navigator.clipboard?.writeText(email).then(() => toast(`Copied ${email}`)).catch(() => {});
+      navigator.clipboard?.writeText(email).then(() => toast(T.copied(email))).catch(() => {});
     });
   });
 })();

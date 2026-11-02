@@ -12,6 +12,9 @@
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mywallet.mdrahim.com/">
+  <link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/">
+  <link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/">
+  <link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="MyWallet — Private, Offline Finance App &amp; Budget Tracker">
@@ -25,6 +28,7 @@
   <meta property="og:image:alt" content="MyWallet — Know your money. Keep it yours. Three screens of the MyWallet app.">
   <meta property="og:site_name" content="MyWallet">
   <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="bn_BD">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -33,13 +37,11 @@
   <meta name="twitter:image" content="https://mywallet.mdrahim.com/assets/images/og-image.jpg">
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500..700&text=%E0%A7%B3&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="preload" as="image" href="/assets/images/app/home.webp" fetchpriority="high">
-  <link rel="stylesheet" href="/css/style.css?v=9.3">
+  <link rel="preload" as="image" href="/assets/images/app/home.webp" imagesrcset="/assets/images/app/home-480.webp 480w, /assets/images/app/home.webp 909w" imagesizes="(max-width: 960px) 240px, 300px" fetchpriority="high">
+  <link rel="stylesheet" href="/css/style.css?v=9.4">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -99,7 +101,7 @@
         </g></g>
       </g>
     </svg>
-    <div class="i-word">My<em>Wallet</em></div>
+    <div class="i-word" lang="en">My<em>Wallet</em></div>
   </div>
 
 
@@ -117,6 +119,7 @@
         <a href="/help/">Help</a>
       </nav>
       <div class="nav-end">
+        <a class="lang-link" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
         <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-brand btn-sm nav-cta" target="_blank" rel="noopener">Download</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
           <span class="bars" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
@@ -179,10 +182,10 @@
             <div class="phone">
               <span class="island" aria-hidden="true"></span>
               <div class="screen">
-                <img src="/assets/images/app/home.webp" width="909" height="2000" alt="MyWallet home screen showing total balance, money saved this month, income and spending" class="is-active" fetchpriority="high" decoding="async">
-                <img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="" decoding="async">
-                <img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="" decoding="async">
-                <img src="/assets/images/app/plan.webp" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/home.webp" srcset="/assets/images/app/home-480.webp 480w, /assets/images/app/home.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="MyWallet home screen showing total balance, money saved this month, income and spending" class="is-active" fetchpriority="high" decoding="async">
+                <img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/budgets.webp" srcset="/assets/images/app/budgets-480.webp 480w, /assets/images/app/budgets.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/plan.webp" srcset="/assets/images/app/plan-480.webp 480w, /assets/images/app/plan.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="" decoding="async">
               </div>
             </div>
           </div></div>
@@ -208,7 +211,7 @@
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Accounts in any currency, converted for you</li>
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Only the last four digits of a card, never more</li>
             </ul>
-            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="Stacked bKash, EBL and BRAC account cards in MyWallet" loading="lazy" decoding="async"></div></div></figure>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="Stacked bKash, EBL and BRAC account cards in MyWallet" loading="lazy" decoding="async"></div></div></figure>
           </article>
           <article class="chapter" id="analytics">
             <span class="chapter-no">03 — Budgets</span>
@@ -219,7 +222,7 @@
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>A daily allowance that keeps the month on track</li>
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Your last three months, side by side</li>
             </ul>
-            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/budgets.webp" width="909" height="2000" alt="Budgets screen with Furniture, Gas and Food category budgets" loading="lazy" decoding="async"></div></div></figure>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/budgets.webp" srcset="/assets/images/app/budgets-480.webp 480w, /assets/images/app/budgets.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="Budgets screen with Furniture, Gas and Food category budgets" loading="lazy" decoding="async"></div></div></figure>
           </article>
           <article class="chapter" id="plan">
             <span class="chapter-no">04 — Plan</span>
@@ -230,7 +233,7 @@
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Bills and subscriptions, with a calendar</li>
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Monthly commitments in a single number</li>
             </ul>
-            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/plan.webp" width="909" height="2000" alt="Plan screen with savings goals for a tour and a bike" loading="lazy" decoding="async"></div></div></figure>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/plan.webp" srcset="/assets/images/app/plan-480.webp 480w, /assets/images/app/plan.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="Plan screen with savings goals for a tour and a bike" loading="lazy" decoding="async"></div></div></figure>
           </article>
         </div>
         <div class="s-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
@@ -607,7 +610,7 @@
           <div class="closing-device" aria-hidden="true">
             <div class="phone">
               <span class="island"></span>
-              <div class="screen"><img src="/assets/images/app/home-accounts.webp" width="909" height="2000" alt="" loading="lazy" decoding="async"></div>
+              <div class="screen"><img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 960px) 240px, 280px" width="909" height="2000" alt="" loading="lazy" decoding="async"></div>
             </div>
           </div>
         </div>
@@ -628,7 +631,7 @@
           </a>
         </div>
         <nav class="footer-col" aria-label="Product">
-          <h4>Product</h4>
+          <h2>Product</h2>
           <ul>
             <li><a href="#features">Features</a></li>
             <li><a href="#ask">Ask MyWallet</a></li>
@@ -638,7 +641,7 @@
           </ul>
         </nav>
         <nav class="footer-col" aria-label="Support">
-          <h4>Support</h4>
+          <h2>Support</h2>
           <ul>
             <li><a href="/help/">Help Center</a></li>
             <li><a href="mailto:mywalletapps@gmail.com">Contact us</a></li>
@@ -647,7 +650,7 @@
           </ul>
         </nav>
         <nav class="footer-col" aria-label="Legal">
-          <h4>Legal</h4>
+          <h2>Legal</h2>
           <ul>
             <li><a href="/privacy/">Privacy Policy</a></li>
             <li><a href="/terms/">Terms of Service</a></li>
@@ -661,7 +664,7 @@
           <a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener" aria-label="MyWallet on Facebook"><svg aria-hidden="true"><use href="/assets/icons.svg#i-facebook"/></svg></a>
         </div>
       </div>
-      <div class="wordmark" aria-hidden="true">My<em>Wallet</em></div>
+      <div class="wordmark" aria-hidden="true" lang="en">My<em>Wallet</em></div>
     </div>
   </footer>
 
@@ -669,6 +672,6 @@
     <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up"/></svg>
   </button>
 
-  <script src="/js/main.js?v=4.3" defer></script>
+  <script src="/js/main.js?v=4.4" defer></script>
 </body>
 </html>

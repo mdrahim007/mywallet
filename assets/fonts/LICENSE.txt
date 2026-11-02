@@ -1,0 +1,14 @@
+Fonts in this folder are subsets of the following typefaces, served from
+this website and licensed under the SIL Open Font License, Version 1.1
+(https://openfontlicense.org).
+
+Newsreader
+  Copyright 2020 The Newsreader Project Authors (http://github.com/productiontype/Newsreader)
+
+Hanken Grotesk
+  Copyright 2021 The Hanken Grotesk Project Authors (https://github.com/marcologous/hanken-grotesk)
+
+Noto Sans Bengali, Noto Serif Bengali (taka.woff2 is a one-glyph subset of Noto Sans Bengali)
+  Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)
+
+The fonts are unmodified apart from subsetting by Google Fonts.

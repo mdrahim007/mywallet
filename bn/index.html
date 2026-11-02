@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="bn" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MyWallet — টাকার হিসাব ও বাজেট রাখার প্রাইভেট, অফলাইন অ্যাপ</title>
+  <script>(function(){var d=document.documentElement,c='js',q=function(x){return window.matchMedia(x).matches},m=!q('(prefers-reduced-motion: reduce)');if(m){c+=' motion';if(q('(min-height: 600px) and (min-width: 340px)'))c+=' seq';try{if(!sessionStorage.getItem('mw-intro')){c+=' has-intro';sessionStorage.setItem('mw-intro','1');}}catch(e){}}d.className=c;})();</script>
+  <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
+  <meta name="theme-color" content="#f8f7f4">
+  <meta name="description" content="খরচ, বাজেট, সঞ্চয়ের লক্ষ্য আর সব অ্যাকাউন্টের হিসাব এক সুন্দর অ্যাপে। আপনার তথ্য থাকে আপনার ফোনেই — ব্যাংক লগইন লাগে না, কোনো বিজ্ঞাপন নেই।">
+  <meta name="keywords" content="MyWallet, মাই ওয়ালেট, টাকার হিসাব, খরচের হিসাব, হিসাব রাখার অ্যাপ, বাজেট অ্যাপ, ফাইন্যান্স অ্যাপ, অফলাইন ফাইন্যান্স অ্যাপ, মানি ম্যানেজার, বিকাশ, অ্যান্ড্রয়েড অ্যাপ">
+  <meta name="author" content="MD Rahim">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mywallet.mdrahim.com/bn/">
+  <link rel="alternate" hreflang="en" href="https://mywallet.mdrahim.com/">
+  <link rel="alternate" hreflang="bn" href="https://mywallet.mdrahim.com/bn/">
+  <link rel="alternate" hreflang="x-default" href="https://mywallet.mdrahim.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MyWallet — টাকার হিসাব ও বাজেট রাখার প্রাইভেট, অফলাইন অ্যাপ">
+  <meta property="og:description" content="খরচ, বাজেট, সঞ্চয়ের লক্ষ্য আর সব অ্যাকাউন্টের হিসাব এক সুন্দর অ্যাপে। আপনার তথ্য থাকে আপনার ফোনেই — ব্যাংক লগইন লাগে না, কোনো বিজ্ঞাপন নেই।">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mywallet.mdrahim.com/bn/">
+  <meta property="og:image" content="https://mywallet.mdrahim.com/assets/images/og-image-bn.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="MyWallet — আপনার টাকা বুঝুন। রাখুন নিজের কাছে। MyWallet অ্যাপের তিনটি স্ক্রিন।">
+  <meta property="og:site_name" content="MyWallet">
+  <meta property="og:locale" content="bn_BD">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MyWallet — টাকার হিসাব ও বাজেট রাখার প্রাইভেট, অফলাইন অ্যাপ">
+  <meta name="twitter:description" content="খরচ, বাজেট, সঞ্চয়ের লক্ষ্য আর সব অ্যাকাউন্টের হিসাব এক সুন্দর অ্যাপে। আপনার তথ্য থাকে আপনার ফোনেই — ব্যাংক লগইন লাগে না, কোনো বিজ্ঞাপন নেই।">
+  <meta name="twitter:image" content="https://mywallet.mdrahim.com/assets/images/og-image-bn.jpg">
+
+  <!-- Fonts -->
+  <link rel="preload" href="/assets/fonts/noto-serif-bengali.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/noto-sans-bengali.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="preload" as="image" href="/assets/images/app/home.webp" imagesrcset="/assets/images/app/home-480.webp 480w, /assets/images/app/home.webp 909w" imagesizes="(max-width: 960px) 240px, 300px" fetchpriority="high">
+  <link rel="stylesheet" href="/css/style.css?v=9.4">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MyWallet",
+    "operatingSystem": "Android 8.0+",
+    "applicationCategory": "FinanceApplication",
+    "url": "https://mywallet.mdrahim.com/bn/",
+    "inLanguage": "bn",
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
+    "screenshot": "https://mywallet.mdrahim.com/assets/images/app/home.webp",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "MD Rahim", "url": "https://mdrahim.com" },
+    "description": "ডিভাইসেই চলা AI সহকারী, বাজেট, সঞ্চয়ের লক্ষ্য, শেয়ার করা অ্যাকাউন্ট আর এনক্রিপ্টেড Secure Vault সহ একটি প্রাইভেট, অফলাইন-ফার্স্ট ব্যক্তিগত ফাইন্যান্স অ্যাপ।"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "আমার আর্থিক তথ্য কি ক্লাউডে রাখা হয়?",
+        "acceptedAnswer": { "@type": "Answer", "text": "না। MyWallet অফলাইন-ফার্স্ট: আপনার আর্থিক তথ্য আপনার ডিভাইসের একটি লোকাল ডেটাবেসে থাকে। একমাত্র ব্যতিক্রম হলো সেই অ্যাকাউন্ট, যা আপনি আমন্ত্রিত মানুষদের সঙ্গে শেয়ার করেন — তারা যাতে দেখতে পান, সেজন্য সেটি ক্লাউডে রাখা হয়।" } },
+      { "@type": "Question", "name": "ব্যাংক অ্যাকাউন্ট যুক্ত না করেই কি MyWallet ব্যবহার করা যায়?",
+        "acceptedAnswer": { "@type": "Answer", "text": "হ্যাঁ। MyWallet কখনো আপনার ব্যাংক লগইন চায় না। নিজে লেনদেন যোগ করুন, Ask MyWallet-এ সাধারণ বাক্যে লিখুন, অথবা ঐচ্ছিক ব্যাংক SMS অটো-ক্যাপচার চালু করুন — যা পুরোপুরি আপনার ফোনেই চলে।" } },
+      { "@type": "Question", "name": "Ask MyWallet অফলাইনে কীভাবে কাজ করে?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ask MyWallet একটি ন্যাচারাল ল্যাঙ্গুয়েজ প্রসেসিং ইঞ্জিন ব্যবহার করে, যা ১০০% আপনার ডিভাইসেই চলে। আপনার প্রশ্ন বা এন্ট্রি কখনো কোনো ক্লাউড AI প্রোভাইডারের কাছে পাঠানো হয় না।" } },
+      { "@type": "Question", "name": "MyWallet কি বিনামূল্যে?",
+        "acceptedAnswer": { "@type": "Answer", "text": "হ্যাঁ। MyWallet ডাউনলোড ও ব্যবহার বিনামূল্যে, কোনো বিজ্ঞাপন নেই। MyWallet Plus একটি ঐচ্ছিক সাবস্ক্রিপশন, যা Google Play-এর মাধ্যমে কেনা যায় এবং যেকোনো সময় বাতিল করা যায়।" } },
+      { "@type": "Question", "name": "পরিবারের সঙ্গে কি অ্যাকাউন্ট শেয়ার করা যায়?",
+        "acceptedAnswer": { "@type": "Answer", "text": "হ্যাঁ। যাদের বিশ্বাস করেন, এককালীন কোড দিয়ে তাদের আপনার কোনো একটি অ্যাকাউন্টে আমন্ত্রণ জানান। তারা শুধু ওই অ্যাকাউন্ট আর তার নিশ্চিত লেনদেনগুলো দেখতে পান — আপনার আর কিছুই নয়। যেকোনো সময় ভূমিকা বদলাতে, কাউকে সরিয়ে দিতে বা শেয়ার বন্ধ করতে পারবেন।" } },
+      { "@type": "Question", "name": "আমার তথ্যের ব্যাকআপ কীভাবে নেব?",
+        "acceptedAnswer": { "@type": "Answer", "text": "নিয়ন্ত্রণ আপনার হাতে। যেকোনো সময় তথ্য এক্সপোর্ট করুন, অথবা Google Drive ব্যাকআপ চালু করুন — যা জমা হয় একটি প্রাইভেট App Data ফোল্ডারে, যেখানে শুধু MyWallet-ই ঢুকতে পারে।" } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">মূল কনটেন্টে যান</a>
+
+  <!-- Brand intro: the logo assembles (once per visit, skipped for reduced motion) -->
+  <div class="intro-screen" aria-hidden="true">
+    <svg viewBox="270 110 290 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="iBlue" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1442a8"/><stop offset="100%" stop-color="#2a75ff"/></linearGradient>
+        <linearGradient id="iGreen" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00b85d"/><stop offset="100%" stop-color="#33ff99"/></linearGradient>
+        <linearGradient id="iGold" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d4af37"/><stop offset="30%" stop-color="#fff1b8"/><stop offset="65%" stop-color="#e6c245"/><stop offset="100%" stop-color="#ffdf73"/></linearGradient>
+        <clipPath id="iLineClip"><rect x="0" y="0" width="455" height="500"/><circle cx="455" cy="207" r="78"/></clipPath>
+        <clipPath id="iCuts"><polygon points="0,0 415,0 415,170 460,170 460,0 800,0 800,238 0,238"/></clipPath>
+      </defs>
+      <g transform="translate(0,-5)">
+        <rect class="i-rect" x="290" y="140" width="165" height="135" rx="30" fill="url(#iBlue)"/>
+        <circle class="i-circle" cx="455" cy="207" r="78" fill="url(#iGreen)"/>
+        <g clip-path="url(#iLineClip)"><g clip-path="url(#iCuts)">
+          <path class="i-path" pathLength="1" d="M 331.5 250 L 375 170 L 408 235 L 442 170 L 468 220 L 522 125" fill="none" stroke="url(#iGold)" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="4"/>
+        </g></g>
+      </g>
+    </svg>
+    <div class="i-word" lang="en">My<em>Wallet</em></div>
+  </div>
+
+
+  <!-- ═══ Navigation ═══ -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="/bn/" class="brand" aria-label="MyWallet হোম">
+        <img src="/assets/logos/mywallet_logo(web).svg" alt="MyWallet" width="128" height="34">
+      </a>
+      <nav class="nav-links" aria-label="প্রধান">
+        <a href="#features">ফিচার</a>
+        <a href="#security">গোপনীয়তা</a>
+        <a href="#comparison">তুলনা</a>
+        <a href="#faq">প্রশ্নোত্তর</a>
+        <a href="/bn/help/">সহায়তা</a>
+      </nav>
+      <div class="nav-end">
+        <a class="lang-link" href="/" hreflang="en" lang="en">English</a>
+        <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-brand btn-sm nav-cta" target="_blank" rel="noopener">ডাউনলোড</a>
+        <button class="nav-toggle" type="button" aria-label="মেনু খুলুন" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="bars" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#features">ফিচার <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#security">গোপনীয়তা <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#comparison">তুলনা <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="#faq">প্রশ্নোত্তর <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="/bn/help/">সহায়তা <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+    <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="btn btn-brand" target="_blank" rel="noopener">Google Play থেকে ডাউনলোড করুন</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ═══ Hero → story: one continuous, pinned sequence ═══ -->
+    <section class="scrolly" id="features" data-scrolly>
+      <div class="s-pin">
+        <div class="s-halo" aria-hidden="true"><i></i></div>
+        <svg class="pulse s-pulse" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="goldLine" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#b8901f"/><stop offset="0.32" stop-color="#f3dc94"/><stop offset="0.64" stop-color="#d4af37"/><stop offset="1" stop-color="#f0cf6a"/>
+            </linearGradient>
+          </defs>
+          <path pathLength="1" d="M-40 905 L360 792 L560 852 L905 640 L1000 700 L1190 300 L1310 380 L1420 210"/>
+          <circle cx="1420" cy="210" r="7"/>
+        </svg>
+        <div class="s-num" aria-hidden="true"><span class="is-active">০১</span><span>০২</span><span>০৩</span><span>০৪</span></div>
+
+        <div class="wrap s-hero">
+          <a class="hero-note reveal" href="#family">
+            <b>নতুন</b><span class="sep" aria-hidden="true"></span>পরিবারের সঙ্গে অ্যাকাউন্ট শেয়ার
+            <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
+          </a>
+          <h1 class="s-title split"><span class="l">আপনার টাকা বুঝুন।</span> <span class="l">রাখুন <em>নিজের</em> কাছে।</span></h1>
+          <div class="s-intro reveal" style="--d:3">
+            <p class="lede">MyWallet আপনার সব অ্যাকাউন্ট, বাজেট ও লক্ষ্য এক সুন্দর অ্যাপে নিয়ে আসে — আর আপনার আর্থিক তথ্য রাখে আপনার ফোনেই। ব্যাংক লগইন লাগে না। কোনো বিজ্ঞাপন নেই।</p>
+            <div class="hero-cta">
+              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Google Play থেকে MyWallet নিন">
+                <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+                <span><small>পাওয়া যাচ্ছে</small><strong>Google Play-তে</strong></span>
+              </a>
+              <a href="#overview" class="arrow-link" data-story-step="0">কীভাবে কাজ করে, দেখুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+            </div>
+          </div>
+          <p class="hero-meta reveal" style="--d:4">
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>ব্যবহার বিনামূল্যে</span>
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>অফলাইনেও চলে</span>
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>অ্যান্ড্রয়েড ৮.০+</span>
+          </p>
+        </div>
+        <div class="s-cue" aria-hidden="true"><span>স্ক্রল করুন</span><i></i></div>
+
+        <div class="s-device">
+          <div class="s-tilt"><div class="s-chap">
+            <div class="phone">
+              <span class="island" aria-hidden="true"></span>
+              <div class="screen">
+                <img src="/assets/images/app/home.webp" srcset="/assets/images/app/home-480.webp 480w, /assets/images/app/home.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="MyWallet-এর হোম স্ক্রিন: মোট ব্যালান্স, এ মাসের সঞ্চয়, আয় ও খরচ" class="is-active" fetchpriority="high" decoding="async">
+                <img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/budgets.webp" srcset="/assets/images/app/budgets-480.webp 480w, /assets/images/app/budgets.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="" decoding="async">
+                <img src="/assets/images/app/plan.webp" srcset="/assets/images/app/plan-480.webp 480w, /assets/images/app/plan.webp 909w" sizes="(max-width: 960px) 240px, 300px" width="909" height="2000" alt="" decoding="async">
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="s-chapters">
+          <article class="chapter is-active" id="overview">
+            <span class="chapter-no">০১ — এক নজরে</span>
+            <h2>সবকিছু এক নজরে।</h2>
+            <p>সব অ্যাকাউন্ট মিলিয়ে মোট ব্যালান্স, কত এল, কত গেল, আর এ মাসে কত জমালেন — সবই এক শান্ত স্ক্রিনে।</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>সব অ্যাকাউন্ট মিলিয়ে মোট ব্যালান্স</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>গত ৩০ দিনের আয় ও খরচ</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>এক ট্যাপে ট্রান্সফার, রসিদ স্ক্যান, বিল পরিশোধ</li>
+            </ul>
+          </article>
+          <article class="chapter" id="accounts">
+            <span class="chapter-no">০২ — অ্যাকাউন্ট</span>
+            <h2>সব অ্যাকাউন্ট, সুন্দর করে সাজানো।</h2>
+            <p>ব্যাংক, কার্ড, নগদ টাকা আর বিকাশের মতো মোবাইল ওয়ালেট — সব থাকে কার্ডের মতো একসঙ্গে সাজানো, প্রতিটির নিজস্ব ব্যালান্স, রং আর ইতিহাসসহ।</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>ব্যাংক অ্যাকাউন্ট, ক্রেডিট কার্ড, নগদ, ওয়ালেট ও ঋণ</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>যেকোনো মুদ্রায় অ্যাকাউন্ট, রূপান্তর হয় নিজে থেকেই</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>কার্ডের শুধু শেষ চারটি সংখ্যা, এর বেশি কখনো নয়</li>
+            </ul>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="MyWallet-এ বিকাশ, EBL ও BRAC অ্যাকাউন্টের কার্ড একটির ওপর আরেকটি সাজানো" loading="lazy" decoding="async"></div></div></figure>
+          </article>
+          <article class="chapter" id="analytics">
+            <span class="chapter-no">০৩ — বাজেট</span>
+            <h2>যে বাজেট আপনাকে হিসাবের মধ্যে রাখে।</h2>
+            <p>প্রতিটি ক্যাটাগরির জন্য মাসিক সীমা ঠিক করুন। MyWallet দেখায় কত বাকি আছে, আর ঠিক পথে থাকতে প্রতিদিন কত খরচ করতে পারবেন।</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>ক্যাটাগরির সীমা, সঙ্গে চলতি অগ্রগতি</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>দৈনিক খরচের সীমা, যাতে পুরো মাস চলে ঠিকঠাক</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>শেষ তিন মাসের হিসাব, পাশাপাশি</li>
+            </ul>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/budgets.webp" srcset="/assets/images/app/budgets-480.webp 480w, /assets/images/app/budgets.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="ফার্নিচার, গ্যাস ও খাবারের ক্যাটাগরি বাজেটসহ বাজেট স্ক্রিন" loading="lazy" decoding="async"></div></div></figure>
+          </article>
+          <article class="chapter" id="plan">
+            <span class="chapter-no">০৪ — পরিকল্পনা</span>
+            <h2>সামনের দিনের পরিকল্পনা।</h2>
+            <p>যা আপনার কাছে গুরুত্বপূর্ণ, তার জন্য জমান; প্রতিটি বিল আসার আগেই দেখুন; আর জানুন এ মাসের কতটা খরচ আগে থেকেই নির্ধারিত।</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>অগ্রগতি ও লক্ষ্য-তারিখসহ সঞ্চয়ের লক্ষ্য</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>ক্যালেন্ডারসহ বিল ও সাবস্ক্রিপশন</li>
+              <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>মাসের নির্ধারিত খরচ, এক সংখ্যায়</li>
+            </ul>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/plan.webp" srcset="/assets/images/app/plan-480.webp 480w, /assets/images/app/plan.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="ভ্রমণ ও বাইকের জন্য সঞ্চয়ের লক্ষ্যসহ প্ল্যান স্ক্রিন" loading="lazy" decoding="async"></div></div></figure>
+          </article>
+        </div>
+        <div class="s-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ═══ Facts ═══ -->
+    <section class="facts" aria-label="সংখ্যায় MyWallet">
+      <div class="wrap">
+        <div class="facts-grid reveal">
+          <div class="fact"><b>১০০%</b><span>Ask MyWallet-এর AI চলে আপনার ফোনেই, অফলাইনেও।</span></div>
+          <div class="fact"><b>০</b><span>বিজ্ঞাপন, ট্র্যাকার বা ডেটা ব্রোকার। এখনো না, কখনো না।</span></div>
+          <div class="fact"><b>২৫৬-বিট</b><span>AES এনক্রিপশনে সুরক্ষিত আপনার Secure Vault-এর সবকিছু।</span></div>
+          <div class="fact"><b>এক ট্যাপে</b><span>ব্যালান্স লুকিয়ে ফেলুন, যখন কেউ পাশ থেকে উঁকি দেয়।</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Marquee ═══ -->
+    <div class="marquee" role="img" aria-label="শুরু থেকেই প্রাইভেট। ব্যাংক লগইন নেই। AI চলে ফোনেই। বিজ্ঞাপন নেই, কখনো না। পরিবারের সঙ্গে শেয়ার। Google Play-তে বিনামূল্যে।">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-group"><span>শুরু থেকেই প্রাইভেট</span><i></i><span>ব্যাংক লগইন নেই</span><i></i><span>AI চলে ফোনেই</span><i></i><span>বিজ্ঞাপন নেই, কখনো না</span><i></i><span>পরিবারের সঙ্গে শেয়ার</span><i></i><span>Google Play-তে বিনামূল্যে</span><i></i></div>
+        <div class="marquee-group"><span>শুরু থেকেই প্রাইভেট</span><i></i><span>ব্যাংক লগইন নেই</span><i></i><span>AI চলে ফোনেই</span><i></i><span>বিজ্ঞাপন নেই, কখনো না</span><i></i><span>পরিবারের সঙ্গে শেয়ার</span><i></i><span>Google Play-তে বিনামূল্যে</span><i></i></div>
+      </div>
+    </div>
+
+    <!-- ═══ Manifesto ═══ -->
+    <section class="manifesto" aria-label="কেন আমরা MyWallet বানিয়েছি">
+      <div class="wrap">
+        <p class="scrub" data-scroll><span class="mark" aria-hidden="true"></span>আপনার টাকা একান্তই আপনার। তা বিক্রি হবে না, বিজ্ঞাপনের জন্য ঘাঁটা হবে না, অচেনা কারো সার্ভারেও পড়ে থাকবে না। তাই আমরা MyWallet বানিয়েছি সবকিছু আপনার ফোনেই রাখতে — <em>শান্ত</em>, প্রাইভেট আর ঝকঝকে পরিষ্কার।</p>
+        <div class="manifesto-sign"><img src="/assets/logos/mywallet_logo(favicon).svg" alt="" width="34" height="34"><span>MyWallet-এর মূলনীতি</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ Ask MyWallet ═══ -->
+    <section class="section" id="ask">
+      <div class="wrap">
+        <div class="ask-panel">
+          <div class="reveal">
+            <p class="label brand">Ask MyWallet</p>
+            <h2 class="t-h2">শুধু লিখুন, কী <em>খরচ</em> করলেন।</h2>
+            <p class="lede">সাধারণ বাক্যে লিখুন। Ask MyWallet সেটিকে ক্যাটাগরি অনুযায়ী লেনদেনে রূপ দেয়, আর আপনার টাকা নিয়ে প্রশ্নের উত্তর দেয় — পুরোটাই প্রসেস হয় আপনার ফোনে।</p>
+            <div class="prompts" role="group" aria-label="একটি উদাহরণ চেষ্টা করুন">
+              <button class="prompt" type="button" data-text="Spent ৳350 on lunch"><span class="q" lang="en">“Spent ৳350 on lunch”</span><span class="go" aria-hidden="true"><svg><use href="/assets/icons.svg#i-arrow-right"/></svg></span></button>
+              <button class="prompt" type="button" data-text="Got paid ৳85,000 salary"><span class="q" lang="en">“Got paid ৳85,000 salary”</span><span class="go" aria-hidden="true"><svg><use href="/assets/icons.svg#i-arrow-right"/></svg></span></button>
+              <button class="prompt" type="button" data-text="How much did I spend on food this month?"><span class="q" lang="en">“How much did I spend on food this month?”</span><span class="go" aria-hidden="true"><svg><use href="/assets/icons.svg#i-arrow-right"/></svg></span></button>
+            </div>
+          </div>
+
+          <div class="chat reveal" style="--d:2" role="region" aria-label="Ask MyWallet-এর ডেমো কথোপকথন">
+            <div class="chat-head">
+              <span class="chat-avatar"><svg aria-hidden="true"><use href="/assets/icons.svg#i-sparkles"/></svg></span>
+              <div>
+                <div class="chat-title">Ask MyWallet</div>
+                <div class="chat-sub">ফোনেই চলে · প্রাইভেট</div>
+              </div>
+              <button class="chat-reset" type="button" aria-label="ডেমো আবার শুরু করুন" id="chat-reset"><svg aria-hidden="true"><use href="/assets/icons.svg#i-repeat"/></svg></button>
+            </div>
+            <div class="chat-body" id="chat-body" aria-live="polite" lang="en">
+              <div class="bubble bot">Hi! Tell me what you spent or earned, or ask me anything about your money.</div>
+            </div>
+            <div class="chat-input">
+              <input type="text" id="chat-input" placeholder="Ask about your finances…" disabled aria-label="বার্তা">
+              <button class="chat-send" type="button" disabled aria-label="পাঠান"><svg aria-hidden="true"><use href="/assets/icons.svg#i-send"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Capture & share ═══ -->
+    <section class="section" id="family">
+      <div class="wrap">
+        <div class="head-split">
+          <div class="reveal">
+            <p class="label">টাইপ কম, সময় বেশি</p>
+            <h2 class="t-h2">রোজকার হিসাবের ঝামেলা, এখন <em>সহজ</em>।</h2>
+          </div>
+          <p class="lede reveal" style="--d:1">ব্যাংকের অ্যালার্টই লেনদেন লিখে রাখুক, আর পরিবারের খরচ থাকুক এক শেয়ার করা জায়গায়।</p>
+        </div>
+
+        <div class="duo">
+          <article class="panel reveal">
+            <div class="panel-copy">
+              <h3>ব্যাংক SMS থেকে আপনা-আপনি হিসাব।</h3>
+              <p>ব্যাংক অটো-ক্যাপচার চালু করুন — MyWallet আপনার ব্যাংক ও মোবাইল ওয়ালেটের অ্যালার্ট থেকে লেনদেন লিখে রাখবে, আপনার ফোনেই। আপনি শুধু দেখে নিশ্চিত করুন।</p>
+            </div>
+            <div class="panel-art" aria-hidden="true">
+              <div class="ui-card">
+                <div class="review-top">
+                  <span class="ico flag"><svg><use href="/assets/icons.svg#i-sms"/></svg></span>
+                  <div><b>১১টি লেনদেন দেখা বাকি</b><span>ব্যাংক অ্যালার্ট থেকে নেওয়া</span></div>
+                  <span class="btn-pill">দেখুন</span>
+                </div>
+                <div class="tx">
+                  <span class="ico bkash">bK</span>
+                  <span class="meta"><b>সেন্ড মানি · বিকাশ</b><span>আজ, দুপুর ২:১৪</span></span>
+                  <span class="amt out">−৳১,২০০</span>
+                </div>
+                <div class="tx">
+                  <span class="ico brac">BR</span>
+                  <span class="meta"><b>কার্ডে কেনাকাটা · বাজার</b><span>গতকাল, সন্ধ্যা ৭:৪০</span></span>
+                  <span class="amt out">−৳২,৩৪৫.৫০</span>
+                </div>
+                <div class="tx">
+                  <span class="ico ebl">EB</span>
+                  <span class="meta"><b>বেতন জমা হয়েছে</b><span>১ নভেম্বর</span></span>
+                  <span class="amt in">+৳৮৫,০০০</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel reveal" style="--d:1">
+            <div class="panel-copy">
+              <span class="tag-new">নতুন</span>
+              <h3>এক অ্যাকাউন্ট, পরিবারের সবার।</h3>
+              <p>যাদের বিশ্বাস করেন, এককালীন কোড দিয়ে তাদের আমন্ত্রণ জানান। তারা দেখবেন শুধু ওই অ্যাকাউন্ট আর কে কী যোগ করেছেন — আপনার আর কিছুই নয়।</p>
+            </div>
+            <div class="panel-art" aria-hidden="true">
+              <div class="ui-card">
+                <div class="shared-card">
+                  <div class="row">
+                    <span class="name">পরিবারের খরচ</span>
+                    <span class="faces"><span class="face a">MR</span><span class="face b">NA</span><span class="face c">AY</span></span>
+                  </div>
+                  <div class="bal">৳১৮,৪৫০</div>
+                  <div class="row" style="margin-top:10px"><small>শেয়ার করা অ্যাকাউন্ট</small><span class="chip">৩ জন</span></div>
+                </div>
+                <div class="members">
+                  <div class="member"><span class="face a">MR</span><span class="meta"><b>আপনি</b><span>ভাড়া যোগ · ৳১২,০০০</span></span><span class="role">মালিক</span></div>
+                  <div class="member"><span class="face b">NA</span><span class="meta"><b>নাদিয়া</b><span>বাজার যোগ · ৳১,৮৫০</span></span><span class="role">এডিটর</span></div>
+                  <div class="member"><span class="face c">AY</span><span class="meta"><b>আয়ান</b><span>আমন্ত্রণ কোডে যোগ দিলেন</span></span><span class="role">দর্শক</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Feature gallery ═══ -->
+    <section class="hs" id="more-features" data-hs>
+      <div class="hs-pin">
+        <div class="wrap hs-head">
+          <div>
+            <p class="label">আরও অনেক কিছু</p>
+            <h2 class="t-h2">প্রতিটি খুঁটিনাটি, <em>ভেবেচিন্তে</em>।</h2>
+            <p class="lede">সাবস্ক্রিপশন থেকে ট্যাক্সের মৌসুম — ছোট ছোট যে জিনিসগুলো টাকার হিসাবকে গোছানো রাখে।</p>
+          </div>
+          <p class="hs-count" aria-hidden="true"><b data-hs-current>০১</b> / ১০</p>
+        </div>
+        <div class="hs-track" tabindex="0" aria-label="MyWallet-এর ফিচার">
+          <article class="hs-card">
+            <span class="n">০১</span><h3>সাবস্ক্রিপশন ও বিল</h3>
+            <div class="hs-art" aria-hidden="true">
+              <div class="v-list">
+                <div class="v-row"><span class="ico violet">TV</span><b>স্ট্রিমিং</b><span class="amt out">৳৮০০</span><em>৪ দিন পর</em></div>
+                <div class="v-row"><span class="ico brac">IN</span><b>ইন্টারনেট</b><span class="amt out">৳১,৫০০</span><em>১০ নভে.</em></div>
+                <div class="v-row"><span class="ico ebl">MB</span><b>মোবাইল প্ল্যান</b><span class="amt out">৳৪৯৯</span><em>১৮ নভে.</em></div>
+              </div>
+            </div>
+            <p>নিয়মিত চার্জগুলো চিনে নিন, আর কোন বিল কবে দিতে হবে জানুন সময়ের আগেই।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০২</span><h3>সঞ্চয়ের লক্ষ্য</h3>
+            <div class="hs-art sand" aria-hidden="true">
+              <div class="v-goal"><div class="v-ring"></div><div class="v-label"><b>৬৪%</b><span>ভ্রমণ · ৳৩২,০০০</span></div></div>
+            </div>
+            <p>যা কিছুর জন্য জমাচ্ছেন, প্রতিটির জন্য আলাদা তহবিল আর লক্ষ্য।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৩</span><h3>রসিদ স্ক্যান</h3>
+            <div class="hs-art" aria-hidden="true">
+              <div class="v-receipt"><b>রসিদ</b><i></i><i></i><i></i><div class="tot"><span>মোট</span><b>৳২,৩৪৫.৫০</b></div></div>
+            </div>
+            <p>রসিদের ছবি তুলুন — MyWallet লেনদেনের তথ্য পূরণ করে দেবে, আর ছবিটাও সঙ্গে রেখে দেবে।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৪</span><h3>ঋণ ও কিস্তি</h3>
+            <div class="hs-art sand" aria-hidden="true">
+              <div>
+                <div class="v-loan"><i style="--a:.62"></i><i style="--a:.58"></i><i style="--a:.53"></i><i style="--a:.48"></i><i style="--a:.43"></i><i style="--a:.38"></i><i style="--a:.33"></i><i style="--a:.27"></i><i style="--a:.21"></i><i style="--a:.15"></i><i style="--a:.09"></i><i style="--a:.04"></i></div>
+                <div class="v-key"><span>আসল</span><span>সুদ</span></div>
+              </div>
+            </div>
+            <p>আসল, সুদ, মেয়াদ আর কিস্তির পুরো সূচি — এক নজরে।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৫</span><h3>ক্রেডিট কার্ড</h3>
+            <div class="hs-art night" aria-hidden="true">
+              <div class="v-cc">
+                <div class="cc"><span>ক্রেডিট কার্ড</span><i></i><b>•••• ৪৮২১</b></div>
+                <div class="v-util"><span>লিমিটের ব্যবহার</span><b>৩২%</b></div>
+                <div class="v-meter"><i></i></div>
+              </div>
+            </div>
+            <p>বিলিং সাইকেল, লিমিটের ব্যবহার আর বিল দেওয়ার তারিখ — এক ট্যাপে পরিশোধসহ।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৬</span><h3>একাধিক মুদ্রা</h3>
+            <div class="hs-art tint" aria-hidden="true">
+              <div class="v-fx"><span>৳</span><span>$</span><span>€</span><span>£</span><span>₹</span><span>¥</span></div>
+            </div>
+            <p>যেকোনো মুদ্রায় অ্যাকাউন্ট, বর্তমান রেটে রূপান্তরিত।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৭</span><h3>ট্যাক্স রিপোর্ট</h3>
+            <div class="hs-art sand" aria-hidden="true">
+              <div class="v-doc"><i></i><i></i><div class="hl"><div><span>চিকিৎসা</span><span>৳১২,৪০০</span></div><em>করছাড়যোগ্য</em></div><i></i><i></i></div>
+            </div>
+            <p>করছাড়যোগ্য খরচ চিহ্নিত করুন, তারপর ক্যাটাগরি ধরে দেখে নিন।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৮</span><h3>বিশ্লেষণ</h3>
+            <div class="hs-art" aria-hidden="true">
+              <div class="v-chart"><i style="--h:52"><span>জুন</span></i><i style="--h:70"><span>জুলা.</span></i><i style="--h:61"><span>আগ.</span></i><i style="--h:84"><span>সেপ্টে.</span></i><i style="--h:76"><span>অক্টো.</span></i><i class="on" style="--h:66"><span>নভে.</span></i></div>
+            </div>
+            <p>মাসিক সারসংক্ষেপ, কোথায় কত খরচ, আর খরচের গতিপ্রকৃতি।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">০৯</span><h3>বায়োমেট্রিক লক</h3>
+            <div class="hs-art night" aria-hidden="true">
+              <div class="v-print"><svg><use href="/assets/icons.svg#i-fingerprint"/></svg></div>
+            </div>
+            <p>ফিঙ্গারপ্রিন্ট বা পিন দিয়ে অ্যাপ খুলুন।</p>
+          </article>
+          <article class="hs-card">
+            <span class="n">১০</span><h3>ব্যাকআপ ও এক্সপোর্ট</h3>
+            <div class="hs-art tint" aria-hidden="true">
+              <div class="v-files">
+                <div class="v-file"><span class="ext csv">CSV</span><span>লেনদেন<small>পুরো ইতিহাস</small></span></div>
+                <div class="v-file"><span class="ext pdf">PDF</span><span>মাসিক রিপোর্ট<small>সারসংক্ষেপ</small></span></div>
+                <div class="v-file"><span class="ext json">JSON</span><span>ব্যাকআপ<small>Google Drive</small></span></div>
+              </div>
+            </div>
+            <p>Google Drive-এ প্রাইভেট ব্যাকআপ, সঙ্গে CSV ও PDF এক্সপোর্ট।</p>
+          </article>
+        </div>
+        <div class="wrap"><div class="hs-bar" aria-hidden="true"><i></i></div></div>
+      </div>
+    </section>
+
+    <!-- ═══ Privacy ═══ -->
+    <section class="privacy" id="security" data-scroll>
+      <div class="dial" aria-hidden="true"><i></i></div>
+      <div class="wrap">
+        <p class="label reveal">গোপনীয়তা</p>
+        <h2 class="t-h1 reveal" style="--d:1">আপনার টাকার খবর <em>আর কারো</em> নয়।</h2>
+        <p class="lede reveal" style="--d:2">MyWallet অফলাইন-ফার্স্ট, চলে ফোনের লোকাল ডেটাবেসে; আপনার সবচেয়ে সংবেদনশীল তথ্যের জন্য আছে AES-256 এনক্রিপশন। কোনো বিজ্ঞাপন নেটওয়ার্ক নেই, ট্র্যাকার নেই, ব্যাংক লগইনও নেই — ইচ্ছে করেই।</p>
+        <div class="privacy-grid reveal" style="--d:2">
+          <div class="principle"><span class="k">ক.</span><h3>সবকিছু থাকে আপনার ফোনে</h3><p>লেনদেন, বাজেট আর লক্ষ্য থাকে আপনার ডিভাইসে। আপনি ব্যাকআপ বা শেয়ার না করলে কিছুই বাইরে যায় না।</p></div>
+          <div class="principle"><span class="k">খ.</span><h3>AI, যা ফোনের বাইরে যায় না</h3><p>Ask MyWallet আপনার ফোনেই বোঝে, ফোনেই উত্তর দেয়। আপনার প্রশ্ন কখনো কোনো ক্লাউড AI প্রোভাইডারের কাছে পৌঁছায় না।</p></div>
+          <div class="principle"><span class="k">গ.</span><h3>এনক্রিপ্টেড Secure Vault</h3><p>পিন, আইডি নম্বর আর অন্যান্য সংবেদনশীল তথ্য AES-256 দিয়ে এনক্রিপ্ট করে রাখা হয়।</p></div>
+          <div class="principle"><span class="k">ঘ.</span><h3>বিজ্ঞাপন নেই, কখনো না</h3><p>কোনো বিজ্ঞাপন নেই, অ্যানালিটিক্স ট্র্যাকার নেই, তৃতীয় পক্ষের সঙ্গে তথ্য শেয়ারও নেই।</p></div>
+        </div>
+        <a href="/bn/privacy/" class="arrow-link">গোপনীয়তা নীতি পড়ুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ═══ Comparison ═══ -->
+    <section class="section" id="comparison">
+      <div class="wrap compare-grid">
+        <div class="reveal">
+          <p class="label">কেন MyWallet</p>
+          <h2 class="t-h2"><em>ভিন্নভাবে</em> তৈরি।</h2>
+          <p class="lede">সাধারণ বাজেট অ্যাপের সঙ্গে MyWallet-এর তুলনা।</p>
+        </div>
+        <table class="compare-table reveal" style="--d:1">
+          <thead>
+            <tr><th scope="col"><span class="sr-only">বিষয়</span></th><th scope="col" class="us">MyWallet</th><th scope="col">সাধারণ বাজেট অ্যাপ</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">আপনার তথ্য কোথায় থাকে</th>
+              <td class="us"><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg><span><span class="who">MyWallet: </span>আপনার ফোনে</span></span></td>
+              <td><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg><span><span class="who">অন্যরা: </span>সাধারণত তাদের সার্ভারে</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">মূল্য</th>
+              <td class="us"><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg><span><span class="who">MyWallet: </span>বিনামূল্যে, ঐচ্ছিক Plus-সহ</span></span></td>
+              <td><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg><span><span class="who">অন্যরা: </span>প্রায়ই মাসিক সাবস্ক্রিপশন</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">বিজ্ঞাপন ও ট্র্যাকিং</th>
+              <td class="us"><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg><span><span class="who">MyWallet: </span>নেই, কখনো না</span></span></td>
+              <td><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg><span><span class="who">অন্যরা: </span>প্রায়ই বিজ্ঞাপন বা ট্র্যাকার</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">ব্যাংক সংযোগ</th>
+              <td class="us"><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg><span><span class="who">MyWallet: </span>লাগে না — নিজে লিখুন, AI বা SMS</span></span></td>
+              <td><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg><span><span class="who">অন্যরা: </span>সাধারণত আপনার ব্যাংক লগইন</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI প্রসেসিং</th>
+              <td class="us"><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg><span><span class="who">MyWallet: </span>আপনার ফোনে, অফলাইনে</span></span></td>
+              <td><span class="c"><svg aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg><span><span class="who">অন্যরা: </span>সাধারণত ক্লাউডে পাঠানো হয়</span></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══ Made for real life ═══ -->
+    <section class="section" id="made-for">
+      <div class="wrap">
+        <div class="voices-lead reveal">
+          <p class="label">বাস্তব জীবনের জন্য</p>
+          <p class="big">টাকা আসলে যেভাবে চলে, তার জন্যই তৈরি — ব্যাংক, বিকাশ, নগদ, আর যাদের সঙ্গে <em>ভাগ</em> করে নেন, তাদের মাঝে।</p>
+        </div>
+        <div class="voices-row reveal" style="--d:1">
+          <div class="voice"><b>পরিবার</b><p>ভাড়া আর বাজারের জন্য একটি অ্যাকাউন্ট শেয়ার করুন, আর সবসময় দেখুন কে কী যোগ করলেন।</p></div>
+          <div class="voice"><b>ফ্রিল্যান্সার</b><p>আয় অনিয়মিত? দেখুন কত এল, কতটা আগে থেকেই নির্ধারিত, আর কতটা নিশ্চিন্তে খরচ করা যায়।</p></div>
+          <div class="voice"><b>শিক্ষার্থী</b><p>দৈনিক সীমা জানিয়ে দেয় আজ কত খরচ করা যায়, যাতে মাস শেষ হয় বাজেটের মধ্যেই।</p></div>
+          <div class="voice"><b>যারা জমাতে চান</b><p>ভ্রমণ, বাইক বা বিপদের দিনের তহবিল — লক্ষ্য-তারিখসহ প্রতিটি লক্ষ্য, অগ্রগতি চোখের সামনে।</p></div>
+          <div class="voice"><b>গোপনীয়তা যাদের কাছে আগে</b><p>ব্যাংক লগইন নেই, বিজ্ঞাপন নেই, আর এমন এক সহকারী, যা আপনার প্রশ্ন কখনো ক্লাউডে পাঠায় না।</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section" id="faq">
+      <div class="wrap faq-grid">
+        <div class="faq-aside reveal">
+          <p class="label">প্রশ্নোত্তর</p>
+          <h2 class="t-h2">প্রশ্ন আছে? <em>উত্তর</em> এখানে।</h2>
+          <p class="lede">গোপনীয়তা, AI আর ব্যাকআপ নিয়ে যা যা জানা দরকার।</p>
+          <a href="/bn/help/" class="btn btn-line">সহায়তা কেন্দ্রে যান</a>
+        </div>
+        <div class="accordion reveal" style="--d:1">
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">আমার আর্থিক তথ্য কি ক্লাউডে রাখা হয়?<span class="acc-icon" aria-hidden="true"></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>না। MyWallet অফলাইন-ফার্স্ট: আপনার আর্থিক তথ্য আপনার ডিভাইসের একটি দ্রুতগতির লোকাল ডেটাবেসে থাকে, আর আমরা তা আমাদের সার্ভারে পাঠাই না। একমাত্র ব্যতিক্রম হলো সেই অ্যাকাউন্ট, যা আপনি আমন্ত্রিত মানুষদের সঙ্গে শেয়ার করেন — তারা যাতে দেখতে পান, সেজন্য ওই অ্যাকাউন্টটি ক্লাউডে রাখা হয়।</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">ব্যাংক অ্যাকাউন্ট যুক্ত না করেই কি MyWallet ব্যবহার করা যায়?<span class="acc-icon" aria-hidden="true"></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>হ্যাঁ। MyWallet কখনো আপনার ব্যাংক লগইন চায় না। নিজে লেনদেন যোগ করুন, Ask MyWallet-এ সাধারণ বাক্যে লিখুন, অথবা ঐচ্ছিক ব্যাংক SMS অটো-ক্যাপচার চালু করুন — যা পুরোপুরি আপনার ফোনেই চলে।</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Ask MyWallet অফলাইনে কীভাবে কাজ করে?<span class="acc-icon" aria-hidden="true"></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>Ask MyWallet একটি ন্যাচারাল ল্যাঙ্গুয়েজ প্রসেসিং (NLP) ইঞ্জিন ব্যবহার করে, যা আপনার লেখা ১০০% আপনার ডিভাইসেই বিশ্লেষণ করে। আপনার প্রশ্ন বা এন্ট্রি কখনো কোনো ক্লাউড AI প্রোভাইডারের কাছে পাঠানো হয় না।</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">MyWallet কি বিনামূল্যে?<span class="acc-icon" aria-hidden="true"></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>হ্যাঁ। MyWallet ডাউনলোড ও ব্যবহার বিনামূল্যে, কোনো বিজ্ঞাপন নেই। MyWallet Plus একটি ঐচ্ছিক সাবস্ক্রিপশন, যা Google Play-এর মাধ্যমে কেনা যায় এবং যেকোনো সময় বাতিল করা যায়।</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">পরিবারের সঙ্গে কি অ্যাকাউন্ট শেয়ার করা যায়?<span class="acc-icon" aria-hidden="true"></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>হ্যাঁ। যাদের বিশ্বাস করেন, এককালীন কোড দিয়ে তাদের আপনার কোনো একটি অ্যাকাউন্টে আমন্ত্রণ জানান। তারা শুধু ওই অ্যাকাউন্ট আর তার নিশ্চিত লেনদেনগুলো দেখতে পান — আপনার আর কিছুই নয়। যেকোনো সময় ভূমিকা বদলাতে, কাউকে সরিয়ে দিতে বা শেয়ার বন্ধ করতে পারবেন।</p></div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">আমার তথ্যের ব্যাকআপ কীভাবে নেব?<span class="acc-icon" aria-hidden="true"></span></button>
+            <div class="acc-a"><div><div class="acc-body"><p>নিয়ন্ত্রণ আপনার হাতে। যেকোনো সময় তথ্য এক্সপোর্ট করুন, অথবা Google Drive ব্যাকআপ চালু করুন — যা জমা হয় একটি প্রাইভেট App Data ফোল্ডারে, যেখানে শুধু MyWallet-ই ঢুকতে পারে।</p></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Closing ═══ -->
+    <section class="closing" id="download">
+      <div class="wrap">
+        <div class="closing-stage reveal" data-scroll>
+          <div>
+            <h2 class="t-h1">আপনি প্রস্তুত হলেই <em>শুরু</em>।</h2>
+            <p class="lede">MyWallet Google Play-তে বিনামূল্যে। কোনো বিজ্ঞাপন নেই, ব্যাংক লগইন নেই, কোনো শর্তও নেই।</p>
+            <div class="hero-cta">
+              <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge" target="_blank" rel="noopener" aria-label="Google Play থেকে MyWallet ডাউনলোড করুন">
+                <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+                <span><small>পাওয়া যাচ্ছে</small><strong>Google Play-তে</strong></span>
+              </a>
+              <span class="hero-meta" style="margin:0">অ্যান্ড্রয়েড ৮.০ বা তার পরের সংস্করণ লাগবে</span>
+            </div>
+          </div>
+          <div class="closing-device" aria-hidden="true">
+            <div class="phone">
+              <span class="island"></span>
+              <div class="screen"><img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 960px) 240px, 280px" width="909" height="2000" alt="" loading="lazy" decoding="async"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/bn/" aria-label="MyWallet হোম"><img src="/assets/logos/mywallet_logo(web).svg" alt="MyWallet" class="logo" width="128" height="34"></a>
+          <p>একটি প্রাইভেট, অফলাইন-ফার্স্ট ফাইন্যান্স অ্যাপ। সব অ্যাকাউন্ট, বাজেট আর লক্ষ্য — সুন্দরভাবে গোছানো।</p>
+          <a href="https://play.google.com/store/apps/details?id=com.mdrahim.mywallet" class="play-badge sm" target="_blank" rel="noopener" aria-label="Google Play থেকে MyWallet নিন">
+            <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
+            <span><small>পাওয়া যাচ্ছে</small><strong>Google Play-তে</strong></span>
+          </a>
+        </div>
+        <nav class="footer-col" aria-label="প্রোডাক্ট">
+          <h2>প্রোডাক্ট</h2>
+          <ul>
+            <li><a href="#features">ফিচার</a></li>
+            <li><a href="#ask">Ask MyWallet</a></li>
+            <li><a href="#family">শেয়ার করা অ্যাকাউন্ট</a></li>
+            <li><a href="#security">গোপনীয়তা ও নিরাপত্তা</a></li>
+            <li><a href="#faq">প্রশ্নোত্তর</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="সহায়তা">
+          <h2>সহায়তা</h2>
+          <ul>
+            <li><a href="/bn/help/">সহায়তা কেন্দ্র</a></li>
+            <li><a href="mailto:mywalletapps@gmail.com">যোগাযোগ</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=ATM" target="_blank" rel="noopener">কাছের এটিএম খুঁজুন</a></li>
+            <li><a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener">ফেসবুক</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="আইনি">
+          <h2>আইনি</h2>
+          <ul>
+            <li><a href="/bn/privacy/">গোপনীয়তা নীতি</a></li>
+            <li><a href="/bn/terms/">পরিষেবার শর্তাবলি</a></li>
+            <li><a href="/delete-account/?lang=bn">অ্যাকাউন্ট মুছুন</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© ২০২৬ MyWallet · নির্মাতা <a href="https://mdrahim.com">MD Rahim</a>। সর্বস্বত্ব সংরক্ষিত।</span>
+        <div class="socials">
+          <a href="https://www.facebook.com/MyWalletOfficial" target="_blank" rel="noopener" aria-label="ফেসবুকে MyWallet"><svg aria-hidden="true"><use href="/assets/icons.svg#i-facebook"/></svg></a>
+        </div>
+      </div>
+      <div class="wordmark" aria-hidden="true" lang="en">My<em>Wallet</em></div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" type="button" aria-label="ওপরে ফিরে যান">
+    <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up"/></svg>
+  </button>
+
+  <script src="/js/main.js?v=4.4" defer></script>
+</body>
+</html>

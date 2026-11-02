@@ -8,16 +8,14 @@
   <meta name="description" content="Open a MyWallet shared-account invite.">
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <meta name="theme-color" content="#f8f7f4">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500..700&text=%E0%A7%B3&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=9.3">
+  <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=9.4">
 </head>
 <body>
 <header class="nav is-solid">
   <div class="wrap nav-inner">
-    <a href="/" class="brand" aria-label="MyWallet home">
+    <a href="/" class="brand" aria-label="MyWallet home" data-href-bn="/bn/">
       <img src="/assets/logos/mywallet_logo(web).svg" alt="MyWallet" width="128" height="34">
     </a>
     <div class="nav-actions" style="margin-left:auto"><button class="lang-btn" id="lang" type="button">বাংলা</button></div>
@@ -38,17 +36,27 @@
   </div>
 </main>
 <footer class="util-foot">
-  <a href="/">MyWallet</a>
-  <a href="/help/">Help Center</a>
-  <a href="/privacy/">Privacy Policy</a>
-  <a href="/terms/">Terms of Service</a>
+  <a href="/" data-href-bn="/bn/">MyWallet</a>
+  <a href="/help/" data-href-bn="/bn/help/" data-en="Help Center" data-bn="সহায়তা কেন্দ্র">Help Center</a>
+  <a href="/privacy/" data-href-bn="/bn/privacy/" data-en="Privacy Policy" data-bn="গোপনীয়তা নীতি">Privacy Policy</a>
+  <a href="/terms/" data-href-bn="/bn/terms/" data-en="Terms of Service" data-bn="পরিষেবার শর্তাবলি">Terms of Service</a>
 </footer>
+<script>
+  // Site links follow the page language (set by the page script below)
+  new MutationObserver(function () {
+    var bn = document.documentElement.lang === "bn";
+    document.querySelectorAll("[data-href-bn]").forEach(function (a) {
+      if (!a.dataset.hrefEn) a.dataset.hrefEn = a.getAttribute("href");
+      a.setAttribute("href", bn ? a.dataset.hrefBn : a.dataset.hrefEn);
+    });
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+</script>
 
 <script>
   const code = (new URLSearchParams(location.search).get("code") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8);
   document.getElementById("code").textContent = code ? code.slice(0, 4) + " " + code.slice(4) : "—";
   document.getElementById("open").href = "mywallet://join?code=" + encodeURIComponent(code);
-  let lang = navigator.language.startsWith("bn") ? "bn" : "en";
+  let lang = (new URLSearchParams(location.search).get("lang") || navigator.language).startsWith("bn") ? "bn" : "en";
   function applyLang() {
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-en]").forEach((el) => { el.textContent = el.dataset[lang]; });
