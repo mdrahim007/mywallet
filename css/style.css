@@ -333,7 +333,8 @@ p.label { display: flex; width: fit-content; margin-bottom: 22px; }
 .nav.is-scrolled::after { opacity: 1; }
 .nav-inner { display: flex; align-items: center; gap: 32px; height: 100%; }
 .brand { display: inline-flex; flex-shrink: 0; }
-.brand img { height: 34px; width: auto; }
+.brand img { height: 40px; width: auto; }
+@media (max-width: 960px) { .brand img { height: 36px; } }
 .nav-links { display: flex; gap: 6px; margin-inline: auto; }
 .nav-links a {
   padding: 8px 14px; border-radius: 999px;
@@ -1401,7 +1402,7 @@ p.label { display: flex; width: fit-content; margin-bottom: 22px; }
 }
 .lang-link:hover { color: var(--ink); background: rgba(16, 16, 20, 0.04); box-shadow: inset 0 0 0 1px var(--ink-3); }
 .lang-link:lang(bn) { font-family: "MW Lang", var(--sans); padding-top: 1px; }
-@media (max-width: 380px) { .lang-link { height: 36px; padding: 0 11px; font-size: 0.875rem; } }
+@media (max-width: 380px) { .lang-link { height: 36px; padding: 0 11px; font-size: 0.875rem; } .nav-inner { gap: 12px; } .nav-end { gap: 8px; } .brand img { height: 34px; } }
 .lang-note { margin-top: 18px; max-width: 640px; font-size: 0.9375rem; color: var(--ink-3); }
 .lang-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
