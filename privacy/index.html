@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
+  <!-- Google Analytics: MyWallet Website (G-6NRH7YT599) -->
+  <script src="/js/analytics.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Privacy Policy — MyWallet</title>
@@ -127,7 +129,7 @@
         <h1>Privacy Policy</h1>
         <p class="lead">How MyWallet handles your information — in plain language. Your financial data stays on your device unless you choose otherwise.</p>
         <div class="page-meta">
-          <span class="tag"><svg class="icon-sm" aria-hidden="true"><use href="/assets/icons.svg#i-file"/></svg>Last updated: October 25, 2026</span>
+          <span class="tag"><svg class="icon-sm" aria-hidden="true"><use href="/assets/icons.svg#i-file"/></svg>Last updated: November 11, 2026</span>
           <span class="tag">8 min read</span>
         </div>
       </div>
@@ -155,7 +157,7 @@
       <article class="prose">
         <div class="callout">
           <span class="tile sm"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-shield"/></svg></span>
-          <div><p><strong>In short:</strong> MyWallet stores your financial data on your device. An optional MyWallet account keeps only your name, your email and the phones you use. An account you choose to share with family is stored in the cloud so the people you invite can see it; nothing else of yours is. We never sell your information. AI and natural language processing happen on-device only. Optional Google Drive backup is controlled entirely by you.</p></div>
+          <div><p><strong>In short:</strong> MyWallet stores your financial data on your device. An optional MyWallet account keeps only your profile (name, email, profile photo link, language, country and currency), your plan and the phones you use. An account you choose to share with family is stored in the cloud so the people you invite can see it; nothing else of yours is. We never sell your information. AI and natural language processing happen on-device only. Optional Google Drive backup goes to the Drive of the Google account you sign in with, and is controlled entirely by you.</p></div>
         </div>
 
         <h2 id="introduction">1. Introduction</h2>
@@ -191,12 +193,13 @@
         </ul>
 
         <h3>2.4 Google Account Information</h3>
-        <p>If you choose to use the Google Drive backup feature, MyWallet will request access to:</p>
+        <p>Google Drive backup uses the Google account you sign in to MyWallet with (see 2.6); there is no separate account to choose. The first time, Google asks your permission, and MyWallet then uses:</p>
         <ul>
-          <li>Your Google account name and email (for authentication)</li>
-          <li>Google Drive App Data folder (a private folder only accessible by MyWallet)</li>
+          <li>Your Google account's name, email and profile photo link (from signing in)</li>
+          <li>Google Drive's App Data folder (a private folder only MyWallet can open)</li>
         </ul>
-        <p>This information is used solely to authenticate with Google Drive and save/restore your backup file. We do not access any other Google account data.</p>
+        <p>This information is used solely to sign you in and to save and restore your backup file. Each backup also records the phone that made it (its model and a random ID for this installation) and the app version, so a new phone never overwrites your backup without asking you first. The backup goes to your own Google Drive, never to us. We do not access any other Google account data.</p>
+        <p>Signing out stops backups until you sign in again. If you connected Google Drive in a version before 4.3.0 without signing in, backups continue to that Google account until you sign in; if you then sign in with a different Google account, the app asks before switching, and your earlier backups stay in the first account's Drive.</p>
 
         <h3>2.5 Device Permissions</h3>
         <p>MyWallet may request the following permissions:</p>
@@ -211,12 +214,12 @@
         <p>MyWallet works without an account. When you finish setting up the app, it creates an anonymous account: a random ID with no name, email or other details, used only so you can sign in later without losing anything.</p>
         <p>If you sign in (with Google or with a code sent to your email), we keep:</p>
         <ul>
-          <li>Your name, your email address and the sign-in methods you use</li>
+          <li>Your name, your email address, the link to your Google profile photo (when you sign in with Google) and the sign-in methods you use</li>
           <li>Your language, currency and country settings</li>
           <li>The phones signed in to your account (model, Android version, app version, when last used)</li>
           <li>Your plan (Free or Plus) and when it renews or ends, and when you first signed in (launch offers run from it)</li>
         </ul>
-        <p>Sign-in codes are sent from <a href="mailto:mywalletapps@gmail.com">mywalletapps@gmail.com</a> through Gmail. Only a salted hash of each code is stored, for 10 minutes. Signing in does not upload your transactions, balances, budgets, goals or messages.</p>
+        <p>Sign-in codes are sent from <a href="mailto:mywalletapps@gmail.com">mywalletapps@gmail.com</a> through Gmail. Only a salted hash of each code is stored, for 10 minutes. Signing in does not upload your transactions, balances, budgets, goals or messages to us; if you turn on Google Drive backup, your data goes only to your own Google Drive (see 2.4).</p>
 
         <h3>2.7 Shared Accounts (Optional)</h3>
         <p>You can choose to share one of your accounts with people you invite. When you do:</p>
@@ -246,7 +249,7 @@
         <h2 id="data-storage-security">4. Data Storage & Security</h2>
         <ul>
           <li><strong>Local Storage:</strong> All financial data is stored in a local ObjectBox database on your device's internal storage, protected by Android's app sandbox.</li>
-          <li><strong>Google Drive Backup:</strong> When enabled, backup files are stored in Google Drive's App Data folder, which is private and can only be accessed by MyWallet. Google's security and encryption standards apply.</li>
+          <li><strong>Google Drive Backup:</strong> When enabled, backup files are stored in the App Data folder of the Google Drive of the Google account you sign in with, which is private and can only be accessed by MyWallet. Google's security and encryption standards apply.</li>
           <li><strong>Cloud (only for optional features):</strong> MyWallet accounts, shared accounts and plans are stored in Google Firebase (Authentication and Cloud Firestore) in Google's Mumbai region, protected by access rules so each person reads only their own account and the shared accounts they belong to. Your other data is not stored there.</li>
           <li><strong>Encryption:</strong> Data in transit (Google Drive sync, exchange rates, Firebase) uses HTTPS/TLS encryption. Google encrypts data stored in Firebase.</li>
         </ul>
@@ -257,7 +260,7 @@
         <ul>
           <li>You initiate a Google Drive backup (data sent to your own Google Drive)</li>
           <li>The app fetches live exchange rates from public APIs (no personal data is included in these requests)</li>
-          <li>You sign in with Google for backup functionality (standard OAuth flow)</li>
+          <li>You sign in with Google, the same account Google Drive backup then uses (standard OAuth flow)</li>
           <li>You sign in to a MyWallet account (see 2.6)</li>
           <li>You share an account: its details and transactions are visible to the people you invite (see 2.7)</li>
           <li>You subscribe to MyWallet Plus through Google Play (see 2.8)</li>
@@ -266,7 +269,7 @@
         <h2 id="data-retention">6. Data Retention</h2>
         <ul>
           <li>Your data persists on your device until you delete individual entries or uninstall the app.</li>
-          <li>Google Drive backups persist in your Drive until you manually delete them or revoke MyWallet's access.</li>
+          <li>Google Drive backups persist in your Drive until you manually delete them or revoke MyWallet's access. Signing out or deleting your MyWallet account does not delete them.</li>
           <li>Your MyWallet account's data is kept until you delete the account.</li>
           <li>A shared account is kept until its owner stops sharing it. Transactions someone deletes are kept as deleted marks until then, so everyone's copy stays the same.</li>
           <li>Sign-in codes are kept (as a hash) for 10 minutes.</li>
@@ -279,11 +282,11 @@
         <ul>
           <li><strong>Access:</strong> All your data is visible within the app at all times.</li>
           <li><strong>Deletion:</strong> Delete individual transactions, accounts, or all data from within the app. Uninstalling the app removes all local data.</li>
-          <li><strong>MyWallet account:</strong> Delete it in the app (<em>Settings &rarr; MyWallet account &rarr; Delete MyWallet account</em>) or at <a href="https://mywallet.mdrahim.com/delete-account/">mywallet.mdrahim.com/delete-account</a>. This removes your profile, your list of phones and your sign-in; the app then asks whether to also erase the data on your phone. If you share an account with other people, stop sharing it first.</li>
+          <li><strong>MyWallet account:</strong> Delete it in the app (<em>Settings &rarr; Profile &rarr; Delete MyWallet account</em>) or at <a href="https://mywallet.mdrahim.com/delete-account/">mywallet.mdrahim.com/delete-account</a>. This removes your profile, your list of phones and your sign-in; the app then asks whether to also erase the data on your phone. If you share an account with other people, stop sharing it first.</li>
           <li><strong>Shared accounts:</strong> Leave an account someone shared with you, or stop sharing one of yours, at any time.</li>
 
-          <li><strong>Google Drive:</strong> You can disconnect Google Drive, delete backups, or revoke access from your Google Account settings.</li>
-          <li><strong>Export:</strong> You can back up your data to Google Drive for portability.</li>
+          <li><strong>Google Drive:</strong> You can turn automatic backup off in the app (<em>Settings &rarr; Backup &amp; restore</em>), stop backups by signing out, or delete backups and revoke MyWallet's access from your Google Account settings.</li>
+          <li><strong>Export:</strong> You can back up your data to a file or to Google Drive for portability.</li>
         </ul>
 
         <h2 id="children-s-privacy">8. Children's Privacy</h2>
@@ -298,6 +301,9 @@
           <li><strong>Google Play Billing</strong> — For MyWallet Plus subscriptions.</li>
           <li><strong>Gmail</strong> — Sends the sign-in codes to your email address.</li>
         </ul>
+      <h3>Website analytics</h3>
+      <p>Our public website uses Google Analytics to understand visits, traffic sources, and interactions such as scrolling and outbound link clicks. Google Analytics uses cookies and collects browser and device information. This website tracking is separate from the MyWallet app and does not access your financial records. We do not install this tracking on the shared-account invitation or account-deletion pages. For details about Google's handling of this information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+
 
         <h2 id="changes-to-this-policy">10. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last updated" date at the top. We encourage you to review this page periodically. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
