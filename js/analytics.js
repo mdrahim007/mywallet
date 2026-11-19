@@ -1,7 +1,7 @@
 /* MyWallet Website: GA4 G-6NRH7YT599, Google tag GTM-TGFTRNTD. */
 (function () {
   // Only collect visits on the public production website.
-  if (window.location.hostname !== 'mywallet.mdrahim.com') return;
+  if (window.location.hostname !== 'mywalletapp.online') return;
   if (/^\/(join|delete-account)(\/|$)/.test(window.location.pathname)) return;
   if (window.myWalletAnalyticsLoaded) return;
   window.myWalletAnalyticsLoaded = true;

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mywallet.mdrahim.com/sitemap.xml
+Sitemap: https://mywalletapp.online/sitemap.xml
