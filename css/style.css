@@ -1467,3 +1467,35 @@ em:lang(bn) { font-style: normal !important; } /* the Bengali fonts have no ital
   body { background: #fff; }
   .legal-layout { display: block; }
 }
+
+/* ═══ New in 4.7: trips, savings groups, the wishlist (#together) ═══ */
+.panel-wide { grid-column: 1 / -1; }
+@media (min-width: 961px) {
+  .panel-wide { display: grid; grid-template-columns: 1fr 1fr; align-items: end; }
+  .panel-wide .panel-copy { padding-bottom: clamp(28px, 4vw, 48px); align-self: center; }
+}
+.trip-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 4px 14px; border-bottom: 1px solid var(--line); }
+.trip-head b { display: block; font-size: 1rem; font-weight: 700; }
+.trip-head span { font-size: 0.8125rem; color: var(--ink-3); }
+.trip-head .round { flex: none; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: var(--brand-ink); background: var(--brand-tint); }
+.trip-head .faces .face { box-shadow: 0 0 0 2px #fff; }
+.tx .ico svg { width: 20px; height: 20px; }
+.tx .face { flex: none; width: 40px; height: 40px; }
+.settle { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 4px 4px; font-size: 0.9375rem; color: var(--ink-2); }
+.settle b { color: var(--ink); font-weight: 700; }
+.settle .btn-pill, .tx .btn-pill { flex: none; padding: 8px 16px; border-radius: 999px; font-size: 0.875rem; font-weight: 700; color: #fff; background: var(--brand); }
+.stamps { display: flex; gap: 8px; padding: 16px 4px; border-bottom: 1px solid var(--line); }
+.stamps i { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-style: normal; font-size: 0.75rem; font-weight: 700; color: #fff; }
+.stamps i.done { background: var(--brand); border-color: var(--brand); }
+.stamps i.now { border-color: var(--brand); color: var(--brand-ink); }
+.wish-tile { width: 44px; height: 44px; flex: none; border-radius: 12px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #1f2a44, #3d4f7a); }
+.wish-tile svg { width: 22px; height: 22px; }
+.wish-ring { width: 44px; height: 44px; flex: none; border-radius: 50%; position: relative; display: grid; place-items: center; font-weight: 700; font-size: 0.9375rem; background: conic-gradient(var(--brand) 0 36%, rgba(16, 16, 20, 0.1) 36% 100%); }
+.wish-ring::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: #fff; }
+.wish-ring span { position: relative; }
+.tx .meta span.note-pos { color: var(--pos); }
+.tx .meta span.note-warn { color: #9a6408; }
+.kept { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 16px 4px 6px; }
+.kept span { font-size: 0.875rem; color: var(--ink-2); }
+.kept b { font-size: 1.5rem; font-weight: 750; color: var(--pos); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .stamps { gap: 6px; } .stamps i { width: 22px; height: 22px; } }

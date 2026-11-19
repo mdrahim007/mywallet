@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts.">
+  <meta name="description" content="How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts, trips and savings groups.">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/privacy/">
@@ -25,7 +25,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MyWallet">
   <meta property="og:title" content="MyWallet Privacy Policy — your data stays on your phone">
-  <meta property="og:description" content="How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts.">
+  <meta property="og:description" content="How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts, trips and savings groups.">
   <meta property="og:url" content="https://mywalletapp.online/privacy/">
   <meta property="og:image" content="https://mywalletapp.online/assets/images/og/privacy-en.jpg">
   <meta property="og:image:secure_url" content="https://mywalletapp.online/assets/images/og/privacy-en.jpg">
@@ -37,7 +37,7 @@
   <meta property="og:locale:alternate" content="bn_BD">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MyWallet Privacy Policy — your data stays on your phone">
-  <meta name="twitter:description" content="How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts.">
+  <meta name="twitter:description" content="How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts, trips and savings groups.">
   <meta name="twitter:image" content="https://mywalletapp.online/assets/images/og/privacy-en.jpg">
   <meta name="twitter:image:alt" content="MyWallet Privacy Policy: your data stays on your phone">
   <script type="application/ld+json">
@@ -49,7 +49,7 @@
       "@id": "https://mywalletapp.online/privacy/#webpage",
       "url": "https://mywalletapp.online/privacy/",
       "name": "Privacy Policy — MyWallet",
-      "description": "How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts.",
+      "description": "How MyWallet handles your data: financial data stays on your phone, no ads or trackers, and the cloud is used only for features you choose, like shared accounts, trips and savings groups.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://mywalletapp.online/#website"
@@ -129,7 +129,7 @@
         <h1>Privacy Policy</h1>
         <p class="lead">How MyWallet handles your information — in plain language. Your financial data stays on your device unless you choose otherwise.</p>
         <div class="page-meta">
-          <span class="tag"><svg class="icon-sm" aria-hidden="true"><use href="/assets/icons.svg#i-file"/></svg>Last updated: November 11, 2026</span>
+          <span class="tag"><svg class="icon-sm" aria-hidden="true"><use href="/assets/icons.svg#i-file"/></svg>Last updated: November 20, 2026</span>
           <span class="tag">8 min read</span>
         </div>
       </div>
@@ -157,7 +157,7 @@
       <article class="prose">
         <div class="callout">
           <span class="tile sm"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-shield"/></svg></span>
-          <div><p><strong>In short:</strong> MyWallet stores your financial data on your device. An optional MyWallet account keeps only your profile (name, email, profile photo link, language, country and currency), your plan and the phones you use. An account you choose to share with family is stored in the cloud so the people you invite can see it; nothing else of yours is. We never sell your information. AI and natural language processing happen on-device only. Optional Google Drive backup goes to the Drive of the Google account you sign in with, and is controlled entirely by you.</p></div>
+          <div><p><strong>In short:</strong> MyWallet stores your financial data on your device. An optional MyWallet account keeps only your profile (name, email, profile photo link, language, country and currency), your plan and the phones you use. What you choose to share with people you invite (a shared account, a trip or a savings group) is stored in the cloud so they can see it; nothing else of yours is. We never sell your information. AI and natural language processing happen on-device only. Optional Google Drive backup goes to the Drive of the Google account you sign in with, and is controlled entirely by you.</p></div>
         </div>
 
         <h2 id="introduction">1. Introduction</h2>
@@ -173,15 +173,19 @@
           <li>Transaction details (amounts, merchants, categories, dates, notes)</li>
           <li>Savings goals and sinking fund targets</li>
           <li>Budget preferences and settings</li>
+          <li>Loans, bills and subscriptions, insurance policies and savings</li>
+          <li>Notes</li>
+          <li>Wishlist items: what you want, its price, where you saw it, the prices you note and how you decided</li>
+          <li>Photos you attach, such as receipts and wishlist photos</li>
         </ul>
-        <p><strong>This data is stored on your device</strong> in a local database (ObjectBox). It is not sent to us or any third party, except for an account you choose to share (see 2.7).</p>
+        <p><strong>This data is stored on your device</strong> in a local database (ObjectBox). It is not sent to us or any third party, except what you choose to share (see 2.7 and 2.8).</p>
 
-        <h3>2.2 Secure Vault & AI Processing</h3>
-        <p>MyWallet features a Secure Vault and an AI Assistant, both designed with absolute data sovereignty:</p>
+        <h3>2.2 AI Processing</h3>
+        <p>MyWallet's AI Assistant is built so that what you ask stays on your phone:</p>
         <ul>
-          <li><strong>Secure Vault:</strong> Data stored here (like PINs) is encrypted at rest using AES-256 encryption before insertion into the local database.</li>
           <li><strong>AI Assistant & NLP:</strong> Natural language processing (e.g., parsing text into transactions) occurs 100% locally on your device. Your free-text queries are <strong>never</strong> sent to cloud AI providers.</li>
         </ul>
+        <p>The Secure Vault was removed in version 4.7.3. Documents kept in it were never uploaded: they stay encrypted on your phone until you save them to a folder you choose or delete them, and the app then removes them and their key.</p>
 
         <h3>2.3 SMS Messages (Optional Feature)</h3>
         <p>If you turn on <strong>Read bank SMS</strong> in MyWallet's settings, MyWallet reads SMS messages on your phone to record your financial transactions automatically.</p>
@@ -198,28 +202,28 @@
           <li>Your Google account's name, email and profile photo link (from signing in)</li>
           <li>Google Drive's App Data folder (a private folder only MyWallet can open)</li>
         </ul>
-        <p>This information is used solely to sign you in and to save and restore your backup file. Each backup also records the phone that made it (its model and a random ID for this installation) and the app version, so a new phone never overwrites your backup without asking you first. The backup goes to your own Google Drive, never to us. We do not access any other Google account data.</p>
+        <p>This information is used solely to sign you in and to save and restore your backup file. A backup holds your MyWallet data, the photos you attached, and settings such as your theme, language and text size; your profile photo is not included. Each backup also records the phone that made it (its model and a random ID for this installation) and the app version, so a new phone never overwrites your backup without asking you first. The backup goes to your own Google Drive, never to us. We do not access any other Google account data.</p>
         <p>Signing out stops backups until you sign in again. If you connected Google Drive in a version before 4.3.0 without signing in, backups continue to that Google account until you sign in; if you then sign in with a different Google account, the app asks before switching, and your earlier backups stay in the first account's Drive.</p>
 
         <h3>2.5 Device Permissions</h3>
         <p>MyWallet may request the following permissions:</p>
         <ul>
           <li><strong>SMS (RECEIVE_SMS, READ_SMS)</strong> — Optional. Used exclusively for bank auto-capture to record transactions from incoming alerts on-device.</li>
-          <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For notifying you about reminders and financial milestones. Optional.</li>
+          <li><strong>Notifications (POST_NOTIFICATIONS)</strong> — For reminders, bills coming due, invitations, and news from your trips and savings groups. Optional.</li>
           <li><strong>Biometric/Fingerprint</strong> — For optional app lock functionality. Biometric data is handled entirely by Android's BiometricPrompt API and never accessed by MyWallet directly.</li>
-          <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, signing in to your MyWallet account, shared accounts and subscriptions. No personal data is transmitted beyond these specific features.</li>
+          <li><strong>Internet</strong> — For Google Drive backup, exchange rate updates, signing in to your MyWallet account, shared accounts, trips, savings groups and subscriptions. No personal data is transmitted beyond these specific features.</li>
         </ul>
 
         <h3>2.6 MyWallet Account (Optional)</h3>
         <p>MyWallet works without an account. When you finish setting up the app, it creates an anonymous account: a random ID with no name, email or other details, used only so you can sign in later without losing anything.</p>
-        <p>If you sign in (with Google or with a code sent to your email), we keep:</p>
+        <p>If you sign in with Google, we keep:</p>
         <ul>
           <li>Your name, your email address, the link to your Google profile photo (when you sign in with Google) and the sign-in methods you use</li>
           <li>Your language, currency and country settings</li>
-          <li>The phones signed in to your account (model, Android version, app version, when last used)</li>
+          <li>The phones signed in to your account (model, Android version, app version, when last used), with a notification token so invitations and reminders reach them</li>
           <li>Your plan (Free or Plus) and when it renews or ends, and when you first signed in (launch offers run from it)</li>
         </ul>
-        <p>Sign-in codes are sent from <a href="mailto:mywalletapps@gmail.com">mywalletapps@gmail.com</a> through Gmail. Only a salted hash of each code is stored, for 10 minutes. Signing in does not upload your transactions, balances, budgets, goals or messages to us; if you turn on Google Drive backup, your data goes only to your own Google Drive (see 2.4).</p>
+        <p>Accounts made with an email code before version 4.4.0 confirm deleting the account with a code sent from <a href="mailto:mywalletapps@gmail.com">mywalletapps@gmail.com</a> through Gmail. Only a salted hash of each code is stored, for 10 minutes. Signing in does not upload your transactions, balances, budgets, goals or messages to us; if you turn on Google Drive backup, your data goes only to your own Google Drive (see 2.4).</p>
 
         <h3>2.7 Shared Accounts (Optional)</h3>
         <p>You can choose to share one of your accounts with people you invite. When you do:</p>
@@ -231,7 +235,17 @@
         </ul>
         <p>You can change roles, remove people or stop sharing at any time. When you stop sharing, the account and its transactions are deleted from the cloud and from the other people's phones; your own copy stays on your phone. When someone leaves or is removed, the account is removed from their phone.</p>
 
-        <h3>2.8 Subscriptions (MyWallet Plus)</h3>
+        <h3>2.8 Trips and Savings Groups (Optional)</h3>
+        <p>When you start or join a trip or a savings group (somiti), it is stored in the cloud so its members can see it:</p>
+        <ul>
+          <li><strong>Trips:</strong> the trip's name, dates and plan (budget, checklist); the trip fund and its deposits, with any confirmation and the reason given; expenses (amount, date, what it was, who paid and how it is split) and any photo attached to one; and a log of changes.</li>
+          <li><strong>Savings groups:</strong> the group's name and rules (amount, rounds, whose turn, fines, loans to members); each member's deposits, payouts, fines and loans; payment proofs attached to them; and a log of changes.</li>
+          <li><strong>People:</strong> each member's name and role is shown to the other members. People added without a MyWallet account are names only. Invites are codes, or an email invite, that work once.</li>
+          <li>Your phone links a trip's or group's entries to your own transactions; those links stay on your phone.</li>
+        </ul>
+        <p>Trips and savings groups need a MyWallet account signed in with Google. Organisers can remove people or delete the trip or group, which removes it from the cloud; members can leave at any time.</p>
+
+        <h3>2.9 Subscriptions (MyWallet Plus)</h3>
         <p>MyWallet Plus is an optional subscription bought through Google Play. Google handles the payment; we never see your card or payment details. We receive the purchase details Google provides (which plan, its status and when it ends) to check the purchase and turn Plus on for your account. The purchase is linked to your account by a one-way code, not by your email.</p>
 
         <h2 id="how-we-use-your-information">3. How We Use Your Information</h2>
@@ -243,14 +257,14 @@
           <li>Automatically recording bank transactions from SMS alerts (when enabled)</li>
           <li>Backing up and restoring your data via Google Drive (when you choose to)</li>
           <li>Converting currencies using publicly available exchange rates</li>
-          <li>Signing you in, keeping your plan, and showing shared accounts to the people you invited (when you use these features)</li>
+          <li>Signing you in, keeping your plan, and showing shared accounts, trips and savings groups to their members (when you use these features)</li>
         </ul>
 
         <h2 id="data-storage-security">4. Data Storage & Security</h2>
         <ul>
           <li><strong>Local Storage:</strong> All financial data is stored in a local ObjectBox database on your device's internal storage, protected by Android's app sandbox.</li>
           <li><strong>Google Drive Backup:</strong> When enabled, backup files are stored in the App Data folder of the Google Drive of the Google account you sign in with, which is private and can only be accessed by MyWallet. Google's security and encryption standards apply.</li>
-          <li><strong>Cloud (only for optional features):</strong> MyWallet accounts, shared accounts and plans are stored in Google Firebase (Authentication and Cloud Firestore) in Google's Mumbai region, protected by access rules so each person reads only their own account and the shared accounts they belong to. Your other data is not stored there.</li>
+          <li><strong>Cloud (only for optional features):</strong> MyWallet accounts, shared accounts, trips, savings groups and plans are stored in Google Firebase (Authentication and Cloud Firestore) in Google's Mumbai region, protected by access rules so each person reads only their own account and the shared accounts, trips and groups they belong to. Your other data is not stored there.</li>
           <li><strong>Encryption:</strong> Data in transit (Google Drive sync, exchange rates, Firebase) uses HTTPS/TLS encryption. Google encrypts data stored in Firebase.</li>
         </ul>
 
@@ -263,7 +277,8 @@
           <li>You sign in with Google, the same account Google Drive backup then uses (standard OAuth flow)</li>
           <li>You sign in to a MyWallet account (see 2.6)</li>
           <li>You share an account: its details and transactions are visible to the people you invite (see 2.7)</li>
-          <li>You subscribe to MyWallet Plus through Google Play (see 2.8)</li>
+          <li>You start or join a trip or a savings group: its details are visible to its members (see 2.8)</li>
+          <li>You subscribe to MyWallet Plus through Google Play (see 2.9)</li>
         </ul>
 
         <h2 id="data-retention">6. Data Retention</h2>
@@ -272,6 +287,7 @@
           <li>Google Drive backups persist in your Drive until you manually delete them or revoke MyWallet's access. Signing out or deleting your MyWallet account does not delete them.</li>
           <li>Your MyWallet account's data is kept until you delete the account.</li>
           <li>A shared account is kept until its owner stops sharing it. Transactions someone deletes are kept as deleted marks until then, so everyone's copy stays the same.</li>
+          <li>A trip or savings group is kept until its organiser deletes it. When you leave one, it is removed from your phone.</li>
           <li>Sign-in codes are kept (as a hash) for 10 minutes.</li>
           <li>Purchase records (plan, status and end date, linked to your account's random ID) may be kept as needed for accounting and Google Play's records.</li>
           <li>After deletion, copies may remain in Google's backup systems for a limited period before they are erased.</li>
@@ -284,6 +300,7 @@
           <li><strong>Deletion:</strong> Delete individual transactions, accounts, or all data from within the app. Uninstalling the app removes all local data.</li>
           <li><strong>MyWallet account:</strong> Delete it in the app (<em>Settings &rarr; Profile &rarr; Delete MyWallet account</em>) or at <a href="https://mywalletapp.online/delete-account/">mywalletapp.online/delete-account</a>. This removes your profile, your list of phones and your sign-in; the app then asks whether to also erase the data on your phone. If you share an account with other people, stop sharing it first.</li>
           <li><strong>Shared accounts:</strong> Leave an account someone shared with you, or stop sharing one of yours, at any time.</li>
+          <li><strong>Trips and savings groups:</strong> Leave one at any time; organisers can delete theirs.</li>
 
           <li><strong>Google Drive:</strong> You can turn automatic backup off in the app (<em>Settings &rarr; Backup &amp; restore</em>), stop backups by signing out, or delete backups and revoke MyWallet's access from your Google Account settings.</li>
           <li><strong>Export:</strong> You can back up your data to a file or to Google Drive for portability.</li>
@@ -297,9 +314,9 @@
         <ul>
           <li><strong>Google Sign-In & Google Drive API</strong> — For authentication and backup. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
           <li><strong>Exchange Rate APIs</strong> — For currency conversion. Only currency codes are sent; no personal data is transmitted.</li>
-          <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Functions) — For MyWallet accounts, shared accounts and plans. Subject to <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's privacy information</a>.</li>
+          <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging) — For MyWallet accounts, shared accounts, trips, savings groups and plans, and to deliver invitations and reminders. Subject to <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's privacy information</a>.</li>
           <li><strong>Google Play Billing</strong> — For MyWallet Plus subscriptions.</li>
-          <li><strong>Gmail</strong> — Sends the sign-in codes to your email address.</li>
+          <li><strong>Gmail</strong> — Sends the code that confirms deleting an account made with an email code.</li>
         </ul>
       <h3>Website analytics</h3>
       <p>Our public website uses Google Analytics to understand visits, traffic sources, and interactions such as scrolling and outbound link clicks. Google Analytics uses cookies and collects browser and device information. This website tracking is separate from the MyWallet app and does not access your financial records. We do not install this tracking on the shared-account invitation or account-deletion pages. For details about Google's handling of this information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>

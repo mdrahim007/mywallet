@@ -117,15 +117,15 @@
           "name": "Is my financial data stored in the cloud?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. MyWallet is built on an \"Offline-First\" philosophy. All your financial data is stored securely on your local device using a high-performance NoSQL database, and we do not transmit it to our servers. The only exception is an account you choose to share with people you invite: that account and its transactions are stored in the cloud so they can see it. See the Privacy Policy for details."
+            "text": "No. MyWallet is built on an \"Offline-First\" philosophy. All your financial data is stored securely on your local device using a high-performance NoSQL database, and we do not transmit it to our servers. The only exceptions are what you choose to share with people you invite: a shared account, a trip or a savings group. Those are stored in the cloud so everyone in them can see them. See the Privacy Policy for details."
           }
         },
         {
           "@type": "Question",
-          "name": "How does the Secure Vault work?",
+          "name": "How do I lock the app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Secure Vault is a dedicated section within MyWallet for storing highly sensitive information, like PINs or SSNs. Data placed in the vault is encrypted at rest using military-grade AES-256 encryption."
+            "text": "Go to Settings → Safety and turn on App lock. MyWallet then opens with your fingerprint or your phone's screen lock. You can also set a 4-digit PIN of its own, kept only on your phone. Auto-lock decides when it asks again: at once, after 1, 5 or 15 minutes, or never. Tap the eye to hide every balance, and turn on Screenshot protection to block screenshots and screen recording."
           }
         },
         {
@@ -170,6 +170,14 @@
         },
         {
           "@type": "Question",
+          "name": "How does the Wishlist work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open All tools → Wishlist (or Goals → Want to buy) and add what you want, with its price. It waits a few days before you decide (from two days to a month, longer for dearer things), and you get one reminder when it's time. Each wish shows what it would cost you: whether it fits this month after your bills, how many days of your usual spending it is, and how many working days of pay. Then buy it (the payment is recorded and checked against your balance), save for it as a goal, wait a week more, or let it go."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How do I share an account with my family?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -182,6 +190,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Open the invite link on your phone, or open MyWallet and go to Settings → MyWallet account → Join a shared account, then type the code. You need to be signed in to your MyWallet account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do trips and savings groups work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open All tools → Trips (or Somiti) and start one, then invite people with a code or by email. A trip keeps the plan, a checklist, one trip fund and everyone's expenses, and at the end shows who pays whom. A savings group (somiti) keeps the rounds, whose turn it is, each member's deposits, late fines and loans to members, and sends reminders. Both need you to be signed in with Google: they're kept in the cloud so every member sees the same thing."
           }
         },
         {
@@ -373,13 +389,13 @@
           <div class="acc-item">
             <button class="acc-q" type="button" aria-expanded="false">Is my financial data stored in the cloud?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
             <div class="acc-a"><div><div class="acc-body">
-              <p><strong>No.</strong> MyWallet is built on an "Offline-First" philosophy. All your financial data is stored securely on your local device using a high-performance NoSQL database, and we do not transmit it to our servers. The only exception is an account you choose to share with people you invite: that account and its transactions are stored in the cloud so they can see it. See the <a href="/privacy/">Privacy Policy</a> for details.</p>
+              <p><strong>No.</strong> MyWallet is built on an "Offline-First" philosophy. All your financial data is stored securely on your local device using a high-performance NoSQL database, and we do not transmit it to our servers. The only exceptions are what you choose to share with people you invite: a shared account, a trip or a savings group. Those are stored in the cloud so everyone in them can see them. See the <a href="/privacy/">Privacy Policy</a> for details.</p>
             </div></div></div>
           </div>
           <div class="acc-item">
-            <button class="acc-q" type="button" aria-expanded="false">How does the Secure Vault work?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <button class="acc-q" type="button" aria-expanded="false">How do I lock the app?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
             <div class="acc-a"><div><div class="acc-body">
-              <p>The Secure Vault is a dedicated section within MyWallet for storing highly sensitive information, like PINs or SSNs. Data placed in the vault is encrypted at rest using military-grade AES-256 encryption.</p>
+              <p>Go to Settings → Safety and turn on App lock. MyWallet then opens with your fingerprint or your phone's screen lock. You can also set a 4-digit PIN of its own, kept only on your phone. Auto-lock decides when it asks again: at once, after 1, 5 or 15 minutes, or never. Tap the eye to hide every balance, and turn on Screenshot protection to block screenshots and screen recording.</p>
             </div></div></div>
           </div>
           <div class="acc-item">
@@ -420,6 +436,12 @@
               <p>When adding or editing a transaction, toggle the "Tax" switch. Flagged transactions appear in the Tax Report screen (accessible from Settings), where you can review all tax-deductible expenses grouped by category and export them.</p>
             </div></div></div>
           </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">How does the Wishlist work?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body">
+              <p>Open All tools → Wishlist (or Goals → Want to buy) and add what you want, with its price. It waits a few days before you decide (from two days to a month, longer for dearer things), and you get one reminder when it's time. Each wish shows what it would cost you: whether it fits this month after your bills, how many days of your usual spending it is, and how many working days of pay. Then buy it (the payment is recorded and checked against your balance), save for it as a goal, wait a week more, or let it go.</p>
+            </div></div></div>
+          </div>
         </div>
       </section>
       <section class="help-group" id="sharing-your-account" aria-labelledby="sharing-your-account-title">
@@ -438,6 +460,12 @@
             <button class="acc-q" type="button" aria-expanded="false">How do I join an account someone shared with me?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
             <div class="acc-a"><div><div class="acc-body">
               <p>Open the invite link on your phone, or open MyWallet and go to <strong>Settings → MyWallet account → Join a shared account</strong>, then type the code. You need to be signed in to your MyWallet account.</p>
+            </div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">How do trips and savings groups work?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body">
+              <p>Open All tools → Trips (or Somiti) and start one, then invite people with a code or by email. A trip keeps the plan, a checklist, one trip fund and everyone's expenses, and at the end shows who pays whom. A savings group (somiti) keeps the rounds, whose turn it is, each member's deposits, late fines and loans to members, and sends reminders. Both need you to be signed in with Google: they're kept in the cloud so every member sees the same thing.</p>
             </div></div></div>
           </div>
           <div class="acc-item">

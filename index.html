@@ -99,7 +99,7 @@
       "@type": "MobileApplication",
       "@id": "https://mywalletapp.online/#app",
       "name": "MyWallet",
-      "description": "A private personal finance app for Android that works offline: budgets, savings goals, shared family accounts, an on-device AI assistant and an encrypted Secure Vault. Your financial data stays on your phone.",
+      "description": "A private personal finance app for Android that works offline: budgets, savings goals, shared family accounts, trips with friends, savings groups, a wishlist that waits, and an on-device AI assistant. Your financial data stays on your phone.",
       "url": "https://mywalletapp.online/",
       "image": "https://mywalletapp.online/assets/icons/icon-512.png",
       "screenshot": [
@@ -108,7 +108,7 @@
         "https://mywalletapp.online/assets/images/app/budgets.webp",
         "https://mywalletapp.online/assets/images/app/plan.webp"
       ],
-      "operatingSystem": "Android 8.0+",
+      "operatingSystem": "Android 12+",
       "applicationCategory": "FinanceApplication",
       "applicationSubCategory": "Personal finance",
       "downloadUrl": "https://play.google.com/store/apps/details?id=com.mdrahim.mywallet",
@@ -124,7 +124,7 @@
         "bn"
       ],
       "featureList": [
-        "Every account in one place: banks, credit cards, cash, mobile wallets like bKash, and loans",
+        "Every account in one place: banks, credit cards, cash, mobile wallets and loans",
         "Category budgets with a daily spending allowance",
         "Savings goals with target dates",
         "Bills and subscriptions with a calendar",
@@ -134,8 +134,10 @@
         "Receipt scanning",
         "Multi-currency accounts",
         "Tax reports",
-        "AES-256 encrypted Secure Vault",
-        "Biometric lock",
+        "Trips with friends: a trip fund, shared expenses and who pays whom",
+        "Savings groups (somiti): rounds, deposits, whose turn it is, fines and member loans",
+        "A wishlist that waits before you buy, and shows what a thing really costs you",
+        "App lock with fingerprint, screen lock or a PIN",
         "Google Drive backup and CSV/PDF export"
       ],
       "author": {
@@ -175,7 +177,7 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "Is my financial data stored in the cloud?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. MyWallet is built offline-first: your financial data is stored on your device in a local database. The only exception is an account you choose to share with people you invite, which is stored in the cloud so they can see it." } },
+        "acceptedAnswer": { "@type": "Answer", "text": "No. MyWallet is built offline-first: your financial data is stored on your device in a local database. The only exceptions are what you choose to share with people you invite: a shared account, a trip or a savings group. Those are stored in the cloud so everyone in them can see them." } },
       { "@type": "Question", "name": "Can I use MyWallet without linking my bank account?",
         "acceptedAnswer": { "@type": "Answer", "text": "Yes. MyWallet never asks for your bank login. Add transactions manually, type them in plain language with Ask MyWallet, or turn on optional bank SMS auto-capture, which runs entirely on your phone." } },
       { "@type": "Question", "name": "How does Ask MyWallet work offline?",
@@ -265,7 +267,7 @@
 
         <div class="wrap s-hero">
           <a class="hero-note reveal" href="#family">
-            <b>New</b><span class="sep" aria-hidden="true"></span>Share an account with your family
+            <b>New</b><span class="sep" aria-hidden="true"></span>Trips, savings groups and a wishlist that waits
             <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg>
           </a>
           <h1 class="s-title split"><span class="l">Know your money.</span> <span class="l">Keep it <em>yours</em>.</span></h1>
@@ -282,7 +284,7 @@
           <p class="hero-meta reveal" style="--d:4">
             <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Free to use</span>
             <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Works offline</span>
-            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Android 8.0+</span>
+            <span><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Android 12+</span>
           </p>
         </div>
         <div class="s-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
@@ -315,13 +317,13 @@
           <article class="chapter" id="accounts">
             <span class="chapter-no">02 — Accounts</span>
             <h2>Every account, beautifully stacked.</h2>
-            <p>Banks, cards, cash and mobile wallets like bKash sit together as a stack of cards — each with its own balance, colour and history.</p>
+            <p>Banks, cards, cash and mobile wallets fan out like a hand of cards — each with its own colour, balance and history.</p>
             <ul>
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Bank accounts, credit cards, cash, wallets and loans</li>
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Accounts in any currency, converted for you</li>
               <li><svg aria-hidden="true"><use href="/assets/icons.svg#i-check"/></svg>Only the last four digits of a card, never more</li>
             </ul>
-            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="Stacked bKash, EBL and BRAC account cards in MyWallet" loading="lazy" decoding="async"></div></div></figure>
+            <figure class="inline-shot"><div class="phone"><span class="island" aria-hidden="true"></span><div class="screen"><img src="/assets/images/app/home-accounts.webp" srcset="/assets/images/app/home-accounts-480.webp 480w, /assets/images/app/home-accounts.webp 909w" sizes="(max-width: 480px) 70vw, 280px" width="909" height="2000" alt="A fan of account cards in MyWallet" loading="lazy" decoding="async"></div></div></figure>
           </article>
           <article class="chapter" id="analytics">
             <span class="chapter-no">03 — Budgets</span>
@@ -356,7 +358,7 @@
         <div class="facts-grid reveal">
           <div class="fact"><b>100%</b><span>of Ask MyWallet’s AI runs on your phone, even offline.</span></div>
           <div class="fact"><b>0</b><span>ads, trackers or data brokers. Not now, not ever.</span></div>
-          <div class="fact"><b>256-bit</b><span>AES encryption protects everything in your Secure Vault.</span></div>
+          <div class="fact"><b>2</b><span>languages on every screen: English and Bangla.</span></div>
           <div class="fact"><b>1 tap</b><span>hides your balances when someone’s looking over your shoulder.</span></div>
         </div>
       </div>
@@ -459,7 +461,6 @@
 
           <article class="panel reveal" style="--d:1">
             <div class="panel-copy">
-              <span class="tag-new">New</span>
               <h3>One account, shared with family.</h3>
               <p>Invite the people you trust with a one-time code. They see that account and who added what — nothing else of yours.</p>
             </div>
@@ -478,6 +479,99 @@
                   <div class="member"><span class="face b">NA</span><span class="meta"><b>Nadia</b><span>Added Groceries · ৳1,850</span></span><span class="role">Can edit</span></div>
                   <div class="member"><span class="face c">AY</span><span class="meta"><b>Ayaan</b><span>Joined with an invite code</span></span><span class="role">Can view</span></div>
                 </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ New in 4.7: trips, savings groups, the wishlist ═══ -->
+    <section class="section" id="together">
+      <div class="wrap">
+        <div class="head-split">
+          <div class="reveal">
+            <p class="label">New in MyWallet</p>
+            <h2 class="t-h2">Money you share. <em>Money you keep</em>.</h2>
+          </div>
+          <p class="lede reveal" style="--d:1">Go away with friends, save together in a group, and give every want a few days before you buy it.</p>
+        </div>
+
+        <div class="duo">
+          <article class="panel reveal">
+            <div class="panel-copy">
+              <span class="tag-new">New</span>
+              <h3>Trips, settled before you’re home.</h3>
+              <p>Plan the days, tick off the checklist and keep one trip fund. Everyone adds what they paid, and at the end MyWallet works out who pays whom, in as few payments as possible.</p>
+            </div>
+            <div class="panel-art" aria-hidden="true">
+              <div class="ui-card">
+                <div class="trip-head">
+                  <div><b>Beach weekend</b><span>25–28 Dec · 5 people</span></div>
+                  <span class="faces"><span class="face a">MR</span><span class="face b">NA</span><span class="face c">AY</span></span>
+                </div>
+                <div class="tx">
+                  <span class="ico violet"><svg aria-hidden="true"><use href="/assets/icons.svg#i-wallet"/></svg></span>
+                  <span class="meta"><b>Trip fund</b><span>Kept by Rahim · ৳2,000 to confirm</span></span>
+                  <span class="amt">৳10,000</span>
+                </div>
+                <div class="tx">
+                  <span class="ico brac">HT</span>
+                  <span class="meta"><b>Hotel · paid by Nadia</b><span>26 Dec</span></span>
+                  <span class="amt out">৳18,600</span>
+                </div>
+                <div class="settle">
+                  <span>You pay Ayaan <b>৳390</b></span>
+                  <span class="btn-pill">Settle</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel reveal" style="--d:1">
+            <div class="panel-copy">
+              <span class="tag-new">New</span>
+              <h3>A savings group that runs itself.</h3>
+              <p>Everyone puts in each round and one person takes the pot in turn. MyWallet keeps the rounds, whose turn it is, who has paid, late fines and loans to members, and reminds everyone on the day.</p>
+            </div>
+            <div class="panel-art" aria-hidden="true">
+              <div class="ui-card">
+                <div class="trip-head">
+                  <div><b>Office savings club</b><span>8 people · ৳5,000 a month</span></div>
+                  <span class="round">Round 4 of 8</span>
+                </div>
+                <div class="stamps"><i class="done">✓</i><i class="done">✓</i><i class="done">✓</i><i class="now">4</i><i></i><i></i><i></i><i></i></div>
+                <div class="tx">
+                  <span class="face b">NA</span>
+                  <span class="meta"><b>This round goes to Nadia</b><span>1 Dec</span></span>
+                  <span class="amt in">৳40,000</span>
+                </div>
+                <div class="settle">
+                  <span>Your deposit <b>৳5,000</b></span>
+                  <span class="btn-pill">Pay</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel panel-wide reveal">
+            <div class="panel-copy">
+              <span class="tag-new">New</span>
+              <h3>Want it? Give it a few days.</h3>
+              <p>Put it on your wishlist and let it wait — longer for dearer things. Then MyWallet shows what it really costs you: what’s left after your bills, how many days of spending, how many days of pay. Buy it, save for it, wait longer or let it go. Whatever you let go counts as money kept.</p>
+            </div>
+            <div class="panel-art" aria-hidden="true">
+              <div class="ui-card">
+                <div class="tx">
+                  <span class="wish-tile"><svg aria-hidden="true"><use href="/assets/icons.svg#i-star"/></svg></span>
+                  <span class="meta"><b>Headphones</b><span class="note-pos">Waited 14 days · fits after your bills</span></span>
+                  <span class="btn-pill">Decide</span>
+                </div>
+                <div class="tx">
+                  <span class="wish-ring"><span>9</span></span>
+                  <span class="meta"><b>Smart watch · ৳24,600</b><span class="note-warn">9 days to go · tight this month</span></span>
+                </div>
+                <div class="kept"><span>Kept by letting go this year</span><b>৳12,400</b></div>
               </div>
             </div>
           </article>
@@ -562,14 +656,14 @@
             <div class="hs-art" aria-hidden="true">
               <div class="v-chart"><i style="--h:52"><span>Jun</span></i><i style="--h:70"><span>Jul</span></i><i style="--h:61"><span>Aug</span></i><i style="--h:84"><span>Sep</span></i><i style="--h:76"><span>Oct</span></i><i class="on" style="--h:66"><span>Nov</span></i></div>
             </div>
-            <p>Monthly recaps, merchant breakdowns and spending trends.</p>
+            <p>Where it went, how it compares, your money health and your year in review.</p>
           </article>
           <article class="hs-card">
-            <span class="n">09</span><h3>Biometric lock</h3>
+            <span class="n">09</span><h3>App lock</h3>
             <div class="hs-art night" aria-hidden="true">
               <div class="v-print"><svg><use href="/assets/icons.svg#i-fingerprint"/></svg></div>
             </div>
-            <p>Open the app with your fingerprint or PIN.</p>
+            <p>Your fingerprint, your phone’s screen lock or a PIN of its own.</p>
           </article>
           <article class="hs-card">
             <span class="n">10</span><h3>Backup &amp; export</h3>
@@ -593,11 +687,11 @@
       <div class="wrap">
         <p class="label reveal">Privacy</p>
         <h2 class="t-h1 reveal" style="--d:1">Your money is <em>nobody’s</em> business.</h2>
-        <p class="lede reveal" style="--d:2">MyWallet is built offline-first on a local database, with AES-256 encryption for your most sensitive data. No ad network, no tracker and no bank login — by design.</p>
+        <p class="lede reveal" style="--d:2">MyWallet is built offline-first on a local database in the app’s private storage. No ad network, no tracker and no bank login — by design.</p>
         <div class="privacy-grid reveal" style="--d:2">
           <div class="principle"><span class="k">i.</span><h3>On your phone by default</h3><p>Transactions, budgets and goals live on your device. Nothing leaves it unless you choose to back up or share.</p></div>
           <div class="principle"><span class="k">ii.</span><h3>AI that stays on-device</h3><p>Ask MyWallet parses and answers on your phone. Your questions never reach a cloud AI provider.</p></div>
-          <div class="principle"><span class="k">iii.</span><h3>An encrypted Secure Vault</h3><p>PINs, ID numbers and other sensitive details are encrypted at rest with AES-256.</p></div>
+          <div class="principle"><span class="k">iii.</span><h3>A lock of your own</h3><p>Fingerprint, screen lock or a PIN kept only on your phone. One tap hides every balance, and screenshots can be blocked.</p></div>
           <div class="principle"><span class="k">iv.</span><h3>No ads, ever</h3><p>No advertising, no analytics trackers and no third-party data sharing.</p></div>
         </div>
         <a href="/privacy/" class="arrow-link">Read the privacy policy <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></a>
@@ -652,7 +746,7 @@
       <div class="wrap">
         <div class="voices-lead reveal">
           <p class="label">Made for real life</p>
-          <p class="big">Built for the way money actually moves — between banks, bKash, cash and the people you <em>share</em> it with.</p>
+          <p class="big">Built for the way money actually moves — between banks, mobile wallets, cash and the people you <em>share</em> it with.</p>
         </div>
         <div class="voices-row reveal" style="--d:1">
           <div class="voice"><b>Households</b><p>Share one account for rent and groceries, and always see who added what.</p></div>
@@ -676,7 +770,7 @@
         <div class="accordion reveal" style="--d:1">
           <div class="acc-item">
             <button class="acc-q" type="button" aria-expanded="false">Is my financial data stored in the cloud?<span class="acc-icon" aria-hidden="true"></span></button>
-            <div class="acc-a"><div><div class="acc-body"><p>No. MyWallet is built offline-first: your financial data is stored on your device in a high-performance local database, and we don’t transmit it to our servers. The only exception is an account you choose to share with people you invite — that account is stored in the cloud so they can see it.</p></div></div></div>
+            <div class="acc-a"><div><div class="acc-body"><p>No. MyWallet is built offline-first: your financial data is stored on your device in a high-performance local database, and we don’t transmit it to our servers. The only exceptions are what you choose to share with people you invite — a shared account, a trip or a savings group — which are stored in the cloud so everyone in them can see them.</p></div></div></div>
           </div>
           <div class="acc-item">
             <button class="acc-q" type="button" aria-expanded="false">Can I use MyWallet without linking my bank account?<span class="acc-icon" aria-hidden="true"></span></button>
@@ -714,7 +808,7 @@
                 <svg aria-hidden="true"><use href="/assets/icons.svg#i-play"/></svg>
                 <span><small>Get it on</small><strong>Google Play</strong></span>
               </a>
-              <span class="hero-meta" style="margin:0">Requires Android 8.0 or later</span>
+              <span class="hero-meta" style="margin:0">Requires Android 12 or later</span>
             </div>
           </div>
           <div class="closing-device" aria-hidden="true">

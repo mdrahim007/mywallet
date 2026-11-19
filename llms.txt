@@ -1,19 +1,23 @@
 # MyWallet
 
-> MyWallet is a free, private personal finance app for Android (8.0 and later) by MD Rahim. It keeps financial data on the phone: no bank logins and no ads. It works offline, and the website is in English and Bengali (বাংলা).
+> MyWallet is a free, private personal finance app for Android (12 and later) by MD Rahim. It keeps financial data on the phone: no bank logins and no ads. It works offline, and the website is in English and Bengali (বাংলা).
 
 Key facts:
-- Track bank accounts, credit cards, cash, mobile wallets such as bKash, and loans in one app, in any currency.
+- Track bank accounts, credit cards, cash, mobile wallets and loans in one app, in any currency.
 - Category budgets with a daily spending allowance, savings goals, bills and subscriptions, receipt scanning, tax reports and insights.
 - Ask MyWallet: an AI assistant that runs on the phone and turns plain sentences into transactions. Questions are never sent to a cloud AI provider.
 - Optional bank SMS auto-capture, processed on the phone.
-- Shared accounts: invite family members to one account with a code that works once, for 7 days. Apart from optional Google Drive backups, which go to the user's own Drive, a shared account is the only financial data stored in the cloud.
-- Secure Vault encrypted with AES-256, biometric lock, Google Drive backup, CSV and PDF export.
+- Shared accounts: invite family members to one account with a code that works once, for 7 days.
+- Trips: a plan, a checklist, one trip fund and everyone's expenses, and at the end who pays whom, in as few payments as possible.
+- Savings groups (somiti): rounds, whose turn it is, each member's deposits, late fines and loans to members, with reminders.
+- Wishlist: a waiting period before you buy (longer for dearer things), then what the thing would really cost you: whether it fits this month after bills, how many days of usual spending and how many working days of pay. Buy it, save for it, wait longer or let it go.
+- Apart from optional Google Drive backups, which go to the user's own Drive, shared accounts, trips and savings groups are the only financial data stored in the cloud, so their members can see them.
+- App lock with fingerprint, the phone's screen lock or a PIN of its own; hide balances; screenshot protection; Google Drive backup; CSV and PDF export.
 - Free to download and use. MyWallet Plus is an optional subscription sold through Google Play.
 
 ## Pages
 - [Home](https://mywalletapp.online/): what MyWallet does, privacy, comparison with typical budget apps, FAQ
-- [Help Center](https://mywalletapp.online/help/): 22 answers about accounts, sharing, privacy, multi-currency, backups and settings
+- [Help Center](https://mywalletapp.online/help/): 24 answers about accounts, sharing, trips and savings groups, the wishlist, privacy, multi-currency, backups and settings
 - [Privacy Policy](https://mywalletapp.online/privacy/): how data is handled
 - [Terms of Service](https://mywalletapp.online/terms/)
 - [বাংলা (Bengali) site](https://mywalletapp.online/bn/)

@@ -117,15 +117,15 @@
           "name": "আমার আর্থিক তথ্য কি ক্লাউডে রাখা হয়?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "না। MyWallet বানানো হয়েছে \"অফলাইন-ফার্স্ট\" ভাবনা থেকে — অর্থাৎ ইন্টারনেট ছাড়াই সবকিছু চলবে। আপনার সব আর্থিক তথ্য আপনার ফোনেই একটি দ্রুতগতির NoSQL ডেটাবেসে নিরাপদে থাকে, আমাদের সার্ভারে আমরা তা পাঠাই না। শুধু একটি ব্যতিক্রম: যে অ্যাকাউন্ট আপনি আমন্ত্রিত মানুষদের সঙ্গে শেয়ার করেন, সেটি আর এর লেনদেন ক্লাউডে রাখা হয়, যাতে তারাও দেখতে পান। বিস্তারিত জানতে প্রাইভেসি পলিসি দেখুন।"
+            "text": "না। MyWallet বানানো হয়েছে \"অফলাইন-ফার্স্ট\" ভাবনা থেকে — অর্থাৎ ইন্টারনেট ছাড়াই সবকিছু চলবে। আপনার সব আর্থিক তথ্য আপনার ফোনেই একটি দ্রুতগতির NoSQL ডেটাবেসে নিরাপদে থাকে, আমাদের সার্ভারে আমরা তা পাঠাই না। ব্যতিক্রম শুধু যা আপনি নিজে কারো সঙ্গে share করেন: শেয়ার করা অ্যাকাউন্ট, trip বা সমিতি। এগুলো cloud-এ থাকে, যাতে সবাই একই হিসাব দেখতে পান। বিস্তারিত জানতে প্রাইভেসি পলিসি দেখুন।"
           }
         },
         {
           "@type": "Question",
-          "name": "Secure Vault কীভাবে কাজ করে?",
+          "name": "App lock কীভাবে চালু করব?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Secure Vault হলো MyWallet-এর ভেতরে একটি আলাদা সুরক্ষিত জায়গা, যেখানে পিন বা NID নম্বরের মতো খুব গোপন তথ্য রাখা যায়। ভল্টে রাখা সবকিছু মিলিটারি-গ্রেড AES-256 এনক্রিপশন দিয়ে এনক্রিপ্ট করে সেভ করা হয়।"
+            "text": "সেটিংস → নিরাপত্তা-তে গিয়ে অ্যাপ লক চালু করুন। তারপর MyWallet খুলবে আপনার fingerprint বা ফোনের screen lock দিয়ে। চাইলে app-এর নিজের ৪ সংখ্যার PIN-ও দিতে পারেন, যেটা শুধু আপনার ফোনেই থাকে। অটো-লক ঠিক করে কখন আবার জিজ্ঞেস করবে: সঙ্গে সঙ্গে, ১, ৫ বা ১৫ মিনিট পর, নয়তো কখনো না। চোখের icon-এ tap করলে সব balance লুকিয়ে যায়, আর স্ক্রিনশট সুরক্ষা চালু করলে screenshot বা screen recording বন্ধ থাকে।"
           }
         },
         {
@@ -170,6 +170,14 @@
         },
         {
           "@type": "Question",
+          "name": "Wishlist কীভাবে কাজ করে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সব টুলস → Wishlist (বা লক্ষ্য → যা কিনতে চান) খুলে যা চান সেটা দাম দিয়ে যোগ করুন। সিদ্ধান্তের আগে কয়েকটা দিন অপেক্ষা করবে (২ দিন থেকে এক মাস, দাম যত বেশি অপেক্ষা তত লম্বা), সময় হলে একবার reminder পাবেন। প্রতিটি wish দেখায় জিনিসটা আসলে আপনার কাছে কত: bill-এর পর এই মাসে কুলোবে কি না, আপনার সাধারণ খরচের কত দিন, আর আয়ের কত কর্মদিবস। তারপর কিনুন (payment লেখা হয়, আগে balance দেখে নেওয়া হয়), goal বানিয়ে জমিয়ে কিনুন, আরও এক সপ্তাহ অপেক্ষা করুন, নয়তো বাদ দিন।"
+          }
+        },
+        {
+          "@type": "Question",
           "name": "পরিবারের সঙ্গে অ্যাকাউন্ট কীভাবে শেয়ার করব?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -182,6 +190,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "ফোনে আমন্ত্রণের লিংকটি খুলুন। অথবা MyWallet খুলে সেটিংস → MyWallet অ্যাকাউন্ট → শেয়ার করা অ্যাকাউন্টে যোগ দিন -এ গিয়ে কোডটি লিখুন। এজন্য আপনার MyWallet অ্যাকাউন্টে সাইন ইন করা থাকতে হবে।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Trip আর সমিতি কীভাবে চলে?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "সব টুলস → ট্যুর (বা সমিতি) খুলে নতুন একটা শুরু করুন, তারপর code বা email দিয়ে মানুষদের invite করুন। Trip-এ থাকে plan, checklist, একটা trip fund আর সবার খরচ, শেষে দেখায় কে কাকে কত দেবে। সমিতিতে থাকে round, কার পালা, প্রত্যেকের জমা, দেরির জরিমানা আর member loan, সঙ্গে reminder। দুটোর জন্যই Google দিয়ে sign in করা থাকতে হবে: এগুলো cloud-এ থাকে, যাতে সব member একই হিসাব দেখেন।"
           }
         },
         {
@@ -374,13 +390,13 @@
           <div class="acc-item">
             <button class="acc-q" type="button" aria-expanded="false">আমার আর্থিক তথ্য কি ক্লাউডে রাখা হয়?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
             <div class="acc-a"><div><div class="acc-body">
-              <p><strong>না।</strong> MyWallet বানানো হয়েছে "অফলাইন-ফার্স্ট" ভাবনা থেকে — অর্থাৎ ইন্টারনেট ছাড়াই সবকিছু চলবে। আপনার সব আর্থিক তথ্য আপনার ফোনেই একটি দ্রুতগতির NoSQL ডেটাবেসে নিরাপদে থাকে, আমাদের সার্ভারে আমরা তা পাঠাই না। শুধু একটি ব্যতিক্রম: যে অ্যাকাউন্ট আপনি আমন্ত্রিত মানুষদের সঙ্গে শেয়ার করেন, সেটি আর এর লেনদেন ক্লাউডে রাখা হয়, যাতে তারাও দেখতে পান। বিস্তারিত জানতে <a href="/bn/privacy/">প্রাইভেসি পলিসি</a> দেখুন।</p>
+              <p><strong>না।</strong> MyWallet বানানো হয়েছে "অফলাইন-ফার্স্ট" ভাবনা থেকে — অর্থাৎ ইন্টারনেট ছাড়াই সবকিছু চলবে। আপনার সব আর্থিক তথ্য আপনার ফোনেই একটি দ্রুতগতির NoSQL ডেটাবেসে নিরাপদে থাকে, আমাদের সার্ভারে আমরা তা পাঠাই না। ব্যতিক্রম শুধু যা আপনি নিজে কারো সঙ্গে share করেন: শেয়ার করা অ্যাকাউন্ট, trip বা সমিতি। এগুলো cloud-এ থাকে, যাতে সবাই একই হিসাব দেখতে পান। বিস্তারিত জানতে <a href="/bn/privacy/">প্রাইভেসি পলিসি</a> দেখুন।</p>
             </div></div></div>
           </div>
           <div class="acc-item">
-            <button class="acc-q" type="button" aria-expanded="false">Secure Vault কীভাবে কাজ করে?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <button class="acc-q" type="button" aria-expanded="false">App lock কীভাবে চালু করব?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
             <div class="acc-a"><div><div class="acc-body">
-              <p>Secure Vault হলো MyWallet-এর ভেতরে একটি আলাদা সুরক্ষিত জায়গা, যেখানে পিন বা NID নম্বরের মতো খুব গোপন তথ্য রাখা যায়। ভল্টে রাখা সবকিছু মিলিটারি-গ্রেড AES-256 এনক্রিপশন দিয়ে এনক্রিপ্ট করে সেভ করা হয়।</p>
+              <p>সেটিংস → নিরাপত্তা-তে গিয়ে অ্যাপ লক চালু করুন। তারপর MyWallet খুলবে আপনার fingerprint বা ফোনের screen lock দিয়ে। চাইলে app-এর নিজের ৪ সংখ্যার PIN-ও দিতে পারেন, যেটা শুধু আপনার ফোনেই থাকে। অটো-লক ঠিক করে কখন আবার জিজ্ঞেস করবে: সঙ্গে সঙ্গে, ১, ৫ বা ১৫ মিনিট পর, নয়তো কখনো না। চোখের icon-এ tap করলে সব balance লুকিয়ে যায়, আর স্ক্রিনশট সুরক্ষা চালু করলে screenshot বা screen recording বন্ধ থাকে।</p>
             </div></div></div>
           </div>
           <div class="acc-item">
@@ -421,6 +437,12 @@
               <p>লেনদেন যোগ বা এডিট করার সময় "ট্যাক্স" (Tax) সুইচটি চালু করুন। মার্ক করা লেনদেনগুলো পাবেন ট্যাক্স রিপোর্ট স্ক্রিনে (সেটিংস থেকে খোলা যায়) — সেখানে ট্যাক্স ছাড় পাওয়া যায় এমন সব খরচ ক্যাটাগরি অনুযায়ী সাজানো থাকে, চাইলে এক্সপোর্টও করতে পারবেন।</p>
             </div></div></div>
           </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Wishlist কীভাবে কাজ করে?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body">
+              <p>সব টুলস → Wishlist (বা লক্ষ্য → যা কিনতে চান) খুলে যা চান সেটা দাম দিয়ে যোগ করুন। সিদ্ধান্তের আগে কয়েকটা দিন অপেক্ষা করবে (২ দিন থেকে এক মাস, দাম যত বেশি অপেক্ষা তত লম্বা), সময় হলে একবার reminder পাবেন। প্রতিটি wish দেখায় জিনিসটা আসলে আপনার কাছে কত: bill-এর পর এই মাসে কুলোবে কি না, আপনার সাধারণ খরচের কত দিন, আর আয়ের কত কর্মদিবস। তারপর কিনুন (payment লেখা হয়, আগে balance দেখে নেওয়া হয়), goal বানিয়ে জমিয়ে কিনুন, আরও এক সপ্তাহ অপেক্ষা করুন, নয়তো বাদ দিন।</p>
+            </div></div></div>
+          </div>
         </div>
       </section>
       <section class="help-group" id="sharing-your-account" aria-labelledby="sharing-your-account-title">
@@ -439,6 +461,12 @@
             <button class="acc-q" type="button" aria-expanded="false">কেউ অ্যাকাউন্ট শেয়ার করলে আমি কীভাবে যোগ দেব?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
             <div class="acc-a"><div><div class="acc-body">
               <p>ফোনে আমন্ত্রণের লিংকটি খুলুন। অথবা MyWallet খুলে <strong>সেটিংস → MyWallet অ্যাকাউন্ট → শেয়ার করা অ্যাকাউন্টে যোগ দিন</strong>-এ গিয়ে কোডটি লিখুন। এজন্য আপনার MyWallet অ্যাকাউন্টে সাইন ইন করা থাকতে হবে।</p>
+            </div></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-q" type="button" aria-expanded="false">Trip আর সমিতি কীভাবে চলে?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+            <div class="acc-a"><div><div class="acc-body">
+              <p>সব টুলস → ট্যুর (বা সমিতি) খুলে নতুন একটা শুরু করুন, তারপর code বা email দিয়ে মানুষদের invite করুন। Trip-এ থাকে plan, checklist, একটা trip fund আর সবার খরচ, শেষে দেখায় কে কাকে কত দেবে। সমিতিতে থাকে round, কার পালা, প্রত্যেকের জমা, দেরির জরিমানা আর member loan, সঙ্গে reminder। দুটোর জন্যই Google দিয়ে sign in করা থাকতে হবে: এগুলো cloud-এ থাকে, যাতে সব member একই হিসাব দেখেন।</p>
             </div></div></div>
           </div>
           <div class="acc-item">
