@@ -213,6 +213,15 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
 .bar-target { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; border-radius: 2px; background: var(--ink); }
 .bucket-nums { display: block; margin-top: 6px; font-size: 0.8125rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 
+.mm-head { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.7fr) minmax(0, 1fr) 40px; gap: 8px; margin-bottom: 6px; font-size: 0.75rem; font-weight: 600; color: var(--ink-3); }
+.mm-head span:nth-child(n+2) { text-align: right; padding-right: 14px; }
+.mm-row { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.7fr) minmax(0, 1fr) 40px; grid-template-areas: "n m p x"; align-items: center; gap: 8px; }
+.mm-row > :nth-child(1) { grid-area: n; } .mm-row > :nth-child(2) { grid-area: m; } .mm-row > :nth-child(3) { grid-area: p; } .mm-row > :nth-child(4) { grid-area: x; }
+.mm-cost { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) 40px; align-items: center; gap: 8px; }
+.data-table td.pos { color: var(--pos); font-weight: 700; }
+.data-table td.neg { color: var(--neg); font-weight: 700; }
+.data-table td small { font-size: 0.6875rem; font-weight: 600; }
+
 .tool-related { margin-top: 88px; }
 .tool-related > h2 { margin-bottom: 24px; font-family: var(--serif); font-weight: 400; font-size: 2.1rem; line-height: 1.1; letter-spacing: -0.03em; }
 .tool-related .tools-grid { padding-bottom: 0; }
@@ -235,4 +244,6 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
   .bs-item-row { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) 40px; }
   .bp-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 40px; grid-template-areas: "n n x" "a k k"; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
   .form-grid.three { gap: 8px; }
+  .mm-head { display: none; }
+  .mm-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 40px; grid-template-areas: "n n x" "m p p"; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 }

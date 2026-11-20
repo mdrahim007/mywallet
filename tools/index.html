@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter, Savings group calculator, Currency converter, Loan EMI calculator, Savings goal calculator, Budget planner, Zakat calculator, Deposit calculator. No sign-up, and nothing you type leaves your browser.">
+  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter, Savings group calculator, Currency converter, Loan EMI calculator, Savings goal calculator, Budget planner, Zakat calculator, Deposit calculator, Mess meal calculator. No sign-up, and nothing you type leaves your browser.">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/tools/">
@@ -83,6 +83,9 @@
         },
         {
           "@id": "https://mywalletapp.online/tools/deposit/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/tools/mess-meal/#tool"
         }
       ]
     },
@@ -110,7 +113,7 @@
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.6">
+  <link rel="stylesheet" href="/css/tools.css?v=1.7">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -210,11 +213,12 @@
           <p>What a monthly or fixed deposit pays at maturity, after tax and charges.</p>
           <span class="arrow-link">Work out a deposit <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">Coming soon</span>
+        <a class="card tool-tile" href="/tools/mess-meal/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"/></svg></span>
           <h2>Mess meal calculator</h2>
-          <p>Meal rate, each member’s share of food and shared costs, and who owes the manager.</p>
-        </div>
+          <p>Meal rate, each member’s share of food and shared costs, and who gets money back or owes.</p>
+          <span class="arrow-link">Work out the mess <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
       </div>
     </section>
   </main>

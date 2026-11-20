@@ -231,6 +231,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mywalletapp.online/tools/mess-meal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/mess-meal/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/mess-meal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/mess-meal/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/mess-meal-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mywalletapp.online/bn/tools/mess-meal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/mess-meal/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/mess-meal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/mess-meal/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/mess-meal-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mywalletapp.online/help/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/help/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/help/"/>
