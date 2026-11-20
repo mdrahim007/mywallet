@@ -41,7 +41,7 @@
   var state = (function () {
     var o = db.get();
     if (o && typeof o.a === 'string' && typeof o.f === 'string' && typeof o.t === 'string') return { a: o.a.slice(0, 16), f: o.f, t: o.t, o: typeof o.o === 'string' ? o.o.slice(0, 12) : '' };
-    return BN ? { a: '100', f: 'USD', t: 'BDT', o: '' } : { a: '100', f: 'USD', t: local === 'USD' ? 'EUR' : local, o: '' };
+    return BN ? { a: '100', f: local === 'BDT' ? 'USD' : local, t: 'BDT', o: '' } : { a: '100', f: 'USD', t: local === 'USD' ? 'EUR' : local, o: '' };
   })();
   var saveT;
   function save() { clearTimeout(saveT); saveT = setTimeout(function () { db.set(state); }, 250); }

@@ -55,16 +55,10 @@
     e: [['Hotel', '480', 0, null], ['Car and fuel', '300', 1, null], ['Groceries', '160', 2, null], ['Kayak tour', '90', 0, [0, 1, 2]]]
   };
 
-  var CURRENCIES = ['BDT', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'AED', 'SAR', 'QAR', 'MYR', 'SGD', 'CAD', 'AUD', 'JPY'];
-  var EURO = 'AT BE CY DE EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK';
-  var REGION = { BD: 'BDT', US: 'USD', GB: 'GBP', IN: 'INR', PK: 'PKR', AE: 'AED', SA: 'SAR', QA: 'QAR', MY: 'MYR', SG: 'SGD', CA: 'CAD', AU: 'AUD', JP: 'JPY' };
-  function guessCurrency() {
-    if (BN) return 'BDT';
-    var m = /-([A-Z]{2})\b/.exec((navigator.language || '').toUpperCase());
-    if (!m) return 'USD';
-    if (REGION[m[1]]) return REGION[m[1]];
-    return EURO.indexOf(m[1]) >= 0 ? 'EUR' : 'USD';
-  }
+  // Currency list and the time-zone guess come from tools-core.js when it's loaded.
+  var CORE = window.MWTool;
+  var CURRENCIES = CORE ? CORE.CURRENCIES : ['BDT', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'AED', 'SAR', 'QAR', 'MYR', 'SGD', 'CAD', 'AUD', 'JPY'];
+  function guessCurrency() { return CORE ? CORE.guessCurrency() : (BN ? 'BDT' : 'USD'); }
 
   /* ── State ─────────────────────────────────────────────── */
   // p: people [{i: id, n: name}], e: expenses [{i, d: what, a: amount as typed, b: payer id, s: ids or null = everyone}]

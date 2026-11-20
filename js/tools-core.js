@@ -36,16 +36,43 @@
     return svg;
   }
 
-  var CURRENCIES = ['BDT', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'AED', 'SAR', 'QAR', 'KWD', 'OMR', 'MYR', 'SGD', 'CAD', 'AUD', 'JPY'];
-  var EURO = 'AT BE CY DE EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK';
-  var REGION = { BD: 'BDT', US: 'USD', GB: 'GBP', IN: 'INR', PK: 'PKR', AE: 'AED', SA: 'SAR', QA: 'QAR', KW: 'KWD', OM: 'OMR', MY: 'MYR', SG: 'SGD', CA: 'CAD', AU: 'AUD', JP: 'JPY' };
+  var CURRENCIES = ['BDT', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'NPR', 'LKR', 'AED', 'SAR', 'QAR', 'KWD', 'OMR', 'BHD', 'MYR', 'SGD',
+    'CAD', 'AUD', 'NZD', 'JPY', 'CNY', 'HKD', 'KRW', 'IDR', 'PHP', 'THB', 'CHF', 'TRY', 'EGP', 'ZAR', 'NGN', 'KES'];
+  // The device's time zone says where the visitor is, without any network call. Browser language does not
+  // (many people in Bangladesh browse in "English (India)"), so it isn't used.
+  var TZ = {
+    'Asia/Dhaka': 'BDT', 'Asia/Kolkata': 'INR', 'Asia/Calcutta': 'INR', 'Asia/Karachi': 'PKR', 'Asia/Kathmandu': 'NPR', 'Asia/Katmandu': 'NPR',
+    'Asia/Colombo': 'LKR', 'Asia/Dubai': 'AED', 'Asia/Riyadh': 'SAR', 'Asia/Qatar': 'QAR', 'Asia/Kuwait': 'KWD', 'Asia/Muscat': 'OMR',
+    'Asia/Bahrain': 'BHD', 'Asia/Kuala_Lumpur': 'MYR', 'Asia/Kuching': 'MYR', 'Asia/Singapore': 'SGD', 'Asia/Tokyo': 'JPY',
+    'Asia/Shanghai': 'CNY', 'Asia/Hong_Kong': 'HKD', 'Asia/Seoul': 'KRW', 'Asia/Jakarta': 'IDR', 'Asia/Manila': 'PHP', 'Asia/Bangkok': 'THB',
+    'Europe/London': 'GBP', 'Europe/Zurich': 'CHF', 'Europe/Istanbul': 'TRY', 'Africa/Cairo': 'EGP', 'Africa/Johannesburg': 'ZAR',
+    'Africa/Lagos': 'NGN', 'Africa/Nairobi': 'KES', 'Pacific/Auckland': 'NZD'
+  };
+  var EURO_TZ = /^Europe\/(Berlin|Paris|Madrid|Rome|Amsterdam|Brussels|Vienna|Dublin|Lisbon|Helsinki|Athens|Tallinn|Riga|Vilnius|Bratislava|Ljubljana|Luxembourg|Malta|Zagreb|Monaco|Andorra|Vatican|San_Marino)$|^Asia\/Nicosia$|^Europe\/Nicosia$|^Atlantic\/(Madeira|Canary|Azores)$/;
+  var CANADA_TZ = /^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina|Montreal|Moncton|Whitehorse|Yellowknife|Iqaluit)$/;
   function guessCurrency() {
-    if (BN) return 'BDT';
-    var m = /-([A-Z]{2})\b/.exec((navigator.language || '').toUpperCase());
-    if (!m) return 'USD';
-    if (REGION[m[1]]) return REGION[m[1]];
-    return EURO.indexOf(m[1]) >= 0 ? 'EUR' : 'USD';
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (err) { tz = ''; }
+    if (TZ[tz]) return TZ[tz];
+    if (EURO_TZ.test(tz)) return 'EUR';
+    if (CANADA_TZ.test(tz)) return 'CAD';
+    if (/^Australia\//.test(tz)) return 'AUD';
+    if (/^(America|US)\//.test(tz)) return 'USD';
+    return BN ? 'BDT' : 'USD';
   }
+
+  // Once: forget currencies saved by the old guess (browser language), so the time-zone guess applies.
+  try {
+    if (!localStorage.getItem('mw-cur-tz')) {
+      ['mw-trip-split-v1', 'mw-bill-split-v1', 'mw-somiti-v1', 'mw-loan-emi-v1', 'mw-savings-goal-v1', 'mw-budget-v1', 'mw-zakat-v1',
+        'mw-deposit-v1', 'mw-mess-v1'].forEach(function (k) {
+        var o = JSON.parse(localStorage.getItem(k) || 'null');
+        if (o && typeof o === 'object') { delete o.c; localStorage.setItem(k, JSON.stringify(o)); }
+      });
+      localStorage.removeItem('mw-currency-v1');
+      localStorage.setItem('mw-cur-tz', '1');
+    }
+  } catch (err) { /* storage blocked */ }
   var symCache = {};
   function symbol(c) {
     if (symCache[c]) return symCache[c];
