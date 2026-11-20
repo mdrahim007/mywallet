@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter, Savings group calculator, Currency converter, Loan EMI calculator, Savings goal calculator. No sign-up, and nothing you type leaves your browser.">
+  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter, Savings group calculator, Currency converter, Loan EMI calculator, Savings goal calculator, Budget planner. No sign-up, and nothing you type leaves your browser.">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/tools/">
@@ -74,6 +74,9 @@
         },
         {
           "@id": "https://mywalletapp.online/tools/savings-goal/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/tools/budget-planner/#tool"
         }
       ]
     },
@@ -101,7 +104,7 @@
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.4">
+  <link rel="stylesheet" href="/css/tools.css?v=1.5">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -183,15 +186,21 @@
           <p>How much to save each month to reach a goal by a date, or how long it takes at what you can afford.</p>
           <span class="arrow-link">Plan a goal <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">Coming soon</span>
+        <a class="card tool-tile" href="/tools/budget-planner/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-pie"/></svg></span>
           <h2>Budget planner</h2>
-          <p>Split your take-home pay into needs, wants and savings, and see where it stands.</p>
-        </div>
+          <p>Split your pay into needs, wants and savings with 50/30/20 or your own rule, and see where you stand.</p>
+          <span class="arrow-link">Plan a budget <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
         <div class="card tool-tile soon">
           <span class="tag">Coming soon</span>
           <h2>Zakat calculator</h2>
           <p>Add up your zakatable wealth, check it against the nisab, and see what is due.</p>
+        </div>
+        <div class="card tool-tile soon">
+          <span class="tag">Coming soon</span>
+          <h2>Deposit calculator</h2>
+          <p>What a monthly deposit or a fixed deposit pays at maturity, after tax.</p>
         </div>
       </div>
     </section>

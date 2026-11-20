@@ -24,6 +24,7 @@ Key facts:
 - [Currency converter](https://mywalletapp.online/tools/currency-converter/): free web calculator. Today’s rates for 160+ currencies, and a check on what the rate you’re offered really costs. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/currency-converter/))
 - [Loan EMI calculator](https://mywalletapp.online/tools/loan-emi/): free web calculator. Monthly instalment, total interest, flat vs reducing rate, and what paying extra saves. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/loan-emi/))
 - [Savings goal calculator](https://mywalletapp.online/tools/savings-goal/): free web calculator. How much to save each month to reach a goal by a date, or how long it takes at what you can afford. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/savings-goal/))
+- [Budget planner](https://mywalletapp.online/tools/budget-planner/): free web calculator. Split your pay into needs, wants and savings with 50/30/20 or your own rule, and see where you stand. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/budget-planner/))
 - [Free tools](https://mywalletapp.online/tools/): all free money calculators on the site
 - [Privacy Policy](https://mywalletapp.online/privacy/): how data is handled
 - [Terms of Service](https://mywalletapp.online/terms/)

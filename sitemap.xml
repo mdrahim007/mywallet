@@ -171,6 +171,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mywalletapp.online/tools/budget-planner/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/budget-planner/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/budget-planner/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/budget-planner/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/budget-planner-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mywalletapp.online/bn/tools/budget-planner/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/budget-planner/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/budget-planner/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/budget-planner/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/budget-planner-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mywalletapp.online/help/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/help/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/help/"/>

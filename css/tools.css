@@ -195,6 +195,22 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
 .offer-good { background: var(--pos-tint); color: var(--pos); }
 .res-sub { margin-top: 22px; font-size: 0.8125rem; font-weight: 600; color: var(--ink-3); }
 
+.form-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 16px; }
+.bp-lines { display: grid; gap: 10px; }
+.bp-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) 40px; grid-template-areas: "n a k x"; align-items: center; gap: 8px; }
+.bp-row > .input:first-child { grid-area: n; } .bp-row > .amount-input { grid-area: a; } .bp-row > .select { grid-area: k; } .bp-row > .bp-x { grid-area: x; }
+.bucket { margin-top: 18px; }
+.bucket + .bucket { margin-top: 16px; }
+.bucket-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.bucket-head b { font-size: 0.9375rem; }
+.bucket-status { font-size: 0.8125rem; font-weight: 650; }
+.bucket-status.ok { color: var(--pos); } .bucket-status.warn { color: var(--neg); }
+.bar-track { position: relative; height: 12px; margin-top: 8px; border-radius: 999px; background: var(--paper-2); overflow: visible; }
+.bar-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--brand); transition: width var(--dur) var(--ease); }
+.bar-fill.ok { background: var(--pos); } .bar-fill.warn { background: var(--neg); }
+.bar-target { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; border-radius: 2px; background: var(--ink); }
+.bucket-nums { display: block; margin-top: 6px; font-size: 0.8125rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
 .tool-related { margin-top: 88px; }
 .tool-related > h2 { margin-bottom: 24px; font-family: var(--serif); font-weight: 400; font-size: 2.1rem; line-height: 1.1; letter-spacing: -0.03em; }
 .tool-related .tools-grid { padding-bottom: 0; }
@@ -215,4 +231,6 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
   .seg-btn { flex: 1; padding: 6px 10px; }
   .form-grid { gap: 12px; }
   .bs-item-row { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) 40px; }
+  .bp-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 40px; grid-template-areas: "n n x" "a k k"; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .form-grid.three { gap: 8px; }
 }

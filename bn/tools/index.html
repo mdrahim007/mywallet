@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="MyWallet-এর free টাকার হিসাবের tools: ট্যুরের খরচ হিসাব, Bill ভাগের হিসাব, সমিতির হিসাব, Currency converter, Loan EMI হিসাব, সঞ্চয়ের লক্ষ্য। Sign-up লাগে না, যা লিখবেন তা আপনার browser-এর বাইরে যায় না।">
+  <meta name="description" content="MyWallet-এর free টাকার হিসাবের tools: ট্যুরের খরচ হিসাব, Bill ভাগের হিসাব, সমিতির হিসাব, Currency converter, Loan EMI হিসাব, সঞ্চয়ের লক্ষ্য, মাসিক budget planner। Sign-up লাগে না, যা লিখবেন তা আপনার browser-এর বাইরে যায় না।">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/bn/tools/">
@@ -74,6 +74,9 @@
         },
         {
           "@id": "https://mywalletapp.online/bn/tools/savings-goal/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/bn/tools/budget-planner/#tool"
         }
       ]
     },
@@ -102,7 +105,7 @@
   <link rel="preload" href="/assets/fonts/noto-sans-bengali.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.4">
+  <link rel="stylesheet" href="/css/tools.css?v=1.5">
 </head>
 <body>
   <a class="skip-link" href="#main">মূল কনটেন্টে যান</a>
@@ -184,15 +187,21 @@
           <p>নির্দিষ্ট তারিখের মধ্যে লক্ষ্যে পৌঁছাতে মাসে কত জমাতে হবে, অথবা কতদিন লাগবে।</p>
           <span class="arrow-link">হিসাব করুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">শিগগিরই আসছে</span>
-          <h2>মাসিক budget</h2>
-          <p>মাসের আয় দরকার, ইচ্ছা আর সঞ্চয়ে ভাগ করে দেখুন কোথায় দাঁড়িয়ে আছেন।</p>
-        </div>
+        <a class="card tool-tile" href="/bn/tools/budget-planner/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-pie"/></svg></span>
+          <h2>মাসিক budget planner</h2>
+          <p>আয় দরকারি, ইচ্ছার খরচ আর সঞ্চয়ে ভাগ করে দেখুন কোথায় দাঁড়িয়ে আছেন।</p>
+          <span class="arrow-link">Budget করুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
         <div class="card tool-tile soon">
           <span class="tag">শিগগিরই আসছে</span>
           <h2>যাকাতের হিসাব</h2>
           <p>যাকাতযোগ্য সম্পদ যোগ করে নিসাবের সাথে মিলিয়ে দেখুন কত যাকাত দিতে হবে।</p>
+        </div>
+        <div class="card tool-tile soon">
+          <span class="tag">শিগগিরই আসছে</span>
+          <h2>DPS আর FDR-এর হিসাব</h2>
+          <p>মেয়াদ শেষে DPS বা FDR-এ কত পাবেন, tax কাটার পরে।</p>
         </div>
       </div>
     </section>
