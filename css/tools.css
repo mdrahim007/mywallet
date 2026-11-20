@@ -186,6 +186,15 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
 .tool .btn svg { width: 16px; height: 16px; }
 #sm-result .data-table th:nth-child(3), #sm-result .data-table td:nth-child(3) { text-align: left; }
 
+.big-input { height: 60px; font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.fx-row { display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); align-items: end; gap: 8px; margin-top: 16px; }
+.fx-swap { width: 44px; height: 48px; border-radius: 14px; }
+.fx-swap svg { transform: rotate(90deg); }
+.offer-bad, .offer-good { margin-top: 14px; padding: 14px 16px; border-radius: 14px; font-size: 0.9375rem; font-weight: 600; line-height: 1.5; }
+.offer-bad { background: var(--neg-tint); color: var(--neg); }
+.offer-good { background: var(--pos-tint); color: var(--pos); }
+.res-sub { margin-top: 22px; font-size: 0.8125rem; font-weight: 600; color: var(--ink-3); }
+
 .tool-related { margin-top: 88px; }
 .tool-related > h2 { margin-bottom: 24px; font-family: var(--serif); font-weight: 400; font-size: 2.1rem; line-height: 1.1; letter-spacing: -0.03em; }
 .tool-related .tools-grid { padding-bottom: 0; }

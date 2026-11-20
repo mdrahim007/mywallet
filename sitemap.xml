@@ -111,6 +111,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mywalletapp.online/tools/currency-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/currency-converter/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/currency-converter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/currency-converter/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/currency-converter-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mywalletapp.online/bn/tools/currency-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/currency-converter/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/currency-converter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/currency-converter/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/currency-converter-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mywalletapp.online/help/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/help/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/help/"/>

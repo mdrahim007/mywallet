@@ -21,6 +21,7 @@ Key facts:
 - [Trip expense splitter](https://mywalletapp.online/tools/trip-split/): free web calculator. Add who went, what you spent and who paid. See who owes whom, settled in as few payments as possible. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/trip-split/))
 - [Bill splitter](https://mywalletapp.online/tools/bill-split/): free web calculator. Split evenly or by what each person had, with tax, service charge and tip shared fairly. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/bill-split/))
 - [Savings group calculator](https://mywalletapp.online/tools/somiti/): free web calculator. Who gets the pot and when in a rotating savings group, or what a group fund grows to. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/somiti/))
+- [Currency converter](https://mywalletapp.online/tools/currency-converter/): free web calculator. Today’s rates for 160+ currencies, and a check on what the rate you’re offered really costs. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/currency-converter/))
 - [Free tools](https://mywalletapp.online/tools/): all free money calculators on the site
 - [Privacy Policy](https://mywalletapp.online/privacy/): how data is handled
 - [Terms of Service](https://mywalletapp.online/terms/)
