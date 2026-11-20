@@ -161,6 +161,8 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
 .big-figure span { font-size: 0.875rem; font-weight: 600; color: var(--brand-ink); }
 .big-figure b { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 1.8rem + 1.5vw, 3rem); line-height: 1.05; letter-spacing: -0.03em; font-variant-numeric: lining-nums tabular-nums; }
 .big-figure small { font-size: 0.8125rem; color: var(--ink-2); }
+.big-figure.muted { background: var(--paper-2); }
+.big-figure.muted span { color: var(--ink-2); }
 .res-rows { margin-top: 12px; }
 .res-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .res-row:last-child { border-bottom: 0; }
