@@ -105,7 +105,7 @@
     res.appendChild(h('div', { class: 'big-figure' }, [
       h('span', { text: M.money(a, state.f) + ' =' }),
       h('b', { text: M.money(out, state.t) }),
-      h('small', { text: ONE + state.f + ' = ' + rateStr(r) + ' ' + state.t + ' · 1 ' + state.t + ' = ' + rateStr(1 / r) + ' ' + state.f })
+      h('small', { text: ONE + state.f + ' = ' + rateStr(r) + ' ' + state.t + ' · ' + ONE + state.t + ' = ' + rateStr(1 / r) + ' ' + state.f })
     ]));
     var note = h('p', { class: 'rate-note' }, [T.updated(when(stamp)) + ' · ',
       h('a', { href: 'https://www.exchangerate-api.com', target: '_blank', rel: 'noopener', text: T.by })]);
