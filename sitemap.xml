@@ -131,6 +131,46 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mywalletapp.online/tools/loan-emi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/loan-emi/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/loan-emi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/loan-emi/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/loan-emi-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mywalletapp.online/bn/tools/loan-emi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/loan-emi/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/loan-emi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/loan-emi/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/loan-emi-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mywalletapp.online/tools/savings-goal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/savings-goal/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/savings-goal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/savings-goal/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/savings-goal-en.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mywalletapp.online/bn/tools/savings-goal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/tools/savings-goal/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/tools/savings-goal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mywalletapp.online/tools/savings-goal/"/>
+    <image:image><image:loc>https://mywalletapp.online/assets/images/og/savings-goal-bn.jpg</image:loc></image:image>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mywalletapp.online/help/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://mywalletapp.online/help/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://mywalletapp.online/bn/help/"/>
