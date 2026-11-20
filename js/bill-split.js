@@ -94,6 +94,7 @@
   }
   var saveT;
   function save() { clearTimeout(saveT); saveT = setTimeout(function () { db.set(state); }, 250); }
+  window.addEventListener('pagehide', function () { if (state) db.set(state); });
 
   /* ── Maths (cents) ─────────────────────────────────────── */
   var cents = function (v) { var n = M.num(v); return n == null ? 0 : (isNaN(n) || n < 0 ? NaN : Math.round(n * 100)); };

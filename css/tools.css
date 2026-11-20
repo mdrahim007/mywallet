@@ -178,6 +178,14 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
 .rate-note { margin-top: 12px; font-size: 0.8125rem; color: var(--ink-3); }
 .rate-note a { color: var(--brand-ink); text-decoration: underline; text-underline-offset: 2px; }
 
+.ts-avatar.order { background: var(--ink); color: var(--paper); font-size: 0.8125rem; }
+.icon-btn.plain:hover { background: var(--paper-2); color: var(--ink); }
+.icon-btn-gap { width: 40px; flex-shrink: 0; }
+.tool-add-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
+.tool-add-row .tool-add { margin-top: 0; }
+.tool .btn svg { width: 16px; height: 16px; }
+#sm-result .data-table th:nth-child(3), #sm-result .data-table td:nth-child(3) { text-align: left; }
+
 .tool-related { margin-top: 88px; }
 .tool-related > h2 { margin-bottom: 24px; font-family: var(--serif); font-weight: 400; font-size: 2.1rem; line-height: 1.1; letter-spacing: -0.03em; }
 .tool-related .tools-grid { padding-bottom: 0; }

@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter. No sign-up, and nothing you type leaves your browser.">
+  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter, Savings group calculator. No sign-up, and nothing you type leaves your browser.">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/tools/">
@@ -62,6 +62,9 @@
         },
         {
           "@id": "https://mywalletapp.online/tools/bill-split/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/tools/somiti/#tool"
         }
       ]
     },
@@ -89,7 +92,7 @@
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.1">
+  <link rel="stylesheet" href="/css/tools.css?v=1.2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -147,15 +150,21 @@
           <p>Split evenly or by what each person had, with tax, service charge and tip shared fairly.</p>
           <span class="arrow-link">Split a bill <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">Coming soon</span>
+        <a class="card tool-tile" href="/tools/somiti/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-coins"/></svg></span>
           <h2>Savings group calculator</h2>
-          <p>Monthly amount, members and payout order for a savings circle, worked out before anyone pays in.</p>
-        </div>
+          <p>Who gets the pot and when in a rotating savings group, or what a group fund grows to.</p>
+          <span class="arrow-link">Plan a group <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
         <div class="card tool-tile soon">
           <span class="tag">Coming soon</span>
           <h2>Currency converter</h2>
           <p>Today’s rates for the currencies you travel and get paid in.</p>
+        </div>
+        <div class="card tool-tile soon">
+          <span class="tag">Coming soon</span>
+          <h2>Loan EMI calculator</h2>
+          <p>Your monthly instalment, the total interest, and how the balance falls month by month.</p>
         </div>
       </div>
     </section>

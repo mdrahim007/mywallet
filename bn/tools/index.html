@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="MyWallet-এর free টাকার হিসাবের tools: ট্যুরের খরচ হিসাব, Bill ভাগের হিসাব। Sign-up লাগে না, যা লিখবেন তা আপনার browser-এর বাইরে যায় না।">
+  <meta name="description" content="MyWallet-এর free টাকার হিসাবের tools: ট্যুরের খরচ হিসাব, Bill ভাগের হিসাব, সমিতির হিসাব। Sign-up লাগে না, যা লিখবেন তা আপনার browser-এর বাইরে যায় না।">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/bn/tools/">
@@ -62,6 +62,9 @@
         },
         {
           "@id": "https://mywalletapp.online/bn/tools/bill-split/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/bn/tools/somiti/#tool"
         }
       ]
     },
@@ -90,7 +93,7 @@
   <link rel="preload" href="/assets/fonts/noto-sans-bengali.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.1">
+  <link rel="stylesheet" href="/css/tools.css?v=1.2">
 </head>
 <body>
   <a class="skip-link" href="#main">মূল কনটেন্টে যান</a>
@@ -148,15 +151,21 @@
           <p>সমান ভাগ, অথবা যে যা খেয়েছে সেই হিসাবে। VAT, service charge আর tip সবার মধ্যে ঠিকঠাক ভাগ।</p>
           <span class="arrow-link">Bill ভাগ করুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">শিগগিরই আসছে</span>
+        <a class="card tool-tile" href="/bn/tools/somiti/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-coins"/></svg></span>
           <h2>সমিতির হিসাব</h2>
-          <p>মাসে কত জমা, কতজন সদস্য, কে কবে টাকা পাবে, শুরুর আগেই পুরো হিসাব।</p>
-        </div>
+          <p>ঘূর্ণি সমিতিতে কে কবে টাকা পাবেন, অথবা সঞ্চয় fund শেষে কত হবে।</p>
+          <span class="arrow-link">হিসাব করুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
         <div class="card tool-tile soon">
           <span class="tag">শিগগিরই আসছে</span>
           <h2>Currency converter</h2>
           <p>Dollar, riyal, ringgit থেকে টাকা, আজকের rate-এ।</p>
+        </div>
+        <div class="card tool-tile soon">
+          <span class="tag">শিগগিরই আসছে</span>
+          <h2>Loan-এর EMI হিসাব</h2>
+          <p>মাসে কত কিস্তি, মোট কত সুদ, আর প্রতি মাসে কত বাকি থাকলো।</p>
         </div>
       </div>
     </section>
