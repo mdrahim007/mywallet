@@ -18,7 +18,8 @@ Key facts:
 ## Pages
 - [Home](https://mywalletapp.online/): what MyWallet does, privacy, comparison with typical budget apps, FAQ
 - [Help Center](https://mywalletapp.online/help/): 24 answers about accounts, sharing, trips and savings groups, the wishlist, privacy, multi-currency, backups and settings
-- [Trip expense splitter](https://mywalletapp.online/tools/trip-split/): free web calculator; add who went, what was spent and who paid, and see who owes whom in the fewest payments. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/trip-split/))
+- [Trip expense splitter](https://mywalletapp.online/tools/trip-split/): free web calculator. Add who went, what you spent and who paid. See who owes whom, settled in as few payments as possible. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/trip-split/))
+- [Bill splitter](https://mywalletapp.online/tools/bill-split/): free web calculator. Split evenly or by what each person had, with tax, service charge and tip shared fairly. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/bill-split/))
 - [Free tools](https://mywalletapp.online/tools/): all free money calculators on the site
 - [Privacy Policy](https://mywalletapp.online/privacy/): how data is handled
 - [Terms of Service](https://mywalletapp.online/terms/)

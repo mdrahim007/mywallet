@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="MyWallet-এর free টাকার হিসাবের tools। ট্যুরের খরচ ভাগ করুন, দেখুন কে কাকে কত দেবে; আরও calculator আসছে। Sign-up লাগে না।">
+  <meta name="description" content="MyWallet-এর free টাকার হিসাবের tools: ট্যুরের খরচ হিসাব, Bill ভাগের হিসাব। Sign-up লাগে না, যা লিখবেন তা আপনার browser-এর বাইরে যায় না।">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/bn/tools/">
@@ -27,8 +27,8 @@
   <meta property="og:title" content="MyWallet-এর free টাকার হিসাবের tools">
   <meta property="og:description" content="রোজকার টাকার হিসাবের ছোট ছোট calculator। Free, sign-up লাগে না।">
   <meta property="og:url" content="https://mywalletapp.online/bn/tools/">
-  <meta property="og:image" content="https://mywalletapp.online/assets/images/og/trip-split-bn.jpg">
-  <meta property="og:image:secure_url" content="https://mywalletapp.online/assets/images/og/trip-split-bn.jpg">
+  <meta property="og:image" content="https://mywalletapp.online/assets/images/og/tools-bn.jpg">
+  <meta property="og:image:secure_url" content="https://mywalletapp.online/assets/images/og/tools-bn.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -38,7 +38,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MyWallet-এর free টাকার হিসাবের tools">
   <meta name="twitter:description" content="রোজকার টাকার হিসাবের ছোট ছোট calculator। Free, sign-up লাগে না।">
-  <meta name="twitter:image" content="https://mywalletapp.online/assets/images/og/trip-split-bn.jpg">
+  <meta name="twitter:image" content="https://mywalletapp.online/assets/images/og/tools-bn.jpg">
   <meta name="twitter:image:alt" content="MyWallet-এর free টাকার হিসাবের tools">
   <script type="application/ld+json">
 {
@@ -48,18 +48,39 @@
       "@type": "CollectionPage",
       "@id": "https://mywalletapp.online/bn/tools/#webpage",
       "url": "https://mywalletapp.online/bn/tools/",
-      "name": "Free টাকার হিসাবের tools",
+      "name": "টাকার হিসাবের free tools",
       "inLanguage": "bn",
-      "isPartOf": { "@id": "https://mywalletapp.online/#website" },
-      "breadcrumb": { "@id": "https://mywalletapp.online/bn/tools/#breadcrumb" },
-      "hasPart": [{ "@id": "https://mywalletapp.online/bn/tools/trip-split/#tool" }]
+      "isPartOf": {
+        "@id": "https://mywalletapp.online/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mywalletapp.online/bn/tools/#breadcrumb"
+      },
+      "hasPart": [
+        {
+          "@id": "https://mywalletapp.online/bn/tools/trip-split/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/bn/tools/bill-split/#tool"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://mywalletapp.online/bn/tools/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "MyWallet", "item": "https://mywalletapp.online/bn/" },
-        { "@type": "ListItem", "position": 2, "name": "Free tools", "item": "https://mywalletapp.online/bn/tools/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MyWallet",
+          "item": "https://mywalletapp.online/bn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Free tools",
+          "item": "https://mywalletapp.online/bn/tools/"
+        }
       ]
     }
   ]
@@ -69,7 +90,7 @@
   <link rel="preload" href="/assets/fonts/noto-sans-bengali.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.0">
+  <link rel="stylesheet" href="/css/tools.css?v=1.1">
 </head>
 <body>
   <a class="skip-link" href="#main">মূল কনটেন্টে যান</a>
@@ -121,11 +142,12 @@
           <p>কে কে গেলেন, কী খরচ হলো, কে টাকা দিলেন, লিখে দিন। কে কাকে কত দেবে, সবচেয়ে কম payment-এ মিলিয়ে দেবে।</p>
           <span class="arrow-link">হিসাব করুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">শিগগিরই আসছে</span>
-          <h2>Bill ভাগ</h2>
-          <p>Restaurant-এর bill, VAT আর service charge সহ, কয়েক সেকেন্ডে সবার মধ্যে ভাগ।</p>
-        </div>
+        <a class="card tool-tile" href="/bn/tools/bill-split/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"/></svg></span>
+          <h2>Bill ভাগের হিসাব</h2>
+          <p>সমান ভাগ, অথবা যে যা খেয়েছে সেই হিসাবে। VAT, service charge আর tip সবার মধ্যে ঠিকঠাক ভাগ।</p>
+          <span class="arrow-link">Bill ভাগ করুন <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
         <div class="card tool-tile soon">
           <span class="tag">শিগগিরই আসছে</span>
           <h2>সমিতির হিসাব</h2>

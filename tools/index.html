@@ -5,13 +5,13 @@
   <script src="/js/analytics.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Free Money Tools: Trip Splitter and More | MyWallet</title>
+  <title>Free Money Tools: Trip Splitter, Bill Splitter and More | MyWallet</title>
   <script>(function(){var d=document.documentElement;d.className='js'+(window.matchMedia('(prefers-reduced-motion: reduce)').matches?'':' motion');})();</script>
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="Free money tools from MyWallet. Split a trip and see who owes whom, with more calculators on the way. No sign-up, and nothing you type leaves your browser.">
+  <meta name="description" content="Free money tools from MyWallet: Trip expense splitter, Bill splitter. No sign-up, and nothing you type leaves your browser.">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/tools/">
@@ -27,8 +27,8 @@
   <meta property="og:title" content="Free money tools from MyWallet">
   <meta property="og:description" content="Small calculators for everyday money jobs. Free, no sign-up, nothing leaves your browser.">
   <meta property="og:url" content="https://mywalletapp.online/tools/">
-  <meta property="og:image" content="https://mywalletapp.online/assets/images/og/trip-split-en.jpg">
-  <meta property="og:image:secure_url" content="https://mywalletapp.online/assets/images/og/trip-split-en.jpg">
+  <meta property="og:image" content="https://mywalletapp.online/assets/images/og/tools-en.jpg">
+  <meta property="og:image:secure_url" content="https://mywalletapp.online/assets/images/og/tools-en.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -38,7 +38,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free money tools from MyWallet">
   <meta name="twitter:description" content="Small calculators for everyday money jobs. Free, no sign-up, nothing leaves your browser.">
-  <meta name="twitter:image" content="https://mywalletapp.online/assets/images/og/trip-split-en.jpg">
+  <meta name="twitter:image" content="https://mywalletapp.online/assets/images/og/tools-en.jpg">
   <meta name="twitter:image:alt" content="Free money tools from MyWallet">
   <script type="application/ld+json">
 {
@@ -48,18 +48,39 @@
       "@type": "CollectionPage",
       "@id": "https://mywalletapp.online/tools/#webpage",
       "url": "https://mywalletapp.online/tools/",
-      "name": "Free money tools",
+      "name": "Free Money Tools: Trip Splitter, Bill Splitter and More",
       "inLanguage": "en",
-      "isPartOf": { "@id": "https://mywalletapp.online/#website" },
-      "breadcrumb": { "@id": "https://mywalletapp.online/tools/#breadcrumb" },
-      "hasPart": [{ "@id": "https://mywalletapp.online/tools/trip-split/#tool" }]
+      "isPartOf": {
+        "@id": "https://mywalletapp.online/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mywalletapp.online/tools/#breadcrumb"
+      },
+      "hasPart": [
+        {
+          "@id": "https://mywalletapp.online/tools/trip-split/#tool"
+        },
+        {
+          "@id": "https://mywalletapp.online/tools/bill-split/#tool"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://mywalletapp.online/tools/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "MyWallet", "item": "https://mywalletapp.online/" },
-        { "@type": "ListItem", "position": 2, "name": "Free tools", "item": "https://mywalletapp.online/tools/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MyWallet",
+          "item": "https://mywalletapp.online/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Free tools",
+          "item": "https://mywalletapp.online/tools/"
+        }
       ]
     }
   ]
@@ -68,7 +89,7 @@
   <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v=9.5">
-  <link rel="stylesheet" href="/css/tools.css?v=1.0">
+  <link rel="stylesheet" href="/css/tools.css?v=1.1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -120,11 +141,12 @@
           <p>Add who went, what you spent and who paid. See who owes whom, settled in as few payments as possible.</p>
           <span class="arrow-link">Split a trip <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
         </a>
-        <div class="card tool-tile soon">
-          <span class="tag">Coming soon</span>
+        <a class="card tool-tile" href="/tools/bill-split/">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"/></svg></span>
           <h2>Bill splitter</h2>
-          <p>One dinner with tip, tax and service charge, split fairly in a few seconds.</p>
-        </div>
+          <p>Split evenly or by what each person had, with tax, service charge and tip shared fairly.</p>
+          <span class="arrow-link">Split a bill <svg aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span>
+        </a>
         <div class="card tool-tile soon">
           <span class="tag">Coming soon</span>
           <h2>Savings group calculator</h2>
