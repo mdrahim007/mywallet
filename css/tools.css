@@ -187,6 +187,9 @@ a.tool-tile:hover { box-shadow: var(--shadow-2), inset 0 0 0 1px var(--line-2); 
 .tool-add-row .tool-add { margin-top: 0; }
 .tool .btn svg { width: 16px; height: 16px; }
 #sm-result .data-table th:nth-child(3), #sm-result .data-table td:nth-child(3) { text-align: left; }
+#sp-result .data-table th, #sp-result .data-table td { padding: 9px 6px; }
+#sp-result .data-table th, #sp-result .data-table td:first-child { white-space: normal; }
+#sp-who { margin-bottom: 18px; }
 
 .big-input { height: 60px; font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .fx-row { display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); align-items: end; gap: 8px; margin-top: 16px; }

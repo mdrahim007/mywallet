@@ -27,6 +27,7 @@ Key facts:
 - [Budget planner](https://mywalletapp.online/tools/budget-planner/): free web calculator. Split your pay into needs, wants and savings with 50/30/20 or your own rule, and see where you stand. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/budget-planner/))
 - [Zakat calculator](https://mywalletapp.online/tools/zakat/): free web calculator. Add up your zakatable wealth, check it against the silver or gold nisab, and see what is due. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/zakat/))
 - [Deposit calculator](https://mywalletapp.online/tools/deposit/): free web calculator. What a monthly or fixed deposit pays at maturity, after tax and charges. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/deposit/))
+- [Sanchayapatra profit calculator](https://mywalletapp.online/tools/sanchayapatra/): free web calculator. Monthly profit and maturity value of Bangladesh savings certificates, after tax. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/sanchayapatra/))
 - [Mess meal calculator](https://mywalletapp.online/tools/mess-meal/): free web calculator. Meal rate, each member’s share of food and shared costs, and who gets money back or owes. Runs in the browser, no sign-up ([বাংলা](https://mywalletapp.online/bn/tools/mess-meal/))
 - [Free tools](https://mywalletapp.online/tools/): all free money calculators on the site
 - [Privacy Policy](https://mywalletapp.online/privacy/): how data is handled
