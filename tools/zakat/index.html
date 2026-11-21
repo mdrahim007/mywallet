@@ -11,7 +11,7 @@
   <link rel="icon" href="/assets/logos/mywallet_logo(favicon).svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f8f7f4">
-  <meta name="description" content="Free zakat calculator. Add your cash, savings, gold, silver and other wealth, take away debts due now, check against the silver or gold nisab, and see the 2.5% due.">
+  <meta name="description" content="Free zakat calculator for cash, savings, gold, silver, shares and pensions. Check against the silver or gold nisab and see the 2.5% due, in any currency.">
   <meta name="author" content="MD Rahim">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mywalletapp.online/tools/zakat/">
@@ -49,7 +49,7 @@
       "@id": "https://mywalletapp.online/tools/zakat/#webpage",
       "url": "https://mywalletapp.online/tools/zakat/",
       "name": "Zakat Calculator: Nisab, Gold, Silver and Cash",
-      "description": "Free zakat calculator. Add your cash, savings, gold, silver and other wealth, take away debts due now, check against the silver or gold nisab, and see the 2.5% due.",
+      "description": "Free zakat calculator for cash, savings, gold, silver, shares and pensions. Check against the silver or gold nisab and see the 2.5% due, in any currency.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://mywalletapp.online/#website"
@@ -138,6 +138,22 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Debts and bills you have to pay now. For long loans such as a mortgage, many scholars take away only the instalments that are due now."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I pay zakat on my pension or 401(k)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scholars differ. Some count what you could withdraw today after the penalty and tax, some count only the zakatable assets the fund holds, and some count nothing until you can access the money. Put the figure you settle on in Shares and investments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a cash ISA zakatable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A cash ISA is savings, so add the full balance to your bank money. For a stocks and shares ISA, count the full value if you plan to sell soon. If you hold it for the long term, some guidance counts only the zakatable share of the companies’ assets."
           }
         },
         {
@@ -293,14 +309,27 @@
           <h2>The nisab</h2>
           <p>The nisab is the least amount of wealth on which zakat is due. It’s set by weight: 87.48 grams (7.5 tola or vori) of gold, or 612.36 grams (52.5 tola or vori) of silver. Silver is far cheaper, so the silver nisab is much lower. Many scholars recommend it because more people give and more reaches those in need. Others use gold. Follow what your scholar or community follows, and type today’s local price, because metal prices change every day.</p>
 
-          <h3>A worked example</h3>
-          <p>Say silver is $1.05 a gram, which makes the silver nisab $642.98. You have $2,000 in cash, $8,500 in the bank, 20 grams of gold at $120 a gram, and a friend owes you $500. You have $1,200 of bills due now. Your net wealth is $12,200, well above the nisab, so zakat is $305. These prices are only for the example.</p>
+          <h3>Two worked examples</h3>
+          <p><strong>In dollars.</strong> Silver is about $1.33 a gram, which puts the silver nisab at $814.44. You have $2,000 in cash, $8,500 in the bank, 20 grams of gold at $114 a gram, and a friend owes you $500 you expect to get back. You have $1,200 of bills due now. Your net wealth is $12,080, well above the nisab, so zakat is $302.</p>
+          <p><strong>In pounds.</strong> Silver is about £1.02 a gram, so the silver nisab is £624.61. You keep £300 at home and £9,200 across a current account and a cash ISA, and you own 10 grams of gold at £87 a gram. Your credit card bill of £850 is due now. Net wealth comes to £9,520, and zakat is £238.</p>
+          <p>Those prices are from late November 2026. Metal prices move every day, so type today’s price for your own. <em>Try an example</em> loads the pounds version when your currency is set to GBP.</p>
+
+          <h2>Pensions, ISAs and 401(k)s</h2>
+          <p>A cash ISA is savings, so count the whole balance with your bank money.</p>
+          <p>Shares, including a stocks and shares ISA, depend on why you hold them. If you trade them or plan to sell soon, count the full market value. If you hold them for the long term, some guidance, such as the UK’s National Zakat Foundation, counts only the zakatable share of the companies’ assets, which is roughly a quarter for a typical share fund.</p>
+          <p>Workplace pensions, 401(k)s and IRAs are where views differ most:</p>
+          <ul>
+            <li><strong>Count what you could take out today.</strong> Take the balance, subtract the early-withdrawal penalty and the tax you’d pay, and count the rest. A $40,000 401(k) with a 10% penalty and 22% tax leaves $27,200 to count.</li>
+            <li><strong>Count the zakatable assets inside it.</strong> For a UK defined contribution pension, the National Zakat Foundation looks at what the fund holds, the same way as long-term shares.</li>
+            <li><strong>Nothing until you can reach it.</strong> Some scholars say money you can’t access isn’t fully yours yet, so zakat starts once you can withdraw it.</li>
+          </ul>
+          <p>Whichever view you follow, put the figure in <em>Shares and investments</em>.</p>
 
           <h2>Where scholars differ</h2>
           <ul>
             <li><strong>Jewellery you wear.</strong> Hanafi scholars count it; many others don’t.</li>
             <li><strong>Silver or gold nisab.</strong> Both are followed.</li>
-            <li><strong>Long-term debts, pensions and investments.</strong> Views differ on what to count and what to take away.</li>
+            <li><strong>Long-term debts.</strong> Views differ on how much of a mortgage or other long loan to take away.</li>
           </ul>
           <p>This page does the arithmetic. It doesn’t give rulings, so ask a scholar you trust when you’re unsure.</p>
         </div>
@@ -330,6 +359,18 @@
               <button class="acc-q" type="button" aria-expanded="false">Which debts can I take away?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
               <div class="acc-a"><div><div class="acc-body">
                 <p>Debts and bills you have to pay now. For long loans such as a mortgage, many scholars take away only the instalments that are due now.</p>
+              </div></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-q" type="button" aria-expanded="false">Do I pay zakat on my pension or 401(k)?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+              <div class="acc-a"><div><div class="acc-body">
+                <p>Scholars differ. Some count what you could withdraw today after the penalty and tax, some count only the zakatable assets the fund holds, and some count nothing until you can access the money. Put the figure you settle on in Shares and investments.</p>
+              </div></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-q" type="button" aria-expanded="false">Is a cash ISA zakatable?<span class="acc-icon" aria-hidden="true"><svg aria-hidden="true"><use href="/assets/icons.svg#i-plus"/></svg></span></button>
+              <div class="acc-a"><div><div class="acc-body">
+                <p>Yes. A cash ISA is savings, so add the full balance to your bank money. For a stocks and shares ISA, count the full value if you plan to sell soon. If you hold it for the long term, some guidance counts only the zakatable share of the companies’ assets.</p>
               </div></div></div>
             </div>
             <div class="acc-item">
@@ -428,6 +469,6 @@
 
   <script src="/js/main.js?v=4.4" defer></script>
   <script src="/js/tools-core.js?v=1.1" defer></script>
-  <script src="/js/zakat.js?v=1.0" defer></script>
+  <script src="/js/zakat.js?v=1.1" defer></script>
 </body>
 </html>

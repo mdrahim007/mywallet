@@ -25,9 +25,12 @@
     empty: 'Type your cash, gold, silver and other wealth to see what’s due.',
     copied: 'Copied', title: 'Zakat calculation', foot: 'Worked out with mywalletapp.online/tools/zakat/', unitG: 'gram', unitV: 'vori'
   };
-  var EXAMPLE = BN
-    ? { c: 'BDT', u: 'v', b: 'silver', cash: '25000', bank: '180000', gw: '3', sw: '', gp: '175000', sp: '2800', biz: '', owed: '', inv: '', other: '', debt: '40000' }
-    : { c: 'USD', u: 'g', b: 'silver', cash: '2000', bank: '8500', gw: '20', sw: '', gp: '120', sp: '1.05', biz: '', owed: '500', inv: '', other: '', debt: '1200' };
+  /* English examples match the worked examples on the page: pounds when the visitor's currency is GBP, otherwise dollars.
+     Prices from late November 2026. */
+  var EX_BDT = { c: 'BDT', u: 'v', b: 'silver', cash: '25000', bank: '180000', gw: '3', sw: '', gp: '175000', sp: '2800', biz: '', owed: '', inv: '', other: '', debt: '40000' };
+  var EX_USD = { c: 'USD', u: 'g', b: 'silver', cash: '2000', bank: '8500', gw: '20', sw: '', gp: '114', sp: '1.33', biz: '', owed: '500', inv: '', other: '', debt: '1200' };
+  var EX_GBP = { c: 'GBP', u: 'g', b: 'silver', cash: '300', bank: '9200', gw: '10', sw: '', gp: '87', sp: '1.02', biz: '', owed: '', inv: '', other: '', debt: '850' };
+  function example() { return BN ? EX_BDT : (state.c === 'GBP' ? EX_GBP : EX_USD); }
 
   var db = M.store('mw-zakat-v1');
   function blank() { var b = { c: M.guessCurrency(), u: BN ? 'v' : 'g', b: 'silver' }; FIELDS.forEach(function (f) { b[f] = ''; }); return b; }
@@ -86,7 +89,8 @@
   $('zk-b-silver').addEventListener('click', function () { state.b = 'silver'; render(); save(); });
   $('zk-b-gold').addEventListener('click', function () { state.b = 'gold'; render(); save(); });
   $('zk-example').addEventListener('click', function () {
-    Object.keys(EXAMPLE).forEach(function (k) { state[k] = EXAMPLE[k]; });
+    var ex = example();
+    Object.keys(ex).forEach(function (k) { state[k] = ex[k]; });
     $('zk-currency').value = state.c; fill(); render(); save();
     if (window.matchMedia('(max-width: 960px)').matches) $('zk-result-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
