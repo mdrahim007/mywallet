@@ -119,6 +119,10 @@
 .tool-cta .play-badge { margin-top: 8px; align-self: flex-start; }
 
 .tool-guide { padding-bottom: clamp(72px, 9vw, 128px); }
+.tool-back { transition: color var(--dur) var(--ease); }
+.tool-back svg { width: 16px; height: 16px; transform: scaleX(-1); transition: transform var(--dur) var(--ease); }
+.tool-back:hover { color: var(--brand-ink); }
+.tool-back:hover svg { transform: scaleX(-1) translateX(3px); }
 .tool-guide .prose { margin-inline: auto; }
 .tool-guide .prose h2:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
 .tool-guide .prose ol { display: grid; gap: 10px; padding-left: 22px; list-style: decimal; }
