@@ -7,9 +7,9 @@
   var TOOL = 'deposit', FIELDS = ['amt', 'r', 'y', 'mo', 'tax', 'fee'];
 
   var T = BN ? {
-    get: 'মেয়াদ শেষে পাবেন', putIn: 'আপনি জমা দেবেন', interest: 'মোট মুনাফা', tax: 'Tax (উৎসে কর)', fee: 'অন্য charge', net: 'হাতে আসা মুনাফা',
-    eff: 'Tax-এর পরে বছরে আসল আয়', ends: 'মেয়াদ শেষ', empty: 'জমার টাকা, মুনাফার হার আর মেয়াদ লিখলেই হিসাব দেখাবে।',
-    m: { 12: 'প্রতি মাসে', 4: 'প্রতি তিন মাসে', 1: 'প্রতি বছরে', 0: 'মেয়াদ শেষে একবারে' }, copied: 'Copy হয়েছে',
+    get: 'মেয়াদ শেষে পাবেন', putIn: 'আপনি জমা দেবেন', interest: 'মোট মুনাফা', tax: 'ট্যাক্স (উৎসে কর)', fee: 'অন্য চার্জ', net: 'হাতে আসা মুনাফা',
+    eff: 'ট্যাক্সের পরে বছরে আসল আয়', ends: 'মেয়াদ শেষ', empty: 'জমার টাকা, মুনাফার হার আর মেয়াদ লিখলেই হিসাব দেখাবে।',
+    m: { 12: 'প্রতি মাসে', 4: 'প্রতি তিন মাসে', 1: 'প্রতি বছরে', 0: 'মেয়াদ শেষে একবারে' }, copied: 'কপি হয়েছে',
     title: function (k) { return k === 'dps' ? 'DPS-এর হিসাব' : 'FDR-এর হিসাব'; }, foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/deposit/'
   } : {
     get: 'You get at maturity', putIn: 'You put in', interest: 'Interest earned', tax: 'Tax on interest', fee: 'Charges', net: 'Interest you keep',

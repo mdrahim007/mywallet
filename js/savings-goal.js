@@ -14,7 +14,7 @@
     emptyTime: 'লক্ষ্যের টাকা আর মাসে কত জমাতে পারবেন, লিখলেই দেখাবে কবে পৌঁছাবেন।',
     inMonths: function (n, d) { return M.bnNum(n) + ' মাসে, ' + d; }, n: function (n) { return M.bnNum(n) + ' মাস'; },
     note: function (r) { return 'বছরে ' + M.pct(r) + ' মুনাফা ধরে, প্রতি মাসে যোগ করে, মাসের শেষে জমা ধরে হিসাব।'; },
-    copied: 'Copy হয়েছে', goal: 'লক্ষ্য', foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/savings-goal/'
+    copied: 'কপি হয়েছে', goal: 'লক্ষ্য', foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/savings-goal/'
   } : {
     need: 'Save each month', time: 'You’ll get there', months: 'Months to go', putIn: 'You put in', growth: 'From returns', have: 'Already saved',
     there: 'What you’ve saved already gets there with returns. You don’t need to add more.',

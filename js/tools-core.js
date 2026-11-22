@@ -131,7 +131,7 @@
     toastTimer = setTimeout(function () { toastEl.classList.remove('is-visible'); }, 2200);
   }
   function copy(text, msg) {
-    var fail = BN ? 'Copy হলো না, নিজে select করে নিন' : 'Couldn’t copy. Select the text and copy it yourself.';
+    var fail = BN ? 'কপি হলো না, নিজে সিলেক্ট করে নিন' : 'Couldn’t copy. Select the text and copy it yourself.';
     var fallback = function () {
       var ta = h('textarea', { readonly: true, style: 'position:fixed;opacity:0;top:0;left:0' });
       ta.value = text;

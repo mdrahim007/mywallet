@@ -15,7 +15,7 @@
     below: function (x) { return 'নিট সম্পদ নিসাবের চেয়ে ' + x + ' কম, তাই এখন যাকাত ফরজ নয়।'; },
     needPrice: function (b) { return 'নিসাব বের করতে ' + (b === 'silver' ? 'রুপার' : 'সোনার') + ' দাম লিখুন।'; },
     empty: 'আপনার টাকা, সোনা-রুপা আর অন্যান্য সম্পদ লিখলেই হিসাব দেখাবে।',
-    copied: 'Copy হয়েছে', title: 'যাকাতের হিসাব', foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/zakat/', unitG: 'গ্রাম', unitV: 'ভরি'
+    copied: 'কপি হয়েছে', title: 'যাকাতের হিসাব', foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/zakat/', unitG: 'গ্রাম', unitV: 'ভরি'
   } : {
     due: 'Zakat due (2.5%)', none: 'No zakat due', assets: 'Zakatable wealth', gold: 'Gold value', silver: 'Silver value',
     debts: 'Less: debts due now', net: 'Net wealth', nisab: function (b) { return 'Nisab (' + b + ')'; },

@@ -14,10 +14,10 @@
     short: function (x) { return 'আরও ' + x + ' দরকার'; }, onTarget: 'ঠিক আছে', met: 'লক্ষ্য পূরণ',
     left: 'এখনো কোথাও ধরা হয়নি', overIncome: function (x) { return 'আয়ের চেয়ে ' + x + ' বেশি খরচ ধরা হয়েছে।'; },
     leftTip: function (x) { return x + ' এখনো কোনো খাতে নেই। সঞ্চয়ে দিলে লক্ষ্যের কাছে যাবেন।'; },
-    empty: 'মাসের আয় লিখলেই ভাগটা দেখাবে।', badRule: 'তিনটা ভাগ মিলে ১০০% হতে হবে।', copied: 'Copy হয়েছে',
-    title: function (r) { return 'মাসিক budget (' + r + ')'; }, income: 'আয়', foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/budget-planner/',
-    lines: [['বাসা ভাড়া', 'n'], ['বাজার', 'n'], ['বিদ্যুৎ, গ্যাস, internet', 'n'], ['যাতায়াত', 'n'], ['বাড়িতে পাঠানো', 'n'],
-      ['বাইরে খাওয়া', 'w'], ['কেনাকাটা', 'w'], ['Mobile আর subscription', 'w'], ['সঞ্চয় / DPS', 's']]
+    empty: 'মাসের আয় লিখলেই ভাগটা দেখাবে।', badRule: 'তিনটা ভাগ মিলে ১০০% হতে হবে।', copied: 'কপি হয়েছে',
+    title: function (r) { return 'মাসিক বাজেট (' + r + ')'; }, income: 'আয়', foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/budget-planner/',
+    lines: [['বাসা ভাড়া', 'n'], ['বাজার', 'n'], ['বিদ্যুৎ, গ্যাস, ইন্টারনেট', 'n'], ['যাতায়াত', 'n'], ['বাড়িতে পাঠানো', 'n'],
+      ['বাইরে খাওয়া', 'w'], ['কেনাকাটা', 'w'], ['মোবাইল আর সাবস্ক্রিপশন', 'w'], ['সঞ্চয় / DPS', 's']]
   } : {
     cat: { n: 'Needs', w: 'Wants', s: 'Savings' }, namePh: 'What it’s for', remove: 'Remove', amount: 'Amount', kind: 'Kind',
     lineN: function (n) { return 'Cost ' + n; }, removeOf: function (x) { return 'Remove ' + x; },

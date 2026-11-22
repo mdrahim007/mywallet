@@ -10,14 +10,14 @@
   var TOOL = 'currency-converter', FEED = 'https://open.er-api.com/v6/latest/USD', TTL = 12 * 3600 * 1000;
 
   var T = BN ? {
-    loading: 'আজকের rate আনা হচ্ছে…', failed: 'আজকের rate আনা গেলো না। Internet connection দেখে আবার চেষ্টা করুন।',
-    stale: function (d) { return 'নতুন rate আনা গেলো না, তাই ' + d + '-এর rate দেখাচ্ছে।'; },
-    updated: function (d) { return 'Rate update হয়েছে ' + d; }, by: 'Rates By Exchange Rate API',
-    popular: 'পরিচিত currency', all: 'সব currency', other: 'অন্য currency-তে',
-    offeredLabel: function (f, t) { return 'আপনাকে যে rate দিচ্ছে: ১ ' + f + ' = কত ' + t; },
-    lose: function (got, diff, p) { return 'এই rate-এ পাবেন ' + got + '। Mid-market rate-এর চেয়ে ' + diff + ' কম, মানে ' + p + ' যাচ্ছে margin-এ।'; },
-    gain: function (got, diff) { return 'এই rate-এ পাবেন ' + got + ', mid-market rate-এর চেয়েও ' + diff + ' বেশি।'; },
-    copied: 'Copy হয়েছে', mid: 'mid-market rate', foot: 'mywalletapp.online/bn/tools/currency-converter/', bad: 'শুধু সংখ্যা লিখুন'
+    loading: 'আজকের রেট আনা হচ্ছে…', failed: 'আজকের রেট আনা গেলো না। ইন্টারনেট কানেকশন দেখে আবার চেষ্টা করুন।',
+    stale: function (d) { return 'নতুন রেট আনা গেলো না, তাই ' + d + '-এর রেট দেখাচ্ছে।'; },
+    updated: function (d) { return 'রেট আপডেট হয়েছে ' + d; }, by: 'Rates By Exchange Rate API',
+    popular: 'পরিচিত কারেন্সি', all: 'সব কারেন্সি', other: 'অন্য কারেন্সিতে',
+    offeredLabel: function (f, t) { return 'আপনাকে যে রেট দিচ্ছে: ১ ' + f + ' = কত ' + t; },
+    lose: function (got, diff, p) { return 'এই রেটে পাবেন ' + got + '। মিড-মার্কেট রেটের চেয়ে ' + diff + ' কম, মানে ' + p + ' যাচ্ছে মার্জিনে।'; },
+    gain: function (got, diff) { return 'এই রেটে পাবেন ' + got + ', মিড-মার্কেট রেটের চেয়েও ' + diff + ' বেশি।'; },
+    copied: 'কপি হয়েছে', mid: 'মিড-মার্কেট রেট', foot: 'mywalletapp.online/bn/tools/currency-converter/', bad: 'শুধু সংখ্যা লিখুন'
   } : {
     loading: 'Getting today’s rates…', failed: 'Couldn’t load today’s rates. Check your connection and try again.',
     stale: function (d) { return 'Couldn’t get new rates, so these are from ' + d + '.'; },

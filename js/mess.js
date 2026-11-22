@@ -14,7 +14,7 @@
     sharedEach: 'অন্য খরচ, জনপ্রতি', th: ['নাম', 'মিল', 'খরচ', 'জমা', 'হিসাব'], gets: 'পাবেন', owes: 'দেবেন', even: 'সমান',
     left: function (x) { return 'সবার জমা থেকে সব খরচ মিটিয়ে ম্যানেজারের কাছে ' + x + ' থাকার কথা।'; },
     short: function (x) { return 'সবার জমা মোট খরচের চেয়ে ' + x + ' কম।'; },
-    empty: 'বাজারের মোট টাকা আর সদস্যদের মিল লিখলেই মিল রেট দেখাবে।', copied: 'Copy হয়েছে', title: 'মেসের মাসিক হিসাব',
+    empty: 'বাজারের মোট টাকা আর সদস্যদের মিল লিখলেই মিল রেট দেখাবে।', copied: 'কপি হয়েছে', title: 'মেসের মাসিক হিসাব',
     foot: 'হিসাব করা হয়েছে: mywalletapp.online/bn/tools/mess-meal/', costs: ['খালার বেতন', 'গ্যাস', 'বিদ্যুৎ', 'Internet']
   } : {
     person: function (n) { return 'Member ' + n; }, costN: function (n) { return 'Cost ' + n; },

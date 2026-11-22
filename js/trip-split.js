@@ -19,10 +19,10 @@
     expenseN: function (n) { return 'খরচ ' + bnNum(n); },
     empty: 'খরচ যোগ করলেই এখানে দেখাবে কে কাকে কত দেবে।',
     even: 'সবার হিসাব সমান। কেউ কারো কাছে টাকা পায় না।',
-    pays: 'দেবেন', count: function (n) { return bnNum(n) + 'টা payment-এ হিসাব শেষ'; },
+    pays: 'দেবেন', count: function (n) { return bnNum(n) + 'টা পেমেন্টে হিসাব শেষ'; },
     name: 'নাম', paid: 'দিয়েছেন', share: 'ভাগে', balance: 'হিসাব',
     gets: 'পাবেন', owes: 'দেবেন', settled: 'সমান',
-    copied: 'Copy হয়েছে', linkCopied: 'Link copy হয়েছে', copyFail: 'Copy হলো না, নিজে select করে নিন',
+    copied: 'কপি হয়েছে', linkCopied: 'লিংক কপি হয়েছে', copyFail: 'কপি হলো না, নিজে সিলেক্ট করে নিন',
     confirmClear: 'সব মুছে নতুন করে শুরু করবেন?',
     trip: 'ট্যুর', title: function (t) { return t + ': কে কাকে কত দেবে'; }, total: 'মোট খরচ',
     line: function (a, b, m) { return a + ' → ' + b + ': ' + m; },
@@ -48,7 +48,7 @@
   var EXAMPLE = BN ? {
     t: 'কক্সবাজার ট্যুর', c: 'BDT',
     p: ['নাদিয়া', 'আয়ান', 'তানভীর', 'মিম'],
-    e: [['হোটেল', '12000', 0, null], ['AC bus টিকিট', '7200', 1, null], ['খাওয়া', '4800', 2, null], ['Beach bike', '1800', 0, [0, 1, 2]]]
+    e: [['হোটেল', '12000', 0, null], ['AC বাস টিকিট', '7200', 1, null], ['খাওয়া', '4800', 2, null], ['বিচ বাইক', '1800', 0, [0, 1, 2]]]
   } : {
     t: 'Lake weekend', c: 'USD',
     p: ['Maya', 'Leo', 'Sam', 'Ana'],
